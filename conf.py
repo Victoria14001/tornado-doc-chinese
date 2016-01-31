@@ -15,6 +15,7 @@
 import sys
 import os
 import sphinx_rtd_theme
+sys.path.insert(0, os.path.abspath(".."))
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -132,7 +133,17 @@ html_theme_path = [sphinx_rtd_theme . get_html_theme_path()]
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
 # pixels large.
-#html_favicon = None
+html_favicon = 'favicon.ico'
+
+extlinks = {
+    'current_tarball': (
+        'https://pypi.python.org/packages/source/t/tornado/tornado-%s.tar.g%%s' % version,
+        'tornado-%s.tar.g' % version),
+    }
+
+intersphinx_mapping = {
+    'python': ('https://docs.python.org/3.4/', None),
+    }
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,

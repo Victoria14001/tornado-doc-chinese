@@ -1,0 +1,443 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>协程 &mdash; Tornado 4.4 文档</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Tornado 4.4 文档" href="../index.html"/>
+        <link rel="up" title="用户手册" href="../guide.html"/>
+        <link rel="next" title="Queue 示例 - 一个并发网络爬虫" href="queues.html"/>
+        <link rel="prev" title="异步和非阻塞 I/O" href="async.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Tornado
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../guide.html">用户手册</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="async.html">异步和非阻塞 I/O</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">协程</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="queues.html"><code class="docutils literal"><span class="pre">Queue</span></code> 示例 - 一个并发网络爬虫</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structure.html">Tornado web 应用程序结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html">模版和 UI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">认证与安全</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running.html">运行和部署</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../webframework.html">Web 框架</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../http.html">HTTP 服务器和客户端</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../networking.html">异步网路</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../coroutine.html">协程和并发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration.html">整合其它服务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utilities.html">实用工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">问题与解答</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases.html">发布说明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Tornado</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../guide.html">用户手册</a> &raquo;</li>
+      
+    <li>协程</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/guide/coroutines.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>协程<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p><strong>Coroutines</strong> are the recommended way to write asynchronous code in
+Tornado.  Coroutines use the Python <code class="docutils literal"><span class="pre">yield</span></code> keyword to suspend and
+resume execution instead of a chain of callbacks (cooperative
+lightweight threads as seen in frameworks like <a class="reference external" href="http://www.gevent.org">gevent</a> are sometimes called coroutines as well, but
+in Tornado all coroutines use explicit context switches and are called
+as asynchronous functions).</p>
+<p>Coroutines are almost as simple as synchronous code, but without the
+expense of a thread.  They also <a class="reference external" href="https://glyph.twistedmatrix.com/2014/02/unyielding.html">make concurrency easier</a> to reason
+about by reducing the number of places where a context switch can
+happen.</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">tornado</span> <span class="kn">import</span> <span class="n">gen</span>
+
+<span class="nd">@gen.coroutine</span>
+<span class="k">def</span> <span class="nf">fetch_coroutine</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">http_client</span> <span class="o">=</span> <span class="n">AsyncHTTPClient</span><span class="p">()</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">http_client</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="c1"># In Python versions prior to 3.3, returning a value from</span>
+    <span class="c1"># a generator is not allowed and you must use</span>
+    <span class="c1">#   raise gen.Return(response.body)</span>
+    <span class="c1"># instead.</span>
+    <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">body</span>
+</pre></div>
+</div>
+<div class="section" id="python-3-5-async-and-await">
+<span id="native-coroutines"></span><h2>Python 3.5: <code class="docutils literal"><span class="pre">async</span></code> and <code class="docutils literal"><span class="pre">await</span></code><a class="headerlink" href="#python-3-5-async-and-await" title="永久链接至标题">¶</a></h2>
+<p>Python 3.5 introduces the <code class="docutils literal"><span class="pre">async</span></code> and <code class="docutils literal"><span class="pre">await</span></code> keywords (functions
+using these keywords are also called &#8220;native coroutines&#8221;). Starting in
+Tornado 4.3, you can use them in place of <code class="docutils literal"><span class="pre">yield</span></code>-based coroutines.
+Simply use <code class="docutils literal"><span class="pre">async</span> <span class="pre">def</span> <span class="pre">foo()</span></code> in place of a function definition with
+the <code class="docutils literal"><span class="pre">&#64;gen.coroutine</span></code> decorator, and <code class="docutils literal"><span class="pre">await</span></code> in place of yield. The
+rest of this document still uses the <code class="docutils literal"><span class="pre">yield</span></code> style for compatibility
+with older versions of Python, but <code class="docutils literal"><span class="pre">async</span></code> and <code class="docutils literal"><span class="pre">await</span></code> will run
+faster when they are available:</p>
+<div class="highlight-python"><div class="highlight"><pre>async def fetch_coroutine(url):
+    http_client = AsyncHTTPClient()
+    response = await http_client.fetch(url)
+    return response.body
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">await</span></code> keyword is less versatile than the <code class="docutils literal"><span class="pre">yield</span></code> keyword.
+For example, in a <code class="docutils literal"><span class="pre">yield</span></code>-based coroutine you can yield a list of
+<code class="docutils literal"><span class="pre">Futures</span></code>, while in a native coroutine you must wrap the list in
+<cite>tornado.gen.multi</cite>. You can also use <cite>tornado.gen.convert_yielded</cite>
+to convert anything that would work with <code class="docutils literal"><span class="pre">yield</span></code> into a form that
+will work with <code class="docutils literal"><span class="pre">await</span></code>.</p>
+<p>While native coroutines are not visibly tied to a particular framework
+(i.e. they do not use a decorator like <cite>tornado.gen.coroutine</cite> or
+<cite>asyncio.coroutine</cite>), not all coroutines are compatible with each
+other. There is a <em>coroutine runner</em> which is selected by the first
+coroutine to be called, and then shared by all coroutines which are
+called directly with <code class="docutils literal"><span class="pre">await</span></code>. The Tornado coroutine runner is
+designed to be versatile and accept awaitable objects from any
+framework; other coroutine runners may be more limited (for example,
+the <code class="docutils literal"><span class="pre">asyncio</span></code> coroutine runner does not accept coroutines from other
+frameworks). For this reason, it is recommended to use the Tornado
+coroutine runner for any application which combines multiple
+frameworks. To call a coroutine using the Tornado runner from within a
+coroutine that is already using the asyncio runner, use the
+<cite>tornado.platform.asyncio.to_asyncio_future</cite> adapter.</p>
+</div>
+<div class="section" id="how-it-works">
+<h2>How it works<a class="headerlink" href="#how-it-works" title="永久链接至标题">¶</a></h2>
+<p>A function containing <code class="docutils literal"><span class="pre">yield</span></code> is a <strong>generator</strong>.  All generators
+are asynchronous; when called they return a generator object instead
+of running to completion.  The <code class="docutils literal"><span class="pre">&#64;gen.coroutine</span></code> decorator
+communicates with the generator via the <code class="docutils literal"><span class="pre">yield</span></code> expressions, and
+with the coroutine&#8217;s caller by returning a <cite>.Future</cite>.</p>
+<p>Here is a simplified version of the coroutine decorator&#8217;s inner loop:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c1"># Simplified inner loop of tornado.gen.Runner</span>
+<span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c1"># send(x) makes the current yield return x.</span>
+    <span class="c1"># It returns when the next yield is reached</span>
+    <span class="n">future</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">next</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+    <span class="n">future</span><span class="o">.</span><span class="n">add_done_callback</span><span class="p">(</span><span class="n">callback</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The decorator receives a <cite>.Future</cite> from the generator, waits (without
+blocking) for that <cite>.Future</cite> to complete, then &#8220;unwraps&#8221; the <cite>.Future</cite>
+and sends the result back into the generator as the result of the
+<code class="docutils literal"><span class="pre">yield</span></code> expression.  Most asynchronous code never touches the <cite>.Future</cite>
+class directly except to immediately pass the <cite>.Future</cite> returned by
+an asynchronous function to a <code class="docutils literal"><span class="pre">yield</span></code> expression.</p>
+</div>
+<div class="section" id="how-to-call-a-coroutine">
+<h2>How to call a coroutine<a class="headerlink" href="#how-to-call-a-coroutine" title="永久链接至标题">¶</a></h2>
+<p>Coroutines do not raise exceptions in the normal way: any exception
+they raise will be trapped in the <cite>.Future</cite> until it is yielded. This
+means it is important to call coroutines in the right way, or you may
+have errors that go unnoticed:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="nd">@gen.coroutine</span>
+<span class="k">def</span> <span class="nf">divide</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">/</span> <span class="n">y</span>
+
+<span class="k">def</span> <span class="nf">bad_call</span><span class="p">():</span>
+    <span class="c1"># This should raise a ZeroDivisionError, but it won&#39;t because</span>
+    <span class="c1"># the coroutine is called incorrectly.</span>
+    <span class="n">divide</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In nearly all cases, any function that calls a coroutine must be a
+coroutine itself, and use the <code class="docutils literal"><span class="pre">yield</span></code> keyword in the call. When you
+are overriding a method defined in a superclass, consult the
+documentation to see if coroutines are allowed (the documentation
+should say that the method &#8220;may be a coroutine&#8221; or &#8220;may return a
+<cite>.Future</cite>&#8221;):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="nd">@gen.coroutine</span>
+<span class="k">def</span> <span class="nf">good_call</span><span class="p">():</span>
+    <span class="c1"># yield will unwrap the Future returned by divide() and raise</span>
+    <span class="c1"># the exception.</span>
+    <span class="k">yield</span> <span class="n">divide</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sometimes you may want to &#8220;fire and forget&#8221; a coroutine without waiting
+for its result. In this case it is recommended to use <cite>.IOLoop.spawn_callback</cite>,
+which makes the <cite>.IOLoop</cite> responsible for the call. If it fails,
+the <cite>.IOLoop</cite> will log a stack trace:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c1"># The IOLoop will catch the exception and print a stack trace in</span>
+<span class="c1"># the logs. Note that this doesn&#39;t look like a normal call, since</span>
+<span class="c1"># we pass the function object to be called by the IOLoop.</span>
+<span class="n">IOLoop</span><span class="o">.</span><span class="n">current</span><span class="p">()</span><span class="o">.</span><span class="n">spawn_callback</span><span class="p">(</span><span class="n">divide</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Finally, at the top level of a program, <em>if the `.IOLoop` is not yet
+running,</em> you can start the <cite>.IOLoop</cite>, run the coroutine, and then
+stop the <cite>.IOLoop</cite> with the <cite>.IOLoop.run_sync</cite> method. This is often
+used to start the <code class="docutils literal"><span class="pre">main</span></code> function of a batch-oriented program:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c1"># run_sync() doesn&#39;t take arguments, so we must wrap the</span>
+<span class="c1"># call in a lambda.</span>
+<span class="n">IOLoop</span><span class="o">.</span><span class="n">current</span><span class="p">()</span><span class="o">.</span><span class="n">run_sync</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">divide</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="coroutine-patterns">
+<h2>Coroutine patterns<a class="headerlink" href="#coroutine-patterns" title="永久链接至标题">¶</a></h2>
+<div class="section" id="interaction-with-callbacks">
+<h3>Interaction with callbacks<a class="headerlink" href="#interaction-with-callbacks" title="永久链接至标题">¶</a></h3>
+<p>To interact with asynchronous code that uses callbacks instead of
+<cite>.Future</cite>, wrap the call in a <cite>.Task</cite>.  This will add the callback
+argument for you and return a <cite>.Future</cite> which you can yield:</p>
+</div>
+<div class="section" id="calling-blocking-functions">
+<h3>Calling blocking functions<a class="headerlink" href="#calling-blocking-functions" title="永久链接至标题">¶</a></h3>
+<p>The simplest way to call a blocking function from a coroutine is to
+use a <cite>~concurrent.futures.ThreadPoolExecutor</cite>, which returns
+<code class="docutils literal"><span class="pre">Futures</span></code> that are compatible with coroutines:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">thread_pool</span> <span class="o">=</span> <span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="nd">@gen.coroutine</span>
+<span class="k">def</span> <span class="nf">call_blocking</span><span class="p">():</span>
+    <span class="k">yield</span> <span class="n">thread_pool</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">blocking_func</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="parallelism">
+<h3>Parallelism<a class="headerlink" href="#parallelism" title="永久链接至标题">¶</a></h3>
+<p>The coroutine decorator recognizes lists and dicts whose values are
+<code class="docutils literal"><span class="pre">Futures</span></code>, and waits for all of those <code class="docutils literal"><span class="pre">Futures</span></code> in parallel:</p>
+</div>
+<div class="section" id="interleaving">
+<h3>Interleaving<a class="headerlink" href="#interleaving" title="永久链接至标题">¶</a></h3>
+<p>Sometimes it is useful to save a <cite>.Future</cite> instead of yielding it
+immediately, so you can start another operation before waiting:</p>
+</div>
+<div class="section" id="looping">
+<h3>Looping<a class="headerlink" href="#looping" title="永久链接至标题">¶</a></h3>
+<p>Looping is tricky with coroutines since there is no way in Python
+to <code class="docutils literal"><span class="pre">yield</span></code> on every iteration of a <code class="docutils literal"><span class="pre">for</span></code> or <code class="docutils literal"><span class="pre">while</span></code> loop and
+capture the result of the yield.  Instead, you&#8217;ll need to separate
+the loop condition from accessing the results, as in this example
+from <a class="reference external" href="http://motor.readthedocs.org/en/stable/">Motor</a>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">motor</span>
+<span class="n">db</span> <span class="o">=</span> <span class="n">motor</span><span class="o">.</span><span class="n">MotorClient</span><span class="p">()</span><span class="o">.</span><span class="n">test</span>
+
+<span class="nd">@gen.coroutine</span>
+<span class="k">def</span> <span class="nf">loop_example</span><span class="p">(</span><span class="n">collection</span><span class="p">):</span>
+    <span class="n">cursor</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">collection</span><span class="o">.</span><span class="n">find</span><span class="p">()</span>
+    <span class="k">while</span> <span class="p">(</span><span class="k">yield</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetch_next</span><span class="p">):</span>
+        <span class="n">doc</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">next_object</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="running-in-the-background">
+<h3>Running in the background<a class="headerlink" href="#running-in-the-background" title="永久链接至标题">¶</a></h3>
+<p><cite>.PeriodicCallback</cite> is not normally used with coroutines. Instead, a
+coroutine can contain a <code class="docutils literal"><span class="pre">while</span> <span class="pre">True:</span></code> loop and use
+<cite>tornado.gen.sleep</cite>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="nd">@gen.coroutine</span>
+<span class="k">def</span> <span class="nf">minute_loop</span><span class="p">():</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">do_something</span><span class="p">()</span>
+        <span class="k">yield</span> <span class="n">gen</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+
+<span class="c1"># Coroutines that loop forever are generally started with</span>
+<span class="c1"># spawn_callback().</span>
+<span class="n">IOLoop</span><span class="o">.</span><span class="n">current</span><span class="p">()</span><span class="o">.</span><span class="n">spawn_callback</span><span class="p">(</span><span class="n">minute_loop</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sometimes a more complicated loop may be desirable. For example, the
+previous loop runs every <code class="docutils literal"><span class="pre">60+N</span></code> seconds, where <code class="docutils literal"><span class="pre">N</span></code> is the running
+time of <code class="docutils literal"><span class="pre">do_something()</span></code>. To run exactly every 60 seconds, use the
+interleaving pattern from above:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="nd">@gen.coroutine</span>
+<span class="k">def</span> <span class="nf">minute_loop2</span><span class="p">():</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">nxt</span> <span class="o">=</span> <span class="n">gen</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>   <span class="c1"># Start the clock.</span>
+        <span class="k">yield</span> <span class="n">do_something</span><span class="p">()</span>  <span class="c1"># Run while the clock is ticking.</span>
+        <span class="k">yield</span> <span class="n">nxt</span>             <span class="c1"># Wait for the timer to run out.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="queues.html" class="btn btn-neutral float-right" title="Queue 示例 - 一个并发网络爬虫" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="async.html" class="btn btn-neutral" title="异步和非阻塞 I/O" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; 版权所有 2016, deepdarkness.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'4.4',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

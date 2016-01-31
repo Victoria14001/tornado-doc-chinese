@@ -1,0 +1,282 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>用户手册 &mdash; Tornado 4.4 文档</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Tornado 4.4 文档" href="index.html"/>
+        <link rel="next" title="介绍" href="guide/intro.html"/>
+        <link rel="prev" title="" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Tornado
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">用户手册</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guide/intro.html">介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/async.html">异步和非阻塞 I/O</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/coroutines.html">协程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/queues.html"><code class="docutils literal"><span class="pre">Queue</span></code> 示例 - 一个并发网络爬虫</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/structure.html">Tornado web 应用程序结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/templates.html">模版和 UI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/security.html">认证与安全</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/running.html">运行和部署</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="webframework.html">Web 框架</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http.html">HTTP 服务器和客户端</a></li>
+<li class="toctree-l1"><a class="reference internal" href="networking.html">异步网路</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coroutine.html">协程和并发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integration.html">整合其它服务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">实用工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">问题与解答</a></li>
+<li class="toctree-l1"><a class="reference internal" href="releases.html">发布说明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Tornado</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>用户手册</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/guide.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>用户手册<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="guide/intro.html">介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide/async.html">异步和非阻塞 I/O</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guide/async.html#blocking">Blocking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/async.html#asynchronous">Asynchronous</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/async.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guide/coroutines.html">协程</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guide/coroutines.html#python-3-5-async-and-await">Python 3.5: <code class="docutils literal"><span class="pre">async</span></code> and <code class="docutils literal"><span class="pre">await</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/coroutines.html#how-it-works">How it works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/coroutines.html#how-to-call-a-coroutine">How to call a coroutine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/coroutines.html#coroutine-patterns">Coroutine patterns</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="guide/coroutines.html#interaction-with-callbacks">Interaction with callbacks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guide/coroutines.html#calling-blocking-functions">Calling blocking functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guide/coroutines.html#parallelism">Parallelism</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guide/coroutines.html#interleaving">Interleaving</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guide/coroutines.html#looping">Looping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guide/coroutines.html#running-in-the-background">Running in the background</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guide/queues.html"><code class="docutils literal"><span class="pre">Queue</span></code> 示例 - 一个并发网络爬虫</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide/structure.html">Tornado web 应用程序结构</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guide/structure.html#the-application-object">The <code class="docutils literal"><span class="pre">Application</span></code> object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/structure.html#subclassing-requesthandler">Subclassing <code class="docutils literal"><span class="pre">RequestHandler</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/structure.html#handling-request-input">Handling request input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/structure.html#overriding-requesthandler-methods">Overriding RequestHandler methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/structure.html#error-handling">Error Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/structure.html#redirection">Redirection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/structure.html#asynchronous-handlers">Asynchronous handlers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guide/templates.html">模版和 UI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guide/templates.html#configuring-templates">Configuring templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/templates.html#template-syntax">Template syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/templates.html#internationalization">Internationalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/templates.html#ui-modules">UI modules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guide/security.html">认证与安全</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guide/security.html#cookies-and-secure-cookies">Cookies and secure cookies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/security.html#user-authentication">User authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/security.html#third-party-authentication">Third party authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/security.html#cross-site-request-forgery-protection">Cross-site request forgery protection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guide/running.html">运行和部署</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guide/running.html#processes-and-ports">Processes and ports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/running.html#running-behind-a-load-balancer">Running behind a load balancer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/running.html#static-files-and-aggressive-file-caching">Static files and aggressive file caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/running.html#debug-mode-and-automatic-reloading">Debug mode and automatic reloading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/running.html#wsgi-and-google-app-engine">WSGI and Google App Engine</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="guide/intro.html" class="btn btn-neutral float-right" title="介绍" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; 版权所有 2016, deepdarkness.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'4.4',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

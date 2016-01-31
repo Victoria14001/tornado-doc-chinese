@@ -1,0 +1,473 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>运行和部署 &mdash; Tornado 4.4 文档</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Tornado 4.4 文档" href="../index.html"/>
+        <link rel="up" title="用户手册" href="../guide.html"/>
+        <link rel="next" title="Web 框架" href="../webframework.html"/>
+        <link rel="prev" title="认证与安全" href="security.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Tornado
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../guide.html">用户手册</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="async.html">异步和非阻塞 I/O</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coroutines.html">协程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="queues.html"><code class="docutils literal"><span class="pre">Queue</span></code> 示例 - 一个并发网络爬虫</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structure.html">Tornado web 应用程序结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html">模版和 UI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">认证与安全</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">运行和部署</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../webframework.html">Web 框架</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../http.html">HTTP 服务器和客户端</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../networking.html">异步网路</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../coroutine.html">协程和并发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration.html">整合其它服务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utilities.html">实用工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">问题与解答</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases.html">发布说明</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Tornado</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../guide.html">用户手册</a> &raquo;</li>
+      
+    <li>运行和部署</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/guide/running.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>运行和部署<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>Since Tornado supplies its own HTTPServer, running and deploying it is
+a little different from other Python web frameworks.  Instead of
+configuring a WSGI container to find your application, you write a
+<code class="docutils literal"><span class="pre">main()</span></code> function that starts the server:</p>
+<p>Configure your operating system or process manager to run this program to
+start the server. Please note that it may be necessary to increase the number
+of open files per process (to avoid &#8220;Too many open files&#8221;-Error).
+To raise this limit (setting it to 50000 for example)  you can use the ulimit command,
+modify /etc/security/limits.conf or setting <code class="docutils literal"><span class="pre">minfds</span></code> in your supervisord config.</p>
+<div class="section" id="processes-and-ports">
+<h2>Processes and ports<a class="headerlink" href="#processes-and-ports" title="永久链接至标题">¶</a></h2>
+<p>Due to the Python GIL (Global Interpreter Lock), it is necessary to run
+multiple Python processes to take full advantage of multi-CPU machines.
+Typically it is best to run one process per CPU.</p>
+<p>Tornado includes a built-in multi-process mode to start several
+processes at once.  This requires a slight alteration to the standard
+main function:</p>
+<p>This is the easiest way to start multiple processes and have them all
+share the same port, although it has some limitations.  First, each
+child process will have its own IOLoop, so it is important that
+nothing touch the global IOLoop instance (even indirectly) before the
+fork.  Second, it is difficult to do zero-downtime updates in this model.
+Finally, since all the processes share the same port it is more difficult
+to monitor them individually.</p>
+<p>For more sophisticated deployments, it is recommended to start the processes
+independently, and have each one listen on a different port.
+The &#8220;process groups&#8221; feature of <a class="reference external" href="http://www.supervisord.org">supervisord</a>
+is one good way to arrange this.  When each process uses a different port,
+an external load balancer such as HAProxy or nginx is usually needed
+to present a single address to outside visitors.</p>
+</div>
+<div class="section" id="running-behind-a-load-balancer">
+<h2>Running behind a load balancer<a class="headerlink" href="#running-behind-a-load-balancer" title="永久链接至标题">¶</a></h2>
+<p>When running behind a load balancer like nginx, it is recommended to
+pass <code class="docutils literal"><span class="pre">xheaders=True</span></code> to the <cite>.HTTPServer</cite> constructor. This will tell
+Tornado to use headers like <code class="docutils literal"><span class="pre">X-Real-IP</span></code> to get the user&#8217;s IP address
+instead of attributing all traffic to the balancer&#8217;s IP address.</p>
+<p>This is a barebones nginx config file that is structurally similar to
+the one we use at FriendFeed. It assumes nginx and the Tornado servers
+are running on the same machine, and the four Tornado servers are
+running on ports 8000 - 8003:</p>
+<div class="highlight-python"><div class="highlight"><pre>user nginx;
+worker_processes 1;
+
+error_log /var/log/nginx/error.log;
+pid /var/run/nginx.pid;
+
+events {
+    worker_connections 1024;
+    use epoll;
+}
+
+http {
+    # Enumerate all the Tornado servers here
+    upstream frontends {
+        server 127.0.0.1:8000;
+        server 127.0.0.1:8001;
+        server 127.0.0.1:8002;
+        server 127.0.0.1:8003;
+    }
+
+    include /etc/nginx/mime.types;
+    default_type application/octet-stream;
+
+    access_log /var/log/nginx/access.log;
+
+    keepalive_timeout 65;
+    proxy_read_timeout 200;
+    sendfile on;
+    tcp_nopush on;
+    tcp_nodelay on;
+    gzip on;
+    gzip_min_length 1000;
+    gzip_proxied any;
+    gzip_types text/plain text/html text/css text/xml
+               application/x-javascript application/xml
+               application/atom+xml text/javascript;
+
+    # Only retry if there was a communication error, not a timeout
+    # on the Tornado server (to avoid propagating &quot;queries of death&quot;
+    # to all frontends)
+    proxy_next_upstream error;
+
+    server {
+        listen 80;
+
+        # Allow file uploads
+        client_max_body_size 50M;
+
+        location ^~ /static/ {
+            root /var/www;
+            if ($query_string) {
+                expires max;
+            }
+        }
+        location = /favicon.ico {
+            rewrite (.*) /static/favicon.ico;
+        }
+        location = /robots.txt {
+            rewrite (.*) /static/robots.txt;
+        }
+
+        location / {
+            proxy_pass_header Server;
+            proxy_set_header Host $http_host;
+            proxy_redirect off;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Scheme $scheme;
+            proxy_pass http://frontends;
+        }
+    }
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="static-files-and-aggressive-file-caching">
+<h2>Static files and aggressive file caching<a class="headerlink" href="#static-files-and-aggressive-file-caching" title="永久链接至标题">¶</a></h2>
+<p>You can serve static files from Tornado by specifying the
+<code class="docutils literal"><span class="pre">static_path</span></code> setting in your application:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">settings</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;static_path&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">),</span> <span class="s2">&quot;static&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;cookie_secret&quot;</span><span class="p">:</span> <span class="s2">&quot;__TODO:_GENERATE_YOUR_OWN_RANDOM_VALUE_HERE__&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;login_url&quot;</span><span class="p">:</span> <span class="s2">&quot;/login&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;xsrf_cookies&quot;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">application</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">Application</span><span class="p">([</span>
+    <span class="p">(</span><span class="s2">r&quot;/&quot;</span><span class="p">,</span> <span class="n">MainHandler</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">r&quot;/login&quot;</span><span class="p">,</span> <span class="n">LoginHandler</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">r&quot;/(apple-touch-icon\.png)&quot;</span><span class="p">,</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">StaticFileHandler</span><span class="p">,</span>
+     <span class="nb">dict</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;static_path&#39;</span><span class="p">])),</span>
+<span class="p">],</span> <span class="o">**</span><span class="n">settings</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This setting will automatically make all requests that start with
+<code class="docutils literal"><span class="pre">/static/</span></code> serve from that static directory, e.g.,
+<code class="docutils literal"><span class="pre">http://localhost:8888/static/foo.png</span></code> will serve the file
+<code class="docutils literal"><span class="pre">foo.png</span></code> from the specified static directory. We also automatically
+serve <code class="docutils literal"><span class="pre">/robots.txt</span></code> and <code class="docutils literal"><span class="pre">/favicon.ico</span></code> from the static directory
+(even though they don&#8217;t start with the <code class="docutils literal"><span class="pre">/static/</span></code> prefix).</p>
+<p>In the above settings, we have explicitly configured Tornado to serve
+<code class="docutils literal"><span class="pre">apple-touch-icon.png</span></code> from the root with the <cite>.StaticFileHandler</cite>,
+though it is physically in the static file directory. (The capturing
+group in that regular expression is necessary to tell
+<cite>.StaticFileHandler</cite> the requested filename; recall that capturing
+groups are passed to handlers as method arguments.) You could do the
+same thing to serve e.g. <code class="docutils literal"><span class="pre">sitemap.xml</span></code> from the site root. Of
+course, you can also avoid faking a root <code class="docutils literal"><span class="pre">apple-touch-icon.png</span></code> by
+using the appropriate <code class="docutils literal"><span class="pre">&lt;link</span> <span class="pre">/&gt;</span></code> tag in your HTML.</p>
+<p>To improve performance, it is generally a good idea for browsers to
+cache static resources aggressively so browsers won&#8217;t send unnecessary
+<code class="docutils literal"><span class="pre">If-Modified-Since</span></code> or <code class="docutils literal"><span class="pre">Etag</span></code> requests that might block the
+rendering of the page. Tornado supports this out of the box with <em>static
+content versioning</em>.</p>
+<p>To use this feature, use the <cite>~.RequestHandler.static_url</cite> method in
+your templates rather than typing the URL of the static file directly
+in your HTML:</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;html&gt;
+   &lt;head&gt;
+      &lt;title&gt;FriendFeed - {{ _(&quot;Home&quot;) }}&lt;/title&gt;
+   &lt;/head&gt;
+   &lt;body&gt;
+     &lt;div&gt;&lt;img src=&quot;{{ static_url(&quot;images/logo.png&quot;) }}&quot;/&gt;&lt;/div&gt;
+   &lt;/body&gt;
+ &lt;/html&gt;
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">static_url()</span></code> function will translate that relative path to a URI
+that looks like <code class="docutils literal"><span class="pre">/static/images/logo.png?v=aae54</span></code>. The <code class="docutils literal"><span class="pre">v</span></code> argument
+is a hash of the content in <code class="docutils literal"><span class="pre">logo.png</span></code>, and its presence makes the
+Tornado server send cache headers to the user&#8217;s browser that will make
+the browser cache the content indefinitely.</p>
+<p>Since the <code class="docutils literal"><span class="pre">v</span></code> argument is based on the content of the file, if you
+update a file and restart your server, it will start sending a new <code class="docutils literal"><span class="pre">v</span></code>
+value, so the user&#8217;s browser will automatically fetch the new file. If
+the file&#8217;s contents don&#8217;t change, the browser will continue to use a
+locally cached copy without ever checking for updates on the server,
+significantly improving rendering performance.</p>
+<p>In production, you probably want to serve static files from a more
+optimized static file server like <a class="reference external" href="http://nginx.net/">nginx</a>. You
+can configure most any web server to recognize the version tags used
+by <code class="docutils literal"><span class="pre">static_url()</span></code> and set caching headers accordingly.  Here is the
+relevant portion of the nginx configuration we use at FriendFeed:</p>
+<div class="highlight-python"><div class="highlight"><pre>location /static/ {
+    root /var/friendfeed/static;
+    if ($query_string) {
+        expires max;
+    }
+ }
+</pre></div>
+</div>
+</div>
+<div class="section" id="debug-mode-and-automatic-reloading">
+<span id="debug-mode"></span><h2>Debug mode and automatic reloading<a class="headerlink" href="#debug-mode-and-automatic-reloading" title="永久链接至标题">¶</a></h2>
+<p>If you pass <code class="docutils literal"><span class="pre">debug=True</span></code> to the <code class="docutils literal"><span class="pre">Application</span></code> constructor, the app
+will be run in debug/development mode. In this mode, several features
+intended for convenience while developing will be enabled (each of which
+is also available as an individual flag; if both are specified the
+individual flag takes precedence):</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">autoreload=True</span></code>: The app will watch for changes to its source
+files and reload itself when anything changes. This reduces the need
+to manually restart the server during development. However, certain
+failures (such as syntax errors at import time) can still take the
+server down in a way that debug mode cannot currently recover from.</li>
+<li><code class="docutils literal"><span class="pre">compiled_template_cache=False</span></code>: Templates will not be cached.</li>
+<li><code class="docutils literal"><span class="pre">static_hash_cache=False</span></code>: Static file hashes (used by the
+<code class="docutils literal"><span class="pre">static_url</span></code> function) will not be cached</li>
+<li><code class="docutils literal"><span class="pre">serve_traceback=True</span></code>: When an exception in a <cite>.RequestHandler</cite>
+is not caught, an error page including a stack trace will be
+generated.</li>
+</ul>
+<p>Autoreload mode is not compatible with the multi-process mode of <cite>.HTTPServer</cite>.
+You must not give <cite>HTTPServer.start &lt;.TCPServer.start&gt;</cite> an argument other than 1 (or
+call <cite>tornado.process.fork_processes</cite>) if you are using autoreload mode.</p>
+<p>The automatic reloading feature of debug mode is available as a
+standalone module in <cite>tornado.autoreload</cite>.  The two can be used in
+combination to provide extra robustness against syntax errors: set
+<code class="docutils literal"><span class="pre">autoreload=True</span></code> within the app to detect changes while it is running,
+and start it with <code class="docutils literal"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">tornado.autoreload</span> <span class="pre">myserver.py</span></code> to catch
+any syntax errors or other errors at startup.</p>
+<p>Reloading loses any Python interpreter command-line arguments (e.g. <code class="docutils literal"><span class="pre">-u</span></code>)
+because it re-executes Python using <cite>sys.executable</cite> and <cite>sys.argv</cite>.
+Additionally, modifying these variables will cause reloading to behave
+incorrectly.</p>
+<p>On some platforms (including Windows and Mac OSX prior to 10.6), the
+process cannot be updated &#8220;in-place&#8221;, so when a code change is
+detected the old server exits and a new one starts.  This has been
+known to confuse some IDEs.</p>
+</div>
+<div class="section" id="wsgi-and-google-app-engine">
+<h2>WSGI and Google App Engine<a class="headerlink" href="#wsgi-and-google-app-engine" title="永久链接至标题">¶</a></h2>
+<p>Tornado is normally intended to be run on its own, without a WSGI
+container.  However, in some environments (such as Google App Engine),
+only WSGI is allowed and applications cannot run their own servers.
+In this case Tornado supports a limited mode of operation that does
+not support asynchronous operation but allows a subset of Tornado&#8217;s
+functionality in a WSGI-only environment.  The features that are
+not allowed in WSGI mode include coroutines, the <code class="docutils literal"><span class="pre">&#64;asynchronous</span></code>
+decorator, <cite>.AsyncHTTPClient</cite>, the <code class="docutils literal"><span class="pre">auth</span></code> module, and WebSockets.</p>
+<p>You can convert a Tornado <cite>.Application</cite> to a WSGI application
+with <cite>tornado.wsgi.WSGIAdapter</cite>.  In this example, configure
+your WSGI container to find the <code class="docutils literal"><span class="pre">application</span></code> object:</p>
+<p>See the <a class="reference external" href="https://github.com/tornadoweb/tornado/tree/stable/demos/appengine">appengine example application</a> for a
+full-featured AppEngine app built on Tornado.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../webframework.html" class="btn btn-neutral float-right" title="Web 框架" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="security.html" class="btn btn-neutral" title="认证与安全" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; 版权所有 2016, deepdarkness.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'4.4',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

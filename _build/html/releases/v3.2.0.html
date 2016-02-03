@@ -1,0 +1,460 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tornado 3.2 新特性 &mdash; Tornado 4.4 文档</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Tornado 4.4 文档" href="../index.html"/>
+        <link rel="up" title="发布说明" href="../releases.html"/>
+        <link rel="next" title="Tornado 3.1.1 新特性" href="v3.1.1.html"/>
+        <link rel="prev" title="Tornado 3.2.1 新特性" href="v3.2.1.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Tornado
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../guide.html">用户手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webframework.html">Web 框架</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../http.html">HTTP 服务器和客户端</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../networking.html">异步网路</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../coroutine.html">协程和并发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration.html">整合其它服务</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utilities.html">实用工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">问题与解答</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../releases.html">发布说明</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="v4.3.0.html">Tornado 4.3 新特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="v4.2.1.html">Tornado 4.2.1 新特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="v4.2.0.html">Tornado 4.2 新特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="v4.1.0.html">Tornado 4.1 新特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="v4.0.2.html">Tornado 4.0.2 新特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="v4.0.1.html">Tornado 4.0.1 新特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="v4.0.0.html">Tornado 4.0 新特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="v3.2.2.html">Tornado 3.2.2 新特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="v3.2.1.html">Tornado 3.2.1 新特性</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Tornado 3.2 新特性</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="v3.1.1.html">Tornado 3.1.1 新特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="v3.1.0.html">Tornado 3.1 新特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="v3.0.2.html">Tornado 3.0.2 新特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="v3.0.1.html">Tornado 3.0.1 新特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="v3.0.0.html">Tornado 3.0 新特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="v2.4.1.html">Tornado 2.4.1 新特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="v2.4.0.html">Tornado 2.4 新特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="v2.3.0.html">Tornado 2.3 新特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="v2.2.1.html">Tornado 2.2.1 新特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="v2.2.0.html">Tornado 2.2 新特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="v2.1.1.html">Tornado 2.1.1 新特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="v2.1.0.html">Tornado 2.1 新特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="v2.0.0.html">Tornado 2.0 新特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="v1.2.1.html">Tornado 1.2.1 新特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="v1.2.0.html">Tornado 1.2 新特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="v1.1.1.html">Tornado 1.1.1 新特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="v1.1.0.html">Tornado 1.1 新特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="v1.0.1.html">Tornado 1.0.1 新特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="v1.0.0.html">Tornado 1.0 新特性</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">Tornado</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../releases.html">发布说明</a> &raquo;</li>
+      
+    <li>Tornado 3.2 新特性</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/releases/v3.2.0.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tornado-3-2">
+<h1>Tornado 3.2 新特性<a class="headerlink" href="#tornado-3-2" title="永久链接至标题">¶</a></h1>
+<div class="section" id="jan-14-2014">
+<h2>Jan 14, 2014<a class="headerlink" href="#jan-14-2014" title="永久链接至标题">¶</a></h2>
+<div class="section" id="installation">
+<h3>Installation<a class="headerlink" href="#installation" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li>Tornado now depends on the <a class="reference external" href="https://pypi.python.org/pypi/backports.ssl_match_hostname">backports.ssl_match_hostname</a> when
+running on Python 2.  This will be installed automatically when using <code class="docutils literal"><span class="pre">pip</span></code>
+or <code class="docutils literal"><span class="pre">easy_install</span></code></li>
+<li>Tornado now includes an optional C extension module, which greatly improves
+performance of websockets.  This extension will be built automatically
+if a C compiler is found at install time.</li>
+</ul>
+</div>
+<div class="section" id="new-modules">
+<h3>New modules<a class="headerlink" href="#new-modules" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li>The <cite>tornado.platform.asyncio</cite> module provides integration with the
+<code class="docutils literal"><span class="pre">asyncio</span></code> module introduced in Python 3.4 (also available for Python
+3.3 with <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">asyncio</span></code>).</li>
+</ul>
+</div>
+<div class="section" id="tornado-auth">
+<h3><cite>tornado.auth</cite><a class="headerlink" href="#tornado-auth" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li>Added <cite>.GoogleOAuth2Mixin</cite> support authentication to Google services
+with OAuth 2 instead of OpenID and OAuth 1.</li>
+<li><cite>.FacebookGraphMixin</cite> has been updated to use the current Facebook login
+URL, which saves a redirect.</li>
+</ul>
+</div>
+<div class="section" id="tornado-concurrent">
+<h3><cite>tornado.concurrent</cite><a class="headerlink" href="#tornado-concurrent" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">TracebackFuture</span></code> now accepts a <code class="docutils literal"><span class="pre">timeout</span></code> keyword argument (although
+it is still incorrect to use a non-zero timeout in non-blocking code).</li>
+</ul>
+</div>
+<div class="section" id="tornado-curl-httpclient">
+<h3><code class="docutils literal"><span class="pre">tornado.curl_httpclient</span></code><a class="headerlink" href="#tornado-curl-httpclient" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">tornado.curl_httpclient</span></code> now works on Python 3 with the
+soon-to-be-released pycurl 7.19.3, which will officially support
+Python 3 for the first time.  Note that there are some unofficial
+Python 3 ports of pycurl (Ubuntu has included one for its past
+several releases); these are not supported for use with Tornado.</li>
+</ul>
+</div>
+<div class="section" id="tornado-escape">
+<h3><cite>tornado.escape</cite><a class="headerlink" href="#tornado-escape" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><cite>.xhtml_escape</cite> now escapes apostrophes as well.</li>
+<li><cite>tornado.escape.utf8</cite>, <cite>.to_unicode</cite>, and <cite>.native_str</cite> now raise
+<cite>TypeError</cite> instead of <cite>AssertionError</cite> when given an invalid value.</li>
+</ul>
+</div>
+<div class="section" id="tornado-gen">
+<h3><cite>tornado.gen</cite><a class="headerlink" href="#tornado-gen" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li>Coroutines may now yield dicts in addition to lists to wait for
+multiple tasks in parallel.</li>
+<li>Improved performance of <cite>tornado.gen</cite> when yielding a <cite>.Future</cite> that is
+already done.</li>
+</ul>
+</div>
+<div class="section" id="tornado-httpclient">
+<h3><cite>tornado.httpclient</cite><a class="headerlink" href="#tornado-httpclient" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><cite>tornado.httpclient.HTTPRequest</cite> now uses property setters so that
+setting attributes after construction applies the same conversions
+as <code class="docutils literal"><span class="pre">__init__</span></code> (e.g. converting the body attribute to bytes).</li>
+</ul>
+</div>
+<div class="section" id="tornado-httpserver">
+<h3><cite>tornado.httpserver</cite><a class="headerlink" href="#tornado-httpserver" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li>Malformed <code class="docutils literal"><span class="pre">x-www-form-urlencoded</span></code> request bodies will now log a warning
+and continue instead of causing the request to fail (similar to the existing
+handling of malformed <code class="docutils literal"><span class="pre">multipart/form-data</span></code> bodies.  This is done mainly
+because some libraries send this content type by default even when the data
+is not form-encoded.</li>
+<li>Fix some error messages for unix sockets (and other non-IP sockets)</li>
+</ul>
+</div>
+<div class="section" id="tornado-ioloop">
+<h3><cite>tornado.ioloop</cite><a class="headerlink" href="#tornado-ioloop" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><cite>.IOLoop</cite> now uses <cite>~.IOLoop.handle_callback_exception</cite> consistently for
+error logging.</li>
+<li><cite>.IOLoop</cite> now frees callback objects earlier, reducing memory usage
+while idle.</li>
+<li><cite>.IOLoop</cite> will no longer call <cite>logging.basicConfig</cite> if there is a handler
+defined for the root logger or for the <code class="docutils literal"><span class="pre">tornado</span></code> or <code class="docutils literal"><span class="pre">tornado.application</span></code>
+loggers (previously it only looked at the root logger).</li>
+</ul>
+</div>
+<div class="section" id="tornado-iostream">
+<h3><cite>tornado.iostream</cite><a class="headerlink" href="#tornado-iostream" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><cite>.IOStream</cite> now recognizes <code class="docutils literal"><span class="pre">ECONNABORTED</span></code> error codes in more places
+(which was mainly an issue on Windows).</li>
+<li><cite>.IOStream</cite> now frees memory earlier if a connection is closed while
+there is data in the write buffer.</li>
+<li><cite>.PipeIOStream</cite> now handles <code class="docutils literal"><span class="pre">EAGAIN</span></code> error codes correctly.</li>
+<li><cite>.SSLIOStream</cite> now initiates the SSL handshake automatically without
+waiting for the application to try and read or write to the connection.</li>
+<li>Swallow a spurious exception from <code class="docutils literal"><span class="pre">set_nodelay</span></code> when a connection
+has been reset.</li>
+</ul>
+</div>
+<div class="section" id="tornado-locale">
+<h3><cite>tornado.locale</cite><a class="headerlink" href="#tornado-locale" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><cite>.Locale.format_date</cite> no longer forces the use of absolute
+dates in Russian.</li>
+</ul>
+</div>
+<div class="section" id="tornado-log">
+<h3><cite>tornado.log</cite><a class="headerlink" href="#tornado-log" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li>Fix an error from <cite>tornado.log.enable_pretty_logging</cite> when
+<cite>sys.stderr</cite> does not have an <code class="docutils literal"><span class="pre">isatty</span></code> method.</li>
+<li><cite>tornado.log.LogFormatter</cite> now accepts keyword arguments <code class="docutils literal"><span class="pre">fmt</span></code>
+and <code class="docutils literal"><span class="pre">datefmt</span></code>.</li>
+</ul>
+</div>
+<div class="section" id="tornado-netutil">
+<h3><cite>tornado.netutil</cite><a class="headerlink" href="#tornado-netutil" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><cite>.is_valid_ip</cite> (and therefore <code class="docutils literal"><span class="pre">HTTPRequest.remote_ip</span></code>) now rejects
+empty strings.</li>
+<li>Synchronously using <cite>.ThreadedResolver</cite> at import time to resolve
+a unicode hostname no longer deadlocks.</li>
+</ul>
+</div>
+<div class="section" id="tornado-platform-twisted">
+<h3><cite>tornado.platform.twisted</cite><a class="headerlink" href="#tornado-platform-twisted" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><cite>.TwistedResolver</cite> now has better error handling.</li>
+</ul>
+</div>
+<div class="section" id="tornado-process">
+<h3><cite>tornado.process</cite><a class="headerlink" href="#tornado-process" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><cite>.Subprocess</cite> no longer leaks file descriptors if <cite>subprocess.Popen</cite> fails.</li>
+</ul>
+</div>
+<div class="section" id="tornado-simple-httpclient">
+<h3><code class="docutils literal"><span class="pre">tornado.simple_httpclient</span></code><a class="headerlink" href="#tornado-simple-httpclient" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">simple_httpclient</span></code> now applies the <code class="docutils literal"><span class="pre">connect_timeout</span></code> to requests
+that are queued and have not yet started.</li>
+<li>On Python 2.6, <code class="docutils literal"><span class="pre">simple_httpclient</span></code> now uses TLSv1 instead of SSLv3.</li>
+<li><code class="docutils literal"><span class="pre">simple_httpclient</span></code> now enforces the connect timeout during DNS resolution.</li>
+<li>The embedded <code class="docutils literal"><span class="pre">ca-certificates.crt</span></code> file has been updated with the current
+Mozilla CA list.</li>
+</ul>
+</div>
+<div class="section" id="tornado-web">
+<h3><cite>tornado.web</cite><a class="headerlink" href="#tornado-web" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><cite>.StaticFileHandler</cite> no longer fails if the client requests a <code class="docutils literal"><span class="pre">Range</span></code> that
+is larger than the entire file (Facebook has a crawler that does this).</li>
+<li><cite>.RequestHandler.on_connection_close</cite> now works correctly on subsequent
+requests of a keep-alive connection.</li>
+<li>New application setting <code class="docutils literal"><span class="pre">default_handler_class</span></code> can be used to easily
+set up custom 404 pages.</li>
+<li>New application settings <code class="docutils literal"><span class="pre">autoreload</span></code>, <code class="docutils literal"><span class="pre">compiled_template_cache</span></code>,
+<code class="docutils literal"><span class="pre">static_hash_cache</span></code>, and <code class="docutils literal"><span class="pre">serve_traceback</span></code> can be used to control
+individual aspects of debug mode.</li>
+<li>New methods <cite>.RequestHandler.get_query_argument</cite> and
+<cite>.RequestHandler.get_body_argument</cite> and new attributes
+<code class="docutils literal"><span class="pre">HTTPRequest.query_arguments</span></code> and <code class="docutils literal"><span class="pre">HTTPRequest.body_arguments</span></code> allow access
+to arguments without intermingling those from the query string with those
+from the request body.</li>
+<li><cite>.RequestHandler.decode_argument</cite> and related methods now raise
+an <code class="docutils literal"><span class="pre">HTTPError(400)</span></code> instead of <cite>UnicodeDecodeError</cite> when the
+argument could not be decoded.</li>
+<li><cite>.RequestHandler.clear_all_cookies</cite> now accepts <code class="docutils literal"><span class="pre">domain</span></code> and <code class="docutils literal"><span class="pre">path</span></code>
+arguments, just like <cite>~.RequestHandler.clear_cookie</cite>.</li>
+<li>It is now possible to specify handlers by name when using the <cite>.URLSpec</cite>
+class.</li>
+<li><cite>.Application</cite> now accepts 4-tuples to specify the <code class="docutils literal"><span class="pre">name</span></code> parameter
+(which previously required constructing a <cite>.URLSpec</cite> object instead of
+a tuple).</li>
+<li>Fixed an incorrect error message when handler methods return a value
+other than None or a Future.</li>
+<li>Exceptions will no longer be logged twice when using both <code class="docutils literal"><span class="pre">&#64;asynchronous</span></code>
+and <code class="docutils literal"><span class="pre">&#64;gen.coroutine</span></code></li>
+</ul>
+</div>
+<div class="section" id="tornado-websocket">
+<h3><cite>tornado.websocket</cite><a class="headerlink" href="#tornado-websocket" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><cite>.WebSocketHandler.write_message</cite> now raises <cite>.WebSocketClosedError</cite> instead
+of <cite>AttributeError</cite> when the connection has been closed.</li>
+<li><cite>.websocket_connect</cite> now accepts preconstructed <code class="docutils literal"><span class="pre">HTTPRequest</span></code> objects.</li>
+<li>Fix a bug with <cite>.WebSocketHandler</cite> when used with some proxies that
+unconditionally modify the <code class="docutils literal"><span class="pre">Connection</span></code> header.</li>
+<li><cite>.websocket_connect</cite> now returns an error immediately for refused connections
+instead of waiting for the timeout.</li>
+<li><cite>.WebSocketClientConnection</cite> now has a <code class="docutils literal"><span class="pre">close</span></code> method.</li>
+</ul>
+</div>
+<div class="section" id="tornado-wsgi">
+<h3><cite>tornado.wsgi</cite><a class="headerlink" href="#tornado-wsgi" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li><cite>.WSGIContainer</cite> now calls the iterable&#8217;s <code class="docutils literal"><span class="pre">close()</span></code> method even if
+an error is raised, in compliance with the spec.</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="v3.1.1.html" class="btn btn-neutral float-right" title="Tornado 3.1.1 新特性" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="v3.2.1.html" class="btn btn-neutral" title="Tornado 3.2.1 新特性" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; 版权所有 2016, deepdarkness.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'4.4',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

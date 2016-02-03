@@ -23,7 +23,7 @@
 -----------
 
 
-* 下载版本4.4: `tornado-4.4.dev1.tar.gz <https://pypi.python.org/packages/source/t/tornado/tornado-4.4.dev1.tar.gz>`_ (:doc:`release notes <releases>`)
+* 下载版本4.4: `tornado-4.4.dev1.tar.gz <https://pypi.python.org/packages/source/t/tornado/tornado-4.4.dev1.tar.gz>`_ (:doc:`发布说明 <releases>`)
 * `Source (github) <https://github.com/tornadoweb/tornado>`_
 * 邮件列表: `discussion <http://groups.google.com/group/python-tornado>`_ 和 `announcements <http://groups.google.com/group/python-tornado-announce>`_
 * `Stack Overflow <http://stackoverflow.com/questions/tagged/tornado>`_

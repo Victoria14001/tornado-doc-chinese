@@ -1,0 +1,11 @@
+﻿Tornado 1.0.1 新特性
+===========================
+
+Aug 13, 2010
+------------
+
+::
+    
+    This release fixes a bug with RequestHandler.get_secure_cookie, which would
+    in some circumstances allow an attacker to tamper with data stored in the
+    cookie.

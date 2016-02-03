@@ -1,0 +1,12 @@
+﻿Tornado 4.2.1 新特性
+===========================
+
+Jul 17, 2015
+------------
+
+Security fix
+~~~~~~~~~~~~
+
+* This release fixes a path traversal vulnerability in `.StaticFileHandler`,
+  in which files whose names *started with* the ``static_path`` directory
+  but were not actually *in* that directory could be accessed.

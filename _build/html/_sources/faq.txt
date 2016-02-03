@@ -78,19 +78,17 @@ See the :doc:`Asynchronous I/O <guide/async>` chapter of the Tornado
 user's guide for more on blocking and asynchronous functions.
 
 
-My code is asynchronous, but it's not running in parallel in two browser tabs.
+我的代码是异步的, 但它不能在两个浏览器标签页上并行运行.
 ------------------------------------------------------------------------------
 
-Even when a handler is asynchronous and non-blocking, it can be surprisingly
-tricky to verify this. Browsers will recognize that you are trying to
-load the same page in two different tabs and delay the second request
-until the first has finished. To work around this and see that the server
-is in fact working in parallel, do one of two things:
+即使你是用了异步和非阻塞的控制器, 你会发现在测试过程中可能也会出现问题. 
+流量器将会发现你试图在两个不同的标签页加载同一个页面,这时浏览器会延迟加载
+第二个页面一直等到第一个页面加载完成. 如果你想要看到异步的效果,
+请尝试以下两种方法中的任意一个:
 
-* Add something to your urls to make them unique. Instead of
-  ``http://localhost:8888`` in both tabs, load
-  ``http://localhost:8888/?x=1`` in one and
-  ``http://localhost:8888/?x=2`` in the other.
+* 在url上添加一些参数让请求变得不同. 之前是将
+  ``http://localhost:8888`` 在两个标签页中打开, 现在可以尝试在一个标签页中打开
+  ``http://localhost:8888/?x=1`` 而后在另一个标签页打开 ``http://localhost:8888/?x=2`` .
 
-* Use two different browsers. For example, Firefox will be able to load
-  a url even while that same url is being loaded in a Chrome tab.
+* 使用两个不同的浏览器. 例如, Firefox 和 Chrome 将会同时加载同样的url而不会等待对方.
+

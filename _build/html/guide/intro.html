@@ -152,32 +152,25 @@
             
   <div class="section" id="id1">
 <h1>介绍<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
-<p><a class="reference external" href="http://www.tornadoweb.org">Tornado</a> is a Python web framework and
-asynchronous networking library, originally developed at <a class="reference external" href="http://friendfeed.com">FriendFeed</a>.  By using non-blocking network I/O, Tornado
-can scale to tens of thousands of open connections, making it ideal for
-<a class="reference external" href="http://en.wikipedia.org/wiki/Push_technology#Long_polling">long polling</a>,
-<a class="reference external" href="http://en.wikipedia.org/wiki/WebSocket">WebSockets</a>, and other
-applications that require a long-lived connection to each user.</p>
-<p>Tornado can be roughly divided into four major components:</p>
+<p><a class="reference external" href="http://www.tornadoweb.org">Tornado</a> 是一个基于Python的Web服务框架和
+异步网络库, 最早开发与 <a class="reference external" href="http://friendfeed.com">FriendFeed</a> 公司.  通过利用非阻塞网络 I/O, Tornado
+可以承载成千上万的活动连接, 完美的实现了
+<a class="reference external" href="http://en.wikipedia.org/wiki/Push_technology#Long_polling">长连接</a>,
+<a class="reference external" href="http://en.wikipedia.org/wiki/WebSocket">WebSockets</a>,
+和其他对于每一位用户来说需要长连接的程序.</p>
+<p>Tornado 可以被分为以下四个主要部分:</p>
 <ul class="simple">
-<li>A web framework (including <cite>.RequestHandler</cite> which is subclassed to
-create web applications, and various supporting classes).</li>
-<li>Client- and server-side implementions of HTTP (<cite>.HTTPServer</cite> and
-<cite>.AsyncHTTPClient</cite>).</li>
-<li>An asynchronous networking library (<cite>.IOLoop</cite> and <cite>.IOStream</cite>),
-which serve as the building blocks for the HTTP components and can
-also be used to implement other protocols.</li>
-<li>A coroutine library (<cite>tornado.gen</cite>) which allows asynchronous
-code to be written in a more straightforward way than chaining
-callbacks.</li>
+<li>Web 框架 (包括用来创建 Web 应用程序的 <cite>.RequestHandler</cite> 类, 还有很多其它支持的类).</li>
+<li>HTTP 客户端和服务器的实现 (<cite>.HTTPServer</cite> 和  <cite>.AsyncHTTPClient</cite>).</li>
+<li>异步网络库 (<cite>.IOLoop</cite> 和 <cite>.IOStream</cite>), 对 HTTP 的实现提供构建模块, 还可以用来实现其他协议.</li>
+<li>协程库 (<cite>tornado.gen</cite>) 让用户通过更直接的方法来实现异步编程, 而不是通过回调的方式.</li>
 </ul>
-<p>The Tornado web framework and HTTP server together offer a full-stack
-alternative to <a class="reference external" href="http://www.python.org/dev/peps/pep-3333/">WSGI</a>.
-While it is possible to use the Tornado web framework in a WSGI
-container (<cite>.WSGIAdapter</cite>), or use the Tornado HTTP server as a
-container for other WSGI frameworks (<cite>.WSGIContainer</cite>), each of these
-combinations has limitations and to take full advantage of Tornado you
-will need to use the Tornado&#8217;s web framework and HTTP server together.</p>
+<p>Tornado web 框架和 HTTP 服务器提供了一整套
+<a class="reference external" href="http://www.python.org/dev/peps/pep-3333/">WSGI</a> 的方案.
+可以让Tornado编写的Web框架运行在一个WSGI容器中 (<cite>.WSGIAdapter</cite>),
+或者使用 Tornado HTTP 服务器作为一个WSGI容器 (<cite>.WSGIContainer</cite>),
+这两种解决方案都有各自的局限性, 为了充分享受Tornado为您带来的特性,你需要同时使用
+Tornado的web框架和HTTP服务器.</p>
 </div>
 
 

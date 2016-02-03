@@ -89,15 +89,11 @@
 .. testoutput::
    :hide:
 
-The raw `.Future` version is more complex, but ``Futures`` are
-nonetheless recommended practice in Tornado because they have two
-major advantages.  Error handling is more consistent since the
-`.Future.result` method can simply raise an exception (as opposed to
-the ad-hoc error handling common in callback-oriented interfaces), and
-``Futures`` lend themselves well to use with coroutines.  Coroutines
-will be discussed in depth in the next section of this guide.  Here is
-the coroutine version of our sample function, which is very similar to
-the original synchronous version:
+原始的 `.Future` 版本十分复杂, 但是 ``Futures`` 是 Tornado 中推荐使用的一种做法,
+因为它有两个主要的优势.  错误处理时通过
+`.Future.result` 函数可以简单的抛出一个异常 (不同于某些传统的基于回调方式接口的
+一对一的错误处理方式), 而且 ``Futures`` 对于携程兼容的很好.  协程将会在本篇的下一节
+详细讨论. 这里有一个协程版本的实力函数, 这与传统的同步版本十分相似.
 
 .. testcode::
 
@@ -112,9 +108,7 @@ the original synchronous version:
 .. testoutput::
    :hide:
 
-The statement ``raise gen.Return(response.body)`` is an artifact of
-Python 2, in which generators aren't allowed to return
-values. To overcome this, Tornado coroutines raise a special kind of
-exception called a `.Return`. The coroutine catches this exception and
-treats it like a returned value. In Python 3.3 and later, a ``return
-response.body`` achieves the same result.
+语句 ``raise gen.Return(response.body)`` 在 Python 2 中是人为设定的,
+因为生成器不允许又返回值. 为了克服这个问题, Tornado 协程抛出了一个叫做 `.Return` 的特殊异常.
+协程将会像返回一个值一样处理这个异常.在 Python 3.3+ 中, ``return
+response.body`` 将会达到同样的效果.

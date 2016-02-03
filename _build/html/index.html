@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Tornado Web 服务器 &mdash; Tornado 4.4 文档</title>
+  <title>Tornado Web 服务器 &mdash; Tornado 4.3 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="Tornado 4.4 文档" href="#"/>
+    <link rel="top" title="Tornado 4.3 documentation" href="#"/>
         <link rel="next" title="用户手册" href="guide.html"/> 
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                4.4
+                4.3
               </div>
             
           
@@ -137,7 +137,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="tornado-web-server">
-<h1><img alt="Tornado Web Server" src="_images/tornado.png" /><a class="headerlink" href="#tornado-web-server" title="永久链接至标题">¶</a></h1>
+<h1><img alt="Tornado Web Server" src="_images/tornado.png" /><a class="headerlink" href="#tornado-web-server" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="http://www.tornadoweb.org">Tornado</a> 是一个基于Python的Web服务框架和
 异步网络库, 最早开发与 <a class="reference external" href="http://friendfeed.com">FriendFeed</a> 公司.  通过利用非阻塞网络 I/O, Tornado
 可以承载成千上万的活动连接, 完美的实现了
@@ -145,7 +145,7 @@
 <a class="reference external" href="http://en.wikipedia.org/wiki/WebSocket">WebSockets</a>,
 和其他对于每一位用户来说需要长连接的程序.</p>
 <div class="section" id="id2">
-<h2>快速链接<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<h2>快速链接<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>下载版本4.4: <a class="reference external" href="https://pypi.python.org/packages/source/t/tornado/tornado-4.4.dev1.tar.gz">tornado-4.4.dev1.tar.gz</a> (<a class="reference internal" href="releases.html"><em>发布说明</em></a>)</li>
 <li><a class="reference external" href="https://github.com/tornadoweb/tornado">Source (github)</a></li>
@@ -155,7 +155,7 @@
 </ul>
 </div>
 <div class="section" id="hello-world">
-<h2>Hello, world<a class="headerlink" href="#hello-world" title="永久链接至标题">¶</a></h2>
+<h2>Hello, world<a class="headerlink" href="#hello-world" title="Permalink to this headline">¶</a></h2>
 <p>这是一个基于Tornado的简易 &#8220;Hello, world&#8221; web应用程序:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">tornado.ioloop</span>
 <span class="kn">import</span> <span class="nn">tornado.web</span>
@@ -179,7 +179,7 @@
 如果有需要请查看这个例子 <a class="reference external" href="https://github.com/tornadoweb/tornado/tree/stable/demos/chat">简易聊天室</a>.</p>
 </div>
 <div class="section" id="id4">
-<h2>安装<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<h2>安装<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p><strong>自动安装</strong>:</p>
 <div class="highlight-python"><div class="highlight"><pre>pip install tornado
 </pre></div>
@@ -189,8 +189,8 @@
 源代码中的示例程序, 所以你或许会需要一份软件的源代码.</p>
 <p><strong>手动安装</strong>: 下载 <a class="reference external" href="https://pypi.python.org/packages/source/t/tornado/tornado-4.4.dev1.tar.gz">tornado-4.4.dev1.tar.gz</a>.</p>
 <pre class="literal-block">
-tar xvzf tornado-4.4.tar.gz
-cd tornado-4.4
+tar xvzf tornado-4.3.tar.gz
+cd tornado-4.3
 python setup.py build
 sudo python setup.py install
 </pre>
@@ -202,13 +202,13 @@ sudo python setup.py install
 <ul class="simple">
 <li><a class="reference external" href="https://pypi.python.org/pypi/futures">concurrent.futures</a> is the
 recommended thread pool for use with Tornado and enables the use of
-<cite>~tornado.netutil.ThreadedResolver</cite>.  It is needed only on Python 2;
+<code class="xref py py-obj docutils literal"><span class="pre">ThreadedResolver</span></code>.  It is needed only on Python 2;
 Python 3 includes this package in the standard library.</li>
 <li><a class="reference external" href="http://pycurl.sourceforge.net">pycurl</a> is used by the optional
 <code class="docutils literal"><span class="pre">tornado.curl_httpclient</span></code>.  Libcurl version 7.19.3.1 or higher is required;
 version 7.21.1 or higher is recommended.</li>
 <li><a class="reference external" href="http://www.twistedmatrix.com">Twisted</a> may be used with the classes in
-<cite>tornado.platform.twisted</cite>.</li>
+<code class="xref py py-obj docutils literal"><span class="pre">tornado.platform.twisted</span></code>.</li>
 <li><a class="reference external" href="https://pypi.python.org/pypi/pycares">pycares</a> is an alternative
 non-blocking DNS resolver that can be used when threads are not
 appropriate.</li>
@@ -225,7 +225,7 @@ BSD (通过 <code class="docutils literal"><span class="pre">kqueue</span></code
 虽然这并不是官方所推荐的, 我们仅仅推荐用它来做开发.</p>
 </div>
 <div class="section" id="id8">
-<h2>文档<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<h2>文档<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <p>这篇文档同时还有 <a class="reference external" href="https://readthedocs.org/projects/tornado/downloads/">PDF 和 Epub 格式</a>.</p>
 <div class="toctree-wrapper compound">
 <ul>
@@ -368,14 +368,14 @@ BSD (通过 <code class="docutils literal"><span class="pre">kqueue</span></code
 </div>
 </div>
 <div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="永久链接至标题">¶</a></h1>
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span>索引</span></a></li>
-<li><a class="reference internal" href="py-modindex.html"><span>模块索引</span></a></li>
-<li><a class="reference internal" href="search.html"><span>搜索页面</span></a></li>
+<li><a class="reference internal" href="genindex.html"><span>Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span>Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span>Search Page</span></a></li>
 </ul>
 <div class="section" id="id9">
-<h2>讨论和支持<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
+<h2>讨论和支持<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <p>你可以在 <a class="reference external" href="http://groups.google.com/group/python-tornado">Tornado 开发人员邮件列表</a>
 中对 Tornado 进行讨论, 并且可以在 <a class="reference external" href="https://github.com/tornadoweb/tornado/issues">GitHub 问题跟踪</a>
 中汇报问题.  其他的资源可以在 <a class="reference external" href="https://github.com/tornadoweb/tornado/wiki/Links">Tornado wiki</a>
@@ -405,7 +405,7 @@ Commons 3.0</a>.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; 版权所有 2016, deepdarkness.
+        &copy; Copyright 2009-2016, The Tornado Authors.
 
     </p>
   </div>
@@ -427,7 +427,7 @@ Commons 3.0</a>.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'4.4',
+            VERSION:'4.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -436,7 +436,6 @@ Commons 3.0</a>.</p>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="_static/translations.js"></script>
 
   
 

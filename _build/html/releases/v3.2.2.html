@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Tornado 3.2.2 新特性 &mdash; Tornado 4.4 文档</title>
+  <title>Tornado 3.2.2 新特性 &mdash; Tornado 4.3 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="Tornado 4.4 文档" href="../index.html"/>
+    <link rel="top" title="Tornado 4.3 documentation" href="../index.html"/>
         <link rel="up" title="发布说明" href="../releases.html"/>
         <link rel="next" title="Tornado 3.2.1 新特性" href="v3.2.1.html"/>
         <link rel="prev" title="Tornado 4.0 新特性" href="v4.0.0.html"/> 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                4.4
+                4.3
               </div>
             
           
@@ -174,11 +174,11 @@
            <div itemprop="articleBody">
             
   <div class="section" id="tornado-3-2-2">
-<h1>Tornado 3.2.2 新特性<a class="headerlink" href="#tornado-3-2-2" title="永久链接至标题">¶</a></h1>
+<h1>Tornado 3.2.2 新特性<a class="headerlink" href="#tornado-3-2-2" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="june-3-2014">
-<h2>June 3, 2014<a class="headerlink" href="#june-3-2014" title="永久链接至标题">¶</a></h2>
+<h2>June 3, 2014<a class="headerlink" href="#june-3-2014" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="security-fixes">
-<h3>Security fixes<a class="headerlink" href="#security-fixes" title="永久链接至标题">¶</a></h3>
+<h3>Security fixes<a class="headerlink" href="#security-fixes" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>The XSRF token is now encoded with a random mask on each request.
 This makes it safe to include in compressed pages without being
@@ -188,17 +188,17 @@ and <code class="docutils literal"><span class="pre">gzip</span></code> options 
 </ul>
 </div>
 <div class="section" id="backwards-compatibility-notes">
-<h3>Backwards-compatibility notes<a class="headerlink" href="#backwards-compatibility-notes" title="永久链接至标题">¶</a></h3>
+<h3>Backwards-compatibility notes<a class="headerlink" href="#backwards-compatibility-notes" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>If Tornado 3.2.2 is run at the same time as older versions on the same
 domain, there is some potential for issues with the differing cookie
-versions.  The <cite>.Application</cite> setting <code class="docutils literal"><span class="pre">xsrf_cookie_version=1</span></code> can
+versions.  The <code class="xref py py-obj docutils literal"><span class="pre">Application</span></code> setting <code class="docutils literal"><span class="pre">xsrf_cookie_version=1</span></code> can
 be used for a transitional period to generate the older cookie format
 on newer servers.</li>
 </ul>
 </div>
 <div class="section" id="other-changes">
-<h3>Other changes<a class="headerlink" href="#other-changes" title="永久链接至标题">¶</a></h3>
+<h3>Other changes<a class="headerlink" href="#other-changes" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">tornado.platform.asyncio</span></code> is now compatible with <code class="docutils literal"><span class="pre">trollius</span></code> version 0.3.</li>
 </ul>
@@ -225,7 +225,7 @@ on newer servers.</li>
 
   <div role="contentinfo">
     <p>
-        &copy; 版权所有 2016, deepdarkness.
+        &copy; Copyright 2009-2016, The Tornado Authors.
 
     </p>
   </div>
@@ -247,7 +247,7 @@ on newer servers.</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'4.4',
+            VERSION:'4.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -256,7 +256,6 @@ on newer servers.</li>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/translations.js"></script>
 
   
 

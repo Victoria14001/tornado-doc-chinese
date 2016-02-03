@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Tornado 2.3 新特性 &mdash; Tornado 4.4 文档</title>
+  <title>Tornado 2.3 新特性 &mdash; Tornado 4.3 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="Tornado 4.4 文档" href="../index.html"/>
+    <link rel="top" title="Tornado 4.3 documentation" href="../index.html"/>
         <link rel="up" title="发布说明" href="../releases.html"/>
         <link rel="next" title="Tornado 2.2.1 新特性" href="v2.2.1.html"/>
         <link rel="prev" title="Tornado 2.4 新特性" href="v2.4.0.html"/> 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                4.4
+                4.3
               </div>
             
           
@@ -174,15 +174,15 @@
            <div itemprop="articleBody">
             
   <div class="section" id="tornado-2-3">
-<h1>Tornado 2.3 新特性<a class="headerlink" href="#tornado-2-3" title="永久链接至标题">¶</a></h1>
+<h1>Tornado 2.3 新特性<a class="headerlink" href="#tornado-2-3" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="may-31-2012">
-<h2>May 31, 2012<a class="headerlink" href="#may-31-2012" title="永久链接至标题">¶</a></h2>
+<h2>May 31, 2012<a class="headerlink" href="#may-31-2012" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="http-clients">
-<h3>HTTP clients<a class="headerlink" href="#http-clients" title="永久链接至标题">¶</a></h3>
+<h3>HTTP clients<a class="headerlink" href="#http-clients" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><cite>tornado.httpclient.HTTPClient</cite> now supports the same constructor
-keyword arguments as <cite>.AsyncHTTPClient</cite>.</li>
-<li>The <code class="docutils literal"><span class="pre">max_clients</span></code> keyword argument to <cite>.AsyncHTTPClient.configure</cite> now works.</li>
+<li><code class="xref py py-obj docutils literal"><span class="pre">tornado.httpclient.HTTPClient</span></code> now supports the same constructor
+keyword arguments as <code class="xref py py-obj docutils literal"><span class="pre">AsyncHTTPClient</span></code>.</li>
+<li>The <code class="docutils literal"><span class="pre">max_clients</span></code> keyword argument to <code class="xref py py-obj docutils literal"><span class="pre">AsyncHTTPClient.configure</span></code> now works.</li>
 <li><code class="docutils literal"><span class="pre">tornado.simple_httpclient</span></code> now supports the <code class="docutils literal"><span class="pre">OPTIONS</span></code> and <code class="docutils literal"><span class="pre">PATCH</span></code>
 HTTP methods.</li>
 <li><code class="docutils literal"><span class="pre">tornado.simple_httpclient</span></code> is better about closing its sockets
@@ -199,10 +199,10 @@ the same <code class="docutils literal"><span class="pre">client_cert</span></co
 </ul>
 </div>
 <div class="section" id="http-server">
-<h3>HTTP Server<a class="headerlink" href="#http-server" title="永久链接至标题">¶</a></h3>
+<h3>HTTP Server<a class="headerlink" href="#http-server" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><cite>.HTTPServer</cite> now works correctly with paths starting with <code class="docutils literal"><span class="pre">//</span></code></li>
-<li><code class="docutils literal"><span class="pre">HTTPHeaders.copy</span></code> (inherited from <cite>dict.copy</cite>) now works correctly.</li>
+<li><code class="xref py py-obj docutils literal"><span class="pre">HTTPServer</span></code> now works correctly with paths starting with <code class="docutils literal"><span class="pre">//</span></code></li>
+<li><code class="docutils literal"><span class="pre">HTTPHeaders.copy</span></code> (inherited from <a class="reference external" href="https://docs.python.org/3.4/library/stdtypes.html#dict.copy" title="(in Python v3.4)"><code class="xref py py-obj docutils literal"><span class="pre">dict.copy</span></code></a>) now works correctly.</li>
 <li><code class="docutils literal"><span class="pre">HTTPConnection.address</span></code> is now always the socket address, even for non-IP
 sockets.  <code class="docutils literal"><span class="pre">HTTPRequest.remote_ip</span></code> is still always an IP-style address
 (fake data is used for non-IP sockets)</li>
@@ -211,28 +211,28 @@ a compatibility problem with an iOS HTTP client library.</li>
 </ul>
 </div>
 <div class="section" id="ioloop-and-iostream">
-<h3><code class="docutils literal"><span class="pre">IOLoop</span></code> and <code class="docutils literal"><span class="pre">IOStream</span></code><a class="headerlink" href="#ioloop-and-iostream" title="永久链接至标题">¶</a></h3>
+<h3><code class="docutils literal"><span class="pre">IOLoop</span></code> and <code class="docutils literal"><span class="pre">IOStream</span></code><a class="headerlink" href="#ioloop-and-iostream" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><cite>.IOStream</cite> now has an <code class="docutils literal"><span class="pre">error</span></code> attribute that can be used to determine
+<li><code class="xref py py-obj docutils literal"><span class="pre">IOStream</span></code> now has an <code class="docutils literal"><span class="pre">error</span></code> attribute that can be used to determine
 why a socket was closed.</li>
 <li><code class="docutils literal"><span class="pre">tornado.iostream.IOStream.read_until</span></code> and <code class="docutils literal"><span class="pre">read_until_regex</span></code> are much
 faster with large input.</li>
 <li><code class="docutils literal"><span class="pre">IOStream.write</span></code> performs better when given very large strings.</li>
-<li><cite>.IOLoop.instance()</cite> is now thread-safe.</li>
+<li><code class="xref py py-obj docutils literal"><span class="pre">IOLoop.instance()</span></code> is now thread-safe.</li>
 </ul>
 </div>
 <div class="section" id="tornado-options">
-<h3><code class="docutils literal"><span class="pre">tornado.options</span></code><a class="headerlink" href="#tornado-options" title="永久链接至标题">¶</a></h3>
+<h3><code class="docutils literal"><span class="pre">tornado.options</span></code><a class="headerlink" href="#tornado-options" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><cite>tornado.options</cite> options with <code class="docutils literal"><span class="pre">multiple=True</span></code> that are set more than
+<li><code class="xref py py-obj docutils literal"><span class="pre">tornado.options</span></code> options with <code class="docutils literal"><span class="pre">multiple=True</span></code> that are set more than
 once now overwrite rather than append.  This makes it possible to override
 values set in <code class="docutils literal"><span class="pre">parse_config_file</span></code> with <code class="docutils literal"><span class="pre">parse_command_line</span></code>.</li>
-<li><cite>tornado.options</cite> <code class="docutils literal"><span class="pre">--help</span></code> output is now prettier.</li>
-<li><cite>tornado.options.options</cite> now supports attribute assignment.</li>
+<li><code class="xref py py-obj docutils literal"><span class="pre">tornado.options</span></code> <code class="docutils literal"><span class="pre">--help</span></code> output is now prettier.</li>
+<li><code class="xref py py-obj docutils literal"><span class="pre">tornado.options.options</span></code> now supports attribute assignment.</li>
 </ul>
 </div>
 <div class="section" id="tornado-template">
-<h3><code class="docutils literal"><span class="pre">tornado.template</span></code><a class="headerlink" href="#tornado-template" title="永久链接至标题">¶</a></h3>
+<h3><code class="docutils literal"><span class="pre">tornado.template</span></code><a class="headerlink" href="#tornado-template" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Template files containing non-ASCII (utf8) characters now work on Python 3
 regardless of the locale environment variables.</li>
@@ -241,51 +241,51 @@ regardless of the locale environment variables.</li>
 </ul>
 </div>
 <div class="section" id="tornado-web">
-<h3><code class="docutils literal"><span class="pre">tornado.web</span></code><a class="headerlink" href="#tornado-web" title="永久链接至标题">¶</a></h3>
+<h3><code class="docutils literal"><span class="pre">tornado.web</span></code><a class="headerlink" href="#tornado-web" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><cite>tornado.web.RequestHandler</cite> now supports the <code class="docutils literal"><span class="pre">PATCH</span></code> HTTP method.
+<li><code class="xref py py-obj docutils literal"><span class="pre">tornado.web.RequestHandler</span></code> now supports the <code class="docutils literal"><span class="pre">PATCH</span></code> HTTP method.
 Note that this means any existing methods named <code class="docutils literal"><span class="pre">patch</span></code> in
 <code class="docutils literal"><span class="pre">RequestHandler</span></code> subclasses will need to be renamed.</li>
-<li><cite>tornado.web.addslash</cite> and <code class="docutils literal"><span class="pre">removeslash</span></code> decorators now send permanent
+<li><code class="xref py py-obj docutils literal"><span class="pre">tornado.web.addslash</span></code> and <code class="docutils literal"><span class="pre">removeslash</span></code> decorators now send permanent
 redirects (301) instead of temporary (302).</li>
-<li><cite>.RequestHandler.flush</cite> now invokes its callback whether there was any data
+<li><code class="xref py py-obj docutils literal"><span class="pre">RequestHandler.flush</span></code> now invokes its callback whether there was any data
 to flush or not.</li>
-<li>Repeated calls to <cite>.RequestHandler.set_cookie</cite> with the same name now
+<li>Repeated calls to <code class="xref py py-obj docutils literal"><span class="pre">RequestHandler.set_cookie</span></code> with the same name now
 overwrite the previous cookie instead of producing additional copies.</li>
 <li><code class="docutils literal"><span class="pre">tornado.web.OutputTransform.transform_first_chunk</span></code> now takes and returns
 a status code in addition to the headers and chunk.  This is a
 backwards-incompatible change to an interface that was never technically
 private, but was not included in the documentation and does not appear
 to have been used outside Tornado itself.</li>
-<li>Fixed a bug on python versions before 2.6.5 when <cite>.URLSpec</cite> regexes
+<li>Fixed a bug on python versions before 2.6.5 when <code class="xref py py-obj docutils literal"><span class="pre">URLSpec</span></code> regexes
 are constructed from unicode strings and keyword arguments are extracted.</li>
 <li>The <code class="docutils literal"><span class="pre">reverse_url</span></code> function in the template namespace now comes from
-the <cite>.RequestHandler</cite> rather than the <cite>.Application</cite>.  (Unless overridden,
-<cite>.RequestHandler.reverse_url</cite> is just an alias for the <cite>.Application</cite>
+the <code class="xref py py-obj docutils literal"><span class="pre">RequestHandler</span></code> rather than the <code class="xref py py-obj docutils literal"><span class="pre">Application</span></code>.  (Unless overridden,
+<code class="xref py py-obj docutils literal"><span class="pre">RequestHandler.reverse_url</span></code> is just an alias for the <code class="xref py py-obj docutils literal"><span class="pre">Application</span></code>
 method).</li>
 <li>The <code class="docutils literal"><span class="pre">Etag</span></code> header is now returned on 304 responses to an <code class="docutils literal"><span class="pre">If-None-Match</span></code>
 request, improving compatibility with some caches.</li>
-<li><cite>tornado.web</cite> will no longer produce responses with status code 304
+<li><code class="xref py py-obj docutils literal"><span class="pre">tornado.web</span></code> will no longer produce responses with status code 304
 that also have entity headers such as <code class="docutils literal"><span class="pre">Content-Length</span></code>.</li>
 </ul>
 </div>
 <div class="section" id="other-modules">
-<h3>Other modules<a class="headerlink" href="#other-modules" title="永久链接至标题">¶</a></h3>
+<h3>Other modules<a class="headerlink" href="#other-modules" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><cite>tornado.auth.FacebookGraphMixin</cite> no longer sends <code class="docutils literal"><span class="pre">post_args</span></code> redundantly
+<li><code class="xref py py-obj docutils literal"><span class="pre">tornado.auth.FacebookGraphMixin</span></code> no longer sends <code class="docutils literal"><span class="pre">post_args</span></code> redundantly
 in the url.</li>
-<li>The <code class="docutils literal"><span class="pre">extra_params</span></code> argument to <cite>tornado.escape.linkify</cite> may now be
+<li>The <code class="docutils literal"><span class="pre">extra_params</span></code> argument to <code class="xref py py-obj docutils literal"><span class="pre">tornado.escape.linkify</span></code> may now be
 a callable, to allow parameters to be chosen separately for each link.</li>
-<li><cite>tornado.gen</cite> no longer leaks <code class="docutils literal"><span class="pre">StackContexts</span></code> when a <code class="docutils literal"><span class="pre">&#64;gen.engine</span></code> wrapped
+<li><code class="xref py py-obj docutils literal"><span class="pre">tornado.gen</span></code> no longer leaks <code class="docutils literal"><span class="pre">StackContexts</span></code> when a <code class="docutils literal"><span class="pre">&#64;gen.engine</span></code> wrapped
 function is called repeatedly.</li>
-<li><cite>tornado.locale.get_supported_locales</cite> no longer takes a meaningless
+<li><code class="xref py py-obj docutils literal"><span class="pre">tornado.locale.get_supported_locales</span></code> no longer takes a meaningless
 <code class="docutils literal"><span class="pre">cls</span></code> argument.</li>
-<li><cite>.StackContext</cite> instances now have a deactivation callback that can be
+<li><code class="xref py py-obj docutils literal"><span class="pre">StackContext</span></code> instances now have a deactivation callback that can be
 used to prevent further propagation.</li>
-<li><cite>tornado.testing.AsyncTestCase.wait</cite> now resets its timeout on each call.</li>
-<li><cite>tornado.wsgi.WSGIApplication</cite> now parses arguments correctly on Python 3.</li>
+<li><code class="xref py py-obj docutils literal"><span class="pre">tornado.testing.AsyncTestCase.wait</span></code> now resets its timeout on each call.</li>
+<li><code class="xref py py-obj docutils literal"><span class="pre">tornado.wsgi.WSGIApplication</span></code> now parses arguments correctly on Python 3.</li>
 <li>Exception handling on Python 3 has been improved; previously some exceptions
-such as <cite>UnicodeDecodeError</cite> would generate <code class="docutils literal"><span class="pre">TypeErrors</span></code></li>
+such as <a class="reference external" href="https://docs.python.org/3.4/library/exceptions.html#UnicodeDecodeError" title="(in Python v3.4)"><code class="xref py py-obj docutils literal"><span class="pre">UnicodeDecodeError</span></code></a> would generate <code class="docutils literal"><span class="pre">TypeErrors</span></code></li>
 </ul>
 </div>
 </div>
@@ -310,7 +310,7 @@ such as <cite>UnicodeDecodeError</cite> would generate <code class="docutils lit
 
   <div role="contentinfo">
     <p>
-        &copy; 版权所有 2016, deepdarkness.
+        &copy; Copyright 2009-2016, The Tornado Authors.
 
     </p>
   </div>
@@ -332,7 +332,7 @@ such as <cite>UnicodeDecodeError</cite> would generate <code class="docutils lit
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'4.4',
+            VERSION:'4.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -341,7 +341,6 @@ such as <cite>UnicodeDecodeError</cite> would generate <code class="docutils lit
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/translations.js"></script>
 
   
 

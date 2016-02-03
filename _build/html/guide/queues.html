@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Queue 示例 - 一个并发网络爬虫 &mdash; Tornado 4.4 文档</title>
+  <title>Queue 示例 - 一个并发网络爬虫 &mdash; Tornado 4.3 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="Tornado 4.4 文档" href="../index.html"/>
+    <link rel="top" title="Tornado 4.3 documentation" href="../index.html"/>
         <link rel="up" title="用户手册" href="../guide.html"/>
         <link rel="next" title="Tornado web 应用程序结构" href="structure.html"/>
         <link rel="prev" title="协程" href="coroutines.html"/> 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                4.4
+                4.3
               </div>
             
           
@@ -151,22 +151,22 @@
            <div itemprop="articleBody">
             
   <div class="section" id="queue">
-<h1><code class="xref py py-class docutils literal"><span class="pre">Queue</span></code> 示例 - 一个并发网络爬虫<a class="headerlink" href="#queue" title="永久链接至标题">¶</a></h1>
-<p>Tornado&#8217;s <cite>tornado.queues</cite> module implements an asynchronous producer /
+<h1><code class="xref py py-class docutils literal"><span class="pre">Queue</span></code> 示例 - 一个并发网络爬虫<a class="headerlink" href="#queue" title="Permalink to this headline">¶</a></h1>
+<p>Tornado&#8217;s <code class="xref py py-obj docutils literal"><span class="pre">tornado.queues</span></code> module implements an asynchronous producer /
 consumer pattern for coroutines, analogous to the pattern implemented for
-threads by the Python standard library&#8217;s <cite>queue</cite> module.</p>
-<p>A coroutine that yields <cite>Queue.get</cite> pauses until there is an item in the queue.
-If the queue has a maximum size set, a coroutine that yields <cite>Queue.put</cite> pauses
+threads by the Python standard library&#8217;s <a class="reference external" href="https://docs.python.org/3.4/library/queue.html#module-queue" title="(in Python v3.4)"><code class="xref py py-obj docutils literal"><span class="pre">queue</span></code></a> module.</p>
+<p>A coroutine that yields <code class="xref py py-obj docutils literal"><span class="pre">Queue.get</span></code> pauses until there is an item in the queue.
+If the queue has a maximum size set, a coroutine that yields <code class="xref py py-obj docutils literal"><span class="pre">Queue.put</span></code> pauses
 until there is room for another item.</p>
-<p>A <cite>~Queue</cite> maintains a count of unfinished tasks, which begins at zero.
-<cite>~Queue.put</cite> increments the count; <cite>~Queue.task_done</cite> decrements it.</p>
+<p>A <code class="xref py py-obj docutils literal"><span class="pre">Queue</span></code> maintains a count of unfinished tasks, which begins at zero.
+<code class="xref py py-obj docutils literal"><span class="pre">put</span></code> increments the count; <code class="xref py py-obj docutils literal"><span class="pre">task_done</span></code> decrements it.</p>
 <p>In the web-spider example here, the queue begins containing only base_url. When
 a worker fetches a page it parses the links and puts new ones in the queue,
-then calls <cite>~Queue.task_done</cite> to decrement the counter once. Eventually, a
+then calls <code class="xref py py-obj docutils literal"><span class="pre">task_done</span></code> to decrement the counter once. Eventually, a
 worker fetches a page whose URLs have all been seen before, and there is also
-no work left in the queue. Thus that worker&#8217;s call to <cite>~Queue.task_done</cite>
+no work left in the queue. Thus that worker&#8217;s call to <code class="xref py py-obj docutils literal"><span class="pre">task_done</span></code>
 decrements the counter to zero. The main coroutine, which is waiting for
-<cite>~Queue.join</cite>, is unpaused and finishes.</p>
+<code class="xref py py-obj docutils literal"><span class="pre">join</span></code>, is unpaused and finishes.</p>
 </div>
 
 
@@ -188,7 +188,7 @@ decrements the counter to zero. The main coroutine, which is waiting for
 
   <div role="contentinfo">
     <p>
-        &copy; 版权所有 2016, deepdarkness.
+        &copy; Copyright 2009-2016, The Tornado Authors.
 
     </p>
   </div>
@@ -210,7 +210,7 @@ decrements the counter to zero. The main coroutine, which is waiting for
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'4.4',
+            VERSION:'4.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -219,7 +219,6 @@ decrements the counter to zero. The main coroutine, which is waiting for
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/translations.js"></script>
 
   
 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Tornado web 应用程序结构 &mdash; Tornado 4.4 文档</title>
+  <title>Tornado web 应用程序结构 &mdash; Tornado 4.3 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="Tornado 4.4 文档" href="../index.html"/>
+    <link rel="top" title="Tornado 4.3 documentation" href="../index.html"/>
         <link rel="up" title="用户手册" href="../guide.html"/>
         <link rel="next" title="模版和 UI" href="templates.html"/>
         <link rel="prev" title="Queue 示例 - 一个并发网络爬虫" href="queues.html"/> 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                4.4
+                4.3
               </div>
             
           
@@ -153,26 +153,44 @@
            <div itemprop="articleBody">
             
   <div class="section" id="tornado-web">
-<h1>Tornado web 应用程序结构<a class="headerlink" href="#tornado-web" title="永久链接至标题">¶</a></h1>
+<h1>Tornado web 应用程序结构<a class="headerlink" href="#tornado-web" title="Permalink to this headline">¶</a></h1>
 <p>A Tornado web application generally consists of one or more
-<cite>.RequestHandler</cite> subclasses, an <cite>.Application</cite> object which
+<code class="xref py py-obj docutils literal"><span class="pre">RequestHandler</span></code> subclasses, an <code class="xref py py-obj docutils literal"><span class="pre">Application</span></code> object which
 routes incoming requests to handlers, and a <code class="docutils literal"><span class="pre">main()</span></code> function
 to start the server.</p>
 <p>A minimal &#8220;hello world&#8221; example looks something like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">tornado.ioloop</span>
+<span class="kn">import</span> <span class="nn">tornado.web</span>
+
+<span class="k">class</span> <span class="nc">MainHandler</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">RequestHandler</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Hello, world&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">make_app</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">Application</span><span class="p">([</span>
+        <span class="p">(</span><span class="s2">r&quot;/&quot;</span><span class="p">,</span> <span class="n">MainHandler</span><span class="p">),</span>
+    <span class="p">])</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">make_app</span><span class="p">()</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">8888</span><span class="p">)</span>
+    <span class="n">tornado</span><span class="o">.</span><span class="n">ioloop</span><span class="o">.</span><span class="n">IOLoop</span><span class="o">.</span><span class="n">current</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
 <div class="section" id="the-application-object">
-<h2>The <code class="docutils literal"><span class="pre">Application</span></code> object<a class="headerlink" href="#the-application-object" title="永久链接至标题">¶</a></h2>
-<p>The <cite>.Application</cite> object is responsible for global configuration, including
+<h2>The <code class="docutils literal"><span class="pre">Application</span></code> object<a class="headerlink" href="#the-application-object" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="xref py py-obj docutils literal"><span class="pre">Application</span></code> object is responsible for global configuration, including
 the routing table that maps requests to handlers.</p>
-<p>The routing table is a list of <cite>.URLSpec</cite> objects (or tuples), each of
+<p>The routing table is a list of <code class="xref py py-obj docutils literal"><span class="pre">URLSpec</span></code> objects (or tuples), each of
 which contains (at least) a regular expression and a handler class.
 Order matters; the first matching rule is used.  If the regular
 expression contains capturing groups, these groups are the <em>path
 arguments</em> and will be passed to the handler&#8217;s HTTP method.  If a
-dictionary is passed as the third element of the <cite>.URLSpec</cite>, it
+dictionary is passed as the third element of the <code class="xref py py-obj docutils literal"><span class="pre">URLSpec</span></code>, it
 supplies the <em>initialization arguments</em> which will be passed to
-<cite>.RequestHandler.initialize</cite>.  Finally, the <cite>.URLSpec</cite> may have a
+<code class="xref py py-obj docutils literal"><span class="pre">RequestHandler.initialize</span></code>.  Finally, the <code class="xref py py-obj docutils literal"><span class="pre">URLSpec</span></code> may have a
 name, which will allow it to be used with
-<cite>.RequestHandler.reverse_url</cite>.</p>
+<code class="xref py py-obj docutils literal"><span class="pre">RequestHandler.reverse_url</span></code>.</p>
 <p>For example, in this fragment the root URL <code class="docutils literal"><span class="pre">/</span></code> is mapped to
 <code class="docutils literal"><span class="pre">MainHandler</span></code> and URLs of the form <code class="docutils literal"><span class="pre">/story/</span></code> followed by a number
 are mapped to <code class="docutils literal"><span class="pre">StoryHandler</span></code>.  That number is passed (as a string) to
@@ -195,47 +213,59 @@ are mapped to <code class="docutils literal"><span class="pre">StoryHandler</spa
     <span class="p">])</span>
 </pre></div>
 </div>
-<p>The <cite>.Application</cite> constructor takes many keyword arguments that
+<p>The <code class="xref py py-obj docutils literal"><span class="pre">Application</span></code> constructor takes many keyword arguments that
 can be used to customize the behavior of the application and enable
-optional features; see <cite>.Application.settings</cite> for the complete list.</p>
+optional features; see <code class="xref py py-obj docutils literal"><span class="pre">Application.settings</span></code> for the complete list.</p>
 </div>
 <div class="section" id="subclassing-requesthandler">
-<h2>Subclassing <code class="docutils literal"><span class="pre">RequestHandler</span></code><a class="headerlink" href="#subclassing-requesthandler" title="永久链接至标题">¶</a></h2>
+<h2>Subclassing <code class="docutils literal"><span class="pre">RequestHandler</span></code><a class="headerlink" href="#subclassing-requesthandler" title="Permalink to this headline">¶</a></h2>
 <p>Most of the work of a Tornado web application is done in subclasses
-of <cite>.RequestHandler</cite>.  The main entry point for a handler subclass
+of <code class="xref py py-obj docutils literal"><span class="pre">RequestHandler</span></code>.  The main entry point for a handler subclass
 is a method named after the HTTP method being handled: <code class="docutils literal"><span class="pre">get()</span></code>,
 <code class="docutils literal"><span class="pre">post()</span></code>, etc.  Each handler may define one or more of these methods
 to handle different HTTP actions.  As described above, these methods
 will be called with arguments corresponding to the capturing groups
 of the routing rule that matched.</p>
-<p>Within a handler, call methods such as <cite>.RequestHandler.render</cite> or
-<cite>.RequestHandler.write</cite> to produce a response.  <code class="docutils literal"><span class="pre">render()</span></code> loads a
-<cite>.Template</cite> by name and renders it with the given
+<p>Within a handler, call methods such as <code class="xref py py-obj docutils literal"><span class="pre">RequestHandler.render</span></code> or
+<code class="xref py py-obj docutils literal"><span class="pre">RequestHandler.write</span></code> to produce a response.  <code class="docutils literal"><span class="pre">render()</span></code> loads a
+<code class="xref py py-obj docutils literal"><span class="pre">Template</span></code> by name and renders it with the given
 arguments. <code class="docutils literal"><span class="pre">write()</span></code> is used for non-template-based output; it
 accepts strings, bytes, and dictionaries (dicts will be encoded as
 JSON).</p>
-<p>Many methods in <cite>.RequestHandler</cite> are designed to be overridden in
+<p>Many methods in <code class="xref py py-obj docutils literal"><span class="pre">RequestHandler</span></code> are designed to be overridden in
 subclasses and be used throughout the application.  It is common
 to define a <code class="docutils literal"><span class="pre">BaseHandler</span></code> class that overrides methods such as
-<cite>~.RequestHandler.write_error</cite> and <cite>~.RequestHandler.get_current_user</cite>
-and then subclass your own <code class="docutils literal"><span class="pre">BaseHandler</span></code> instead of <cite>.RequestHandler</cite>
+<code class="xref py py-obj docutils literal"><span class="pre">write_error</span></code> and <code class="xref py py-obj docutils literal"><span class="pre">get_current_user</span></code>
+and then subclass your own <code class="docutils literal"><span class="pre">BaseHandler</span></code> instead of <code class="xref py py-obj docutils literal"><span class="pre">RequestHandler</span></code>
 for all your specific handlers.</p>
 </div>
 <div class="section" id="handling-request-input">
-<h2>Handling request input<a class="headerlink" href="#handling-request-input" title="永久链接至标题">¶</a></h2>
+<h2>Handling request input<a class="headerlink" href="#handling-request-input" title="Permalink to this headline">¶</a></h2>
 <p>The request handler can access the object representing the current
 request with <code class="docutils literal"><span class="pre">self.request</span></code>.  See the class definition for
-<cite>~tornado.httputil.HTTPServerRequest</cite> for a complete list of
+<code class="xref py py-obj docutils literal"><span class="pre">HTTPServerRequest</span></code> for a complete list of
 attributes.</p>
 <p>Request data in the formats used by HTML forms will be parsed for you
-and is made available in methods like <cite>~.RequestHandler.get_query_argument</cite>
-and <cite>~.RequestHandler.get_body_argument</cite>.</p>
+and is made available in methods like <code class="xref py py-obj docutils literal"><span class="pre">get_query_argument</span></code>
+and <code class="xref py py-obj docutils literal"><span class="pre">get_body_argument</span></code>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">MyFormHandler</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">RequestHandler</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;html&gt;&lt;body&gt;&lt;form action=&quot;/myform&quot; method=&quot;POST&quot;&gt;&#39;</span>
+                   <span class="s1">&#39;&lt;input type=&quot;text&quot; name=&quot;message&quot;&gt;&#39;</span>
+                   <span class="s1">&#39;&lt;input type=&quot;submit&quot; value=&quot;Submit&quot;&gt;&#39;</span>
+                   <span class="s1">&#39;&lt;/form&gt;&lt;/body&gt;&lt;/html&gt;&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_header</span><span class="p">(</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">,</span> <span class="s2">&quot;text/plain&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;You wrote &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_body_argument</span><span class="p">(</span><span class="s2">&quot;message&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
 <p>Since the HTML form encoding is ambiguous as to whether an argument is
-a single value or a list with one element, <cite>.RequestHandler</cite> has
+a single value or a list with one element, <code class="xref py py-obj docutils literal"><span class="pre">RequestHandler</span></code> has
 distinct methods to allow the application to indicate whether or not
 it expects a list.  For lists, use
-<cite>~.RequestHandler.get_query_arguments</cite> and
-<cite>~.RequestHandler.get_body_arguments</cite> instead of their singular
+<code class="xref py py-obj docutils literal"><span class="pre">get_query_arguments</span></code> and
+<code class="xref py py-obj docutils literal"><span class="pre">get_body_arguments</span></code> instead of their singular
 counterparts.</p>
 <p>Files uploaded via a form are available in <code class="docutils literal"><span class="pre">self.request.files</span></code>,
 which maps names (the name of the HTML <code class="docutils literal"><span class="pre">&lt;input</span> <span class="pre">type=&quot;file&quot;&gt;</span></code>
@@ -246,12 +276,12 @@ object is only present if the files were uploaded with a form wrapper
 the raw uploaded data is available in <code class="docutils literal"><span class="pre">self.request.body</span></code>.
 By default uploaded files are fully buffered in memory; if you need to
 handle files that are too large to comfortably keep in memory see the
-<cite>.stream_request_body</cite> class decorator.</p>
+<code class="xref py py-obj docutils literal"><span class="pre">stream_request_body</span></code> class decorator.</p>
 <p>Due to the quirks of the HTML form encoding (e.g. the ambiguity around
 singular versus plural arguments), Tornado does not attempt to unify
 form arguments with other types of input.  In particular, we do not
 parse JSON request bodies.  Applications that wish to use JSON instead
-of form-encoding may override <cite>~.RequestHandler.prepare</cite> to parse their
+of form-encoding may override <code class="xref py py-obj docutils literal"><span class="pre">prepare</span></code> to parse their
 requests:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">prepare</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;application/json&quot;</span><span class="p">):</span>
@@ -262,85 +292,84 @@ requests:</p>
 </div>
 </div>
 <div class="section" id="overriding-requesthandler-methods">
-<h2>Overriding RequestHandler methods<a class="headerlink" href="#overriding-requesthandler-methods" title="永久链接至标题">¶</a></h2>
+<h2>Overriding RequestHandler methods<a class="headerlink" href="#overriding-requesthandler-methods" title="Permalink to this headline">¶</a></h2>
 <p>In addition to <code class="docutils literal"><span class="pre">get()</span></code>/<code class="docutils literal"><span class="pre">post()</span></code>/etc, certain other methods in
-<cite>.RequestHandler</cite> are designed to be overridden by subclasses when
+<code class="xref py py-obj docutils literal"><span class="pre">RequestHandler</span></code> are designed to be overridden by subclasses when
 necessary. On every request, the following sequence of calls takes
 place:</p>
 <ol class="arabic simple">
-<li>A new <cite>.RequestHandler</cite> object is created on each request</li>
-<li><cite>~.RequestHandler.initialize()</cite> is called with the initialization
-arguments from the <cite>.Application</cite> configuration. <code class="docutils literal"><span class="pre">initialize</span></code>
+<li>A new <code class="xref py py-obj docutils literal"><span class="pre">RequestHandler</span></code> object is created on each request</li>
+<li><code class="xref py py-obj docutils literal"><span class="pre">initialize()</span></code> is called with the initialization
+arguments from the <code class="xref py py-obj docutils literal"><span class="pre">Application</span></code> configuration. <code class="docutils literal"><span class="pre">initialize</span></code>
 should typically just save the arguments passed into member
 variables; it may not produce any output or call methods like
-<cite>~.RequestHandler.send_error</cite>.</li>
-<li><cite>~.RequestHandler.prepare()</cite> is called. This is most useful in a
+<code class="xref py py-obj docutils literal"><span class="pre">send_error</span></code>.</li>
+<li><code class="xref py py-obj docutils literal"><span class="pre">prepare()</span></code> is called. This is most useful in a
 base class shared by all of your handler subclasses, as <code class="docutils literal"><span class="pre">prepare</span></code>
 is called no matter which HTTP method is used. <code class="docutils literal"><span class="pre">prepare</span></code> may
-produce output; if it calls <cite>~.RequestHandler.finish</cite> (or
+produce output; if it calls <code class="xref py py-obj docutils literal"><span class="pre">finish</span></code> (or
 <code class="docutils literal"><span class="pre">redirect</span></code>, etc), processing stops here.</li>
 <li>One of the HTTP methods is called: <code class="docutils literal"><span class="pre">get()</span></code>, <code class="docutils literal"><span class="pre">post()</span></code>, <code class="docutils literal"><span class="pre">put()</span></code>,
 etc. If the URL regular expression contains capturing groups, they
 are passed as arguments to this method.</li>
-<li>When the request is finished, <cite>~.RequestHandler.on_finish()</cite> is
+<li>When the request is finished, <code class="xref py py-obj docutils literal"><span class="pre">on_finish()</span></code> is
 called.  For synchronous handlers this is immediately after
 <code class="docutils literal"><span class="pre">get()</span></code> (etc) return; for asynchronous handlers it is after the
-call to <cite>~.RequestHandler.finish()</cite>.</li>
+call to <code class="xref py py-obj docutils literal"><span class="pre">finish()</span></code>.</li>
 </ol>
 <p>All methods designed to be overridden are noted as such in the
-<cite>.RequestHandler</cite> documentation.  Some of the most commonly
+<code class="xref py py-obj docutils literal"><span class="pre">RequestHandler</span></code> documentation.  Some of the most commonly
 overridden methods include:</p>
 <ul class="simple">
-<li><cite>~.RequestHandler.write_error</cite> -
+<li><code class="xref py py-obj docutils literal"><span class="pre">write_error</span></code> -
 outputs HTML for use on error pages.</li>
-<li><cite>~.RequestHandler.on_connection_close</cite> - called when the client
+<li><code class="xref py py-obj docutils literal"><span class="pre">on_connection_close</span></code> - called when the client
 disconnects; applications may choose to detect this case and halt
 further processing.  Note that there is no guarantee that a closed
 connection can be detected promptly.</li>
-<li><cite>~.RequestHandler.get_current_user</cite> - see <a class="reference internal" href="security.html#user-authentication"><span>User authentication</span></a></li>
-<li><cite>~.RequestHandler.get_user_locale</cite> - returns <cite>.Locale</cite> object to use
+<li><code class="xref py py-obj docutils literal"><span class="pre">get_current_user</span></code> - see <a class="reference internal" href="security.html#user-authentication"><span>User authentication</span></a></li>
+<li><code class="xref py py-obj docutils literal"><span class="pre">get_user_locale</span></code> - returns <code class="xref py py-obj docutils literal"><span class="pre">Locale</span></code> object to use
 for the current user</li>
-<li><cite>~.RequestHandler.set_default_headers</cite> - may be used to set
+<li><code class="xref py py-obj docutils literal"><span class="pre">set_default_headers</span></code> - may be used to set
 additional headers on the response (such as a custom <code class="docutils literal"><span class="pre">Server</span></code>
 header)</li>
 </ul>
 </div>
 <div class="section" id="error-handling">
-<h2>Error Handling<a class="headerlink" href="#error-handling" title="永久链接至标题">¶</a></h2>
+<h2>Error Handling<a class="headerlink" href="#error-handling" title="Permalink to this headline">¶</a></h2>
 <p>If a handler raises an exception, Tornado will call
-<cite>.RequestHandler.write_error</cite> to generate an error page.
-<cite>tornado.web.HTTPError</cite> can be used to generate a specified status
+<code class="xref py py-obj docutils literal"><span class="pre">RequestHandler.write_error</span></code> to generate an error page.
+<code class="xref py py-obj docutils literal"><span class="pre">tornado.web.HTTPError</span></code> can be used to generate a specified status
 code; all other exceptions return a 500 status.</p>
 <p>The default error page includes a stack trace in debug mode and a
 one-line description of the error (e.g. &#8220;500: Internal Server Error&#8221;)
 otherwise.  To produce a custom error page, override
-<cite>RequestHandler.write_error</cite> (probably in a base class shared by all
+<code class="xref py py-obj docutils literal"><span class="pre">RequestHandler.write_error</span></code> (probably in a base class shared by all
 your handlers).  This method may produce output normally via
-methods such as <cite>~RequestHandler.write</cite> and <cite>~RequestHandler.render</cite>.
+methods such as <code class="xref py py-obj docutils literal"><span class="pre">write</span></code> and <code class="xref py py-obj docutils literal"><span class="pre">render</span></code>.
 If the error was caused by an exception, an <code class="docutils literal"><span class="pre">exc_info</span></code> triple will
 be passed as a keyword argument (note that this exception is not
-guaranteed to be the current exception in <cite>sys.exc_info</cite>, so
-<code class="docutils literal"><span class="pre">write_error</span></code> must use e.g.  <cite>traceback.format_exception</cite> instead of
-<cite>traceback.format_exc</cite>).</p>
+guaranteed to be the current exception in <a class="reference external" href="https://docs.python.org/3.4/library/sys.html#sys.exc_info" title="(in Python v3.4)"><code class="xref py py-obj docutils literal"><span class="pre">sys.exc_info</span></code></a>, so
+<code class="docutils literal"><span class="pre">write_error</span></code> must use e.g.  <a class="reference external" href="https://docs.python.org/3.4/library/traceback.html#traceback.format_exception" title="(in Python v3.4)"><code class="xref py py-obj docutils literal"><span class="pre">traceback.format_exception</span></code></a> instead of
+<a class="reference external" href="https://docs.python.org/3.4/library/traceback.html#traceback.format_exc" title="(in Python v3.4)"><code class="xref py py-obj docutils literal"><span class="pre">traceback.format_exc</span></code></a>).</p>
 <p>It is also possible to generate an error page from regular handler
 methods instead of <code class="docutils literal"><span class="pre">write_error</span></code> by calling
-<cite>~.RequestHandler.set_status</cite>, writing a response, and returning.
-The special exception <cite>tornado.web.Finish</cite> may be raised to terminate
+<code class="xref py py-obj docutils literal"><span class="pre">set_status</span></code>, writing a response, and returning.
+The special exception <code class="xref py py-obj docutils literal"><span class="pre">tornado.web.Finish</span></code> may be raised to terminate
 the handler without calling <code class="docutils literal"><span class="pre">write_error</span></code> in situations where simply
 returning is not convenient.</p>
-<p>For 404 errors, use the <code class="docutils literal"><span class="pre">default_handler_class</span></code> <cite>Application setting
-&lt;.Application.settings&gt;</cite>.  This handler should override
-<cite>~.RequestHandler.prepare</cite> instead of a more specific method like
+<p>For 404 errors, use the <code class="docutils literal"><span class="pre">default_handler_class</span></code> <code class="xref py py-obj docutils literal"><span class="pre">Application</span> <span class="pre">setting</span></code>.  This handler should override
+<code class="xref py py-obj docutils literal"><span class="pre">prepare</span></code> instead of a more specific method like
 <code class="docutils literal"><span class="pre">get()</span></code> so it works with any HTTP method.  It should produce its
 error page as described above: either by raising a <code class="docutils literal"><span class="pre">HTTPError(404)</span></code>
 and overriding <code class="docutils literal"><span class="pre">write_error</span></code>, or calling <code class="docutils literal"><span class="pre">self.set_status(404)</span></code>
 and producing the response directly in <code class="docutils literal"><span class="pre">prepare()</span></code>.</p>
 </div>
 <div class="section" id="redirection">
-<h2>Redirection<a class="headerlink" href="#redirection" title="永久链接至标题">¶</a></h2>
+<h2>Redirection<a class="headerlink" href="#redirection" title="Permalink to this headline">¶</a></h2>
 <p>There are two main ways you can redirect requests in Tornado:
-<cite>.RequestHandler.redirect</cite> and with the <cite>.RedirectHandler</cite>.</p>
-<p>You can use <code class="docutils literal"><span class="pre">self.redirect()</span></code> within a <cite>.RequestHandler</cite> method to
+<code class="xref py py-obj docutils literal"><span class="pre">RequestHandler.redirect</span></code> and with the <code class="xref py py-obj docutils literal"><span class="pre">RedirectHandler</span></code>.</p>
+<p>You can use <code class="docutils literal"><span class="pre">self.redirect()</span></code> within a <code class="xref py py-obj docutils literal"><span class="pre">RequestHandler</span></code> method to
 redirect users elsewhere. There is also an optional parameter
 <code class="docutils literal"><span class="pre">permanent</span></code> which you can use to indicate that the redirection is
 considered permanent.  The default value of <code class="docutils literal"><span class="pre">permanent</span></code> is
@@ -350,8 +379,8 @@ appropriate for things like redirecting users after successful
 <span class="pre">Permanently</span></code> HTTP response code is used, which is useful for
 e.g. redirecting to a canonical URL for a page in an SEO-friendly
 manner.</p>
-<p><cite>.RedirectHandler</cite> lets you configure redirects directly in your
-<cite>.Application</cite> routing table.  For example, to configure a single
+<p><code class="xref py py-obj docutils literal"><span class="pre">RedirectHandler</span></code> lets you configure redirects directly in your
+<code class="xref py py-obj docutils literal"><span class="pre">Application</span></code> routing table.  For example, to configure a single
 static redirect:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">app</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">Application</span><span class="p">([</span>
     <span class="n">url</span><span class="p">(</span><span class="s2">r&quot;/app&quot;</span><span class="p">,</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">RedirectHandler</span><span class="p">,</span>
@@ -359,7 +388,7 @@ static redirect:</p>
     <span class="p">])</span>
 </pre></div>
 </div>
-<p><cite>.RedirectHandler</cite> also supports regular expression substitutions.
+<p><code class="xref py py-obj docutils literal"><span class="pre">RedirectHandler</span></code> also supports regular expression substitutions.
 The following rule redirects all requests beginning with <code class="docutils literal"><span class="pre">/pictures/</span></code>
 to the prefix <code class="docutils literal"><span class="pre">/photos/</span></code> instead:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">app</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">Application</span><span class="p">([</span>
@@ -369,15 +398,15 @@ to the prefix <code class="docutils literal"><span class="pre">/photos/</span></
     <span class="p">])</span>
 </pre></div>
 </div>
-<p>Unlike <cite>.RequestHandler.redirect</cite>, <cite>.RedirectHandler</cite> uses permanent
+<p>Unlike <code class="xref py py-obj docutils literal"><span class="pre">RequestHandler.redirect</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">RedirectHandler</span></code> uses permanent
 redirects by default.  This is because the routing table does not change
 at runtime and is presumed to be permanent, while redirects found in
 handlers are likely to be the result of other logic that may change.
-To send a temporary redirect with a <cite>.RedirectHandler</cite>, add
-<code class="docutils literal"><span class="pre">permanent=False</span></code> to the <cite>.RedirectHandler</cite> initialization arguments.</p>
+To send a temporary redirect with a <code class="xref py py-obj docutils literal"><span class="pre">RedirectHandler</span></code>, add
+<code class="docutils literal"><span class="pre">permanent=False</span></code> to the <code class="xref py py-obj docutils literal"><span class="pre">RedirectHandler</span></code> initialization arguments.</p>
 </div>
 <div class="section" id="asynchronous-handlers">
-<h2>Asynchronous handlers<a class="headerlink" href="#asynchronous-handlers" title="永久链接至标题">¶</a></h2>
+<h2>Asynchronous handlers<a class="headerlink" href="#asynchronous-handlers" title="Permalink to this headline">¶</a></h2>
 <p>Tornado handlers are synchronous by default: when the
 <code class="docutils literal"><span class="pre">get()</span></code>/<code class="docutils literal"><span class="pre">post()</span></code> method returns, the request is considered
 finished and the response is sent.  Since all other requests are
@@ -385,25 +414,50 @@ blocked while one handler is running, any long-running handler should
 be made asynchronous so it can call its slow operations in a
 non-blocking way.  This topic is covered in more detail in
 <a class="reference internal" href="async.html"><em>异步和非阻塞 I/O</em></a>; this section is about the particulars of
-asynchronous techniques in <cite>.RequestHandler</cite> subclasses.</p>
+asynchronous techniques in <code class="xref py py-obj docutils literal"><span class="pre">RequestHandler</span></code> subclasses.</p>
 <p>The simplest way to make a handler asynchronous is to use the
-<cite>.coroutine</cite> decorator.  This allows you to perform non-blocking I/O
+<code class="xref py py-obj docutils literal"><span class="pre">coroutine</span></code> decorator.  This allows you to perform non-blocking I/O
 with the <code class="docutils literal"><span class="pre">yield</span></code> keyword, and no response will be sent until the
 coroutine has returned.  See <a class="reference internal" href="coroutines.html"><em>协程</em></a> for more details.</p>
 <p>In some cases, coroutines may be less convenient than a
-callback-oriented style, in which case the <cite>.tornado.web.asynchronous</cite>
+callback-oriented style, in which case the <code class="xref py py-obj docutils literal"><span class="pre">tornado.web.asynchronous</span></code>
 decorator can be used instead.  When this decorator is used the response
 is not automatically sent; instead the request will be kept open until
-some callback calls <cite>.RequestHandler.finish</cite>.  It is up to the application
+some callback calls <code class="xref py py-obj docutils literal"><span class="pre">RequestHandler.finish</span></code>.  It is up to the application
 to ensure that this method is called, or else the user&#8217;s browser will
 simply hang.</p>
 <p>Here is an example that makes a call to the FriendFeed API using
-Tornado&#8217;s built-in <cite>.AsyncHTTPClient</cite>:</p>
+Tornado&#8217;s built-in <code class="xref py py-obj docutils literal"><span class="pre">AsyncHTTPClient</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">MainHandler</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">RequestHandler</span><span class="p">):</span>
+    <span class="nd">@tornado.web.asynchronous</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">http</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">httpclient</span><span class="o">.</span><span class="n">AsyncHTTPClient</span><span class="p">()</span>
+        <span class="n">http</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s2">&quot;http://friendfeed-api.com/v2/feed/bret&quot;</span><span class="p">,</span>
+                   <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">on_response</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">error</span><span class="p">:</span> <span class="k">raise</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">HTTPError</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+        <span class="n">json</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">escape</span><span class="o">.</span><span class="n">json_decode</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Fetched &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">json</span><span class="p">[</span><span class="s2">&quot;entries&quot;</span><span class="p">]))</span> <span class="o">+</span> <span class="s2">&quot; entries &quot;</span>
+                   <span class="s2">&quot;from the FriendFeed API&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">finish</span><span class="p">()</span>
+</pre></div>
+</div>
 <p>When <code class="docutils literal"><span class="pre">get()</span></code> returns, the request has not finished. When the HTTP
 client eventually calls <code class="docutils literal"><span class="pre">on_response()</span></code>, the request is still open,
 and the response is finally flushed to the client with the call to
 <code class="docutils literal"><span class="pre">self.finish()</span></code>.</p>
 <p>For comparison, here is the same example using a coroutine:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">MainHandler</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">RequestHandler</span><span class="p">):</span>
+    <span class="nd">@tornado.gen.coroutine</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">http</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">httpclient</span><span class="o">.</span><span class="n">AsyncHTTPClient</span><span class="p">()</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">http</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s2">&quot;http://friendfeed-api.com/v2/feed/bret&quot;</span><span class="p">)</span>
+        <span class="n">json</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">escape</span><span class="o">.</span><span class="n">json_decode</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Fetched &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">json</span><span class="p">[</span><span class="s2">&quot;entries&quot;</span><span class="p">]))</span> <span class="o">+</span> <span class="s2">&quot; entries &quot;</span>
+                   <span class="s2">&quot;from the FriendFeed API&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>For a more advanced asynchronous example, take a look at the <a class="reference external" href="https://github.com/tornadoweb/tornado/tree/stable/demos/chat">chat
 example application</a>, which
 implements an AJAX chat room using <a class="reference external" href="http://en.wikipedia.org/wiki/Push_technology#Long_polling">long polling</a>.  Users
@@ -432,7 +486,7 @@ docstring for caveats).</p>
 
   <div role="contentinfo">
     <p>
-        &copy; 版权所有 2016, deepdarkness.
+        &copy; Copyright 2009-2016, The Tornado Authors.
 
     </p>
   </div>
@@ -454,7 +508,7 @@ docstring for caveats).</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'4.4',
+            VERSION:'4.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -463,7 +517,6 @@ docstring for caveats).</p>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/translations.js"></script>
 
   
 

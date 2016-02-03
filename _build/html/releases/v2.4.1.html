@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Tornado 2.4.1 新特性 &mdash; Tornado 4.4 文档</title>
+  <title>Tornado 2.4.1 新特性 &mdash; Tornado 4.3 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="Tornado 4.4 文档" href="../index.html"/>
+    <link rel="top" title="Tornado 4.3 documentation" href="../index.html"/>
         <link rel="up" title="发布说明" href="../releases.html"/>
         <link rel="next" title="Tornado 2.4 新特性" href="v2.4.0.html"/>
         <link rel="prev" title="Tornado 3.0 新特性" href="v3.0.0.html"/> 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                4.4
+                4.3
               </div>
             
           
@@ -174,15 +174,15 @@
            <div itemprop="articleBody">
             
   <div class="section" id="tornado-2-4-1">
-<h1>Tornado 2.4.1 新特性<a class="headerlink" href="#tornado-2-4-1" title="永久链接至标题">¶</a></h1>
+<h1>Tornado 2.4.1 新特性<a class="headerlink" href="#tornado-2-4-1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="nov-24-2012">
-<h2>Nov 24, 2012<a class="headerlink" href="#nov-24-2012" title="永久链接至标题">¶</a></h2>
+<h2>Nov 24, 2012<a class="headerlink" href="#nov-24-2012" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="bug-fixes">
-<h3>Bug fixes<a class="headerlink" href="#bug-fixes" title="永久链接至标题">¶</a></h3>
+<h3>Bug fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Fixed a memory leak in <cite>tornado.stack_context</cite> that was especially likely
+<li>Fixed a memory leak in <code class="xref py py-obj docutils literal"><span class="pre">tornado.stack_context</span></code> that was especially likely
 with long-running <code class="docutils literal"><span class="pre">&#64;gen.engine</span></code> functions.</li>
-<li><cite>tornado.auth.TwitterMixin</cite> now works on Python 3.</li>
+<li><code class="xref py py-obj docutils literal"><span class="pre">tornado.auth.TwitterMixin</span></code> now works on Python 3.</li>
 <li>Fixed a bug in which <code class="docutils literal"><span class="pre">IOStream.read_until_close</span></code> with a streaming callback
 would sometimes pass the last chunk of data to the final callback instead
 of the streaming callback.</li>
@@ -210,7 +210,7 @@ of the streaming callback.</li>
 
   <div role="contentinfo">
     <p>
-        &copy; 版权所有 2016, deepdarkness.
+        &copy; Copyright 2009-2016, The Tornado Authors.
 
     </p>
   </div>
@@ -232,7 +232,7 @@ of the streaming callback.</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'4.4',
+            VERSION:'4.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -241,7 +241,6 @@ of the streaming callback.</li>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/translations.js"></script>
 
   
 

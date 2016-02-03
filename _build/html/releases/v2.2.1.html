@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Tornado 2.2.1 新特性 &mdash; Tornado 4.4 文档</title>
+  <title>Tornado 2.2.1 新特性 &mdash; Tornado 4.3 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="Tornado 4.4 文档" href="../index.html"/>
+    <link rel="top" title="Tornado 4.3 documentation" href="../index.html"/>
         <link rel="up" title="发布说明" href="../releases.html"/>
         <link rel="next" title="Tornado 2.2 新特性" href="v2.2.0.html"/>
         <link rel="prev" title="Tornado 2.3 新特性" href="v2.3.0.html"/> 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                4.4
+                4.3
               </div>
             
           
@@ -174,23 +174,23 @@
            <div itemprop="articleBody">
             
   <div class="section" id="tornado-2-2-1">
-<h1>Tornado 2.2.1 新特性<a class="headerlink" href="#tornado-2-2-1" title="永久链接至标题">¶</a></h1>
+<h1>Tornado 2.2.1 新特性<a class="headerlink" href="#tornado-2-2-1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="apr-23-2012">
-<h2>Apr 23, 2012<a class="headerlink" href="#apr-23-2012" title="永久链接至标题">¶</a></h2>
+<h2>Apr 23, 2012<a class="headerlink" href="#apr-23-2012" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="security-fixes">
-<h3>Security fixes<a class="headerlink" href="#security-fixes" title="永久链接至标题">¶</a></h3>
+<h3>Security fixes<a class="headerlink" href="#security-fixes" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><cite>tornado.web.RequestHandler.set_header</cite> now properly sanitizes input
+<li><code class="xref py py-obj docutils literal"><span class="pre">tornado.web.RequestHandler.set_header</span></code> now properly sanitizes input
 values to protect against header injection, response splitting, etc.
 (it has always attempted to do this, but the check was incorrect).
 Note that redirects, the most likely source of such bugs, are protected
-by a separate check in <cite>.RequestHandler.redirect</cite>.</li>
+by a separate check in <code class="xref py py-obj docutils literal"><span class="pre">RequestHandler.redirect</span></code>.</li>
 </ul>
 </div>
 <div class="section" id="bug-fixes">
-<h3>Bug fixes<a class="headerlink" href="#bug-fixes" title="永久链接至标题">¶</a></h3>
+<h3>Bug fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Colored logging configuration in <cite>tornado.options</cite> is compatible with
+<li>Colored logging configuration in <code class="xref py py-obj docutils literal"><span class="pre">tornado.options</span></code> is compatible with
 Python 3.2.3 (and 3.3).</li>
 </ul>
 </div>
@@ -216,7 +216,7 @@ Python 3.2.3 (and 3.3).</li>
 
   <div role="contentinfo">
     <p>
-        &copy; 版权所有 2016, deepdarkness.
+        &copy; Copyright 2009-2016, The Tornado Authors.
 
     </p>
   </div>
@@ -238,7 +238,7 @@ Python 3.2.3 (and 3.3).</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'4.4',
+            VERSION:'4.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -247,7 +247,6 @@ Python 3.2.3 (and 3.3).</li>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/translations.js"></script>
 
   
 

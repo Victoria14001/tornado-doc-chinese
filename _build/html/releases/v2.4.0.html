@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Tornado 2.4 新特性 &mdash; Tornado 4.4 文档</title>
+  <title>Tornado 2.4 新特性 &mdash; Tornado 4.3 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="Tornado 4.4 文档" href="../index.html"/>
+    <link rel="top" title="Tornado 4.3 documentation" href="../index.html"/>
         <link rel="up" title="发布说明" href="../releases.html"/>
         <link rel="next" title="Tornado 2.3 新特性" href="v2.3.0.html"/>
         <link rel="prev" title="Tornado 2.4.1 新特性" href="v2.4.1.html"/> 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                4.4
+                4.3
               </div>
             
           
@@ -174,19 +174,19 @@
            <div itemprop="articleBody">
             
   <div class="section" id="tornado-2-4">
-<h1>Tornado 2.4 新特性<a class="headerlink" href="#tornado-2-4" title="永久链接至标题">¶</a></h1>
+<h1>Tornado 2.4 新特性<a class="headerlink" href="#tornado-2-4" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="sep-4-2012">
-<h2>Sep 4, 2012<a class="headerlink" href="#sep-4-2012" title="永久链接至标题">¶</a></h2>
+<h2>Sep 4, 2012<a class="headerlink" href="#sep-4-2012" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="general">
-<h3>General<a class="headerlink" href="#general" title="永久链接至标题">¶</a></h3>
+<h3>General<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Fixed Python 3 bugs in <cite>tornado.auth</cite>, <cite>tornado.locale</cite>, and <cite>tornado.wsgi</cite>.</li>
+<li>Fixed Python 3 bugs in <code class="xref py py-obj docutils literal"><span class="pre">tornado.auth</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">tornado.locale</span></code>, and <code class="xref py py-obj docutils literal"><span class="pre">tornado.wsgi</span></code>.</li>
 </ul>
 </div>
 <div class="section" id="http-clients">
-<h3>HTTP clients<a class="headerlink" href="#http-clients" title="永久链接至标题">¶</a></h3>
+<h3>HTTP clients<a class="headerlink" href="#http-clients" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Removed <code class="docutils literal"><span class="pre">max_simultaneous_connections</span></code> argument from <cite>tornado.httpclient</cite>
+<li>Removed <code class="docutils literal"><span class="pre">max_simultaneous_connections</span></code> argument from <code class="xref py py-obj docutils literal"><span class="pre">tornado.httpclient</span></code>
 (both implementations).  This argument hasn&#8217;t been useful for some time
 (if you were using it you probably want <code class="docutils literal"><span class="pre">max_clients</span></code> instead)</li>
 <li><code class="docutils literal"><span class="pre">tornado.simple_httpclient</span></code> now accepts and ignores HTTP 1xx status
@@ -194,24 +194,24 @@ responses.</li>
 </ul>
 </div>
 <div class="section" id="tornado-ioloop-and-tornado-iostream">
-<h3><cite>tornado.ioloop</cite> and <cite>tornado.iostream</cite><a class="headerlink" href="#tornado-ioloop-and-tornado-iostream" title="永久链接至标题">¶</a></h3>
+<h3><code class="xref py py-obj docutils literal"><span class="pre">tornado.ioloop</span></code> and <code class="xref py py-obj docutils literal"><span class="pre">tornado.iostream</span></code><a class="headerlink" href="#tornado-ioloop-and-tornado-iostream" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Fixed a bug introduced in 2.3 that would cause <cite>.IOStream</cite> close callbacks
+<li>Fixed a bug introduced in 2.3 that would cause <code class="xref py py-obj docutils literal"><span class="pre">IOStream</span></code> close callbacks
 to not run if there were pending reads.</li>
-<li>Improved error handling in <cite>.SSLIOStream</cite> and SSL-enabled <cite>.TCPServer</cite>.</li>
+<li>Improved error handling in <code class="xref py py-obj docutils literal"><span class="pre">SSLIOStream</span></code> and SSL-enabled <code class="xref py py-obj docutils literal"><span class="pre">TCPServer</span></code>.</li>
 <li><code class="docutils literal"><span class="pre">SSLIOStream.get_ssl_certificate</span></code> now has a <code class="docutils literal"><span class="pre">binary_form</span></code> argument
 which is passed to <code class="docutils literal"><span class="pre">SSLSocket.getpeercert</span></code>.</li>
 <li><code class="docutils literal"><span class="pre">SSLIOStream.write</span></code> can now be called while the connection is in progress,
-same as non-SSL <cite>.IOStream</cite> (but be careful not to send sensitive data until
+same as non-SSL <code class="xref py py-obj docutils literal"><span class="pre">IOStream</span></code> (but be careful not to send sensitive data until
 the connection has completed and the certificate has been verified).</li>
-<li><cite>.IOLoop.add_handler</cite> cannot be called more than once with the same file
+<li><code class="xref py py-obj docutils literal"><span class="pre">IOLoop.add_handler</span></code> cannot be called more than once with the same file
 descriptor.  This was always true for <code class="docutils literal"><span class="pre">epoll</span></code>, but now the other
 implementations enforce it too.</li>
-<li>On Windows, <cite>.TCPServer</cite> uses <code class="docutils literal"><span class="pre">SO_EXCLUSIVEADDRUSER</span></code> instead of <code class="docutils literal"><span class="pre">SO_REUSEADDR</span></code>.</li>
+<li>On Windows, <code class="xref py py-obj docutils literal"><span class="pre">TCPServer</span></code> uses <code class="docutils literal"><span class="pre">SO_EXCLUSIVEADDRUSER</span></code> instead of <code class="docutils literal"><span class="pre">SO_REUSEADDR</span></code>.</li>
 </ul>
 </div>
 <div class="section" id="tornado-template">
-<h3><cite>tornado.template</cite><a class="headerlink" href="#tornado-template" title="永久链接至标题">¶</a></h3>
+<h3><code class="xref py py-obj docutils literal"><span class="pre">tornado.template</span></code><a class="headerlink" href="#tornado-template" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">{%</span> <span class="pre">break</span> <span class="pre">%}</span></code> and <code class="docutils literal"><span class="pre">{%</span> <span class="pre">continue</span> <span class="pre">%}</span></code> can now be used looping constructs
 in templates.</li>
@@ -220,23 +220,23 @@ have an empty body.</li>
 </ul>
 </div>
 <div class="section" id="tornado-testing">
-<h3><cite>tornado.testing</cite><a class="headerlink" href="#tornado-testing" title="永久链接至标题">¶</a></h3>
+<h3><code class="xref py py-obj docutils literal"><span class="pre">tornado.testing</span></code><a class="headerlink" href="#tornado-testing" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>New class <cite>tornado.testing.AsyncHTTPSTestCase</cite> is like <cite>.AsyncHTTPTestCase</cite>.
+<li>New class <code class="xref py py-obj docutils literal"><span class="pre">tornado.testing.AsyncHTTPSTestCase</span></code> is like <code class="xref py py-obj docutils literal"><span class="pre">AsyncHTTPTestCase</span></code>.
 but enables SSL for the testing server (by default using a self-signed
 testing certificate).</li>
-<li><cite>tornado.testing.main</cite> now accepts additional keyword arguments and forwards
-them to <cite>unittest.main</cite>.</li>
+<li><code class="xref py py-obj docutils literal"><span class="pre">tornado.testing.main</span></code> now accepts additional keyword arguments and forwards
+them to <a class="reference external" href="https://docs.python.org/3.4/library/unittest.html#unittest.main" title="(in Python v3.4)"><code class="xref py py-obj docutils literal"><span class="pre">unittest.main</span></code></a>.</li>
 </ul>
 </div>
 <div class="section" id="tornado-web">
-<h3><cite>tornado.web</cite><a class="headerlink" href="#tornado-web" title="永久链接至标题">¶</a></h3>
+<h3><code class="xref py py-obj docutils literal"><span class="pre">tornado.web</span></code><a class="headerlink" href="#tornado-web" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>New method <cite>.RequestHandler.get_template_namespace</cite> can be overridden to
+<li>New method <code class="xref py py-obj docutils literal"><span class="pre">RequestHandler.get_template_namespace</span></code> can be overridden to
 add additional variables without modifying keyword arguments to
 <code class="docutils literal"><span class="pre">render_string</span></code>.</li>
-<li><cite>.RequestHandler.add_header</cite> now works with <cite>.WSGIApplication</cite>.</li>
-<li><cite>.RequestHandler.get_secure_cookie</cite> now handles a potential error case.</li>
+<li><code class="xref py py-obj docutils literal"><span class="pre">RequestHandler.add_header</span></code> now works with <code class="xref py py-obj docutils literal"><span class="pre">WSGIApplication</span></code>.</li>
+<li><code class="xref py py-obj docutils literal"><span class="pre">RequestHandler.get_secure_cookie</span></code> now handles a potential error case.</li>
 <li><code class="docutils literal"><span class="pre">RequestHandler.__init__</span></code> now calls <code class="docutils literal"><span class="pre">super().__init__</span></code> to ensure that
 all constructors are called when multiple inheritance is used.</li>
 <li>Docs have been updated with a description of all available
@@ -244,12 +244,12 @@ all constructors are called when multiple inheritance is used.</li>
 </ul>
 </div>
 <div class="section" id="other-modules">
-<h3>Other modules<a class="headerlink" href="#other-modules" title="永久链接至标题">¶</a></h3>
+<h3>Other modules<a class="headerlink" href="#other-modules" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><cite>.OAuthMixin</cite> now accepts <code class="docutils literal"><span class="pre">&quot;oob&quot;</span></code> as a <code class="docutils literal"><span class="pre">callback_uri</span></code>.</li>
-<li><cite>.OpenIdMixin</cite> now also returns the <code class="docutils literal"><span class="pre">claimed_id</span></code> field for the user.</li>
-<li><cite>tornado.platform.twisted</cite> shutdown sequence is now more compatible.</li>
-<li>The logging configuration used in <cite>tornado.options</cite> is now more tolerant
+<li><code class="xref py py-obj docutils literal"><span class="pre">OAuthMixin</span></code> now accepts <code class="docutils literal"><span class="pre">&quot;oob&quot;</span></code> as a <code class="docutils literal"><span class="pre">callback_uri</span></code>.</li>
+<li><code class="xref py py-obj docutils literal"><span class="pre">OpenIdMixin</span></code> now also returns the <code class="docutils literal"><span class="pre">claimed_id</span></code> field for the user.</li>
+<li><code class="xref py py-obj docutils literal"><span class="pre">tornado.platform.twisted</span></code> shutdown sequence is now more compatible.</li>
+<li>The logging configuration used in <code class="xref py py-obj docutils literal"><span class="pre">tornado.options</span></code> is now more tolerant
 of non-ascii byte strings.</li>
 </ul>
 </div>
@@ -275,7 +275,7 @@ of non-ascii byte strings.</li>
 
   <div role="contentinfo">
     <p>
-        &copy; 版权所有 2016, deepdarkness.
+        &copy; Copyright 2009-2016, The Tornado Authors.
 
     </p>
   </div>
@@ -297,7 +297,7 @@ of non-ascii byte strings.</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'4.4',
+            VERSION:'4.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -306,7 +306,6 @@ of non-ascii byte strings.</li>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/translations.js"></script>
 
   
 

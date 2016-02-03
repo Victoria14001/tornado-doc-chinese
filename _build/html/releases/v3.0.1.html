@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Tornado 3.0.1 新特性 &mdash; Tornado 4.4 文档</title>
+  <title>Tornado 3.0.1 新特性 &mdash; Tornado 4.3 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="Tornado 4.4 文档" href="../index.html"/>
+    <link rel="top" title="Tornado 4.3 documentation" href="../index.html"/>
         <link rel="up" title="发布说明" href="../releases.html"/>
         <link rel="next" title="Tornado 3.0 新特性" href="v3.0.0.html"/>
         <link rel="prev" title="Tornado 3.0.2 新特性" href="v3.0.2.html"/> 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                4.4
+                4.3
               </div>
             
           
@@ -174,25 +174,25 @@
            <div itemprop="articleBody">
             
   <div class="section" id="tornado-3-0-1">
-<h1>Tornado 3.0.1 新特性<a class="headerlink" href="#tornado-3-0-1" title="永久链接至标题">¶</a></h1>
+<h1>Tornado 3.0.1 新特性<a class="headerlink" href="#tornado-3-0-1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="apr-8-2013">
-<h2>Apr 8, 2013<a class="headerlink" href="#apr-8-2013" title="永久链接至标题">¶</a></h2>
+<h2>Apr 8, 2013<a class="headerlink" href="#apr-8-2013" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>The interface of <cite>tornado.auth.FacebookGraphMixin</cite> is now consistent
+<li>The interface of <code class="xref py py-obj docutils literal"><span class="pre">tornado.auth.FacebookGraphMixin</span></code> is now consistent
 with its documentation and the rest of the module.  The
 <code class="docutils literal"><span class="pre">get_authenticated_user</span></code> and <code class="docutils literal"><span class="pre">facebook_request</span></code> methods return a
 <code class="docutils literal"><span class="pre">Future</span></code> and the <code class="docutils literal"><span class="pre">callback</span></code> argument is optional.</li>
-<li>The <cite>tornado.testing.gen_test</cite> decorator will no longer be recognized
+<li>The <code class="xref py py-obj docutils literal"><span class="pre">tornado.testing.gen_test</span></code> decorator will no longer be recognized
 as a (broken) test by <code class="docutils literal"><span class="pre">nose</span></code>.</li>
 <li>Work around a bug in Ubuntu 13.04 betas involving an incomplete backport
-of the <cite>ssl.match_hostname</cite> function.</li>
-<li><cite>tornado.websocket.websocket_connect</cite> now fails cleanly when it attempts
+of the <a class="reference external" href="https://docs.python.org/3.4/library/ssl.html#ssl.match_hostname" title="(in Python v3.4)"><code class="xref py py-obj docutils literal"><span class="pre">ssl.match_hostname</span></code></a> function.</li>
+<li><code class="xref py py-obj docutils literal"><span class="pre">tornado.websocket.websocket_connect</span></code> now fails cleanly when it attempts
 to connect to a non-websocket url.</li>
-<li><cite>tornado.testing.LogTrapTestCase</cite> once again works with byte strings
+<li><code class="xref py py-obj docutils literal"><span class="pre">tornado.testing.LogTrapTestCase</span></code> once again works with byte strings
 on Python 2.</li>
-<li>The <code class="docutils literal"><span class="pre">request</span></code> attribute of <cite>tornado.httpclient.HTTPResponse</cite> is
-now always an <cite>~tornado.httpclient.HTTPRequest</cite>, never a <code class="docutils literal"><span class="pre">_RequestProxy</span></code>.</li>
-<li>Exceptions raised by the <cite>tornado.gen</cite> module now have better messages
+<li>The <code class="docutils literal"><span class="pre">request</span></code> attribute of <code class="xref py py-obj docutils literal"><span class="pre">tornado.httpclient.HTTPResponse</span></code> is
+now always an <code class="xref py py-obj docutils literal"><span class="pre">HTTPRequest</span></code>, never a <code class="docutils literal"><span class="pre">_RequestProxy</span></code>.</li>
+<li>Exceptions raised by the <code class="xref py py-obj docutils literal"><span class="pre">tornado.gen</span></code> module now have better messages
 when tuples are used as callback keys.</li>
 </ul>
 </div>
@@ -217,7 +217,7 @@ when tuples are used as callback keys.</li>
 
   <div role="contentinfo">
     <p>
-        &copy; 版权所有 2016, deepdarkness.
+        &copy; Copyright 2009-2016, The Tornado Authors.
 
     </p>
   </div>
@@ -239,7 +239,7 @@ when tuples are used as callback keys.</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'4.4',
+            VERSION:'4.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -248,7 +248,6 @@ when tuples are used as callback keys.</li>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/translations.js"></script>
 
   
 

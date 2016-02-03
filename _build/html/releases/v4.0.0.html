@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Tornado 4.0 新特性 &mdash; Tornado 4.4 文档</title>
+  <title>Tornado 4.0 新特性 &mdash; Tornado 4.3 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="Tornado 4.4 文档" href="../index.html"/>
+    <link rel="top" title="Tornado 4.3 documentation" href="../index.html"/>
         <link rel="up" title="发布说明" href="../releases.html"/>
         <link rel="next" title="Tornado 3.2.2 新特性" href="v3.2.2.html"/>
         <link rel="prev" title="Tornado 4.0.1 新特性" href="v4.0.1.html"/> 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                4.4
+                4.3
               </div>
             
           
@@ -174,33 +174,33 @@
            <div itemprop="articleBody">
             
   <div class="section" id="tornado-4-0">
-<h1>Tornado 4.0 新特性<a class="headerlink" href="#tornado-4-0" title="永久链接至标题">¶</a></h1>
+<h1>Tornado 4.0 新特性<a class="headerlink" href="#tornado-4-0" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="july-15-2014">
-<h2>July 15, 2014<a class="headerlink" href="#july-15-2014" title="永久链接至标题">¶</a></h2>
+<h2>July 15, 2014<a class="headerlink" href="#july-15-2014" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="highlights">
-<h3>Highlights<a class="headerlink" href="#highlights" title="永久链接至标题">¶</a></h3>
+<h3>Highlights<a class="headerlink" href="#highlights" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>The <cite>tornado.web.stream_request_body</cite> decorator allows large files to be
+<li>The <code class="xref py py-obj docutils literal"><span class="pre">tornado.web.stream_request_body</span></code> decorator allows large files to be
 uploaded with limited memory usage.</li>
 <li>Coroutines are now faster and are used extensively throughout Tornado itself.
-More methods now return <cite>Futures &lt;.Future&gt;</cite>, including most <cite>.IOStream</cite>
-methods and <cite>.RequestHandler.flush</cite>.</li>
-<li>Many user-overridden methods are now allowed to return a <cite>.Future</cite>
+More methods now return <code class="xref py py-obj docutils literal"><span class="pre">Futures</span></code>, including most <code class="xref py py-obj docutils literal"><span class="pre">IOStream</span></code>
+methods and <code class="xref py py-obj docutils literal"><span class="pre">RequestHandler.flush</span></code>.</li>
+<li>Many user-overridden methods are now allowed to return a <code class="xref py py-obj docutils literal"><span class="pre">Future</span></code>
 for flow control.</li>
-<li>HTTP-related code is now shared between the <cite>tornado.httpserver</cite>,
-<code class="docutils literal"><span class="pre">tornado.simple_httpclient</span></code> and <cite>tornado.wsgi</cite> modules, making support
+<li>HTTP-related code is now shared between the <code class="xref py py-obj docutils literal"><span class="pre">tornado.httpserver</span></code>,
+<code class="docutils literal"><span class="pre">tornado.simple_httpclient</span></code> and <code class="xref py py-obj docutils literal"><span class="pre">tornado.wsgi</span></code> modules, making support
 for features such as chunked and gzip encoding more consistent.
-<cite>.HTTPServer</cite> now uses new delegate interfaces defined in <cite>tornado.httputil</cite>
+<code class="xref py py-obj docutils literal"><span class="pre">HTTPServer</span></code> now uses new delegate interfaces defined in <code class="xref py py-obj docutils literal"><span class="pre">tornado.httputil</span></code>
 in addition to its old single-callback interface.</li>
-<li>New module <cite>tornado.tcpclient</cite> creates TCP connections with non-blocking
+<li>New module <code class="xref py py-obj docutils literal"><span class="pre">tornado.tcpclient</span></code> creates TCP connections with non-blocking
 DNS, SSL handshaking, and support for IPv6.</li>
 </ul>
 </div>
 <div class="section" id="backwards-compatibility-notes">
-<h3>Backwards-compatibility notes<a class="headerlink" href="#backwards-compatibility-notes" title="永久链接至标题">¶</a></h3>
+<h3>Backwards-compatibility notes<a class="headerlink" href="#backwards-compatibility-notes" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><cite>tornado.concurrent.Future</cite> is no longer thread-safe; use
-<cite>concurrent.futures.Future</cite> when thread-safety is needed.</li>
+<li><code class="xref py py-obj docutils literal"><span class="pre">tornado.concurrent.Future</span></code> is no longer thread-safe; use
+<a class="reference external" href="https://docs.python.org/3.4/library/concurrent.futures.html#concurrent.futures.Future" title="(in Python v3.4)"><code class="xref py py-obj docutils literal"><span class="pre">concurrent.futures.Future</span></code></a> when thread-safety is needed.</li>
 <li>Tornado now depends on the <a class="reference external" href="https://pypi.python.org/pypi/certifi">certifi</a>
 package instead of bundling its own copy of the Mozilla CA list. This will
 be installed automatically when using <code class="docutils literal"><span class="pre">pip</span></code> or <code class="docutils literal"><span class="pre">easy_install</span></code>.</li>
@@ -210,118 +210,118 @@ in version <a class="reference internal" href="v3.2.2.html"><em>3.2.2</em></a>. 
 version, see those versions&#8217; release notes.</li>
 <li>WebSocket connections from other origin sites are now rejected by default.
 To accept cross-origin websocket connections, override
-the new method <cite>.WebSocketHandler.check_origin</cite>.</li>
-<li><cite>.WebSocketHandler</cite> no longer supports the old <code class="docutils literal"><span class="pre">draft</span> <span class="pre">76</span></code> protocol
+the new method <code class="xref py py-obj docutils literal"><span class="pre">WebSocketHandler.check_origin</span></code>.</li>
+<li><code class="xref py py-obj docutils literal"><span class="pre">WebSocketHandler</span></code> no longer supports the old <code class="docutils literal"><span class="pre">draft</span> <span class="pre">76</span></code> protocol
 (this mainly affects Safari 5.x browsers).  Applications should use
 non-websocket workarounds for these browsers.</li>
-<li>Authors of alternative <cite>.IOLoop</cite> implementations should see the changes
-to <cite>.IOLoop.add_handler</cite> in this release.</li>
+<li>Authors of alternative <code class="xref py py-obj docutils literal"><span class="pre">IOLoop</span></code> implementations should see the changes
+to <code class="xref py py-obj docutils literal"><span class="pre">IOLoop.add_handler</span></code> in this release.</li>
 <li>The <code class="docutils literal"><span class="pre">RequestHandler.async_callback</span></code> and <code class="docutils literal"><span class="pre">WebSocketHandler.async_callback</span></code>
 wrapper functions have been removed; they have been obsolete for a long
 time due to stack contexts (and more recently coroutines).</li>
 <li><code class="docutils literal"><span class="pre">curl_httpclient</span></code> now requires a minimum of libcurl version 7.21.1 and
 pycurl 7.18.2.</li>
 <li>Support for <code class="docutils literal"><span class="pre">RequestHandler.get_error_html</span></code> has been removed;
-override <cite>.RequestHandler.write_error</cite> instead.</li>
+override <code class="xref py py-obj docutils literal"><span class="pre">RequestHandler.write_error</span></code> instead.</li>
 </ul>
 </div>
 <div class="section" id="other-notes">
-<h3>Other notes<a class="headerlink" href="#other-notes" title="永久链接至标题">¶</a></h3>
+<h3>Other notes<a class="headerlink" href="#other-notes" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>The git repository has moved to <a class="reference external" href="https://github.com/tornadoweb/tornado">https://github.com/tornadoweb/tornado</a>.
 All old links should be redirected to the new location.</li>
 <li>An <a class="reference external" href="http://groups.google.com/group/python-tornado-announce">announcement mailing list</a> is now available.</li>
 <li>All Tornado modules are now importable on Google App Engine (although
 the App Engine environment does not allow the system calls used
-by <cite>.IOLoop</cite> so many modules are still unusable).</li>
+by <code class="xref py py-obj docutils literal"><span class="pre">IOLoop</span></code> so many modules are still unusable).</li>
 </ul>
 </div>
 <div class="section" id="tornado-auth">
-<h3><cite>tornado.auth</cite><a class="headerlink" href="#tornado-auth" title="永久链接至标题">¶</a></h3>
+<h3><code class="xref py py-obj docutils literal"><span class="pre">tornado.auth</span></code><a class="headerlink" href="#tornado-auth" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Fixed a bug in <code class="docutils literal"><span class="pre">.FacebookMixin</span></code> on Python 3.</li>
-<li>When using the <cite>.Future</cite> interface, exceptions are more reliably delivered
+<li>When using the <code class="xref py py-obj docutils literal"><span class="pre">Future</span></code> interface, exceptions are more reliably delivered
 to the caller.</li>
 </ul>
 </div>
 <div class="section" id="tornado-concurrent">
-<h3><cite>tornado.concurrent</cite><a class="headerlink" href="#tornado-concurrent" title="永久链接至标题">¶</a></h3>
+<h3><code class="xref py py-obj docutils literal"><span class="pre">tornado.concurrent</span></code><a class="headerlink" href="#tornado-concurrent" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><cite>tornado.concurrent.Future</cite> is now always thread-unsafe (previously
-it would be thread-safe if the <cite>concurrent.futures</cite> package was available).
+<li><code class="xref py py-obj docutils literal"><span class="pre">tornado.concurrent.Future</span></code> is now always thread-unsafe (previously
+it would be thread-safe if the <a class="reference external" href="https://docs.python.org/3.4/library/concurrent.futures.html#module-concurrent.futures" title="(in Python v3.4)"><code class="xref py py-obj docutils literal"><span class="pre">concurrent.futures</span></code></a> package was available).
 This improves performance and provides more consistent semantics.
 The parts of Tornado that accept Futures will accept both Tornado&#8217;s
-thread-unsafe Futures and the thread-safe <cite>concurrent.futures.Future</cite>.</li>
-<li><cite>tornado.concurrent.Future</cite> now includes all the functionality
+thread-unsafe Futures and the thread-safe <a class="reference external" href="https://docs.python.org/3.4/library/concurrent.futures.html#concurrent.futures.Future" title="(in Python v3.4)"><code class="xref py py-obj docutils literal"><span class="pre">concurrent.futures.Future</span></code></a>.</li>
+<li><code class="xref py py-obj docutils literal"><span class="pre">tornado.concurrent.Future</span></code> now includes all the functionality
 of the old <code class="docutils literal"><span class="pre">TracebackFuture</span></code> class.  <code class="docutils literal"><span class="pre">TracebackFuture</span></code> is now
 simply an alias for <code class="docutils literal"><span class="pre">Future</span></code>.</li>
 </ul>
 </div>
 <div class="section" id="tornado-curl-httpclient">
-<h3><code class="docutils literal"><span class="pre">tornado.curl_httpclient</span></code><a class="headerlink" href="#tornado-curl-httpclient" title="永久链接至标题">¶</a></h3>
+<h3><code class="docutils literal"><span class="pre">tornado.curl_httpclient</span></code><a class="headerlink" href="#tornado-curl-httpclient" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">curl_httpclient</span></code> now passes along the HTTP &#8220;reason&#8221; string
 in <code class="docutils literal"><span class="pre">response.reason</span></code>.</li>
 </ul>
 </div>
 <div class="section" id="tornado-gen">
-<h3><cite>tornado.gen</cite><a class="headerlink" href="#tornado-gen" title="永久链接至标题">¶</a></h3>
+<h3><code class="xref py py-obj docutils literal"><span class="pre">tornado.gen</span></code><a class="headerlink" href="#tornado-gen" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Performance of coroutines has been improved.</li>
 <li>Coroutines no longer generate <code class="docutils literal"><span class="pre">StackContexts</span></code> by default, but they
 will be created on demand when needed.</li>
-<li>The internals of the <cite>tornado.gen</cite> module have been rewritten to
+<li>The internals of the <code class="xref py py-obj docutils literal"><span class="pre">tornado.gen</span></code> module have been rewritten to
 improve performance when using <code class="docutils literal"><span class="pre">Futures</span></code>, at the expense of some
-performance degradation for the older <cite>.YieldPoint</cite> interfaces.</li>
-<li>New function <cite>.with_timeout</cite> wraps a <cite>.Future</cite> and raises an exception
+performance degradation for the older <code class="xref py py-obj docutils literal"><span class="pre">YieldPoint</span></code> interfaces.</li>
+<li>New function <code class="xref py py-obj docutils literal"><span class="pre">with_timeout</span></code> wraps a <code class="xref py py-obj docutils literal"><span class="pre">Future</span></code> and raises an exception
 if it doesn&#8217;t complete in a given amount of time.</li>
-<li>New object <cite>.moment</cite> can be yielded to allow the IOLoop to run for
+<li>New object <code class="xref py py-obj docutils literal"><span class="pre">moment</span></code> can be yielded to allow the IOLoop to run for
 one iteration before resuming.</li>
-<li><cite>.Task</cite> is now a function returning a <cite>.Future</cite> instead of a <cite>.YieldPoint</cite>
+<li><code class="xref py py-obj docutils literal"><span class="pre">Task</span></code> is now a function returning a <code class="xref py py-obj docutils literal"><span class="pre">Future</span></code> instead of a <code class="xref py py-obj docutils literal"><span class="pre">YieldPoint</span></code>
 subclass.  This change should be transparent to application code, but
-allows <cite>.Task</cite> to take advantage of the newly-optimized <cite>.Future</cite>
+allows <code class="xref py py-obj docutils literal"><span class="pre">Task</span></code> to take advantage of the newly-optimized <code class="xref py py-obj docutils literal"><span class="pre">Future</span></code>
 handling.</li>
 </ul>
 </div>
 <div class="section" id="tornado-http1connection">
-<h3><cite>tornado.http1connection</cite><a class="headerlink" href="#tornado-http1connection" title="永久链接至标题">¶</a></h3>
+<h3><code class="xref py py-obj docutils literal"><span class="pre">tornado.http1connection</span></code><a class="headerlink" href="#tornado-http1connection" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>New module contains the HTTP implementation shared by <cite>tornado.httpserver</cite>
+<li>New module contains the HTTP implementation shared by <code class="xref py py-obj docutils literal"><span class="pre">tornado.httpserver</span></code>
 and <code class="docutils literal"><span class="pre">tornado.simple_httpclient</span></code>.</li>
 </ul>
 </div>
 <div class="section" id="tornado-httpclient">
-<h3><cite>tornado.httpclient</cite><a class="headerlink" href="#tornado-httpclient" title="永久链接至标题">¶</a></h3>
+<h3><code class="xref py py-obj docutils literal"><span class="pre">tornado.httpclient</span></code><a class="headerlink" href="#tornado-httpclient" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>The command-line HTTP client (<code class="docutils literal"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">tornado.httpclient</span> <span class="pre">$URL</span></code>)
 now works on Python 3.</li>
-<li>Fixed a memory leak in <cite>.AsyncHTTPClient</cite> shutdown that affected
+<li>Fixed a memory leak in <code class="xref py py-obj docutils literal"><span class="pre">AsyncHTTPClient</span></code> shutdown that affected
 applications that created many HTTP clients and IOLoops.</li>
 <li>New client request parameter <code class="docutils literal"><span class="pre">decompress_response</span></code> replaces
 the existing <code class="docutils literal"><span class="pre">use_gzip</span></code> parameter; both names are accepted.</li>
 </ul>
 </div>
 <div class="section" id="tornado-httpserver">
-<h3><cite>tornado.httpserver</cite><a class="headerlink" href="#tornado-httpserver" title="永久链接至标题">¶</a></h3>
+<h3><code class="xref py py-obj docutils literal"><span class="pre">tornado.httpserver</span></code><a class="headerlink" href="#tornado-httpserver" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">tornado.httpserver.HTTPRequest</span></code> has moved to
-<cite>tornado.httputil.HTTPServerRequest</cite>.</li>
+<code class="xref py py-obj docutils literal"><span class="pre">tornado.httputil.HTTPServerRequest</span></code>.</li>
 <li>HTTP implementation has been unified with <code class="docutils literal"><span class="pre">tornado.simple_httpclient</span></code>
-in <cite>tornado.http1connection</cite>.</li>
+in <code class="xref py py-obj docutils literal"><span class="pre">tornado.http1connection</span></code>.</li>
 <li>Now supports <code class="docutils literal"><span class="pre">Transfer-Encoding:</span> <span class="pre">chunked</span></code> for request bodies.</li>
 <li>Now supports <code class="docutils literal"><span class="pre">Content-Encoding:</span> <span class="pre">gzip</span></code> for request bodies if
-<code class="docutils literal"><span class="pre">decompress_request=True</span></code> is passed to the <cite>.HTTPServer</cite> constructor.</li>
-<li>The <code class="docutils literal"><span class="pre">connection</span></code> attribute of <cite>.HTTPServerRequest</cite> is now documented
+<code class="docutils literal"><span class="pre">decompress_request=True</span></code> is passed to the <code class="xref py py-obj docutils literal"><span class="pre">HTTPServer</span></code> constructor.</li>
+<li>The <code class="docutils literal"><span class="pre">connection</span></code> attribute of <code class="xref py py-obj docutils literal"><span class="pre">HTTPServerRequest</span></code> is now documented
 for public use; applications are expected to write their responses
-via the <cite>.HTTPConnection</cite> interface.</li>
-<li>The <cite>.HTTPServerRequest.write</cite> and <cite>.HTTPServerRequest.finish</cite> methods
-are now deprecated.  (<cite>.RequestHandler.write</cite> and <cite>.RequestHandler.finish</cite>
+via the <code class="xref py py-obj docutils literal"><span class="pre">HTTPConnection</span></code> interface.</li>
+<li>The <code class="xref py py-obj docutils literal"><span class="pre">HTTPServerRequest.write</span></code> and <code class="xref py py-obj docutils literal"><span class="pre">HTTPServerRequest.finish</span></code> methods
+are now deprecated.  (<code class="xref py py-obj docutils literal"><span class="pre">RequestHandler.write</span></code> and <code class="xref py py-obj docutils literal"><span class="pre">RequestHandler.finish</span></code>
 are <em>not</em> deprecated; this only applies to the methods on
-<cite>.HTTPServerRequest</cite>)</li>
-<li><cite>.HTTPServer</cite> now supports <cite>.HTTPServerConnectionDelegate</cite> in addition to
+<code class="xref py py-obj docutils literal"><span class="pre">HTTPServerRequest</span></code>)</li>
+<li><code class="xref py py-obj docutils literal"><span class="pre">HTTPServer</span></code> now supports <code class="xref py py-obj docutils literal"><span class="pre">HTTPServerConnectionDelegate</span></code> in addition to
 the old <code class="docutils literal"><span class="pre">request_callback</span></code> interface.  The delegate interface supports
 streaming of request bodies.</li>
-<li><cite>.HTTPServer</cite> now detects the error of an application sending a
+<li><code class="xref py py-obj docutils literal"><span class="pre">HTTPServer</span></code> now detects the error of an application sending a
 <code class="docutils literal"><span class="pre">Content-Length</span></code> error that is inconsistent with the actual content.</li>
 <li>New constructor arguments <code class="docutils literal"><span class="pre">max_header_size</span></code> and <code class="docutils literal"><span class="pre">max_body_size</span></code>
 allow separate limits to be set for different parts of the request.
@@ -335,57 +335,57 @@ allow time limits to be placed on the reading of requests.</li>
 </ul>
 </div>
 <div class="section" id="tornado-httputil">
-<h3><cite>tornado.httputil</cite><a class="headerlink" href="#tornado-httputil" title="永久链接至标题">¶</a></h3>
+<h3><code class="xref py py-obj docutils literal"><span class="pre">tornado.httputil</span></code><a class="headerlink" href="#tornado-httputil" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><cite>.HTTPServerRequest</cite> was moved to this module from <cite>tornado.httpserver</cite>.</li>
-<li>New base classes <cite>.HTTPConnection</cite>, <cite>.HTTPServerConnectionDelegate</cite>,
-and <cite>.HTTPMessageDelegate</cite> define the interaction between applications
+<li><code class="xref py py-obj docutils literal"><span class="pre">HTTPServerRequest</span></code> was moved to this module from <code class="xref py py-obj docutils literal"><span class="pre">tornado.httpserver</span></code>.</li>
+<li>New base classes <code class="xref py py-obj docutils literal"><span class="pre">HTTPConnection</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">HTTPServerConnectionDelegate</span></code>,
+and <code class="xref py py-obj docutils literal"><span class="pre">HTTPMessageDelegate</span></code> define the interaction between applications
 and the HTTP implementation.</li>
 </ul>
 </div>
 <div class="section" id="tornado-ioloop">
-<h3><cite>tornado.ioloop</cite><a class="headerlink" href="#tornado-ioloop" title="永久链接至标题">¶</a></h3>
+<h3><code class="xref py py-obj docutils literal"><span class="pre">tornado.ioloop</span></code><a class="headerlink" href="#tornado-ioloop" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><cite>.IOLoop.add_handler</cite> and related methods now accept file-like objects
+<li><code class="xref py py-obj docutils literal"><span class="pre">IOLoop.add_handler</span></code> and related methods now accept file-like objects
 in addition to raw file descriptors.  Passing the objects is recommended
 (when possible) to avoid a garbage-collection-related problem in unit tests.</li>
-<li>New method <cite>.IOLoop.clear_instance</cite> makes it possible to uninstall the
+<li>New method <code class="xref py py-obj docutils literal"><span class="pre">IOLoop.clear_instance</span></code> makes it possible to uninstall the
 singleton instance.</li>
 <li>Timeout scheduling is now more robust against slow callbacks.</li>
-<li><cite>.IOLoop.add_timeout</cite> is now a bit more efficient.</li>
-<li>When a function run by the <cite>.IOLoop</cite> returns a <cite>.Future</cite> and that <cite>.Future</cite>
-has an exception, the <cite>.IOLoop</cite> will log the exception.</li>
-<li>New method <cite>.IOLoop.spawn_callback</cite> simplifies the process of launching
+<li><code class="xref py py-obj docutils literal"><span class="pre">IOLoop.add_timeout</span></code> is now a bit more efficient.</li>
+<li>When a function run by the <code class="xref py py-obj docutils literal"><span class="pre">IOLoop</span></code> returns a <code class="xref py py-obj docutils literal"><span class="pre">Future</span></code> and that <code class="xref py py-obj docutils literal"><span class="pre">Future</span></code>
+has an exception, the <code class="xref py py-obj docutils literal"><span class="pre">IOLoop</span></code> will log the exception.</li>
+<li>New method <code class="xref py py-obj docutils literal"><span class="pre">IOLoop.spawn_callback</span></code> simplifies the process of launching
 a fire-and-forget callback that is separated from the caller&#8217;s stack context.</li>
-<li>New methods <cite>.IOLoop.call_later</cite> and <cite>.IOLoop.call_at</cite> simplify the
+<li>New methods <code class="xref py py-obj docutils literal"><span class="pre">IOLoop.call_later</span></code> and <code class="xref py py-obj docutils literal"><span class="pre">IOLoop.call_at</span></code> simplify the
 specification of relative or absolute timeouts (as opposed to
-<cite>~.IOLoop.add_timeout</cite>, which used the type of its argument).</li>
+<code class="xref py py-obj docutils literal"><span class="pre">add_timeout</span></code>, which used the type of its argument).</li>
 </ul>
 </div>
 <div class="section" id="tornado-iostream">
-<h3><cite>tornado.iostream</cite><a class="headerlink" href="#tornado-iostream" title="永久链接至标题">¶</a></h3>
+<h3><code class="xref py py-obj docutils literal"><span class="pre">tornado.iostream</span></code><a class="headerlink" href="#tornado-iostream" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>The <code class="docutils literal"><span class="pre">callback</span></code> argument to most <cite>.IOStream</cite> methods is now optional.
-When called without a callback the method will return a <cite>.Future</cite>
+<li>The <code class="docutils literal"><span class="pre">callback</span></code> argument to most <code class="xref py py-obj docutils literal"><span class="pre">IOStream</span></code> methods is now optional.
+When called without a callback the method will return a <code class="xref py py-obj docutils literal"><span class="pre">Future</span></code>
 for use with coroutines.</li>
-<li>New method <cite>.IOStream.start_tls</cite> converts an <cite>.IOStream</cite> to an
-<cite>.SSLIOStream</cite>.</li>
+<li>New method <code class="xref py py-obj docutils literal"><span class="pre">IOStream.start_tls</span></code> converts an <code class="xref py py-obj docutils literal"><span class="pre">IOStream</span></code> to an
+<code class="xref py py-obj docutils literal"><span class="pre">SSLIOStream</span></code>.</li>
 <li>No longer gets confused when an <code class="docutils literal"><span class="pre">IOError</span></code> or <code class="docutils literal"><span class="pre">OSError</span></code> without
 an <code class="docutils literal"><span class="pre">errno</span></code> attribute is raised.</li>
-<li><cite>.BaseIOStream.read_bytes</cite> now accepts a <code class="docutils literal"><span class="pre">partial</span></code> keyword argument,
+<li><code class="xref py py-obj docutils literal"><span class="pre">BaseIOStream.read_bytes</span></code> now accepts a <code class="docutils literal"><span class="pre">partial</span></code> keyword argument,
 which can be used to return before the full amount has been read.
 This is a more coroutine-friendly alternative to <code class="docutils literal"><span class="pre">streaming_callback</span></code>.</li>
-<li><cite>.BaseIOStream.read_until</cite> and <code class="docutils literal"><span class="pre">read_until_regex</span></code> now acept a
+<li><code class="xref py py-obj docutils literal"><span class="pre">BaseIOStream.read_until</span></code> and <code class="docutils literal"><span class="pre">read_until_regex</span></code> now acept a
 <code class="docutils literal"><span class="pre">max_bytes</span></code> keyword argument which will cause the request to fail if
 it cannot be satisfied from the given number of bytes.</li>
-<li><cite>.IOStream</cite> no longer reads from the socket into memory if it does not
+<li><code class="xref py py-obj docutils literal"><span class="pre">IOStream</span></code> no longer reads from the socket into memory if it does not
 need data to satisfy a pending read.  As a side effect, the close callback
 will not be run immediately if the other side closes the connection
 while there is unconsumed data in the buffer.</li>
 <li>The default <code class="docutils literal"><span class="pre">chunk_size</span></code> has been increased to 64KB (from 4KB)</li>
-<li>The <cite>.IOStream</cite> constructor takes a new keyword argument
+<li>The <code class="xref py py-obj docutils literal"><span class="pre">IOStream</span></code> constructor takes a new keyword argument
 <code class="docutils literal"><span class="pre">max_write_buffer_size</span></code> (defaults to unlimited).  Calls to
-<cite>.BaseIOStream.write</cite> will raise <cite>.StreamBufferFullError</cite> if the amount
+<code class="xref py py-obj docutils literal"><span class="pre">BaseIOStream.write</span></code> will raise <code class="xref py py-obj docutils literal"><span class="pre">StreamBufferFullError</span></code> if the amount
 of unsent buffered data exceeds this limit.</li>
 <li><code class="docutils literal"><span class="pre">ETIMEDOUT</span></code> errors are no longer logged.  If you need to distinguish
 timeouts from other forms of closed connections, examine <code class="docutils literal"><span class="pre">stream.error</span></code>
@@ -393,69 +393,69 @@ from a close callback.</li>
 </ul>
 </div>
 <div class="section" id="tornado-netutil">
-<h3><cite>tornado.netutil</cite><a class="headerlink" href="#tornado-netutil" title="永久链接至标题">¶</a></h3>
+<h3><code class="xref py py-obj docutils literal"><span class="pre">tornado.netutil</span></code><a class="headerlink" href="#tornado-netutil" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>When <cite>.bind_sockets</cite> chooses a port automatically, it will now use
+<li>When <code class="xref py py-obj docutils literal"><span class="pre">bind_sockets</span></code> chooses a port automatically, it will now use
 the same port for IPv4 and IPv6.</li>
 <li>TLS compression is now disabled by default on Python 3.3 and higher
 (it is not possible to change this option in older versions).</li>
 </ul>
 </div>
 <div class="section" id="tornado-options">
-<h3><cite>tornado.options</cite><a class="headerlink" href="#tornado-options" title="永久链接至标题">¶</a></h3>
+<h3><code class="xref py py-obj docutils literal"><span class="pre">tornado.options</span></code><a class="headerlink" href="#tornado-options" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>It is now possible to disable the default logging configuration
 by setting <code class="docutils literal"><span class="pre">options.logging</span></code> to <code class="docutils literal"><span class="pre">None</span></code> instead of the string <code class="docutils literal"><span class="pre">&quot;none&quot;</span></code>.</li>
 </ul>
 </div>
 <div class="section" id="tornado-platform-asyncio">
-<h3><cite>tornado.platform.asyncio</cite><a class="headerlink" href="#tornado-platform-asyncio" title="永久链接至标题">¶</a></h3>
+<h3><code class="xref py py-obj docutils literal"><span class="pre">tornado.platform.asyncio</span></code><a class="headerlink" href="#tornado-platform-asyncio" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Now works on Python 2.6.</li>
 <li>Now works with Trollius version 0.3.</li>
 </ul>
 </div>
 <div class="section" id="tornado-platform-twisted">
-<h3><cite>tornado.platform.twisted</cite><a class="headerlink" href="#tornado-platform-twisted" title="永久链接至标题">¶</a></h3>
+<h3><code class="xref py py-obj docutils literal"><span class="pre">tornado.platform.twisted</span></code><a class="headerlink" href="#tornado-platform-twisted" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><cite>.TwistedIOLoop</cite> now works on Python 3.3+ (with Twisted 14.0.0+).</li>
+<li><code class="xref py py-obj docutils literal"><span class="pre">TwistedIOLoop</span></code> now works on Python 3.3+ (with Twisted 14.0.0+).</li>
 </ul>
 </div>
 <div class="section" id="tornado-simple-httpclient">
-<h3><code class="docutils literal"><span class="pre">tornado.simple_httpclient</span></code><a class="headerlink" href="#tornado-simple-httpclient" title="永久链接至标题">¶</a></h3>
+<h3><code class="docutils literal"><span class="pre">tornado.simple_httpclient</span></code><a class="headerlink" href="#tornado-simple-httpclient" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">simple_httpclient</span></code> has better support for IPv6, which is now enabled
 by default.</li>
 <li>Improved default cipher suite selection (Python 2.7+).</li>
 <li>HTTP implementation has been unified with <code class="docutils literal"><span class="pre">tornado.httpserver</span></code>
-in <cite>tornado.http1connection</cite></li>
+in <code class="xref py py-obj docutils literal"><span class="pre">tornado.http1connection</span></code></li>
 <li>Streaming request bodies are now supported via the <code class="docutils literal"><span class="pre">body_producer</span></code>
-keyword argument to <cite>tornado.httpclient.HTTPRequest</cite>.</li>
+keyword argument to <code class="xref py py-obj docutils literal"><span class="pre">tornado.httpclient.HTTPRequest</span></code>.</li>
 <li>The <code class="docutils literal"><span class="pre">expect_100_continue</span></code> keyword argument to
-<cite>tornado.httpclient.HTTPRequest</cite> allows the use of the HTTP <code class="docutils literal"><span class="pre">Expect:</span>
+<code class="xref py py-obj docutils literal"><span class="pre">tornado.httpclient.HTTPRequest</span></code> allows the use of the HTTP <code class="docutils literal"><span class="pre">Expect:</span>
 <span class="pre">100-continue</span></code> feature.</li>
-<li><code class="docutils literal"><span class="pre">simple_httpclient</span></code> now raises the original exception (e.g. an <cite>IOError</cite>)
+<li><code class="docutils literal"><span class="pre">simple_httpclient</span></code> now raises the original exception (e.g. an <a class="reference external" href="https://docs.python.org/3.4/library/exceptions.html#IOError" title="(in Python v3.4)"><code class="xref py py-obj docutils literal"><span class="pre">IOError</span></code></a>)
 in more cases, instead of converting everything to <code class="docutils literal"><span class="pre">HTTPError</span></code>.</li>
 </ul>
 </div>
 <div class="section" id="tornado-stack-context">
-<h3><cite>tornado.stack_context</cite><a class="headerlink" href="#tornado-stack-context" title="永久链接至标题">¶</a></h3>
+<h3><code class="xref py py-obj docutils literal"><span class="pre">tornado.stack_context</span></code><a class="headerlink" href="#tornado-stack-context" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>The stack context system now has less performance overhead when no
 stack contexts are active.</li>
 </ul>
 </div>
 <div class="section" id="tornado-tcpclient">
-<h3><cite>tornado.tcpclient</cite><a class="headerlink" href="#tornado-tcpclient" title="永久链接至标题">¶</a></h3>
+<h3><code class="xref py py-obj docutils literal"><span class="pre">tornado.tcpclient</span></code><a class="headerlink" href="#tornado-tcpclient" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>New module which creates TCP connections and IOStreams, including
 name resolution, connecting, and SSL handshakes.</li>
 </ul>
 </div>
 <div class="section" id="tornado-testing">
-<h3><cite>tornado.testing</cite><a class="headerlink" href="#tornado-testing" title="永久链接至标题">¶</a></h3>
+<h3><code class="xref py py-obj docutils literal"><span class="pre">tornado.testing</span></code><a class="headerlink" href="#tornado-testing" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><cite>.AsyncTestCase</cite> now attempts to detect test methods that are generators
+<li><code class="xref py py-obj docutils literal"><span class="pre">AsyncTestCase</span></code> now attempts to detect test methods that are generators
 but were not run with <code class="docutils literal"><span class="pre">&#64;gen_test</span></code> or any similar decorator (this would
 previously result in the test silently being skipped).</li>
 <li>Better stack traces are now displayed when a test times out.</li>
@@ -465,19 +465,19 @@ can be used on functions with arguments.</li>
 </ul>
 </div>
 <div class="section" id="tornado-web">
-<h3><cite>tornado.web</cite><a class="headerlink" href="#tornado-web" title="永久链接至标题">¶</a></h3>
+<h3><code class="xref py py-obj docutils literal"><span class="pre">tornado.web</span></code><a class="headerlink" href="#tornado-web" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>It is now possible to support streaming request bodies with the
-<cite>.stream_request_body</cite> decorator and the new <cite>.RequestHandler.data_received</cite>
+<code class="xref py py-obj docutils literal"><span class="pre">stream_request_body</span></code> decorator and the new <code class="xref py py-obj docutils literal"><span class="pre">RequestHandler.data_received</span></code>
 method.</li>
-<li><cite>.RequestHandler.flush</cite> now returns a <cite>.Future</cite> if no callback is given.</li>
-<li>New exception <cite>.Finish</cite> may be raised to finish a request without
+<li><code class="xref py py-obj docutils literal"><span class="pre">RequestHandler.flush</span></code> now returns a <code class="xref py py-obj docutils literal"><span class="pre">Future</span></code> if no callback is given.</li>
+<li>New exception <code class="xref py py-obj docutils literal"><span class="pre">Finish</span></code> may be raised to finish a request without
 triggering error handling.</li>
 <li>When gzip support is enabled, all <code class="docutils literal"><span class="pre">text/*</span></code> mime types will be compressed,
 not just those on a whitelist.</li>
-<li><cite>.Application</cite> now implements the <cite>.HTTPMessageDelegate</cite> interface.</li>
-<li><code class="docutils literal"><span class="pre">HEAD</span></code> requests in <cite>.StaticFileHandler</cite> no longer read the entire file.</li>
-<li><cite>.StaticFileHandler</cite> now streams response bodies to the client.</li>
+<li><code class="xref py py-obj docutils literal"><span class="pre">Application</span></code> now implements the <code class="xref py py-obj docutils literal"><span class="pre">HTTPMessageDelegate</span></code> interface.</li>
+<li><code class="docutils literal"><span class="pre">HEAD</span></code> requests in <code class="xref py py-obj docutils literal"><span class="pre">StaticFileHandler</span></code> no longer read the entire file.</li>
+<li><code class="xref py py-obj docutils literal"><span class="pre">StaticFileHandler</span></code> now streams response bodies to the client.</li>
 <li>New setting <code class="docutils literal"><span class="pre">compress_response</span></code> replaces the existing <code class="docutils literal"><span class="pre">gzip</span></code>
 setting; both names are accepted.</li>
 <li>XSRF cookies that were not generated by this module (i.e. strings without
@@ -488,15 +488,15 @@ Tornado 3.2.2.</li>
 </ul>
 </div>
 <div class="section" id="tornado-websocket">
-<h3><cite>tornado.websocket</cite><a class="headerlink" href="#tornado-websocket" title="永久链接至标题">¶</a></h3>
+<h3><code class="xref py py-obj docutils literal"><span class="pre">tornado.websocket</span></code><a class="headerlink" href="#tornado-websocket" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>WebSocket connections from other origin sites are now rejected by default.
 Browsers do not use the same-origin policy for WebSocket connections as they
 do for most other browser-initiated communications.  This can be surprising
 and a security risk, so we disallow these connections on the server side
 by default.  To accept cross-origin websocket connections, override
-the new method <cite>.WebSocketHandler.check_origin</cite>.</li>
-<li><cite>.WebSocketHandler.close</cite> and <cite>.WebSocketClientConnection.close</cite> now
+the new method <code class="xref py py-obj docutils literal"><span class="pre">WebSocketHandler.check_origin</span></code>.</li>
+<li><code class="xref py py-obj docutils literal"><span class="pre">WebSocketHandler.close</span></code> and <code class="xref py py-obj docutils literal"><span class="pre">WebSocketClientConnection.close</span></code> now
 support <code class="docutils literal"><span class="pre">code</span></code> and <code class="docutils literal"><span class="pre">reason</span></code> arguments to send a status code and
 message to the other side of the connection when closing.  Both classes
 also have <code class="docutils literal"><span class="pre">close_code</span></code> and <code class="docutils literal"><span class="pre">close_reason</span></code> attributes to receive these
@@ -505,22 +505,22 @@ values when the other side closes.</li>
 messages larger than 2GB on 64-bit systems.</li>
 <li>The fallback mechanism for detecting a missing C compiler now
 works correctly on Mac OS X.</li>
-<li>Arguments to <cite>.WebSocketHandler.open</cite> are now decoded in the same way
-as arguments to <cite>.RequestHandler.get</cite> and similar methods.</li>
-<li>It is now allowed to override <code class="docutils literal"><span class="pre">prepare</span></code> in a <cite>.WebSocketHandler</cite>,
+<li>Arguments to <code class="xref py py-obj docutils literal"><span class="pre">WebSocketHandler.open</span></code> are now decoded in the same way
+as arguments to <code class="xref py py-obj docutils literal"><span class="pre">RequestHandler.get</span></code> and similar methods.</li>
+<li>It is now allowed to override <code class="docutils literal"><span class="pre">prepare</span></code> in a <code class="xref py py-obj docutils literal"><span class="pre">WebSocketHandler</span></code>,
 and this method may generate HTTP responses (error pages) in the usual
 way.  The HTTP response methods are still not allowed once the
 WebSocket handshake has completed.</li>
 </ul>
 </div>
 <div class="section" id="tornado-wsgi">
-<h3><cite>tornado.wsgi</cite><a class="headerlink" href="#tornado-wsgi" title="永久链接至标题">¶</a></h3>
+<h3><code class="xref py py-obj docutils literal"><span class="pre">tornado.wsgi</span></code><a class="headerlink" href="#tornado-wsgi" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>New class <cite>.WSGIAdapter</cite> supports running a Tornado <cite>.Application</cite> on
+<li>New class <code class="xref py py-obj docutils literal"><span class="pre">WSGIAdapter</span></code> supports running a Tornado <code class="xref py py-obj docutils literal"><span class="pre">Application</span></code> on
 a WSGI server in a way that is more compatible with Tornado&#8217;s non-WSGI
-<cite>.HTTPServer</cite>.  <cite>.WSGIApplication</cite> is deprecated in favor of using
-<cite>.WSGIAdapter</cite> with a regular <cite>.Application</cite>.</li>
-<li><cite>.WSGIAdapter</cite> now supports gzipped output.</li>
+<code class="xref py py-obj docutils literal"><span class="pre">HTTPServer</span></code>.  <code class="xref py py-obj docutils literal"><span class="pre">WSGIApplication</span></code> is deprecated in favor of using
+<code class="xref py py-obj docutils literal"><span class="pre">WSGIAdapter</span></code> with a regular <code class="xref py py-obj docutils literal"><span class="pre">Application</span></code>.</li>
+<li><code class="xref py py-obj docutils literal"><span class="pre">WSGIAdapter</span></code> now supports gzipped output.</li>
 </ul>
 </div>
 </div>
@@ -545,7 +545,7 @@ a WSGI server in a way that is more compatible with Tornado&#8217;s non-WSGI
 
   <div role="contentinfo">
     <p>
-        &copy; 版权所有 2016, deepdarkness.
+        &copy; Copyright 2009-2016, The Tornado Authors.
 
     </p>
   </div>
@@ -567,7 +567,7 @@ a WSGI server in a way that is more compatible with Tornado&#8217;s non-WSGI
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'4.4',
+            VERSION:'4.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -576,7 +576,6 @@ a WSGI server in a way that is more compatible with Tornado&#8217;s non-WSGI
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/translations.js"></script>
 
   
 

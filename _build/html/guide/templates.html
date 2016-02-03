@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>模版和 UI &mdash; Tornado 4.4 文档</title>
+  <title>模版和 UI &mdash; Tornado 4.3 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="Tornado 4.4 文档" href="../index.html"/>
+    <link rel="top" title="Tornado 4.3 documentation" href="../index.html"/>
         <link rel="up" title="用户手册" href="../guide.html"/>
         <link rel="next" title="认证与安全" href="security.html"/>
         <link rel="prev" title="Tornado web 应用程序结构" href="structure.html"/> 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                4.4
+                4.3
               </div>
             
           
@@ -153,23 +153,22 @@
            <div itemprop="articleBody">
             
   <div class="section" id="ui">
-<h1>模版和 UI<a class="headerlink" href="#ui" title="永久链接至标题">¶</a></h1>
+<h1>模版和 UI<a class="headerlink" href="#ui" title="Permalink to this headline">¶</a></h1>
 <p>Tornado includes a simple, fast, and flexible templating language.
 This section describes that language as well as related issues
 such as internationalization.</p>
 <p>Tornado can also be used with any other Python template language,
 although there is no provision for integrating these systems into
-<cite>.RequestHandler.render</cite>.  Simply render the template to a string
-and pass it to <cite>.RequestHandler.write</cite></p>
+<code class="xref py py-obj docutils literal"><span class="pre">RequestHandler.render</span></code>.  Simply render the template to a string
+and pass it to <code class="xref py py-obj docutils literal"><span class="pre">RequestHandler.write</span></code></p>
 <div class="section" id="configuring-templates">
-<h2>Configuring templates<a class="headerlink" href="#configuring-templates" title="永久链接至标题">¶</a></h2>
+<h2>Configuring templates<a class="headerlink" href="#configuring-templates" title="Permalink to this headline">¶</a></h2>
 <p>By default, Tornado looks for template files in the same directory as
 the <code class="docutils literal"><span class="pre">.py</span></code> files that refer to them.  To put your template files in a
-different directory, use the <code class="docutils literal"><span class="pre">template_path</span></code> <cite>Application setting
-&lt;.Application.settings&gt;</cite> (or override <cite>.RequestHandler.get_template_path</cite>
+different directory, use the <code class="docutils literal"><span class="pre">template_path</span></code> <code class="xref py py-obj docutils literal"><span class="pre">Application</span> <span class="pre">setting</span></code> (or override <code class="xref py py-obj docutils literal"><span class="pre">RequestHandler.get_template_path</span></code>
 if you have different template paths for different handlers).</p>
 <p>To load templates from a non-filesystem location, subclass
-<cite>tornado.template.BaseLoader</cite> and pass an instance as the
+<code class="xref py py-obj docutils literal"><span class="pre">tornado.template.BaseLoader</span></code> and pass an instance as the
 <code class="docutils literal"><span class="pre">template_loader</span></code> application setting.</p>
 <p>Compiled templates are cached by default; to turn off this caching
 and reload templates so changes to the underlying files are always
@@ -177,7 +176,7 @@ visible, use the application settings <code class="docutils literal"><span class
 or <code class="docutils literal"><span class="pre">debug=True</span></code>.</p>
 </div>
 <div class="section" id="template-syntax">
-<h2>Template syntax<a class="headerlink" href="#template-syntax" title="永久链接至标题">¶</a></h2>
+<h2>Template syntax<a class="headerlink" href="#template-syntax" title="Permalink to this headline">¶</a></h2>
 <p>A Tornado template is just HTML (or any other text-based format) with
 Python control sequences and expressions embedded within the markup:</p>
 <div class="highlight-python"><div class="highlight"><pre>&lt;html&gt;
@@ -196,6 +195,12 @@ Python control sequences and expressions embedded within the markup:</p>
 </div>
 <p>If you saved this template as &#8220;template.html&#8221; and put it in the same
 directory as your Python file, you could render this template with:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">MainHandler</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">RequestHandler</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Item 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Item 2&quot;</span><span class="p">,</span> <span class="s2">&quot;Item 3&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="s2">&quot;template.html&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;My title&quot;</span><span class="p">,</span> <span class="n">items</span><span class="o">=</span><span class="n">items</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>Tornado templates support <em>control statements</em> and <em>expressions</em>.
 Control statements are surrounded by <code class="docutils literal"><span class="pre">{%</span></code> and <code class="docutils literal"><span class="pre">%}</span></code>, e.g.,
 <code class="docutils literal"><span class="pre">{%</span> <span class="pre">if</span> <span class="pre">len(items)</span> <span class="pre">&gt;</span> <span class="pre">2</span> <span class="pre">%}</span></code>. Expressions are surrounded by <code class="docutils literal"><span class="pre">{{</span></code> and
@@ -204,42 +209,40 @@ Control statements are surrounded by <code class="docutils literal"><span class=
 support <code class="docutils literal"><span class="pre">if</span></code>, <code class="docutils literal"><span class="pre">for</span></code>, <code class="docutils literal"><span class="pre">while</span></code>, and <code class="docutils literal"><span class="pre">try</span></code>, all of which are
 terminated with <code class="docutils literal"><span class="pre">{%</span> <span class="pre">end</span> <span class="pre">%}</span></code>. We also support <em>template inheritance</em>
 using the <code class="docutils literal"><span class="pre">extends</span></code> and <code class="docutils literal"><span class="pre">block</span></code> statements, which are described in
-detail in the documentation for the <cite>tornado.template</cite>.</p>
+detail in the documentation for the <code class="xref py py-obj docutils literal"><span class="pre">tornado.template</span></code>.</p>
 <p>Expressions can be any Python expression, including function calls.
 Template code is executed in a namespace that includes the following
 objects and functions (Note that this list applies to templates
-rendered using <cite>.RequestHandler.render</cite> and
-<cite>~.RequestHandler.render_string</cite>. If you&#8217;re using the
-<cite>tornado.template</cite> module directly outside of a <cite>.RequestHandler</cite> many
+rendered using <code class="xref py py-obj docutils literal"><span class="pre">RequestHandler.render</span></code> and
+<code class="xref py py-obj docutils literal"><span class="pre">render_string</span></code>. If you&#8217;re using the
+<code class="xref py py-obj docutils literal"><span class="pre">tornado.template</span></code> module directly outside of a <code class="xref py py-obj docutils literal"><span class="pre">RequestHandler</span></code> many
 of these entries are not present).</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">escape</span></code>: alias for <cite>tornado.escape.xhtml_escape</cite></li>
-<li><code class="docutils literal"><span class="pre">xhtml_escape</span></code>: alias for <cite>tornado.escape.xhtml_escape</cite></li>
-<li><code class="docutils literal"><span class="pre">url_escape</span></code>: alias for <cite>tornado.escape.url_escape</cite></li>
-<li><code class="docutils literal"><span class="pre">json_encode</span></code>: alias for <cite>tornado.escape.json_encode</cite></li>
-<li><code class="docutils literal"><span class="pre">squeeze</span></code>: alias for <cite>tornado.escape.squeeze</cite></li>
-<li><code class="docutils literal"><span class="pre">linkify</span></code>: alias for <cite>tornado.escape.linkify</cite></li>
-<li><code class="docutils literal"><span class="pre">datetime</span></code>: the Python <cite>datetime</cite> module</li>
-<li><code class="docutils literal"><span class="pre">handler</span></code>: the current <cite>.RequestHandler</cite> object</li>
-<li><code class="docutils literal"><span class="pre">request</span></code>: alias for <cite>handler.request &lt;.HTTPServerRequest&gt;</cite></li>
-<li><code class="docutils literal"><span class="pre">current_user</span></code>: alias for <cite>handler.current_user
-&lt;.RequestHandler.current_user&gt;</cite></li>
-<li><code class="docutils literal"><span class="pre">locale</span></code>: alias for <cite>handler.locale &lt;.Locale&gt;</cite></li>
-<li><code class="docutils literal"><span class="pre">_</span></code>: alias for <cite>handler.locale.translate &lt;.Locale.translate&gt;</cite></li>
-<li><code class="docutils literal"><span class="pre">static_url</span></code>: alias for <cite>handler.static_url &lt;.RequestHandler.static_url&gt;</cite></li>
-<li><code class="docutils literal"><span class="pre">xsrf_form_html</span></code>: alias for <cite>handler.xsrf_form_html
-&lt;.RequestHandler.xsrf_form_html&gt;</cite></li>
-<li><code class="docutils literal"><span class="pre">reverse_url</span></code>: alias for <cite>.Application.reverse_url</cite></li>
+<li><code class="docutils literal"><span class="pre">escape</span></code>: alias for <code class="xref py py-obj docutils literal"><span class="pre">tornado.escape.xhtml_escape</span></code></li>
+<li><code class="docutils literal"><span class="pre">xhtml_escape</span></code>: alias for <code class="xref py py-obj docutils literal"><span class="pre">tornado.escape.xhtml_escape</span></code></li>
+<li><code class="docutils literal"><span class="pre">url_escape</span></code>: alias for <code class="xref py py-obj docutils literal"><span class="pre">tornado.escape.url_escape</span></code></li>
+<li><code class="docutils literal"><span class="pre">json_encode</span></code>: alias for <code class="xref py py-obj docutils literal"><span class="pre">tornado.escape.json_encode</span></code></li>
+<li><code class="docutils literal"><span class="pre">squeeze</span></code>: alias for <code class="xref py py-obj docutils literal"><span class="pre">tornado.escape.squeeze</span></code></li>
+<li><code class="docutils literal"><span class="pre">linkify</span></code>: alias for <code class="xref py py-obj docutils literal"><span class="pre">tornado.escape.linkify</span></code></li>
+<li><code class="docutils literal"><span class="pre">datetime</span></code>: the Python <a class="reference external" href="https://docs.python.org/3.4/library/datetime.html#module-datetime" title="(in Python v3.4)"><code class="xref py py-obj docutils literal"><span class="pre">datetime</span></code></a> module</li>
+<li><code class="docutils literal"><span class="pre">handler</span></code>: the current <code class="xref py py-obj docutils literal"><span class="pre">RequestHandler</span></code> object</li>
+<li><code class="docutils literal"><span class="pre">request</span></code>: alias for <code class="xref py py-obj docutils literal"><span class="pre">handler.request</span></code></li>
+<li><code class="docutils literal"><span class="pre">current_user</span></code>: alias for <code class="xref py py-obj docutils literal"><span class="pre">handler.current_user</span></code></li>
+<li><code class="docutils literal"><span class="pre">locale</span></code>: alias for <code class="xref py py-obj docutils literal"><span class="pre">handler.locale</span></code></li>
+<li><code class="docutils literal"><span class="pre">_</span></code>: alias for <code class="xref py py-obj docutils literal"><span class="pre">handler.locale.translate</span></code></li>
+<li><code class="docutils literal"><span class="pre">static_url</span></code>: alias for <code class="xref py py-obj docutils literal"><span class="pre">handler.static_url</span></code></li>
+<li><code class="docutils literal"><span class="pre">xsrf_form_html</span></code>: alias for <code class="xref py py-obj docutils literal"><span class="pre">handler.xsrf_form_html</span></code></li>
+<li><code class="docutils literal"><span class="pre">reverse_url</span></code>: alias for <code class="xref py py-obj docutils literal"><span class="pre">Application.reverse_url</span></code></li>
 <li>All entries from the <code class="docutils literal"><span class="pre">ui_methods</span></code> and <code class="docutils literal"><span class="pre">ui_modules</span></code>
 <code class="docutils literal"><span class="pre">Application</span></code> settings</li>
-<li>Any keyword arguments passed to <cite>~.RequestHandler.render</cite> or
-<cite>~.RequestHandler.render_string</cite></li>
+<li>Any keyword arguments passed to <code class="xref py py-obj docutils literal"><span class="pre">render</span></code> or
+<code class="xref py py-obj docutils literal"><span class="pre">render_string</span></code></li>
 </ul>
 <p>When you are building a real application, you are going to want to use
 all of the features of Tornado templates, especially template
-inheritance. Read all about those features in the <cite>tornado.template</cite>
+inheritance. Read all about those features in the <code class="xref py py-obj docutils literal"><span class="pre">tornado.template</span></code>
 section (some features, including <code class="docutils literal"><span class="pre">UIModules</span></code> are implemented in the
-<cite>tornado.web</cite> module)</p>
+<code class="xref py py-obj docutils literal"><span class="pre">tornado.web</span></code> module)</p>
 <p>Under the hood, Tornado templates are translated directly to Python. The
 expressions you include in your template are copied verbatim into a
 Python function representing your template. We don&#8217;t try to prevent
@@ -249,9 +252,9 @@ Consequently, if you write random stuff inside of your template
 expressions, you will get random Python errors when you execute the
 template.</p>
 <p>All template output is escaped by default, using the
-<cite>tornado.escape.xhtml_escape</cite> function. This behavior can be changed
-globally by passing <code class="docutils literal"><span class="pre">autoescape=None</span></code> to the <cite>.Application</cite> or
-<cite>.tornado.template.Loader</cite> constructors, for a template file with the
+<code class="xref py py-obj docutils literal"><span class="pre">tornado.escape.xhtml_escape</span></code> function. This behavior can be changed
+globally by passing <code class="docutils literal"><span class="pre">autoescape=None</span></code> to the <code class="xref py py-obj docutils literal"><span class="pre">Application</span></code> or
+<code class="xref py py-obj docutils literal"><span class="pre">tornado.template.Loader</span></code> constructors, for a template file with the
 <code class="docutils literal"><span class="pre">{%</span> <span class="pre">autoescape</span> <span class="pre">None</span> <span class="pre">%}</span></code> directive, or for a single expression by
 replacing <code class="docutils literal"><span class="pre">{{</span> <span class="pre">...</span> <span class="pre">}}</span></code> with <code class="docutils literal"><span class="pre">{%</span> <span class="pre">raw</span> <span class="pre">...%}</span></code>. Additionally, in each of
 these places the name of an alternative escaping function may be used
@@ -260,17 +263,17 @@ instead of <code class="docutils literal"><span class="pre">None</span></code>.<
 XSS vulnerabilities, it is not sufficient in all cases.  Expressions
 that appear in certain locations, such as in Javascript or CSS, may need
 additional escaping.  Additionally, either care must be taken to always
-use double quotes and <cite>.xhtml_escape</cite> in HTML attributes that may contain
+use double quotes and <code class="xref py py-obj docutils literal"><span class="pre">xhtml_escape</span></code> in HTML attributes that may contain
 untrusted content, or a separate escaping function must be used for
 attributes (see e.g. <a class="reference external" href="http://wonko.com/post/html-escaping">http://wonko.com/post/html-escaping</a>)</p>
 </div>
 <div class="section" id="internationalization">
-<h2>Internationalization<a class="headerlink" href="#internationalization" title="永久链接至标题">¶</a></h2>
+<h2>Internationalization<a class="headerlink" href="#internationalization" title="Permalink to this headline">¶</a></h2>
 <p>The locale of the current user (whether they are logged in or not) is
 always available as <code class="docutils literal"><span class="pre">self.locale</span></code> in the request handler and as
 <code class="docutils literal"><span class="pre">locale</span></code> in templates. The name of the locale (e.g., <code class="docutils literal"><span class="pre">en_US</span></code>) is
 available as <code class="docutils literal"><span class="pre">locale.name</span></code>, and you can translate strings with the
-<cite>.Locale.translate</cite> method. Templates also have the global function
+<code class="xref py py-obj docutils literal"><span class="pre">Locale.translate</span></code> method. Templates also have the global function
 call <code class="docutils literal"><span class="pre">_()</span></code> available for string translation. The translate function
 has two forms:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">_</span><span class="p">(</span><span class="s2">&quot;Translate this string&quot;</span><span class="p">)</span>
@@ -308,24 +311,37 @@ placeholders can move around on translation.</p>
 header sent by the user&#8217;s browser. We choose <code class="docutils literal"><span class="pre">en_US</span></code> if we can&#8217;t find
 an appropriate <code class="docutils literal"><span class="pre">Accept-Language</span></code> value. If you let user&#8217;s set their
 locale as a preference, you can override this default locale selection
-by overriding <cite>.RequestHandler.get_user_locale</cite>:</p>
+by overriding <code class="xref py py-obj docutils literal"><span class="pre">RequestHandler.get_user_locale</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">BaseHandler</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">RequestHandler</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_current_user</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">user_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_secure_cookie</span><span class="p">(</span><span class="s2">&quot;user&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">user_id</span><span class="p">:</span> <span class="k">return</span> <span class="bp">None</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">get_user_by_id</span><span class="p">(</span><span class="n">user_id</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_user_locale</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s2">&quot;locale&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_user</span><span class="o">.</span><span class="n">prefs</span><span class="p">:</span>
+            <span class="c1"># Use the Accept-Language header</span>
+            <span class="k">return</span> <span class="bp">None</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_user</span><span class="o">.</span><span class="n">prefs</span><span class="p">[</span><span class="s2">&quot;locale&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
 <p>If <code class="docutils literal"><span class="pre">get_user_locale</span></code> returns <code class="docutils literal"><span class="pre">None</span></code>, we fall back on the
 <code class="docutils literal"><span class="pre">Accept-Language</span></code> header.</p>
-<p>The <cite>tornado.locale</cite> module supports loading translations in two
-formats: the <code class="docutils literal"><span class="pre">.mo</span></code> format used by <cite>gettext</cite> and related tools, and a
+<p>The <code class="xref py py-obj docutils literal"><span class="pre">tornado.locale</span></code> module supports loading translations in two
+formats: the <code class="docutils literal"><span class="pre">.mo</span></code> format used by <a class="reference external" href="https://docs.python.org/3.4/library/gettext.html#module-gettext" title="(in Python v3.4)"><code class="xref py py-obj docutils literal"><span class="pre">gettext</span></code></a> and related tools, and a
 simple <code class="docutils literal"><span class="pre">.csv</span></code> format.  An application will generally call either
-<cite>tornado.locale.load_translations</cite> or
-<cite>tornado.locale.load_gettext_translations</cite> once at startup; see those
+<code class="xref py py-obj docutils literal"><span class="pre">tornado.locale.load_translations</span></code> or
+<code class="xref py py-obj docutils literal"><span class="pre">tornado.locale.load_gettext_translations</span></code> once at startup; see those
 methods for more details on the supported formats..</p>
 <p>You can get the list of supported locales in your application with
-<cite>tornado.locale.get_supported_locales()</cite>. The user&#8217;s locale is chosen
+<code class="xref py py-obj docutils literal"><span class="pre">tornado.locale.get_supported_locales()</span></code>. The user&#8217;s locale is chosen
 to be the closest match based on the supported locales. For example, if
 the user&#8217;s locale is <code class="docutils literal"><span class="pre">es_GT</span></code>, and the <code class="docutils literal"><span class="pre">es</span></code> locale is supported,
 <code class="docutils literal"><span class="pre">self.locale</span></code> will be <code class="docutils literal"><span class="pre">es</span></code> for that request. We fall back on
 <code class="docutils literal"><span class="pre">en_US</span></code> if no close match can be found.</p>
 </div>
 <div class="section" id="ui-modules">
-<span id="id1"></span><h2>UI modules<a class="headerlink" href="#ui-modules" title="永久链接至标题">¶</a></h2>
+<span id="id1"></span><h2>UI modules<a class="headerlink" href="#ui-modules" title="Permalink to this headline">¶</a></h2>
 <p>Tornado supports <em>UI modules</em> to make it easy to support standard,
 reusable UI widgets across your application. UI modules are like special
 function calls to render components of your page, and they can come
@@ -430,7 +446,7 @@ and their own keyword arguments.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; 版权所有 2016, deepdarkness.
+        &copy; Copyright 2009-2016, The Tornado Authors.
 
     </p>
   </div>
@@ -452,7 +468,7 @@ and their own keyword arguments.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'4.4',
+            VERSION:'4.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -461,7 +477,6 @@ and their own keyword arguments.</p>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/translations.js"></script>
 
   
 

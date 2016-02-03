@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Tornado 4.0.1 新特性 &mdash; Tornado 4.4 文档</title>
+  <title>Tornado 4.0.1 新特性 &mdash; Tornado 4.3 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="Tornado 4.4 文档" href="../index.html"/>
+    <link rel="top" title="Tornado 4.3 documentation" href="../index.html"/>
         <link rel="up" title="发布说明" href="../releases.html"/>
         <link rel="next" title="Tornado 4.0 新特性" href="v4.0.0.html"/>
         <link rel="prev" title="Tornado 4.0.2 新特性" href="v4.0.2.html"/> 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                4.4
+                4.3
               </div>
             
           
@@ -174,18 +174,18 @@
            <div itemprop="articleBody">
             
   <div class="section" id="tornado-4-0-1">
-<h1>Tornado 4.0.1 新特性<a class="headerlink" href="#tornado-4-0-1" title="永久链接至标题">¶</a></h1>
+<h1>Tornado 4.0.1 新特性<a class="headerlink" href="#tornado-4-0-1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="aug-12-2014">
-<h2>Aug 12, 2014<a class="headerlink" href="#aug-12-2014" title="永久链接至标题">¶</a></h2>
+<h2>Aug 12, 2014<a class="headerlink" href="#aug-12-2014" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>The build will now fall back to pure-python mode if the C extension
 fails to build for any reason (previously it would fall back for some
 errors but not others).</li>
-<li><cite>.IOLoop.call_at</cite> and <cite>.IOLoop.call_later</cite> now always return
-a timeout handle for use with <cite>.IOLoop.remove_timeout</cite>.</li>
-<li>If any callback of a <cite>.PeriodicCallback</cite> or <cite>.IOStream</cite> returns a
-<cite>.Future</cite>, any error raised in that future will now be logged
-(similar to the behavior of <cite>.IOLoop.add_callback</cite>).</li>
+<li><code class="xref py py-obj docutils literal"><span class="pre">IOLoop.call_at</span></code> and <code class="xref py py-obj docutils literal"><span class="pre">IOLoop.call_later</span></code> now always return
+a timeout handle for use with <code class="xref py py-obj docutils literal"><span class="pre">IOLoop.remove_timeout</span></code>.</li>
+<li>If any callback of a <code class="xref py py-obj docutils literal"><span class="pre">PeriodicCallback</span></code> or <code class="xref py py-obj docutils literal"><span class="pre">IOStream</span></code> returns a
+<code class="xref py py-obj docutils literal"><span class="pre">Future</span></code>, any error raised in that future will now be logged
+(similar to the behavior of <code class="xref py py-obj docutils literal"><span class="pre">IOLoop.add_callback</span></code>).</li>
 <li>Fixed an exception in client-side websocket connections when the
 connection is closed.</li>
 <li><code class="docutils literal"><span class="pre">simple_httpclient</span></code> once again correctly handles 204 status
@@ -215,7 +215,7 @@ timeouts for certain kinds of errors.</li>
 
   <div role="contentinfo">
     <p>
-        &copy; 版权所有 2016, deepdarkness.
+        &copy; Copyright 2009-2016, The Tornado Authors.
 
     </p>
   </div>
@@ -237,7 +237,7 @@ timeouts for certain kinds of errors.</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'4.4',
+            VERSION:'4.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -246,7 +246,6 @@ timeouts for certain kinds of errors.</li>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/translations.js"></script>
 
   
 

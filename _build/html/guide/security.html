@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>认证与安全 &mdash; Tornado 4.4 文档</title>
+  <title>认证与安全 &mdash; Tornado 4.3 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="Tornado 4.4 文档" href="../index.html"/>
+    <link rel="top" title="Tornado 4.3 documentation" href="../index.html"/>
         <link rel="up" title="用户手册" href="../guide.html"/>
         <link rel="next" title="运行和部署" href="running.html"/>
         <link rel="prev" title="模版和 UI" href="templates.html"/> 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                4.4
+                4.3
               </div>
             
           
@@ -153,24 +153,47 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>认证与安全<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<h1>认证与安全<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="cookies-and-secure-cookies">
-<h2>Cookies and secure cookies<a class="headerlink" href="#cookies-and-secure-cookies" title="永久链接至标题">¶</a></h2>
+<h2>Cookies and secure cookies<a class="headerlink" href="#cookies-and-secure-cookies" title="Permalink to this headline">¶</a></h2>
 <p>You can set cookies in the user&#8217;s browser with the <code class="docutils literal"><span class="pre">set_cookie</span></code>
 method:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">MainHandler</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">RequestHandler</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_cookie</span><span class="p">(</span><span class="s2">&quot;mycookie&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_cookie</span><span class="p">(</span><span class="s2">&quot;mycookie&quot;</span><span class="p">,</span> <span class="s2">&quot;myvalue&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Your cookie was not set yet!&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Your cookie was set!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>Cookies are not secure and can easily be modified by clients.  If you
 need to set cookies to, e.g., identify the currently logged in user,
 you need to sign your cookies to prevent forgery. Tornado supports
-signed cookies with the <cite>~.RequestHandler.set_secure_cookie</cite> and
-<cite>~.RequestHandler.get_secure_cookie</cite> methods. To use these methods,
+signed cookies with the <code class="xref py py-obj docutils literal"><span class="pre">set_secure_cookie</span></code> and
+<code class="xref py py-obj docutils literal"><span class="pre">get_secure_cookie</span></code> methods. To use these methods,
 you need to specify a secret key named <code class="docutils literal"><span class="pre">cookie_secret</span></code> when you
 create your application. You can pass in application settings as
 keyword arguments to your application:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">application</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">Application</span><span class="p">([</span>
+    <span class="p">(</span><span class="s2">r&quot;/&quot;</span><span class="p">,</span> <span class="n">MainHandler</span><span class="p">),</span>
+<span class="p">],</span> <span class="n">cookie_secret</span><span class="o">=</span><span class="s2">&quot;__TODO:_GENERATE_YOUR_OWN_RANDOM_VALUE_HERE__&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>Signed cookies contain the encoded value of the cookie in addition to a
 timestamp and an <a class="reference external" href="http://en.wikipedia.org/wiki/HMAC">HMAC</a> signature.
 If the cookie is old or if the signature doesn&#8217;t match,
 <code class="docutils literal"><span class="pre">get_secure_cookie</span></code> will return <code class="docutils literal"><span class="pre">None</span></code> just as if the cookie isn&#8217;t
 set. The secure version of the example above:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">MainHandler</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">RequestHandler</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_secure_cookie</span><span class="p">(</span><span class="s2">&quot;mycookie&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_secure_cookie</span><span class="p">(</span><span class="s2">&quot;mycookie&quot;</span><span class="p">,</span> <span class="s2">&quot;myvalue&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Your cookie was not set yet!&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Your cookie was set!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>Tornado&#8217;s secure cookies guarantee integrity but not confidentiality.
 That is, the cookie cannot be modified but its contents can be seen by the
 user.  The <code class="docutils literal"><span class="pre">cookie_secret</span></code> is a symmetric key and must be kept secret &#8211;
@@ -189,12 +212,12 @@ signing key must then be set as <code class="docutils literal"><span class="pre"
 but all other keys in the dict are allowed for cookie signature validation,
 if the correct key version is set in the cookie.
 To implement cookie updates, the current signing key version can be
-queried via <cite>~.RequestHandler.get_secure_cookie_key_version</cite>.</p>
+queried via <code class="xref py py-obj docutils literal"><span class="pre">get_secure_cookie_key_version</span></code>.</p>
 </div>
 <div class="section" id="user-authentication">
-<span id="id2"></span><h2>User authentication<a class="headerlink" href="#user-authentication" title="永久链接至标题">¶</a></h2>
+<span id="id2"></span><h2>User authentication<a class="headerlink" href="#user-authentication" title="Permalink to this headline">¶</a></h2>
 <p>The currently authenticated user is available in every request handler
-as <cite>self.current_user &lt;.RequestHandler.current_user&gt;</cite>, and in every
+as <code class="xref py py-obj docutils literal"><span class="pre">self.current_user</span></code>, and in every
 template as <code class="docutils literal"><span class="pre">current_user</span></code>. By default, <code class="docutils literal"><span class="pre">current_user</span></code> is
 <code class="docutils literal"><span class="pre">None</span></code>.</p>
 <p>To implement user authentication in your application, you need to
@@ -202,12 +225,57 @@ override the <code class="docutils literal"><span class="pre">get_current_user()
 determine the current user based on, e.g., the value of a cookie. Here
 is an example that lets users log into the application simply by
 specifying a nickname, which is then saved in a cookie:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">BaseHandler</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">RequestHandler</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_current_user</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_secure_cookie</span><span class="p">(</span><span class="s2">&quot;user&quot;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">MainHandler</span><span class="p">(</span><span class="n">BaseHandler</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_user</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">redirect</span><span class="p">(</span><span class="s2">&quot;/login&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">escape</span><span class="o">.</span><span class="n">xhtml_escape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_user</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Hello, &quot;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">LoginHandler</span><span class="p">(</span><span class="n">BaseHandler</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&lt;html&gt;&lt;body&gt;&lt;form action=&quot;/login&quot; method=&quot;post&quot;&gt;&#39;</span>
+                   <span class="s1">&#39;Name: &lt;input type=&quot;text&quot; name=&quot;name&quot;&gt;&#39;</span>
+                   <span class="s1">&#39;&lt;input type=&quot;submit&quot; value=&quot;Sign in&quot;&gt;&#39;</span>
+                   <span class="s1">&#39;&lt;/form&gt;&lt;/body&gt;&lt;/html&gt;&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_secure_cookie</span><span class="p">(</span><span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_argument</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">redirect</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+
+<span class="n">application</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">Application</span><span class="p">([</span>
+    <span class="p">(</span><span class="s2">r&quot;/&quot;</span><span class="p">,</span> <span class="n">MainHandler</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">r&quot;/login&quot;</span><span class="p">,</span> <span class="n">LoginHandler</span><span class="p">),</span>
+<span class="p">],</span> <span class="n">cookie_secret</span><span class="o">=</span><span class="s2">&quot;__TODO:_GENERATE_YOUR_OWN_RANDOM_VALUE_HERE__&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>You can require that the user be logged in using the <a class="reference external" href="http://www.python.org/dev/peps/pep-0318/">Python
 decorator</a>
-<cite>tornado.web.authenticated</cite>. If a request goes to a method with this
+<code class="xref py py-obj docutils literal"><span class="pre">tornado.web.authenticated</span></code>. If a request goes to a method with this
 decorator, and the user is not logged in, they will be redirected to
 <code class="docutils literal"><span class="pre">login_url</span></code> (another application setting). The example above could be
 rewritten:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">MainHandler</span><span class="p">(</span><span class="n">BaseHandler</span><span class="p">):</span>
+    <span class="nd">@tornado.web.authenticated</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">escape</span><span class="o">.</span><span class="n">xhtml_escape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_user</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Hello, &quot;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
+
+<span class="n">settings</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;cookie_secret&quot;</span><span class="p">:</span> <span class="s2">&quot;__TODO:_GENERATE_YOUR_OWN_RANDOM_VALUE_HERE__&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;login_url&quot;</span><span class="p">:</span> <span class="s2">&quot;/login&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">application</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">Application</span><span class="p">([</span>
+    <span class="p">(</span><span class="s2">r&quot;/&quot;</span><span class="p">,</span> <span class="n">MainHandler</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">r&quot;/login&quot;</span><span class="p">,</span> <span class="n">LoginHandler</span><span class="p">),</span>
+<span class="p">],</span> <span class="o">**</span><span class="n">settings</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>If you decorate <code class="docutils literal"><span class="pre">post()</span></code> methods with the <code class="docutils literal"><span class="pre">authenticated</span></code>
 decorator, and the user is not logged in, the server will send a
 <code class="docutils literal"><span class="pre">403</span></code> response.  The <code class="docutils literal"><span class="pre">&#64;authenticated</span></code> decorator is simply
@@ -218,8 +286,8 @@ complete example that uses authentication (and stores user data in a
 MySQL database).</p>
 </div>
 <div class="section" id="third-party-authentication">
-<h2>Third party authentication<a class="headerlink" href="#third-party-authentication" title="永久链接至标题">¶</a></h2>
-<p>The <cite>tornado.auth</cite> module implements the authentication and
+<h2>Third party authentication<a class="headerlink" href="#third-party-authentication" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="xref py py-obj docutils literal"><span class="pre">tornado.auth</span></code> module implements the authentication and
 authorization protocols for a number of the most popular sites on the
 web, including Google/Gmail, Facebook, Twitter, and FriendFeed.
 The module includes methods to log users in via these sites and, where
@@ -228,10 +296,28 @@ download a user&#8217;s address book or publish a Twitter message on their
 behalf.</p>
 <p>Here is an example handler that uses Google for authentication, saving
 the Google credentials in a cookie for later access:</p>
-<p>See the <cite>tornado.auth</cite> module documentation for more details.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">GoogleOAuth2LoginHandler</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">RequestHandler</span><span class="p">,</span>
+                               <span class="n">tornado</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">GoogleOAuth2Mixin</span><span class="p">):</span>
+    <span class="nd">@tornado.gen.coroutine</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_argument</span><span class="p">(</span><span class="s1">&#39;code&#39;</span><span class="p">,</span> <span class="bp">False</span><span class="p">):</span>
+            <span class="n">user</span> <span class="o">=</span> <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_authenticated_user</span><span class="p">(</span>
+                <span class="n">redirect_uri</span><span class="o">=</span><span class="s1">&#39;http://your.site.com/auth/google&#39;</span><span class="p">,</span>
+                <span class="n">code</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_argument</span><span class="p">(</span><span class="s1">&#39;code&#39;</span><span class="p">))</span>
+            <span class="c1"># Save the user with e.g. set_secure_cookie</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">authorize_redirect</span><span class="p">(</span>
+                <span class="n">redirect_uri</span><span class="o">=</span><span class="s1">&#39;http://your.site.com/auth/google&#39;</span><span class="p">,</span>
+                <span class="n">client_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;google_oauth&#39;</span><span class="p">][</span><span class="s1">&#39;key&#39;</span><span class="p">],</span>
+                <span class="n">scope</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;profile&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">],</span>
+                <span class="n">response_type</span><span class="o">=</span><span class="s1">&#39;code&#39;</span><span class="p">,</span>
+                <span class="n">extra_params</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;approval_prompt&#39;</span><span class="p">:</span> <span class="s1">&#39;auto&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>See the <code class="xref py py-obj docutils literal"><span class="pre">tornado.auth</span></code> module documentation for more details.</p>
 </div>
 <div class="section" id="cross-site-request-forgery-protection">
-<span id="xsrf"></span><h2>Cross-site request forgery protection<a class="headerlink" href="#cross-site-request-forgery-protection" title="永久链接至标题">¶</a></h2>
+<span id="xsrf"></span><h2>Cross-site request forgery protection<a class="headerlink" href="#cross-site-request-forgery-protection" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="http://en.wikipedia.org/wiki/Cross-site_request_forgery">Cross-site request
 forgery</a>, or
 XSRF, is a common problem for personalized web applications. See the
@@ -245,12 +331,23 @@ value in the form submission do not match, then the request is likely
 forged.</p>
 <p>Tornado comes with built-in XSRF protection. To include it in your site,
 include the application setting <code class="docutils literal"><span class="pre">xsrf_cookies</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">settings</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;cookie_secret&quot;</span><span class="p">:</span> <span class="s2">&quot;__TODO:_GENERATE_YOUR_OWN_RANDOM_VALUE_HERE__&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;login_url&quot;</span><span class="p">:</span> <span class="s2">&quot;/login&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;xsrf_cookies&quot;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">application</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">Application</span><span class="p">([</span>
+    <span class="p">(</span><span class="s2">r&quot;/&quot;</span><span class="p">,</span> <span class="n">MainHandler</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">r&quot;/login&quot;</span><span class="p">,</span> <span class="n">LoginHandler</span><span class="p">),</span>
+<span class="p">],</span> <span class="o">**</span><span class="n">settings</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>If <code class="docutils literal"><span class="pre">xsrf_cookies</span></code> is set, the Tornado web application will set the
 <code class="docutils literal"><span class="pre">_xsrf</span></code> cookie for all users and reject all <code class="docutils literal"><span class="pre">POST</span></code>, <code class="docutils literal"><span class="pre">PUT</span></code>, and
 <code class="docutils literal"><span class="pre">DELETE</span></code> requests that do not contain a correct <code class="docutils literal"><span class="pre">_xsrf</span></code> value. If
 you turn this setting on, you need to instrument all forms that submit
 via <code class="docutils literal"><span class="pre">POST</span></code> to contain this field. You can do this with the special
-<cite>.UIModule</cite> <code class="docutils literal"><span class="pre">xsrf_form_html()</span></code>, available in all templates:</p>
+<code class="xref py py-obj docutils literal"><span class="pre">UIModule</span></code> <code class="docutils literal"><span class="pre">xsrf_form_html()</span></code>, available in all templates:</p>
 <div class="highlight-python"><div class="highlight"><pre>&lt;form action=&quot;/new_message&quot; method=&quot;post&quot;&gt;
   {% module xsrf_form_html() %}
   &lt;input type=&quot;text&quot; name=&quot;message&quot;/&gt;
@@ -285,7 +382,7 @@ that does not use any regular forms you may need to access
 <code class="docutils literal"><span class="pre">self.xsrf_token</span></code> manually (just reading the property is enough to
 set the cookie as a side effect).</p>
 <p>If you need to customize XSRF behavior on a per-handler basis, you can
-override <cite>.RequestHandler.check_xsrf_cookie()</cite>. For example, if you
+override <code class="xref py py-obj docutils literal"><span class="pre">RequestHandler.check_xsrf_cookie()</span></code>. For example, if you
 have an API whose authentication does not use cookies, you may want to
 disable XSRF protection by making <code class="docutils literal"><span class="pre">check_xsrf_cookie()</span></code> do nothing.
 However, if you support both cookie and non-cookie-based authentication,
@@ -313,7 +410,7 @@ request is authenticated with a cookie.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; 版权所有 2016, deepdarkness.
+        &copy; Copyright 2009-2016, The Tornado Authors.
 
     </p>
   </div>
@@ -335,7 +432,7 @@ request is authenticated with a cookie.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'4.4',
+            VERSION:'4.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -344,7 +441,6 @@ request is authenticated with a cookie.</p>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/translations.js"></script>
 
   
 

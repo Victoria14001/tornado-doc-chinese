@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Tornado 4.0.2 新特性 &mdash; Tornado 4.4 文档</title>
+  <title>Tornado 4.0.2 新特性 &mdash; Tornado 4.3 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="Tornado 4.4 文档" href="../index.html"/>
+    <link rel="top" title="Tornado 4.3 documentation" href="../index.html"/>
         <link rel="up" title="发布说明" href="../releases.html"/>
         <link rel="next" title="Tornado 4.0.1 新特性" href="v4.0.1.html"/>
         <link rel="prev" title="Tornado 4.1 新特性" href="v4.1.0.html"/> 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                4.4
+                4.3
               </div>
             
           
@@ -174,24 +174,24 @@
            <div itemprop="articleBody">
             
   <div class="section" id="tornado-4-0-2">
-<h1>Tornado 4.0.2 新特性<a class="headerlink" href="#tornado-4-0-2" title="永久链接至标题">¶</a></h1>
+<h1>Tornado 4.0.2 新特性<a class="headerlink" href="#tornado-4-0-2" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="sept-10-2014">
-<h2>Sept 10, 2014<a class="headerlink" href="#sept-10-2014" title="永久链接至标题">¶</a></h2>
+<h2>Sept 10, 2014<a class="headerlink" href="#sept-10-2014" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="bug-fixes">
-<h3>Bug fixes<a class="headerlink" href="#bug-fixes" title="永久链接至标题">¶</a></h3>
+<h3>Bug fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Fixed a bug that could sometimes cause a timeout to fire after being
 cancelled.</li>
-<li><cite>.AsyncTestCase</cite> once again passes along arguments to test methods,
+<li><code class="xref py py-obj docutils literal"><span class="pre">AsyncTestCase</span></code> once again passes along arguments to test methods,
 making it compatible with extensions such as Nose&#8217;s test generators.</li>
-<li><cite>.StaticFileHandler</cite> can again compress its responses when gzip is enabled.</li>
+<li><code class="xref py py-obj docutils literal"><span class="pre">StaticFileHandler</span></code> can again compress its responses when gzip is enabled.</li>
 <li><code class="docutils literal"><span class="pre">simple_httpclient</span></code> passes its <code class="docutils literal"><span class="pre">max_buffer_size</span></code> argument to the
 underlying stream.</li>
 <li>Fixed a reference cycle that can lead to increased memory consumption.</li>
-<li><cite>.add_accept_handler</cite> will now limit the number of times it will call
-<cite>~socket.socket.accept</cite> per <cite>.IOLoop</cite> iteration, addressing a potential
+<li><code class="xref py py-obj docutils literal"><span class="pre">add_accept_handler</span></code> will now limit the number of times it will call
+<a class="reference external" href="https://docs.python.org/3.4/library/socket.html#socket.socket.accept" title="(in Python v3.4)"><code class="xref py py-obj docutils literal"><span class="pre">accept</span></code></a> per <code class="xref py py-obj docutils literal"><span class="pre">IOLoop</span></code> iteration, addressing a potential
 starvation issue.</li>
-<li>Improved error handling in <cite>.IOStream.connect</cite> (primarily for FreeBSD
+<li>Improved error handling in <code class="xref py py-obj docutils literal"><span class="pre">IOStream.connect</span></code> (primarily for FreeBSD
 systems)</li>
 </ul>
 </div>
@@ -217,7 +217,7 @@ systems)</li>
 
   <div role="contentinfo">
     <p>
-        &copy; 版权所有 2016, deepdarkness.
+        &copy; Copyright 2009-2016, The Tornado Authors.
 
     </p>
   </div>
@@ -239,7 +239,7 @@ systems)</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'4.4',
+            VERSION:'4.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -248,7 +248,6 @@ systems)</li>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/translations.js"></script>
 
   
 

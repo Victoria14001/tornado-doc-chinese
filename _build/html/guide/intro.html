@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>介绍 &mdash; Tornado 4.4 文档</title>
+  <title>介绍 &mdash; Tornado 4.3 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
 
   
-    <link rel="top" title="Tornado 4.4 文档" href="../index.html"/>
+    <link rel="top" title="Tornado 4.3 documentation" href="../index.html"/>
         <link rel="up" title="用户手册" href="../guide.html"/>
         <link rel="next" title="异步和非阻塞 I/O" href="async.html"/>
         <link rel="prev" title="用户手册" href="../guide.html"/> 
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                4.4
+                4.3
               </div>
             
           
@@ -151,7 +151,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>介绍<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<h1>介绍<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="http://www.tornadoweb.org">Tornado</a> 是一个基于Python的Web服务框架和
 异步网络库, 最早开发与 <a class="reference external" href="http://friendfeed.com">FriendFeed</a> 公司.  通过利用非阻塞网络 I/O, Tornado
 可以承载成千上万的活动连接, 完美的实现了
@@ -160,15 +160,15 @@
 和其他对于每一位用户来说需要长连接的程序.</p>
 <p>Tornado 可以被分为以下四个主要部分:</p>
 <ul class="simple">
-<li>Web 框架 (包括用来创建 Web 应用程序的 <cite>.RequestHandler</cite> 类, 还有很多其它支持的类).</li>
-<li>HTTP 客户端和服务器的实现 (<cite>.HTTPServer</cite> 和  <cite>.AsyncHTTPClient</cite>).</li>
-<li>异步网络库 (<cite>.IOLoop</cite> 和 <cite>.IOStream</cite>), 对 HTTP 的实现提供构建模块, 还可以用来实现其他协议.</li>
-<li>协程库 (<cite>tornado.gen</cite>) 让用户通过更直接的方法来实现异步编程, 而不是通过回调的方式.</li>
+<li>Web 框架 (包括用来创建 Web 应用程序的 <code class="xref py py-obj docutils literal"><span class="pre">RequestHandler</span></code> 类, 还有很多其它支持的类).</li>
+<li>HTTP 客户端和服务器的实现 (<code class="xref py py-obj docutils literal"><span class="pre">HTTPServer</span></code> 和  <code class="xref py py-obj docutils literal"><span class="pre">AsyncHTTPClient</span></code>).</li>
+<li>异步网络库 (<code class="xref py py-obj docutils literal"><span class="pre">IOLoop</span></code> 和 <code class="xref py py-obj docutils literal"><span class="pre">IOStream</span></code>), 对 HTTP 的实现提供构建模块, 还可以用来实现其他协议.</li>
+<li>协程库 (<code class="xref py py-obj docutils literal"><span class="pre">tornado.gen</span></code>) 让用户通过更直接的方法来实现异步编程, 而不是通过回调的方式.</li>
 </ul>
 <p>Tornado web 框架和 HTTP 服务器提供了一整套
 <a class="reference external" href="http://www.python.org/dev/peps/pep-3333/">WSGI</a> 的方案.
-可以让Tornado编写的Web框架运行在一个WSGI容器中 (<cite>.WSGIAdapter</cite>),
-或者使用 Tornado HTTP 服务器作为一个WSGI容器 (<cite>.WSGIContainer</cite>),
+可以让Tornado编写的Web框架运行在一个WSGI容器中 (<code class="xref py py-obj docutils literal"><span class="pre">WSGIAdapter</span></code>),
+或者使用 Tornado HTTP 服务器作为一个WSGI容器 (<code class="xref py py-obj docutils literal"><span class="pre">WSGIContainer</span></code>),
 这两种解决方案都有各自的局限性, 为了充分享受Tornado为您带来的特性,你需要同时使用
 Tornado的web框架和HTTP服务器.</p>
 </div>
@@ -192,7 +192,7 @@ Tornado的web框架和HTTP服务器.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; 版权所有 2016, deepdarkness.
+        &copy; Copyright 2009-2016, The Tornado Authors.
 
     </p>
   </div>
@@ -214,7 +214,7 @@ Tornado的web框架和HTTP服务器.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'4.4',
+            VERSION:'4.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -223,7 +223,6 @@ Tornado的web框架和HTTP服务器.</p>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/translations.js"></script>
 
   
 

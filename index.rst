@@ -63,9 +63,8 @@ Hello, world
 
     pip install tornado
 
-Tornado 可以在 `PyPI <http://pypi.python.org/pypi/tornado>`_ 中被找到.
-而且可以通过 ``pip`` 或者 ``easy_install``来安装. 请注意这样安装Tornado可能不会包含
-源代码中的示例程序, 所以你或许会需要一份软件的源代码.
+Tornado 可以在 `PyPI <http://pypi.python.org/pypi/tornado>`_ 中被找到.而且可以通过 ``pip`` 或者 ``easy_install``来安装.注意这样安装Tornado
+可能不会包含源代码中的示例程序, 所以你或许会需要一份软件的源代码.
 
 **手动安装**: 下载 `tornado-4.4.dev1.tar.gz <https://pypi.python.org/packages/source/t/tornado/tornado-4.4.dev1.tar.gz>`_.
 

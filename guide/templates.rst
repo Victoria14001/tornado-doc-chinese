@@ -60,7 +60,7 @@ Python 控制语句和内建的表达式::
 .. testoutput::
    :hide:
 
-Tornado 模版支持 *控制语句 (control statements) * 和 *表达式 (expressions) *.
+Tornado 模版支持 *控制语句 (control statements)* 和 *表达式 (expressions)* .
 控制语句被 ``{%`` and ``%}`` 包裹着, 例如.,
 ``{% if len(items) > 2 %}``. 表达式被 ``{{`` 和
 ``}}`` 围绕, 再例如., ``{{ items[0] }}``.

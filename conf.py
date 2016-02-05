@@ -10,7 +10,7 @@ master_doc = "index"
 project = "Tornado"
 copyright = "2009-%s, The Tornado Authors" % time.strftime("%Y")
 
-version = release = tornado.version
+version = 'release'
 
 extensions = [
     "sphinx.ext.autodoc",

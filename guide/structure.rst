@@ -136,7 +136,7 @@ JSON).
 
 由于 HTML 的编码形式十分古怪 (例如. 不区分单一参数还是列表参数), Tornado 不会试图去统一这些参数.
 特别的, 我们不会解析 JSON 请求的请求体. 应用程序希望使用 JSON 在编码上代替
- `~.RequestHandler.prepare` 来解析它们的请求::
+`~.RequestHandler.prepare` 来解析它们的请求::
 
     def prepare(self):
         if self.request.headers["Content-Type"].startswith("application/json"):
@@ -188,7 +188,7 @@ JSON).
 
 在 debug 模式中默认的错误页中包含栈调用记录和一行的错误描述信息
  (例如. "500: Internal Server Error"). 要生成一个个人定制的错误页, 覆盖
-`RequestHandler.write_error` (可以声明在父类中用来修改所有的控制器). 这种方式可以正常的通过像 `~RequestHandler.write` 和 `~RequestHandler.render`
+`RequestHandler.write_error` (可以声明在父类中用来修改所有的控制器).这种方式可以正常的通过像 `~RequestHandler.write` 和 `~RequestHandler.render`
 一样的方法来处理输出.
 如果错误时由于异常引起的, ``exc_info`` 将作为关键字参数传递到错误信息中
 (注意: 这里无法确保发生的异常就是当时在 `sys.exc_info` 中的异常, 所以

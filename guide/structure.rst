@@ -96,7 +96,7 @@ JSON).
 处理输入请求
 ~~~~~~~~~~~~~~~~~~~~~~
 
-处理输入请求时可以勇 ``self.request`` 来代表当前处理的请求.
+处理输入请求时可以用 ``self.request`` 来代表当前处理的请求.
 详情请查看
 `~tornado.httputil.HTTPServerRequest` 的定义.
 

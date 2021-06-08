@@ -1,0 +1,895 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../releases/v3.0.0.rst:2
+msgid "Tornado 3.0 新特性"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:5
+msgid "Mar 29, 2013"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:8
+msgid "Highlights"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:10
+msgid ""
+"The ``callback`` argument to many asynchronous methods is now optional, "
+"and these methods return a `.Future`.  The `tornado.gen` module now "
+"understands ``Futures``, and these methods can be used directly without a"
+" `.gen.Task` wrapper."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:14
+msgid ""
+"New function `.IOLoop.current` returns the `.IOLoop` that is running on "
+"the current thread (as opposed to `.IOLoop.instance`, which returns a "
+"specific thread's (usually the main thread's) IOLoop."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:17
+msgid ""
+"New class `tornado.netutil.Resolver` provides an asynchronous interface "
+"to DNS resolution.  The default implementation is still blocking, but "
+"non-blocking implementations are available using one of three optional "
+"dependencies: `~tornado.netutil.ThreadedResolver` using the "
+"`concurrent.futures` thread pool, "
+"``tornado.platform.caresresolver.CaresResolver`` using the ``pycares`` "
+"library, or ``tornado.platform.twisted.TwistedResolver`` using "
+"``twisted``"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:24
+msgid ""
+"Tornado's logging is now less noisy, and it no longer goes directly to "
+"the root logger, allowing for finer-grained configuration."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:26 ../../releases/v3.0.0.rst:323
+msgid ""
+"New class `tornado.process.Subprocess` wraps `subprocess.Popen` with "
+"`.PipeIOStream` access to the child's file descriptors."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:28 ../../releases/v3.0.0.rst:195
+msgid ""
+"`.IOLoop` now has a static `configure <.Configurable.configure>` method "
+"like the one on `.AsyncHTTPClient`, which can be used to select an "
+"`.IOLoop` implementation other than the default."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:31
+msgid ""
+"`.IOLoop` can now optionally use a monotonic clock if available (see "
+"below for more details)."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:36
+msgid "Backwards-incompatible changes"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:38
+msgid ""
+"Python 2.5 is no longer supported.  Python 3 is now supported in a single"
+" codebase instead of using ``2to3``"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:40
+msgid ""
+"The ``tornado.database`` module has been removed.  It is now available as"
+" a separate package, `torndb <https://github.com/bdarnell/torndb>`_"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:42
+msgid ""
+"Functions that take an ``io_loop`` parameter now default to "
+"`.IOLoop.current()` instead of `.IOLoop.instance()`."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:44 ../../releases/v3.0.0.rst:183
+msgid ""
+"Empty HTTP request arguments are no longer ignored.  This applies to "
+"``HTTPRequest.arguments`` and ``RequestHandler.get_argument[s]`` in WSGI "
+"and non-WSGI modes."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:47
+msgid "On Python 3, `tornado.escape.json_encode` no longer accepts byte strings."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:48
+msgid ""
+"On Python 3, the ``get_authenticated_user`` methods in `tornado.auth` now"
+" return character strings instead of byte strings."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:50 ../../releases/v3.0.0.rst:277
+msgid ""
+"``tornado.netutil.TCPServer`` has moved to its own module, "
+"`tornado.tcpserver`."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:52
+msgid "The Tornado test suite now requires ``unittest2`` when run on Python 2.6."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:53 ../../releases/v3.0.0.rst:297
+msgid ""
+"`tornado.options.options` is no longer a subclass of `dict`; attribute-"
+"style access is now required."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:58
+msgid "Detailed changes by module"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:61
+msgid "Multiple modules"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:63
+msgid ""
+"Tornado no longer logs to the root logger.  Details on the new logging "
+"scheme can be found under the `tornado.log` module.  Note that in some "
+"cases this will require that you add an explicit logging configuration in"
+" order to see any output (perhaps just calling "
+"``logging.basicConfig()``), although both `.IOLoop.start()` and "
+"`tornado.options.parse_command_line` will do this for you."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:69
+msgid ""
+"On python 3.2+, methods that take an ``ssl_options`` argument (on "
+"`.SSLIOStream`, `.TCPServer`, and `.HTTPServer`) now accept either a "
+"dictionary of options or an `ssl.SSLContext` object."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:72
+msgid ""
+"New optional dependency on `concurrent.futures` to provide better support"
+" for working with threads.  `concurrent.futures` is in the standard "
+"library for Python 3.2+, and can be installed on older versions with "
+"``pip install futures``."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:78
+msgid "`tornado.autoreload`"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:80
+msgid ""
+"`tornado.autoreload` is now more reliable when there are errors at import"
+" time."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:82
+msgid ""
+"Calling `tornado.autoreload.start` (or creating an `.Application` with "
+"``debug=True``) twice on the same `.IOLoop` now does nothing (instead of "
+"creating multiple periodic callbacks).  Starting autoreload on more than "
+"one `.IOLoop` in the same process now logs a warning."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:86
+msgid ""
+"Scripts run by autoreload no longer inherit ``__future__`` imports used "
+"by Tornado."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:90
+msgid "`tornado.auth`"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:92
+msgid ""
+"On Python 3, the ``get_authenticated_user`` method family now returns "
+"character strings instead of byte strings."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:94
+msgid ""
+"Asynchronous methods defined in `tornado.auth` now return a `.Future`, "
+"and their ``callback`` argument is optional.  The ``Future`` interface is"
+" preferred as it offers better error handling (the previous interface "
+"just logged a warning and returned None)."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:98
+msgid ""
+"The `tornado.auth` mixin classes now define a method "
+"``get_auth_http_client``, which can be overridden to use a non-default "
+"`.AsyncHTTPClient` instance (e.g. to use a different `.IOLoop`)"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:101
+msgid ""
+"Subclasses of `.OAuthMixin` are encouraged to override "
+"`.OAuthMixin._oauth_get_user_future` instead of ``_oauth_get_user``, "
+"although both methods are still supported."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:106
+msgid "`tornado.concurrent`"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:108
+msgid ""
+"New module `tornado.concurrent` contains code to support working with "
+"`concurrent.futures`, or to emulate future-based interface when that "
+"module is not available."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:113
+msgid "``tornado.curl_httpclient``"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:115
+msgid ""
+"Preliminary support for ``tornado.curl_httpclient`` on Python 3.  The "
+"latest official release of pycurl only supports Python 2, but Ubuntu has "
+"a port available in 12.10 (``apt-get install python3-pycurl``).  This "
+"port currently has bugs that prevent it from handling arbitrary binary "
+"data but it should work for textual (utf8) resources."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:120
+msgid ""
+"Fix a crash with libcurl 7.29.0 if a curl object is created and closed "
+"without being used."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:124
+msgid "`tornado.escape`"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:126
+msgid ""
+"On Python 3, `~tornado.escape.json_encode` no longer accepts byte "
+"strings. This mirrors the behavior of the underlying json module.  Python"
+" 2 behavior is unchanged but should be faster."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:131
+msgid "`tornado.gen`"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:133
+msgid ""
+"New decorator ``@gen.coroutine`` is available as an alternative to "
+"``@gen.engine``.  It automatically returns a `.Future`, and within the "
+"function instead of calling a callback you return a value with ``raise "
+"gen.Return(value)`` (or simply ``return value`` in Python 3.3)."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:138
+msgid "Generators may now yield `.Future` objects."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:139
+msgid ""
+"Callbacks produced by `.gen.Callback` and `.gen.Task` are now "
+"automatically stack-context-wrapped, to minimize the risk of context "
+"leaks when used with asynchronous functions that don't do their own "
+"wrapping."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:142
+msgid ""
+"Fixed a memory leak involving generators, `.RequestHandler.flush`, and "
+"clients closing connections while output is being written."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:144
+msgid "Yielding a large list no longer has quadratic performance."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:148
+msgid "`tornado.httpclient`"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:150
+msgid ""
+"`.AsyncHTTPClient.fetch` now returns a `.Future` and its callback "
+"argument is optional.  When the future interface is used, any error will "
+"be raised automatically, as if `.HTTPResponse.rethrow` was called."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:153
+msgid ""
+"`.AsyncHTTPClient.configure` and all `.AsyncHTTPClient` constructors now "
+"take a ``defaults`` keyword argument.  This argument should be a "
+"dictionary, and its values will be used in place of corresponding "
+"attributes of `~tornado.httpclient.HTTPRequest` that are not set."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:157
+msgid ""
+"All unset attributes of `tornado.httpclient.HTTPRequest` are now "
+"``None``.  The default values of some attributes (``connect_timeout``, "
+"``request_timeout``, ``follow_redirects``, ``max_redirects``, "
+"``use_gzip``, ``proxy_password``, ``allow_nonstandard_methods``, and "
+"``validate_cert`` have been moved from `~tornado.httpclient.HTTPRequest` "
+"to the client implementations."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:164
+msgid ""
+"The ``max_clients`` argument to `.AsyncHTTPClient` is now a keyword-only "
+"argument."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:166
+msgid ""
+"Keyword arguments to `.AsyncHTTPClient.configure` are no longer used when"
+" instantiating an implementation subclass directly."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:168
+msgid ""
+"Secondary `.AsyncHTTPClient` callbacks (``streaming_callback``, "
+"``header_callback``, and ``prepare_curl_callback``) now respect "
+"`.StackContext`."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:173
+msgid "`tornado.httpserver`"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:175
+msgid ""
+"`.HTTPServer` no longer logs an error when it is unable to read a second "
+"request from an HTTP 1.1 keep-alive connection."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:177
+msgid ""
+"`.HTTPServer` now takes a ``protocol`` keyword argument which can be set "
+"to ``https`` if the server is behind an SSL-decoding proxy that does not "
+"set any supported X-headers."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:180
+msgid ""
+"``tornado.httpserver.HTTPConnection`` now has a ``set_close_callback`` "
+"method that should be used instead of reaching into its ``stream`` "
+"attribute."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:188
+msgid "`tornado.ioloop`"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:190
+msgid ""
+"New function `.IOLoop.current` returns the ``IOLoop`` that is running on "
+"the current thread (as opposed to `.IOLoop.instance`, which returns a "
+"specific thread's (usually the main thread's) IOLoop)."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:193
+msgid ""
+"New method `.IOLoop.add_future` to run a callback on the IOLoop when an "
+"asynchronous `.Future` finishes."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:198
+msgid ""
+"The `.IOLoop` poller implementations (``select``, ``epoll``, ``kqueue``) "
+"are now available as distinct subclasses of `.IOLoop`.  Instantiating "
+"`.IOLoop` will continue to automatically choose the best available "
+"implementation."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:202
+msgid ""
+"The `.IOLoop` constructor has a new keyword argument ``time_func``, which"
+" can be used to set the time function used when scheduling callbacks. "
+"This is most useful with the `time.monotonic` function, introduced in "
+"Python 3.3 and backported to older versions via the ``monotime`` module."
+"  Using a monotonic clock here avoids problems when the system clock is "
+"changed."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:208
+msgid ""
+"New function `.IOLoop.time` returns the current time according to the "
+"IOLoop.  To use the new monotonic clock functionality, all calls to "
+"`.IOLoop.add_timeout` must be either pass a `datetime.timedelta` or a "
+"time relative to `.IOLoop.time`, not `time.time`.  (`time.time` will "
+"continue to work only as long as the IOLoop's ``time_func`` argument is "
+"not used)."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:214
+msgid ""
+"New convenience method `.IOLoop.run_sync` can be used to start an IOLoop "
+"just long enough to run a single coroutine."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:216
+msgid ""
+"New method `.IOLoop.add_callback_from_signal` is safe to use in a signal "
+"handler (the regular `.add_callback` method may deadlock)."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:218
+msgid ""
+"`.IOLoop` now uses `signal.set_wakeup_fd` where available (Python 2.6+ on"
+" Unix) to avoid a race condition that could result in Python signal "
+"handlers being delayed."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:221
+msgid "Method ``IOLoop.running()`` has been removed."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:222
+msgid "`.IOLoop` has been refactored to better support subclassing."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:223
+msgid ""
+"`.IOLoop.add_callback` and `.add_callback_from_signal` now take ``*args, "
+"**kwargs`` to pass along to the callback."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:227
+msgid "`tornado.iostream`"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:229
+msgid ""
+"`.IOStream.connect` now has an optional ``server_hostname`` argument "
+"which will be used for SSL certificate validation when applicable. "
+"Additionally, when supported (on Python 3.2+), this hostname will be sent"
+" via SNI (and this is supported by ``tornado.simple_httpclient``)"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:233
+msgid ""
+"Much of `.IOStream` has been refactored into a separate class "
+"`.BaseIOStream`."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:235
+msgid ""
+"New class `tornado.iostream.PipeIOStream` provides the IOStream interface"
+" on pipe file descriptors."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:237
+msgid ""
+"`.IOStream` now raises a new exception "
+"``tornado.iostream.StreamClosedError`` when you attempt to read or write "
+"after the stream has been closed (by either side)."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:240
+msgid ""
+"`.IOStream` now simply closes the connection when it gets an "
+"``ECONNRESET`` error, rather than logging it as an error."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:242
+msgid "``IOStream.error`` no longer picks up unrelated exceptions."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:243
+msgid ""
+"`.BaseIOStream.close` now has an ``exc_info`` argument (similar to the "
+"one used in the `logging` module) that can be used to set the stream's "
+"``error`` attribute when closing it."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:246
+msgid ""
+"`.BaseIOStream.read_until_close` now works correctly when it is called "
+"while there is buffered data."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:248
+msgid ""
+"Fixed a major performance regression when run on PyPy (introduced in "
+"Tornado 2.3)."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:252
+msgid "`tornado.log`"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:254
+msgid ""
+"New module containing `.enable_pretty_logging` and `.LogFormatter`, moved"
+" from the options module."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:256
+msgid ""
+"`.LogFormatter` now handles non-ascii data in messages and tracebacks "
+"better."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:259
+msgid "`tornado.netutil`"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:261
+msgid ""
+"New class `tornado.netutil.Resolver` provides an asynchronous interface "
+"to DNS resolution.  The default implementation is still blocking, but "
+"non-blocking implementations are available using one of three optional "
+"dependencies: `~tornado.netutil.ThreadedResolver` using the "
+"`concurrent.futures` thread pool, "
+"`tornado.platform.caresresolver.CaresResolver` using the ``pycares`` "
+"library, or `tornado.platform.twisted.TwistedResolver` using ``twisted``"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:268
+msgid ""
+"New function `tornado.netutil.is_valid_ip` returns true if a given string"
+" is a valid IP (v4 or v6) address."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:270
+msgid ""
+"`tornado.netutil.bind_sockets` has a new ``flags`` argument that can be "
+"used to pass additional flags to ``getaddrinfo``."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:272
+msgid ""
+"`tornado.netutil.bind_sockets` no longer sets ``AI_ADDRCONFIG``; this "
+"will cause it to bind to both ipv4 and ipv6 more often than before."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:274
+msgid ""
+"`tornado.netutil.bind_sockets` now works when Python was compiled with "
+"``--disable-ipv6`` but IPv6 DNS resolution is available on the system."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:280
+msgid "`tornado.options`"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:282
+msgid ""
+"The class underlying the functions in `tornado.options` is now public "
+"(`tornado.options.OptionParser`).  This can be used to create multiple "
+"independent option sets, such as for subcommands."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:285
+msgid ""
+"`tornado.options.parse_config_file` now configures logging automatically "
+"by default, in the same way that `~tornado.options.parse_command_line` "
+"does."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:287
+msgid ""
+"New function `tornado.options.add_parse_callback` schedules a callback to"
+" be run after the command line or config file has been parsed.  The "
+"keyword argument ``final=False`` can be used on either parsing function "
+"to supress these callbacks."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:291
+msgid ""
+"`tornado.options.define` now takes a ``callback`` argument.  This "
+"callback will be run with the new value whenever the option is changed.  "
+"This is especially useful for options that set other options, such as by "
+"reading from a config file."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:295
+msgid ""
+"`tornado.options.parse_command_line` ``--help`` output now goes to "
+"``stderr`` rather than ``stdout``."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:299
+msgid ""
+"`tornado.options.options` (and `.OptionParser` instances generally) now "
+"have a `.mockable()` method that returns a wrapper object compatible with"
+" `mock.patch <unittest.mock.patch>`."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:302
+msgid ""
+"Function ``tornado.options.enable_pretty_logging`` has been moved to the "
+"`tornado.log` module."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:306
+msgid "`tornado.platform.caresresolver`"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:308
+msgid ""
+"New module containing an asynchronous implementation of the `.Resolver` "
+"interface, using the ``pycares`` library."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:312
+msgid "`tornado.platform.twisted`"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:314
+msgid ""
+"New class `tornado.platform.twisted.TwistedIOLoop` allows Tornado code to"
+" be run on the Twisted reactor (as opposed to the existing "
+"`.TornadoReactor`, which bridges the gap in the other direction)."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:317
+msgid ""
+"New class `tornado.platform.twisted.TwistedResolver` is an asynchronous "
+"implementation of the `.Resolver` interface."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:321
+msgid "`tornado.process`"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:327
+msgid "``tornado.simple_httpclient``"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:329
+msgid ""
+"``SimpleAsyncHTTPClient`` now takes a ``resolver`` keyword argument "
+"(which may be passed to either the constructor or `configure "
+"<.Configurable.configure>`), to allow it to use the new non-blocking "
+"`tornado.netutil.Resolver`."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:333
+msgid ""
+"When following redirects, ``SimpleAsyncHTTPClient`` now treats a 302 "
+"response code the same as a 303.  This is contrary to the HTTP spec but "
+"consistent with all browsers and other major HTTP clients (including "
+"``CurlAsyncHTTPClient``)."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:337
+msgid ""
+"The behavior of ``header_callback`` with ``SimpleAsyncHTTPClient`` has "
+"changed and is now the same as that of ``CurlAsyncHTTPClient``.  The "
+"header callback now receives the first line of the response (e.g. "
+"``HTTP/1.0 200 OK``) and the final empty line."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:341
+msgid ""
+"``tornado.simple_httpclient`` now accepts responses with a 304 status "
+"code that include a ``Content-Length`` header."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:343
+msgid ""
+"Fixed a bug in which ``SimpleAsyncHTTPClient`` callbacks were being run "
+"in the client's ``stack_context``."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:347
+msgid "`tornado.stack_context`"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:349
+msgid ""
+"`.stack_context.wrap` now runs the wrapped callback in a more consistent "
+"environment by recreating contexts even if they already exist on the "
+"stack."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:352
+msgid ""
+"Fixed a bug in which stack contexts could leak from one callback chain to"
+" another."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:354
+msgid ""
+"Yield statements inside a ``with`` statement can cause stack contexts to "
+"become inconsistent; an exception will now be raised when this case is "
+"detected."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:359
+msgid "`tornado.template`"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:361
+msgid ""
+"Errors while rendering templates no longer log the generated code, since "
+"the enhanced stack traces (from version 2.1) should make this "
+"unnecessary."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:364
+msgid ""
+"The ``{% apply %}`` directive now works properly with functions that "
+"return both unicode strings and byte strings (previously only byte "
+"strings were supported)."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:367
+msgid ""
+"Code in templates is no longer affected by Tornado's ``__future__`` "
+"imports (which previously included ``absolute_import`` and ``division``)."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:372
+msgid "`tornado.testing`"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:374
+msgid ""
+"New function `tornado.testing.bind_unused_port` both chooses a port and "
+"binds a socket to it, so there is no risk of another process using the "
+"same port.  ``get_unused_port`` is now deprecated."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:377
+msgid ""
+"New decorator `tornado.testing.gen_test` can be used to allow for "
+"yielding `tornado.gen` objects in tests, as an alternative to the "
+"``stop`` and ``wait`` methods of `.AsyncTestCase`."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:380
+msgid ""
+"`tornado.testing.AsyncTestCase` and friends now extend "
+"``unittest2.TestCase`` when it is available (and continue to use the "
+"standard ``unittest`` module when ``unittest2`` is not available)"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:383
+msgid ""
+"`tornado.testing.ExpectLog` can be used as a finer-grained alternative to"
+" `tornado.testing.LogTrapTestCase`"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:385
+msgid ""
+"The command-line interface to `tornado.testing.main` now supports "
+"additional arguments from the underlying `unittest` module: ``verbose``, "
+"``quiet``, ``failfast``, ``catch``, ``buffer``."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:388
+msgid ""
+"The deprecated ``--autoreload`` option of `tornado.testing.main` has been"
+" removed.  Use ``python -m tornado.autoreload`` as a prefix command "
+"instead."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:391
+msgid ""
+"The ``--httpclient`` option of `tornado.testing.main` has been moved to "
+"``tornado.test.runtests`` so as not to pollute the application option "
+"namespace.  The `tornado.options` module's new callback support now makes"
+" it easy to add options from a wrapper script instead of putting all "
+"possible options in `tornado.testing.main`."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:396
+msgid ""
+"`.AsyncHTTPTestCase` no longer calls `.AsyncHTTPClient.close` for tests "
+"that use the singleton `.IOLoop.instance`."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:398
+msgid ""
+"`.LogTrapTestCase` no longer fails when run in unknown logging "
+"configurations.  This allows tests to be run under nose, which does its "
+"own log buffering (`.LogTrapTestCase` doesn't do anything useful in this "
+"case, but at least it doesn't break things any more)."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:404
+msgid "``tornado.util``"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:406
+msgid "``tornado.util.b`` (which was only intended for internal use) is gone."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:409
+msgid "`tornado.web`"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:411
+msgid ""
+"`.RequestHandler.set_header` now overwrites previous header values case-"
+"insensitively."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:413
+msgid ""
+"`tornado.web.RequestHandler` has new attributes ``path_args`` and "
+"``path_kwargs``, which contain the positional and keyword arguments that "
+"are passed to the ``get``/``post``/etc method.  These attributes are set "
+"before those methods are called, so they are available during "
+"``prepare()``"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:418
+msgid ""
+"`tornado.web.ErrorHandler` no longer requires XSRF tokens on ``POST`` "
+"requests, so posts to an unknown url will always return 404 instead of "
+"complaining about XSRF tokens."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:421
+msgid ""
+"Several methods related to HTTP status codes now take a ``reason`` "
+"keyword argument to specify an alternate \"reason\" string (i.e. the "
+"\"Not Found\" in \"HTTP/1.1 404 Not Found\").  It is now possible to set "
+"status codes other than those defined in the spec, as long as a reason "
+"string is given."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:425
+msgid "The ``Date`` HTTP header is now set by default on all responses."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:426
+msgid "``Etag``/``If-None-Match`` requests now work with `.StaticFileHandler`."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:427
+msgid ""
+"`.StaticFileHandler` no longer sets ``Cache-Control: public`` "
+"unnecessarily."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:428
+msgid ""
+"When gzip is enabled in a `tornado.web.Application`, appropriate ``Vary: "
+"Accept-Encoding`` headers are now sent."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:430
+msgid ""
+"It is no longer necessary to pass all handlers for a host in a single "
+"`.Application.add_handlers` call.  Now the request will be matched "
+"against the handlers for any ``host_pattern`` that includes the request's"
+" ``Host`` header."
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:436
+msgid "`tornado.websocket`"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:438
+msgid ""
+"Client-side WebSocket support is now available: "
+"`tornado.websocket.websocket_connect`"
+msgstr ""
+
+#: ../../releases/v3.0.0.rst:440
+msgid ""
+"`.WebSocketHandler` has new methods `~.WebSocketHandler.ping` and "
+"`~.WebSocketHandler.on_pong` to send pings to the browser (not supported "
+"on the ``draft76`` protocol)"
+msgstr ""
+

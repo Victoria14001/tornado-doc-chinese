@@ -1,0 +1,276 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../releases/v2.3.0.rst:2
+msgid "Tornado 2.3 新特性"
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:5
+msgid "May 31, 2012"
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:8
+msgid "HTTP clients"
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:10
+msgid ""
+"`tornado.httpclient.HTTPClient` now supports the same constructor keyword"
+" arguments as `.AsyncHTTPClient`."
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:12
+msgid ""
+"The ``max_clients`` keyword argument to `.AsyncHTTPClient.configure` now "
+"works."
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:13
+msgid ""
+"``tornado.simple_httpclient`` now supports the ``OPTIONS`` and ``PATCH`` "
+"HTTP methods."
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:15
+msgid ""
+"``tornado.simple_httpclient`` is better about closing its sockets instead"
+" of leaving them for garbage collection."
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:17
+msgid ""
+"``tornado.simple_httpclient`` correctly verifies SSL certificates for "
+"URLs containing IPv6 literals (This bug affected Python 2.5 and 2.6)."
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:19
+msgid ""
+"``tornado.simple_httpclient`` no longer includes basic auth credentials "
+"in the ``Host`` header when those credentials are extracted from the URL."
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:21
+msgid ""
+"``tornado.simple_httpclient`` no longer modifies the caller-supplied "
+"header dictionary, which caused problems when following redirects."
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:23
+msgid ""
+"``tornado.curl_httpclient`` now supports client SSL certificates (using "
+"the same ``client_cert`` and ``client_key`` arguments as "
+"``tornado.simple_httpclient``)"
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:28
+msgid "HTTP Server"
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:30
+msgid "`.HTTPServer` now works correctly with paths starting with ``//``"
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:31
+msgid "``HTTPHeaders.copy`` (inherited from `dict.copy`) now works correctly."
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:32
+msgid ""
+"``HTTPConnection.address`` is now always the socket address, even for "
+"non-IP sockets.  ``HTTPRequest.remote_ip`` is still always an IP-style "
+"address (fake data is used for non-IP sockets)"
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:35
+msgid ""
+"Extra data at the end of multipart form bodies is now ignored, which "
+"fixes a compatibility problem with an iOS HTTP client library."
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:40
+msgid "``IOLoop`` and ``IOStream``"
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:42
+msgid ""
+"`.IOStream` now has an ``error`` attribute that can be used to determine "
+"why a socket was closed."
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:44
+msgid ""
+"``tornado.iostream.IOStream.read_until`` and ``read_until_regex`` are "
+"much faster with large input."
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:46
+msgid "``IOStream.write`` performs better when given very large strings."
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:47
+msgid "`.IOLoop.instance()` is now thread-safe."
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:50
+msgid "``tornado.options``"
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:52
+msgid ""
+"`tornado.options` options with ``multiple=True`` that are set more than "
+"once now overwrite rather than append.  This makes it possible to "
+"override values set in ``parse_config_file`` with ``parse_command_line``."
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:55
+msgid "`tornado.options` ``--help`` output is now prettier."
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:56
+msgid "`tornado.options.options` now supports attribute assignment."
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:59
+msgid "``tornado.template``"
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:61
+msgid ""
+"Template files containing non-ASCII (utf8) characters now work on Python "
+"3 regardless of the locale environment variables."
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:63
+msgid ""
+"Templates now support ``else`` clauses in "
+"``try``/``except``/``finally``/``else`` blocks."
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:67
+msgid "``tornado.web``"
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:69
+msgid ""
+"`tornado.web.RequestHandler` now supports the ``PATCH`` HTTP method. Note"
+" that this means any existing methods named ``patch`` in "
+"``RequestHandler`` subclasses will need to be renamed."
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:72
+msgid ""
+"`tornado.web.addslash` and ``removeslash`` decorators now send permanent "
+"redirects (301) instead of temporary (302)."
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:74
+msgid ""
+"`.RequestHandler.flush` now invokes its callback whether there was any "
+"data to flush or not."
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:76
+msgid ""
+"Repeated calls to `.RequestHandler.set_cookie` with the same name now "
+"overwrite the previous cookie instead of producing additional copies."
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:78
+msgid ""
+"``tornado.web.OutputTransform.transform_first_chunk`` now takes and "
+"returns a status code in addition to the headers and chunk.  This is a "
+"backwards-incompatible change to an interface that was never technically "
+"private, but was not included in the documentation and does not appear to"
+" have been used outside Tornado itself."
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:83
+msgid ""
+"Fixed a bug on python versions before 2.6.5 when `.URLSpec` regexes are "
+"constructed from unicode strings and keyword arguments are extracted."
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:85
+msgid ""
+"The ``reverse_url`` function in the template namespace now comes from the"
+" `.RequestHandler` rather than the `.Application`.  (Unless overridden, "
+"`.RequestHandler.reverse_url` is just an alias for the `.Application` "
+"method)."
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:89
+msgid ""
+"The ``Etag`` header is now returned on 304 responses to an ``If-None-"
+"Match`` request, improving compatibility with some caches."
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:91
+msgid ""
+"`tornado.web` will no longer produce responses with status code 304 that "
+"also have entity headers such as ``Content-Length``."
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:95
+msgid "Other modules"
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:97
+msgid ""
+"`tornado.auth.FacebookGraphMixin` no longer sends ``post_args`` "
+"redundantly in the url."
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:99
+msgid ""
+"The ``extra_params`` argument to `tornado.escape.linkify` may now be a "
+"callable, to allow parameters to be chosen separately for each link."
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:101
+msgid ""
+"`tornado.gen` no longer leaks ``StackContexts`` when a ``@gen.engine`` "
+"wrapped function is called repeatedly."
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:103
+msgid ""
+"`tornado.locale.get_supported_locales` no longer takes a meaningless "
+"``cls`` argument."
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:105
+msgid ""
+"`.StackContext` instances now have a deactivation callback that can be "
+"used to prevent further propagation."
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:107
+msgid "`tornado.testing.AsyncTestCase.wait` now resets its timeout on each call."
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:108
+msgid "`tornado.wsgi.WSGIApplication` now parses arguments correctly on Python 3."
+msgstr ""
+
+#: ../../releases/v2.3.0.rst:109
+msgid ""
+"Exception handling on Python 3 has been improved; previously some "
+"exceptions such as `UnicodeDecodeError` would generate ``TypeErrors``"
+msgstr ""
+

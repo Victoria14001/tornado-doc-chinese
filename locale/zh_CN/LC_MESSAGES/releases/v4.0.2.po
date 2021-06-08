@@ -1,0 +1,72 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../releases/v4.0.2.rst:2
+msgid "Tornado 4.0.2 新特性"
+msgstr ""
+
+#: ../../releases/v4.0.2.rst:5
+msgid "Sept 10, 2014"
+msgstr ""
+
+#: ../../releases/v4.0.2.rst:8
+msgid "Bug fixes"
+msgstr ""
+
+#: ../../releases/v4.0.2.rst:10
+msgid ""
+"Fixed a bug that could sometimes cause a timeout to fire after being "
+"cancelled."
+msgstr ""
+
+#: ../../releases/v4.0.2.rst:12
+msgid ""
+"`.AsyncTestCase` once again passes along arguments to test methods, "
+"making it compatible with extensions such as Nose's test generators."
+msgstr ""
+
+#: ../../releases/v4.0.2.rst:14
+msgid ""
+"`.StaticFileHandler` can again compress its responses when gzip is "
+"enabled."
+msgstr ""
+
+#: ../../releases/v4.0.2.rst:15
+msgid ""
+"``simple_httpclient`` passes its ``max_buffer_size`` argument to the "
+"underlying stream."
+msgstr ""
+
+#: ../../releases/v4.0.2.rst:17
+msgid "Fixed a reference cycle that can lead to increased memory consumption."
+msgstr ""
+
+#: ../../releases/v4.0.2.rst:18
+msgid ""
+"`.add_accept_handler` will now limit the number of times it will call "
+"`~socket.socket.accept` per `.IOLoop` iteration, addressing a potential "
+"starvation issue."
+msgstr ""
+
+#: ../../releases/v4.0.2.rst:21
+msgid ""
+"Improved error handling in `.IOStream.connect` (primarily for FreeBSD "
+"systems)"
+msgstr ""
+

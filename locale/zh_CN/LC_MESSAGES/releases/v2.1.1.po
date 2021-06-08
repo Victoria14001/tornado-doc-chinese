@@ -1,0 +1,75 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../releases/v2.1.1.rst:2
+msgid "Tornado 2.1.1 新特性"
+msgstr ""
+
+#: ../../releases/v2.1.1.rst:5
+msgid "Oct 4, 2011"
+msgstr ""
+
+#: ../../releases/v2.1.1.rst:8
+msgid "Bug fixes"
+msgstr ""
+
+#: ../../releases/v2.1.1.rst:10
+msgid ""
+"Fixed handling of closed connections with the ``epoll`` (i.e. Linux) "
+"``IOLoop``.  Previously, closed connections could be shut down too early,"
+" which most often manifested as \"Stream is closed\" exceptions in "
+"``SimpleAsyncHTTPClient``."
+msgstr ""
+
+#: ../../releases/v2.1.1.rst:14
+msgid ""
+"Fixed a case in which chunked responses could be closed prematurely, "
+"leading to truncated output."
+msgstr ""
+
+#: ../../releases/v2.1.1.rst:16
+msgid ""
+"``IOStream.connect`` now reports errors more consistently via logging and"
+" the close callback (this affects e.g. connections to localhost on "
+"FreeBSD)."
+msgstr ""
+
+#: ../../releases/v2.1.1.rst:19
+msgid "``IOStream.read_bytes`` again accepts both ``int`` and ``long`` arguments."
+msgstr ""
+
+#: ../../releases/v2.1.1.rst:20
+msgid ""
+"``PeriodicCallback`` no longer runs repeatedly when ``IOLoop`` iterations"
+" complete faster than the resolution of ``time.time()`` (mainly a problem"
+" on Windows)."
+msgstr ""
+
+#: ../../releases/v2.1.1.rst:25
+msgid "Backwards-compatibility note"
+msgstr ""
+
+#: ../../releases/v2.1.1.rst:27
+msgid ""
+"Listening for ``IOLoop.ERROR`` alone is no longer sufficient for "
+"detecting closed connections on an otherwise unused socket.  "
+"``IOLoop.ERROR`` must always be used in combination with ``READ`` or "
+"``WRITE``."
+msgstr ""
+

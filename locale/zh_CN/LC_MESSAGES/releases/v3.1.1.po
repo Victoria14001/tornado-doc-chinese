@@ -1,0 +1,40 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../releases/v3.1.1.rst:2
+msgid "Tornado 3.1.1 新特性"
+msgstr ""
+
+#: ../../releases/v3.1.1.rst:5
+msgid "Sep 1, 2013"
+msgstr ""
+
+#: ../../releases/v3.1.1.rst:7
+msgid ""
+"`.StaticFileHandler` no longer fails if the client requests a ``Range`` "
+"that is larger than the entire file (Facebook has a crawler that does "
+"this)."
+msgstr ""
+
+#: ../../releases/v3.1.1.rst:9
+msgid ""
+"`.RequestHandler.on_connection_close` now works correctly on subsequent "
+"requests of a keep-alive connection."
+msgstr ""
+

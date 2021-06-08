@@ -1,0 +1,463 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../testing.rst:2
+msgid "``tornado.testing`` --- Unit testing support for asynchronous code"
+msgstr ""
+
+#: of tornado.testing:1
+msgid "Support classes for automated testing."
+msgstr ""
+
+#: of tornado.testing:3
+msgid ""
+"`AsyncTestCase` and `AsyncHTTPTestCase`:  Subclasses of unittest.TestCase"
+" with additional support for testing asynchronous (`.IOLoop`-based) code."
+msgstr ""
+
+#: of tornado.testing:6
+msgid "`ExpectLog`: Make test logs less spammy."
+msgstr ""
+
+#: of tornado.testing:8
+msgid ""
+"`main()`: A simple test runner (wrapper around unittest.main()) with "
+"support for the tornado.autoreload module to rerun the tests when code "
+"changes."
+msgstr ""
+
+#: ../../testing.rst:7
+msgid "Asynchronous test cases"
+msgstr ""
+
+#: of tornado.testing.AsyncTestCase:1
+msgid ""
+"`~unittest.TestCase` subclass for testing `.IOLoop`-based asynchronous "
+"code."
+msgstr ""
+
+#: of tornado.testing.AsyncTestCase:4
+msgid ""
+"The unittest framework is synchronous, so the test must be complete by "
+"the time the test method returns. This means that asynchronous code "
+"cannot be used in quite the same way as usual and must be adapted to fit."
+" To write your tests with coroutines, decorate your test methods with "
+"`tornado.testing.gen_test` instead of `tornado.gen.coroutine`."
+msgstr ""
+
+#: of tornado.testing.AsyncTestCase:11
+msgid ""
+"This class also provides the (deprecated) `stop()` and `wait()` methods "
+"for a more manual style of testing. The test method itself must call "
+"``self.wait()``, and asynchronous callbacks should call ``self.stop()`` "
+"to signal completion."
+msgstr ""
+
+#: of tornado.testing.AsyncTestCase:16
+msgid ""
+"By default, a new `.IOLoop` is constructed for each test and is available"
+" as ``self.io_loop``.  If the code being tested requires a global "
+"`.IOLoop`, subclasses should override `get_new_ioloop` to return it."
+msgstr ""
+
+#: of tornado.testing.AsyncTestCase:20
+msgid ""
+"The `.IOLoop`'s ``start`` and ``stop`` methods should not be called "
+"directly.  Instead, use `self.stop <stop>` and `self.wait <wait>`.  "
+"Arguments passed to ``self.stop`` are returned from ``self.wait``.  It is"
+" possible to have multiple ``wait``/``stop`` cycles in the same test."
+msgstr ""
+
+#: of tornado.testing.AsyncTestCase:26 tornado.testing.gen_test:7
+msgid "Example::"
+msgstr ""
+
+#: of tornado.testing.AsyncHTTPSTestCase:5 tornado.testing.AsyncHTTPTestCase:32
+#: tornado.testing.AsyncTestCase:46
+msgid ""
+"Create an instance of the class that will use the named test method when "
+"executed. Raises a ValueError if the instance does not have a method with"
+" the specified name."
+msgstr ""
+
+#: of tornado.testing.AsyncHTTPTestCase.setUp:1
+#: tornado.testing.AsyncTestCase.setUp:1
+msgid "Hook method for setting up the test fixture before exercising it."
+msgstr ""
+
+#: of tornado.testing.AsyncHTTPTestCase.tearDown:1
+#: tornado.testing.AsyncTestCase.tearDown:1
+msgid "Hook method for deconstructing the test fixture after testing it."
+msgstr ""
+
+#: of tornado.testing.AsyncTestCase.get_new_ioloop:1
+msgid "Returns the `.IOLoop` to use for this test."
+msgstr ""
+
+#: of tornado.testing.AsyncTestCase.get_new_ioloop:3
+msgid ""
+"By default, a new `.IOLoop` is created for each test. Subclasses may "
+"override this method to return `.IOLoop.current()` if it is not "
+"appropriate to use a new `.IOLoop` in each tests (for example, if there "
+"are global singletons using the default `.IOLoop`) or if a per-test event"
+" loop is being provided by another system (such as ``pytest-asyncio``)."
+msgstr ""
+
+#: of tornado.testing.AsyncTestCase.stop:1
+msgid ""
+"Stops the `.IOLoop`, causing one pending (or future) call to `wait()` to "
+"return."
+msgstr ""
+
+#: of tornado.testing.AsyncTestCase.stop:4
+msgid ""
+"Keyword arguments or a single positional argument passed to `stop()` are "
+"saved and will be returned by `wait()`."
+msgstr ""
+
+#: of tornado.testing.AsyncTestCase.stop:9
+#: tornado.testing.AsyncTestCase.wait:16
+msgid "`stop` and `wait` are deprecated; use ``@gen_test`` instead."
+msgstr ""
+
+#: of tornado.testing.AsyncTestCase.wait:1
+msgid "Runs the `.IOLoop` until stop is called or timeout has passed."
+msgstr ""
+
+#: of tornado.testing.AsyncTestCase.wait:3
+msgid ""
+"In the event of a timeout, an exception will be thrown. The default "
+"timeout is 5 seconds; it may be overridden with a ``timeout`` keyword "
+"argument or globally with the ``ASYNC_TEST_TIMEOUT`` environment "
+"variable."
+msgstr ""
+
+#: of tornado.testing.AsyncTestCase.wait:8
+msgid ""
+"If ``condition`` is not ``None``, the `.IOLoop` will be restarted after "
+"`stop()` until ``condition()`` returns ``True``."
+msgstr ""
+
+#: of tornado.testing.AsyncTestCase.wait:11
+msgid "Added the ``ASYNC_TEST_TIMEOUT`` environment variable."
+msgstr ""
+
+#: of tornado.testing.AsyncHTTPTestCase:1
+msgid "A test case that starts up an HTTP server."
+msgstr ""
+
+#: of tornado.testing.AsyncHTTPTestCase:3
+msgid ""
+"Subclasses must override `get_app()`, which returns the "
+"`tornado.web.Application` (or other `.HTTPServer` callback) to be tested."
+" Tests will typically use the provided ``self.http_client`` to fetch URLs"
+" from this server."
+msgstr ""
+
+#: of tornado.testing.AsyncHTTPTestCase:8
+msgid ""
+"Example, assuming the \"Hello, world\" example from the user guide is in "
+"``hello.py``::"
+msgstr ""
+
+#: of tornado.testing.AsyncHTTPTestCase:22
+msgid "That call to ``self.fetch()`` is equivalent to ::"
+msgstr ""
+
+#: of tornado.testing.AsyncHTTPTestCase:27
+msgid ""
+"which illustrates how AsyncTestCase can turn an asynchronous operation, "
+"like ``http_client.fetch()``, into a synchronous operation. If you need "
+"to do other asynchronous operations in tests, you'll probably need to use"
+" ``stop()`` and ``wait()`` yourself."
+msgstr ""
+
+#: of tornado.testing.AsyncHTTPTestCase.get_app:1
+msgid ""
+"Should be overridden by subclasses to return a `tornado.web.Application` "
+"or other `.HTTPServer` callback."
+msgstr ""
+
+#: of tornado.testing.AsyncHTTPTestCase.fetch:1
+msgid "Convenience method to synchronously fetch a URL."
+msgstr ""
+
+#: of tornado.testing.AsyncHTTPTestCase.fetch:3
+msgid ""
+"The given path will be appended to the local server's host and port.  Any"
+" additional keyword arguments will be passed directly to "
+"`.AsyncHTTPClient.fetch` (and so could be used to pass "
+"``method=\"POST\"``, ``body=\"...\"``, etc)."
+msgstr ""
+
+#: of tornado.testing.AsyncHTTPTestCase.fetch:8
+msgid ""
+"If the path begins with http:// or https://, it will be treated as a full"
+" URL and will be fetched as-is."
+msgstr ""
+
+#: of tornado.testing.AsyncHTTPTestCase.fetch:11
+msgid ""
+"If ``raise_error`` is ``True``, a `tornado.httpclient.HTTPError` will be "
+"raised if the response code is not 200. This is the same behavior as the "
+"``raise_error`` argument to `.AsyncHTTPClient.fetch`, but the default is "
+"``False`` here (it's ``True`` in `.AsyncHTTPClient`) because tests often "
+"need to deal with non-200 response codes."
+msgstr ""
+
+#: of tornado.testing.AsyncHTTPTestCase.fetch:17
+msgid "Added support for absolute URLs."
+msgstr ""
+
+#: of tornado.testing.AsyncHTTPTestCase.fetch:22
+msgid "Added the ``raise_error`` argument."
+msgstr ""
+
+#: of tornado.testing.AsyncHTTPTestCase.fetch:26
+msgid ""
+"This method currently turns any exception into an `.HTTPResponse` with "
+"status code 599. In Tornado 6.0, errors other than "
+"`tornado.httpclient.HTTPError` will be passed through, and "
+"``raise_error=False`` will only suppress errors that would be raised due "
+"to non-200 response codes."
+msgstr ""
+
+#: of tornado.testing.AsyncHTTPSTestCase.get_httpserver_options:1
+#: tornado.testing.AsyncHTTPTestCase.get_httpserver_options:1
+msgid ""
+"May be overridden by subclasses to return additional keyword arguments "
+"for the server."
+msgstr ""
+
+#: of tornado.testing.AsyncHTTPTestCase.get_http_port:1
+msgid "Returns the port used by the server."
+msgstr ""
+
+#: of tornado.testing.AsyncHTTPTestCase.get_http_port:3
+msgid "A new port is chosen for each test."
+msgstr ""
+
+#: of tornado.testing.AsyncHTTPTestCase.get_url:1
+msgid "Returns an absolute url for the given path on the test server."
+msgstr ""
+
+#: of tornado.testing.AsyncHTTPSTestCase:1
+msgid "A test case that starts an HTTPS server."
+msgstr ""
+
+#: of tornado.testing.AsyncHTTPSTestCase:3
+msgid "Interface is generally the same as `AsyncHTTPTestCase`."
+msgstr ""
+
+#: of tornado.testing.AsyncHTTPSTestCase.get_ssl_options:1
+msgid "May be overridden by subclasses to select SSL options."
+msgstr ""
+
+#: of tornado.testing.AsyncHTTPSTestCase.get_ssl_options:3
+msgid "By default includes a self-signed testing certificate."
+msgstr ""
+
+#: of tornado.testing.gen_test:1
+msgid "Testing equivalent of ``@gen.coroutine``, to be applied to test methods."
+msgstr ""
+
+#: of tornado.testing.gen_test:3
+msgid ""
+"``@gen.coroutine`` cannot be used on tests because the `.IOLoop` is not "
+"already running.  ``@gen_test`` should be applied to test methods on "
+"subclasses of `AsyncTestCase`."
+msgstr ""
+
+#: of tornado.testing.gen_test:14
+msgid ""
+"By default, ``@gen_test`` times out after 5 seconds. The timeout may be "
+"overridden globally with the ``ASYNC_TEST_TIMEOUT`` environment variable,"
+" or for each test with the ``timeout`` keyword argument::"
+msgstr ""
+
+#: of tornado.testing.gen_test:23
+msgid ""
+"Note that ``@gen_test`` is incompatible with `AsyncTestCase.stop`, "
+"`AsyncTestCase.wait`, and `AsyncHTTPTestCase.fetch`. Use ``yield "
+"self.http_client.fetch(self.get_url())`` as shown above instead."
+msgstr ""
+
+#: of tornado.testing.gen_test:27
+msgid "The ``timeout`` argument and ``ASYNC_TEST_TIMEOUT`` environment variable."
+msgstr ""
+
+#: of tornado.testing.gen_test:31
+msgid ""
+"The wrapper now passes along ``*args, **kwargs`` so it can be used on "
+"functions with arguments."
+msgstr ""
+
+#: ../../testing.rst:21
+msgid "Controlling log output"
+msgstr ""
+
+#: of tornado.testing.ExpectLog:1
+msgid "Context manager to capture and suppress expected log output."
+msgstr ""
+
+#: of tornado.testing.ExpectLog:3
+msgid ""
+"Useful to make tests of error conditions less noisy, while still leaving "
+"unexpected log entries visible.  *Not thread safe.*"
+msgstr ""
+
+#: of tornado.testing.ExpectLog:6
+msgid ""
+"The attribute ``logged_stack`` is set to ``True`` if any exception stack "
+"trace was logged."
+msgstr ""
+
+#: of tornado.testing.ExpectLog:9
+msgid "Usage::"
+msgstr ""
+
+#: of tornado.testing.ExpectLog:14
+msgid "Added the ``logged_stack`` attribute."
+msgstr ""
+
+#: of tornado.testing.ExpectLog:17
+msgid "Constructs an ExpectLog context manager."
+msgstr ""
+
+#: of tornado.testing.ExpectLog
+msgid "参数"
+msgstr ""
+
+#: of tornado.testing.ExpectLog:19
+msgid ""
+"Logger object (or name of logger) to watch.  Pass an empty string to "
+"watch the root logger."
+msgstr ""
+
+#: of tornado.testing.ExpectLog:21
+msgid ""
+"Regular expression to match.  Any log entries on the specified logger "
+"that match this regex will be suppressed."
+msgstr ""
+
+#: of tornado.testing.ExpectLog:23
+msgid ""
+"If true, an exception will be raised if the end of the ``with`` statement"
+" is reached without matching any log entries."
+msgstr ""
+
+#: of tornado.testing.ExpectLog:25
+msgid ""
+"A constant from the ``logging`` module indicating the expected log level."
+" If this parameter is provided, only log messages at this level will be "
+"considered to match. Additionally, the supplied ``logger`` will have its "
+"level adjusted if necessary (for the duration of the ``ExpectLog`` to "
+"enable the expected message."
+msgstr ""
+
+#: of tornado.testing.ExpectLog:32
+msgid "Added the ``level`` parameter."
+msgstr ""
+
+#: of tornado.testing.ExpectLog.filter:1
+msgid "Determine if the specified record is to be logged."
+msgstr ""
+
+#: of tornado.testing.ExpectLog.filter:3
+msgid ""
+"Is the specified record to be logged? Returns 0 for no, nonzero for yes. "
+"If deemed appropriate, the record may be modified in-place."
+msgstr ""
+
+#: ../../testing.rst:30
+msgid "Test runner"
+msgstr ""
+
+#: of tornado.testing.main:1
+msgid "A simple test runner."
+msgstr ""
+
+#: of tornado.testing.main:3
+msgid ""
+"This test runner is essentially equivalent to `unittest.main` from the "
+"standard library, but adds support for Tornado-style option parsing and "
+"log formatting. It is *not* necessary to use this `main` function to run "
+"tests using `AsyncTestCase`; these tests are self-contained and can run "
+"with any test runner."
+msgstr ""
+
+#: of tornado.testing.main:9
+msgid "The easiest way to run a test is via the command line::"
+msgstr ""
+
+#: of tornado.testing.main:13
+msgid ""
+"See the standard library ``unittest`` module for ways in which tests can "
+"be specified."
+msgstr ""
+
+#: of tornado.testing.main:16
+msgid ""
+"Projects with many tests may wish to define a test script like "
+"``tornado/test/runtests.py``.  This script should define a method "
+"``all()`` which returns a test suite and then call "
+"`tornado.testing.main()`.  Note that even when a test script is used, the"
+" ``all()`` test suite may be overridden by naming a single test on the "
+"command line::"
+msgstr ""
+
+#: of tornado.testing.main:28
+msgid ""
+"Additional keyword arguments passed through to ``unittest.main()``. For "
+"example, use ``tornado.testing.main(verbosity=2)`` to show many test "
+"details as they are run. See "
+"http://docs.python.org/library/unittest.html#unittest.main for full "
+"argument list."
+msgstr ""
+
+#: of tornado.testing.main:36
+msgid ""
+"This function produces no output of its own; only that produced by the "
+"`unittest` module (previously it would add a PASS or FAIL log message)."
+msgstr ""
+
+#: ../../testing.rst:35
+msgid "Helper functions"
+msgstr ""
+
+#: of tornado.testing.bind_unused_port:1
+msgid "Binds a server socket to an available port on localhost."
+msgstr ""
+
+#: of tornado.testing.bind_unused_port:3
+msgid "Returns a tuple (socket, port)."
+msgstr ""
+
+#: of tornado.testing.bind_unused_port:5
+msgid "Always binds to ``127.0.0.1`` without resolving the name ``localhost``."
+msgstr ""
+
+#: of tornado.testing.get_async_test_timeout:1
+msgid "Get the global timeout setting for async tests."
+msgstr ""
+
+#: of tornado.testing.get_async_test_timeout:3
+msgid "Returns a float, the timeout in seconds."
+msgstr ""
+

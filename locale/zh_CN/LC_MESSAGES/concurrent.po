@@ -1,0 +1,314 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../concurrent.rst:2
+msgid "``tornado.concurrent`` --- Work with threads and futures"
+msgstr ""
+
+#: of tornado.concurrent:1
+msgid "Utilities for working with ``Future`` objects."
+msgstr ""
+
+#: of tornado.concurrent:3
+msgid ""
+"Tornado previously provided its own ``Future`` class, but now uses "
+"`asyncio.Future`. This module contains utility functions for working with"
+" `asyncio.Future` in a way that is backwards-compatible with Tornado's "
+"old ``Future`` implementation."
+msgstr ""
+
+#: of tornado.concurrent:8
+msgid ""
+"While this module is an important part of Tornado's internal "
+"implementation, applications rarely need to interact with it directly."
+msgstr ""
+
+#: ../../docstring _asyncio.Future:1 of
+msgid "This class is *almost* compatible with concurrent.futures.Future."
+msgstr ""
+
+#: ../../docstring _asyncio.Future:3 of
+msgid "Differences:"
+msgstr ""
+
+#: ../../docstring _asyncio.Future:5 of
+msgid ""
+"result() and exception() do not take a timeout argument and raise an "
+"exception when the future isn't done yet."
+msgstr ""
+
+#: ../../docstring _asyncio.Future:8 of
+msgid ""
+"Callbacks registered with add_done_callback() are always called via the "
+"event loop's call_soon_threadsafe()."
+msgstr ""
+
+#: ../../docstring _asyncio.Future:11 of
+msgid ""
+"This class is not compatible with the wait() and as_completed() methods "
+"in the concurrent.futures package."
+msgstr ""
+
+#: ../../concurrent.rst:16
+msgid "Consumer methods"
+msgstr ""
+
+#: of tornado.concurrent.Future.result:1
+msgid "Return the result this future represents."
+msgstr ""
+
+#: of tornado.concurrent.Future.result:3
+msgid ""
+"If the future has been cancelled, raises CancelledError.  If the future's"
+" result isn't yet available, raises InvalidStateError.  If the future is "
+"done and has an exception set, this exception is raised."
+msgstr ""
+
+#: of tornado.concurrent.Future.exception:1
+msgid "Return the exception that was set on this future."
+msgstr ""
+
+#: of tornado.concurrent.Future.exception:3
+msgid ""
+"The exception (or None if no exception was set) is returned only if the "
+"future is done.  If the future has been cancelled, raises CancelledError."
+"  If the future isn't done yet, raises InvalidStateError."
+msgstr ""
+
+#: of tornado.concurrent.Future.add_done_callback:1
+msgid "Add a callback to be run when the future becomes done."
+msgstr ""
+
+#: of tornado.concurrent.Future.add_done_callback:3
+msgid ""
+"The callback is called with a single argument - the future object. If the"
+" future is already done when this is called, the callback is scheduled "
+"with call_soon."
+msgstr ""
+
+#: of tornado.concurrent.Future.done:1
+msgid "Return True if the future is done."
+msgstr ""
+
+#: of tornado.concurrent.Future.done:3
+msgid ""
+"Done means either that a result / exception are available, or that the "
+"future was cancelled."
+msgstr ""
+
+#: of tornado.concurrent.Future.cancel:1
+msgid "Cancel the future and schedule callbacks."
+msgstr ""
+
+#: of tornado.concurrent.Future.cancel:3
+msgid ""
+"If the future is already done or cancelled, return False.  Otherwise, "
+"change the future's state to cancelled, schedule the callbacks and return"
+" True."
+msgstr ""
+
+#: of tornado.concurrent.Future.cancelled:1
+msgid "Return True if the future was cancelled."
+msgstr ""
+
+#: ../../concurrent.rst:28
+msgid "Producer methods"
+msgstr ""
+
+#: of tornado.concurrent.Future.set_result:1
+msgid "Mark the future done and set its result."
+msgstr ""
+
+#: of tornado.concurrent.Future.set_exception:3
+#: tornado.concurrent.Future.set_result:3
+msgid ""
+"If the future is already done when this method is called, raises "
+"InvalidStateError."
+msgstr ""
+
+#: of tornado.concurrent.Future.set_exception:1
+msgid "Mark the future done and set an exception."
+msgstr ""
+
+#: of tornado.concurrent.DummyExecutor.submit:1
+msgid "Submits a callable to be executed with the given arguments."
+msgstr ""
+
+#: of tornado.concurrent.DummyExecutor.submit:3
+msgid ""
+"Schedules the callable to be executed as fn(*args, **kwargs) and returns "
+"a Future instance representing the execution of the callable."
+msgstr ""
+
+#: of tornado.concurrent.DummyExecutor.submit:6
+msgid "Returns:"
+msgstr ""
+
+#: of tornado.concurrent.DummyExecutor.submit:7
+msgid "A Future representing the given call."
+msgstr ""
+
+#: of tornado.concurrent.DummyExecutor.shutdown:1
+msgid "Clean-up the resources associated with the Executor."
+msgstr ""
+
+#: of tornado.concurrent.DummyExecutor.shutdown:3
+msgid ""
+"It is safe to call this method several times. Otherwise, no other methods"
+" can be called after this one."
+msgstr ""
+
+#: of tornado.concurrent.DummyExecutor.shutdown:8
+msgid "Args:"
+msgstr ""
+
+#: of tornado.concurrent.DummyExecutor.shutdown:8
+msgid "wait: If True then shutdown will not return until all running"
+msgstr ""
+
+#: of tornado.concurrent.DummyExecutor.shutdown:8
+msgid ""
+"futures have finished executing and the resources used by the executor "
+"have been reclaimed."
+msgstr ""
+
+#: of tornado.concurrent.run_on_executor:1
+msgid "Decorator to run a synchronous method asynchronously on an executor."
+msgstr ""
+
+#: of tornado.concurrent.run_on_executor:3
+msgid "Returns a future."
+msgstr ""
+
+#: of tornado.concurrent.run_on_executor:5
+msgid ""
+"The executor to be used is determined by the ``executor`` attributes of "
+"``self``. To use a different attribute name, pass a keyword argument to "
+"the decorator::"
+msgstr ""
+
+#: of tornado.concurrent.run_on_executor:13
+msgid ""
+"This decorator should not be confused with the similarly-named "
+"`.IOLoop.run_in_executor`. In general, using ``run_in_executor`` when "
+"*calling* a blocking method is recommended instead of using this "
+"decorator when *defining* a method. If compatibility with older versions "
+"of Tornado is required, consider defining an executor and using "
+"``executor.submit()`` at the call site."
+msgstr ""
+
+#: of tornado.concurrent.run_on_executor:20
+msgid "Added keyword arguments to use alternative attributes."
+msgstr ""
+
+#: of tornado.concurrent.run_on_executor:23
+msgid "Always uses the current IOLoop instead of ``self.io_loop``."
+msgstr ""
+
+#: of tornado.concurrent.run_on_executor:26
+msgid ""
+"Returns a `.Future` compatible with ``await`` instead of a "
+"`concurrent.futures.Future`."
+msgstr ""
+
+#: of tornado.concurrent.run_on_executor:32
+msgid ""
+"The ``callback`` argument is deprecated and will be removed in 6.0. The "
+"decorator itself is discouraged in new code but will not be removed in "
+"6.0."
+msgstr ""
+
+#: of tornado.concurrent.run_on_executor:38
+msgid "The ``callback`` argument was removed."
+msgstr ""
+
+#: of tornado.concurrent.chain_future:1
+msgid "Chain two futures together so that when one completes, so does the other."
+msgstr ""
+
+#: of tornado.concurrent.chain_future:3
+msgid ""
+"The result (success or failure) of ``a`` will be copied to ``b``, unless "
+"``b`` has already been completed or cancelled by the time ``a`` finishes."
+msgstr ""
+
+#: of tornado.concurrent.chain_future:8
+msgid ""
+"Now accepts both Tornado/asyncio `Future` objects and "
+"`concurrent.futures.Future`."
+msgstr ""
+
+#: of tornado.concurrent.future_set_result_unless_cancelled:1
+msgid "Set the given ``value`` as the `Future`'s result, if not cancelled."
+msgstr ""
+
+#: of tornado.concurrent.future_set_result_unless_cancelled:3
+msgid ""
+"Avoids ``asyncio.InvalidStateError`` when calling ``set_result()`` on a "
+"cancelled `asyncio.Future`."
+msgstr ""
+
+#: of tornado.concurrent.future_set_exception_unless_cancelled:1
+msgid "Set the given ``exc`` as the `Future`'s exception."
+msgstr ""
+
+#: of tornado.concurrent.future_set_exception_unless_cancelled:3
+msgid ""
+"If the Future is already canceled, logs the exception instead. If this "
+"logging is not desired, the caller should explicitly check the state of "
+"the Future and call ``Future.set_exception`` instead of this wrapper."
+msgstr ""
+
+#: of tornado.concurrent.future_set_exception_unless_cancelled:8
+msgid ""
+"Avoids ``asyncio.InvalidStateError`` when calling ``set_exception()`` on "
+"a cancelled `asyncio.Future`."
+msgstr ""
+
+#: of tornado.concurrent.future_set_exc_info:1
+msgid "Set the given ``exc_info`` as the `Future`'s exception."
+msgstr ""
+
+#: of tornado.concurrent.future_set_exc_info:3
+msgid ""
+"Understands both `asyncio.Future` and the extensions in older versions of"
+" Tornado to enable better tracebacks on Python 2."
+msgstr ""
+
+#: of tornado.concurrent.future_set_exc_info:10
+msgid ""
+"If the future is already cancelled, this function is a no-op. (previously"
+" ``asyncio.InvalidStateError`` would be raised)"
+msgstr ""
+
+#: of tornado.concurrent.future_add_done_callback:1
+msgid "Arrange to call ``callback`` when ``future`` is complete."
+msgstr ""
+
+#: of tornado.concurrent.future_add_done_callback:3
+msgid "``callback`` is invoked with one argument, the ``future``."
+msgstr ""
+
+#: of tornado.concurrent.future_add_done_callback:5
+msgid ""
+"If ``future`` is already done, ``callback`` is invoked immediately. This "
+"may differ from the behavior of ``Future.add_done_callback``, which makes"
+" no such guarantee."
+msgstr ""
+

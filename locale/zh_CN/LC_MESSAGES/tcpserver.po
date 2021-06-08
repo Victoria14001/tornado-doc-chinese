@@ -1,0 +1,226 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../tcpserver.rst:2
+msgid "``tornado.tcpserver`` --- Basic `.IOStream`-based TCP server"
+msgstr ""
+
+#: of tornado.tcpserver:1 tornado.tcpserver.TCPServer:1
+msgid "A non-blocking, single-threaded TCP server."
+msgstr ""
+
+#: of tornado.tcpserver.TCPServer:3
+msgid ""
+"To use `TCPServer`, define a subclass which overrides the `handle_stream`"
+" method. For example, a simple echo server could be defined like this::"
+msgstr ""
+
+#: of tornado.tcpserver.TCPServer:19
+msgid ""
+"To make this server serve SSL traffic, send the ``ssl_options`` keyword "
+"argument with an `ssl.SSLContext` object. For compatibility with older "
+"versions of Python ``ssl_options`` may also be a dictionary of keyword "
+"arguments for the `ssl.wrap_socket` method.::"
+msgstr ""
+
+#: of tornado.tcpserver.TCPServer:29
+msgid "`TCPServer` initialization follows one of three patterns:"
+msgstr ""
+
+#: of tornado.tcpserver.TCPServer:31
+msgid "`listen`: simple single-process::"
+msgstr ""
+
+#: of tornado.tcpserver.TCPServer:37
+msgid "`bind`/`start`: simple multi-process::"
+msgstr ""
+
+#: of tornado.tcpserver.TCPServer:44
+msgid ""
+"When using this interface, an `.IOLoop` must *not* be passed to the "
+"`TCPServer` constructor.  `start` will always start the server on the "
+"default singleton `.IOLoop`."
+msgstr ""
+
+#: of tornado.tcpserver.TCPServer:48
+msgid "`add_sockets`: advanced multi-process::"
+msgstr ""
+
+#: of tornado.tcpserver.TCPServer:56
+msgid ""
+"The `add_sockets` interface is more complicated, but it can be used with "
+"`tornado.process.fork_processes` to give you more flexibility in when the"
+" fork happens.  `add_sockets` can also be used in single-process servers "
+"if you want to create your listening sockets in some way other than "
+"`~tornado.netutil.bind_sockets`."
+msgstr ""
+
+#: of tornado.tcpserver.TCPServer:63
+msgid "The ``max_buffer_size`` argument."
+msgstr ""
+
+#: of tornado.tcpserver.TCPServer:66
+msgid "The ``io_loop`` argument has been removed."
+msgstr ""
+
+#: of tornado.tcpserver.TCPServer.listen:1
+msgid "Starts accepting connections on the given port."
+msgstr ""
+
+#: of tornado.tcpserver.TCPServer.listen:3
+msgid ""
+"This method may be called more than once to listen on multiple ports. "
+"`listen` takes effect immediately; it is not necessary to call "
+"`TCPServer.start` afterwards.  It is, however, necessary to start the "
+"`.IOLoop`."
+msgstr ""
+
+#: of tornado.tcpserver.TCPServer.add_sockets:1
+msgid "Makes this server start accepting connections on the given sockets."
+msgstr ""
+
+#: of tornado.tcpserver.TCPServer.add_sockets:3
+msgid ""
+"The ``sockets`` parameter is a list of socket objects such as those "
+"returned by `~tornado.netutil.bind_sockets`. `add_sockets` is typically "
+"used in combination with that method and `tornado.process.fork_processes`"
+" to provide greater control over the initialization of a multi-process "
+"server."
+msgstr ""
+
+#: of tornado.tcpserver.TCPServer.add_socket:1
+msgid "Singular version of `add_sockets`.  Takes a single socket object."
+msgstr ""
+
+#: of tornado.tcpserver.TCPServer.bind:1
+msgid "Binds this server to the given port on the given address."
+msgstr ""
+
+#: of tornado.tcpserver.TCPServer.bind:3
+msgid ""
+"To start the server, call `start`. If you want to run this server in a "
+"single process, you can call `listen` as a shortcut to the sequence of "
+"`bind` and `start` calls."
+msgstr ""
+
+#: of tornado.tcpserver.TCPServer.bind:7
+msgid ""
+"Address may be either an IP address or hostname.  If it's a hostname, the"
+" server will listen on all IP addresses associated with the name.  "
+"Address may be an empty string or None to listen on all available "
+"interfaces.  Family may be set to either `socket.AF_INET` or "
+"`socket.AF_INET6` to restrict to IPv4 or IPv6 addresses, otherwise both "
+"will be used if available."
+msgstr ""
+
+#: of tornado.tcpserver.TCPServer.bind:14
+msgid ""
+"The ``backlog`` argument has the same meaning as for `socket.listen "
+"<socket.socket.listen>`. The ``reuse_port`` argument has the same meaning"
+" as for `.bind_sockets`."
+msgstr ""
+
+#: of tornado.tcpserver.TCPServer.bind:18
+msgid ""
+"This method may be called multiple times prior to `start` to listen on "
+"multiple ports or interfaces."
+msgstr ""
+
+#: of tornado.tcpserver.TCPServer.bind:21
+msgid "Added the ``reuse_port`` argument."
+msgstr ""
+
+#: of tornado.tcpserver.TCPServer.start:1
+msgid "Starts this server in the `.IOLoop`."
+msgstr ""
+
+#: of tornado.tcpserver.TCPServer.start:3
+msgid ""
+"By default, we run the server in this process and do not fork any "
+"additional child process."
+msgstr ""
+
+#: of tornado.tcpserver.TCPServer.start:6
+msgid ""
+"If num_processes is ``None`` or <= 0, we detect the number of cores "
+"available on this machine and fork that number of child processes. If "
+"num_processes is given and > 1, we fork that specific number of sub-"
+"processes."
+msgstr ""
+
+#: of tornado.tcpserver.TCPServer.start:11
+msgid ""
+"Since we use processes and not threads, there is no shared memory between"
+" any server code."
+msgstr ""
+
+#: of tornado.tcpserver.TCPServer.start:14
+msgid ""
+"Note that multiple processes are not compatible with the autoreload "
+"module (or the ``autoreload=True`` option to `tornado.web.Application` "
+"which defaults to True when ``debug=True``). When using multiple "
+"processes, no IOLoops can be created or referenced until after the call "
+"to ``TCPServer.start(n)``."
+msgstr ""
+
+#: of tornado.tcpserver.TCPServer.start:20
+msgid "Values of ``num_processes`` other than 1 are not supported on Windows."
+msgstr ""
+
+#: of tornado.tcpserver.TCPServer.start:22
+msgid "The ``max_restarts`` argument is passed to `.fork_processes`."
+msgstr ""
+
+#: of tornado.tcpserver.TCPServer.start:26
+msgid "Added ``max_restarts`` argument."
+msgstr ""
+
+#: of tornado.tcpserver.TCPServer.stop:1
+msgid "Stops listening for new connections."
+msgstr ""
+
+#: of tornado.tcpserver.TCPServer.stop:3
+msgid ""
+"Requests currently in progress may still continue after the server is "
+"stopped."
+msgstr ""
+
+#: of tornado.tcpserver.TCPServer.handle_stream:1
+msgid "Override to handle a new `.IOStream` from an incoming connection."
+msgstr ""
+
+#: of tornado.tcpserver.TCPServer.handle_stream:3
+msgid ""
+"This method may be a coroutine; if so any exceptions it raises "
+"asynchronously will be logged. Accepting of incoming connections will not"
+" be blocked by this coroutine."
+msgstr ""
+
+#: of tornado.tcpserver.TCPServer.handle_stream:7
+msgid ""
+"If this `TCPServer` is configured for SSL, ``handle_stream`` may be "
+"called before the SSL handshake has completed. Use "
+"`.SSLIOStream.wait_for_handshake` if you need to verify the client's "
+"certificate or use NPN/ALPN."
+msgstr ""
+
+#: of tornado.tcpserver.TCPServer.handle_stream:12
+msgid "Added the option for this method to be a coroutine."
+msgstr ""
+

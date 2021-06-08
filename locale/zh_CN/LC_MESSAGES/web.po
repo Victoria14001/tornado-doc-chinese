@@ -1,0 +1,2015 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../web.rst:2
+msgid "``tornado.web`` --- ``RequestHandler`` 和 ``Application`` 类"
+msgstr ""
+
+#: of tornado.web:1
+msgid ""
+"``tornado.web`` provides a simple web framework with asynchronous "
+"features that allow it to scale to large numbers of open connections, "
+"making it ideal for `long polling "
+"<http://en.wikipedia.org/wiki/Push_technology#Long_polling>`_."
+msgstr "``tornado.web`` 提供了一个具备允许大量开放链接功能的简单的异步web框架，使得很适合 `long polling <http://en.wikipedia.org/wiki/Push_technology#Long_polling>`_."
+
+#: of tornado.web:6
+msgid "Here is a simple \"Hello, world\" example app:"
+msgstr "这里是一个简单的 \"Hello, world\" 示例应用程序："
+
+#: of tornado.web:28
+msgid "See the :doc:`guide` for additional information."
+msgstr "更多信息参见 :doc:`guide` "
+
+#: of tornado.web:31
+msgid "Thread-safety notes"
+msgstr "线程安全注意事项"
+
+#: of tornado.web:33
+msgid ""
+"In general, methods on `RequestHandler` and elsewhere in Tornado are not "
+"thread-safe. In particular, methods such as `~RequestHandler.write()`, "
+"`~RequestHandler.finish()`, and `~RequestHandler.flush()` must only be "
+"called from the main thread. If you use multiple threads it is important "
+"to use `.IOLoop.add_callback` to transfer control back to the main thread"
+" before finishing the request, or to limit your use of other threads to "
+"`.IOLoop.run_in_executor` and ensure that your callbacks running in the "
+"executor do not refer to Tornado objects."
+msgstr "通常来讲，Tornado中  `RequestHandler` 或其他位置的一些方法都是非线程安全的。"
+"特别需要注意的是 `~RequestHandler.write()`, `~RequestHandler.finish()`, and"
+" `~RequestHandler.flush()` 这些方法只能从主线程调用。如果你使用多线程，在完成一个请"
+" 求之前使用 `.IOLoop.add_callback` 将控制权传回主线程是非常重要的，或者限制其他线程"
+" 使用`.IOLoop.run_in_executor` 并且确保在执行器中你的回调函数不会引用Tornado对象。"
+
+#: ../../web.rst:11
+msgid "Request handlers"
+msgstr ""
+
+#: of tornado.web.RequestHandler:1
+msgid "Base class for HTTP request handlers."
+msgstr ""
+
+#: of tornado.web.RequestHandler:3
+msgid ""
+"Subclasses must define at least one of the methods defined in the \"Entry"
+" points\" section below."
+msgstr ""
+
+#: of tornado.web.RequestHandler:6
+msgid ""
+"Applications should not construct `RequestHandler` objects directly and "
+"subclasses should not override ``__init__`` (override "
+"`~RequestHandler.initialize` instead)."
+msgstr ""
+
+#: ../../web.rst:15
+msgid "Entry points"
+msgstr ""
+
+#: of tornado.web.RequestHandler._initialize:1
+msgid "Hook for subclass initialization. Called for each request."
+msgstr ""
+
+#: of tornado.web.RequestHandler._initialize:3
+msgid ""
+"A dictionary passed as the third argument of a ``URLSpec`` will be "
+"supplied as keyword arguments to ``initialize()``."
+msgstr ""
+
+#: of tornado.web.RequestHandler._initialize:6
+msgid "Example::"
+msgstr ""
+
+#: of tornado.web.RequestHandler.prepare:1
+msgid "Called at the beginning of a request before  `get`/`post`/etc."
+msgstr ""
+
+#: of tornado.web.RequestHandler.prepare:3
+msgid ""
+"Override this method to perform common initialization regardless of the "
+"request method."
+msgstr ""
+
+#: of tornado.web.RequestHandler.prepare:6
+msgid ""
+"Asynchronous support: Use ``async def`` or decorate this method with "
+"`.gen.coroutine` to make it asynchronous. If this method returns an  "
+"``Awaitable`` execution will not proceed until the ``Awaitable`` is done."
+msgstr ""
+
+#: of tornado.web.RequestHandler.prepare:11
+msgid "Asynchronous support."
+msgstr ""
+
+#: of tornado.web.RequestHandler.on_finish:1
+msgid "Called after the end of a request."
+msgstr ""
+
+#: of tornado.web.RequestHandler.on_finish:3
+msgid ""
+"Override this method to perform cleanup, logging, etc. This method is a "
+"counterpart to `prepare`.  ``on_finish`` may not produce any output, as "
+"it is called after the response has been sent to the client."
+msgstr ""
+
+#: ../../web.rst:23
+msgid ""
+"Implement any of the following methods (collectively known as the HTTP "
+"verb methods) to handle the corresponding HTTP method. These methods can "
+"be made asynchronous with one of the following decorators: "
+"`.gen.coroutine`, `.return_future`, or `asynchronous`."
+msgstr ""
+
+#: ../../web.rst:28
+msgid ""
+"To support a method not on this list, override the class variable "
+"``SUPPORTED_METHODS``::"
+msgstr ""
+
+#: ../../web.rst:46
+msgid "Input"
+msgstr ""
+
+#: of tornado.web.RequestHandler.get_argument:1
+msgid "Returns the value of the argument with the given name."
+msgstr ""
+
+#: of tornado.web.RequestHandler.get_argument:3
+#: tornado.web.RequestHandler.get_body_argument:4
+#: tornado.web.RequestHandler.get_query_argument:4
+msgid ""
+"If default is not provided, the argument is considered to be required, "
+"and we raise a `MissingArgumentError` if it is missing."
+msgstr ""
+
+#: of tornado.web.RequestHandler.get_argument:6
+msgid ""
+"If the argument appears in the request more than once, we return the last"
+" value."
+msgstr ""
+
+#: of tornado.web.RequestHandler.get_argument:9
+#: tornado.web.RequestHandler.get_arguments:5
+msgid "This method searches both the query and body arguments."
+msgstr ""
+
+#: of tornado.web.RequestHandler.get_arguments:1
+msgid "Returns a list of the arguments with the given name."
+msgstr ""
+
+#: of tornado.web.RequestHandler.get_arguments:3
+#: tornado.web.RequestHandler.get_body_arguments:3
+#: tornado.web.RequestHandler.get_query_arguments:3
+msgid "If the argument is not present, returns an empty list."
+msgstr ""
+
+#: of tornado.web.RequestHandler.get_query_argument:1
+msgid ""
+"Returns the value of the argument with the given name from the request "
+"query string."
+msgstr ""
+
+#: of tornado.web.RequestHandler.get_body_argument:7
+#: tornado.web.RequestHandler.get_query_argument:7
+msgid ""
+"If the argument appears in the url more than once, we return the last "
+"value."
+msgstr ""
+
+#: of tornado.web.RequestHandler.get_query_arguments:1
+msgid "Returns a list of the query arguments with the given name."
+msgstr ""
+
+#: of tornado.web.RequestHandler.get_body_argument:1
+msgid ""
+"Returns the value of the argument with the given name from the request "
+"body."
+msgstr ""
+
+#: of tornado.web.RequestHandler.get_body_arguments:1
+msgid "Returns a list of the body arguments with the given name."
+msgstr ""
+
+#: of tornado.web.RequestHandler.decode_argument:1
+msgid "Decodes an argument from the request."
+msgstr ""
+
+#: of tornado.web.RequestHandler.decode_argument:3
+msgid ""
+"The argument has been percent-decoded and is now a byte string. By "
+"default, this method decodes the argument as utf-8 and returns a unicode "
+"string, but this may be overridden in subclasses."
+msgstr ""
+
+#: of tornado.web.RequestHandler.decode_argument:7
+msgid ""
+"This method is used as a filter for both `get_argument()` and for values "
+"extracted from the url and passed to `get()`/`post()`/etc."
+msgstr ""
+
+#: of tornado.web.RequestHandler.decode_argument:10
+msgid ""
+"The name of the argument is provided if known, but may be None (e.g. for "
+"unnamed groups in the url regex)."
+msgstr ""
+
+#: ../../web.rst:57
+msgid ""
+"The `tornado.httputil.HTTPServerRequest` object containing additional "
+"request parameters including e.g. headers and body data."
+msgstr ""
+
+#: ../../web.rst:63
+msgid ""
+"The ``path_args`` and ``path_kwargs`` attributes contain the positional "
+"and keyword arguments that are passed to the :ref:`HTTP verb methods "
+"<verbs>`.  These attributes are set before those methods are called, so "
+"the values are available during `prepare`."
+msgstr ""
+
+#: ../../web.rst:70
+msgid "Output"
+msgstr ""
+
+#: of tornado.web.RequestHandler.set_status:1
+msgid "Sets the status code for our response."
+msgstr ""
+
+#: of tornado.web.Application.find_handler
+#: tornado.web.Application.get_handler_delegate tornado.web.HTTPError
+#: tornado.web.RequestHandler.set_status
+msgid "参数"
+msgstr ""
+
+#: of tornado.web.RequestHandler.set_status:3
+msgid "Response status code."
+msgstr ""
+
+#: of tornado.web.RequestHandler.set_status:4
+msgid ""
+"Human-readable reason phrase describing the status code. If ``None``, it "
+"will be filled in from `http.client.responses` or \"Unknown\"."
+msgstr ""
+
+#: of tornado.web.RequestHandler.set_status:10
+msgid "No longer validates that the response code is in `http.client.responses`."
+msgstr ""
+
+#: of tornado.web.RequestHandler.set_header:1
+msgid "Sets the given response header name and value."
+msgstr ""
+
+#: of tornado.web.RequestHandler.set_header:3
+msgid ""
+"All header values are converted to strings (`datetime` objects are "
+"formatted according to the HTTP specification for the ``Date`` header)."
+msgstr ""
+
+#: of tornado.web.RequestHandler.add_header:1
+msgid "Adds the given response header and value."
+msgstr ""
+
+#: of tornado.web.RequestHandler.add_header:3
+msgid ""
+"Unlike `set_header`, `add_header` may be called multiple times to return "
+"multiple values for the same header."
+msgstr ""
+
+#: of tornado.web.RequestHandler.clear_header:1
+msgid "Clears an outgoing header, undoing a previous `set_header` call."
+msgstr ""
+
+#: of tornado.web.RequestHandler.clear_header:3
+msgid ""
+"Note that this method does not apply to multi-valued headers set by "
+"`add_header`."
+msgstr ""
+
+#: of tornado.web.RequestHandler.set_default_headers:1
+msgid "Override this to set HTTP headers at the beginning of the request."
+msgstr ""
+
+#: of tornado.web.RequestHandler.set_default_headers:3
+msgid ""
+"For example, this is the place to set a custom ``Server`` header. Note "
+"that setting such headers in the normal flow of request processing may "
+"not do what you want, since headers may be reset during error handling."
+msgstr ""
+
+#: of tornado.web.RequestHandler.write:1
+msgid "Writes the given chunk to the output buffer."
+msgstr ""
+
+#: of tornado.web.RequestHandler.write:3
+msgid "To write the output to the network, use the `flush()` method below."
+msgstr ""
+
+#: of tornado.web.RequestHandler.write:5
+msgid ""
+"If the given chunk is a dictionary, we write it as JSON and set the "
+"Content-Type of the response to be ``application/json``. (if you want to "
+"send JSON as a different ``Content-Type``, call ``set_header`` *after* "
+"calling ``write()``)."
+msgstr ""
+
+#: of tornado.web.RequestHandler.write:10
+msgid ""
+"Note that lists are not converted to JSON because of a potential cross-"
+"site security vulnerability.  All JSON output should be wrapped in a "
+"dictionary.  More details at http://haacked.com/archive/2009/06/25/json-"
+"hijacking.aspx/ and https://github.com/facebook/tornado/issues/1009"
+msgstr ""
+
+#: of tornado.web.RequestHandler.flush:1
+msgid "Flushes the current output buffer to the network."
+msgstr ""
+
+#: of tornado.web.RequestHandler.flush:3
+msgid "Now returns a `.Future` if no callback is given."
+msgstr ""
+
+#: of tornado.web.RequestHandler.flush:8
+msgid "The ``callback`` argument was removed."
+msgstr ""
+
+#: of tornado.web.RequestHandler.finish:1
+msgid "Finishes this response, ending the HTTP request."
+msgstr ""
+
+#: of tornado.web.RequestHandler.finish:3
+msgid ""
+"Passing a ``chunk`` to ``finish()`` is equivalent to passing that chunk "
+"to ``write()`` and then calling ``finish()`` with no arguments."
+msgstr ""
+
+#: of tornado.web.RequestHandler.finish:6
+msgid ""
+"Returns a `.Future` which may optionally be awaited to track the sending "
+"of the response to the client. This `.Future` resolves when all the "
+"response data has been sent, and raises an error if the connection is "
+"closed before all data can be sent."
+msgstr ""
+
+#: of tornado.web.RequestHandler.finish:13 tornado.web.RequestHandler.render:11
+msgid "Now returns a `.Future` instead of ``None``."
+msgstr ""
+
+#: of tornado.web.RequestHandler.render:1
+msgid "Renders the template with the given arguments as the response."
+msgstr ""
+
+#: of tornado.web.RequestHandler.render:3
+msgid ""
+"``render()`` calls ``finish()``, so no other output methods can be called"
+" after it."
+msgstr ""
+
+#: of tornado.web.RequestHandler.render:6
+msgid ""
+"Returns a `.Future` with the same semantics as the one returned by "
+"`finish`. Awaiting this `.Future` is optional."
+msgstr ""
+
+#: of tornado.web.RequestHandler.render_string:1
+msgid "Generate the given template with the given arguments."
+msgstr ""
+
+#: of tornado.web.RequestHandler.render_string:3
+msgid ""
+"We return the generated byte string (in utf8). To generate and write a "
+"template as a response, use render() above."
+msgstr ""
+
+#: of tornado.web.RequestHandler.get_template_namespace:1
+msgid "Returns a dictionary to be used as the default template namespace."
+msgstr ""
+
+#: of tornado.web.RequestHandler.get_template_namespace:3
+msgid "May be overridden by subclasses to add or modify values."
+msgstr ""
+
+#: of tornado.web.RequestHandler.get_template_namespace:5
+msgid ""
+"The results of this method will be combined with additional defaults in "
+"the `tornado.template` module and keyword arguments to `render` or "
+"`render_string`."
+msgstr ""
+
+#: of tornado.web.RequestHandler.redirect:1
+msgid "Sends a redirect to the given (optionally relative) URL."
+msgstr ""
+
+#: of tornado.web.RequestHandler.redirect:3
+msgid ""
+"If the ``status`` argument is specified, that value is used as the HTTP "
+"status code; otherwise either 301 (permanent) or 302 (temporary) is "
+"chosen based on the ``permanent`` argument. The default is 302 "
+"(temporary)."
+msgstr ""
+
+#: of tornado.web.RequestHandler.send_error:1
+msgid "Sends the given HTTP error code to the browser."
+msgstr ""
+
+#: of tornado.web.RequestHandler.send_error:3
+msgid ""
+"If `flush()` has already been called, it is not possible to send an "
+"error, so this method will simply terminate the response. If output has "
+"been written but not yet flushed, it will be discarded and replaced with "
+"the error page."
+msgstr ""
+
+#: of tornado.web.RequestHandler.send_error:8
+msgid ""
+"Override `write_error()` to customize the error page that is returned. "
+"Additional keyword arguments are passed through to `write_error`."
+msgstr ""
+
+#: of tornado.web.RequestHandler.write_error:1
+msgid "Override to implement custom error pages."
+msgstr ""
+
+#: of tornado.web.RequestHandler.write_error:3
+msgid ""
+"``write_error`` may call `write`, `render`, `set_header`, etc to produce "
+"output as usual."
+msgstr ""
+
+#: of tornado.web.RequestHandler.write_error:6
+msgid ""
+"If this error was caused by an uncaught exception (including HTTPError), "
+"an ``exc_info`` triple will be available as ``kwargs[\"exc_info\"]``.  "
+"Note that this exception may not be the \"current\" exception for "
+"purposes of methods like ``sys.exc_info()`` or ``traceback.format_exc``."
+msgstr ""
+
+#: of tornado.web.RequestHandler.clear:1
+msgid "Resets all headers and content for this response."
+msgstr ""
+
+#: of tornado.web.RequestHandler.data_received:1
+msgid "Implement this method to handle streamed request data."
+msgstr ""
+
+#: of tornado.web.RequestHandler.data_received:3
+msgid "Requires the `.stream_request_body` decorator."
+msgstr ""
+
+#: of tornado.web.RequestHandler.data_received:5
+msgid "May be a coroutine for flow control."
+msgstr ""
+
+#: ../../web.rst:91
+msgid "Cookies"
+msgstr ""
+
+#: ../../docstring of tornado.web.RequestHandler.cookies:1
+msgid "An alias for `self.request.cookies <.httputil.HTTPServerRequest.cookies>`."
+msgstr ""
+
+#: of tornado.web.RequestHandler.get_cookie:1
+msgid "Returns the value of the request cookie with the given name."
+msgstr ""
+
+#: of tornado.web.RequestHandler.get_cookie:3
+msgid "If the named cookie is not present, returns ``default``."
+msgstr ""
+
+#: of tornado.web.RequestHandler.get_cookie:5
+msgid ""
+"This method only returns cookies that were present in the request. It "
+"does not see the outgoing cookies set by `set_cookie` in this handler."
+msgstr ""
+
+#: of tornado.web.RequestHandler.set_cookie:1
+msgid "Sets an outgoing cookie name/value with the given options."
+msgstr ""
+
+#: of tornado.web.RequestHandler.set_cookie:3
+msgid ""
+"Newly-set cookies are not immediately visible via `get_cookie`; they are "
+"not present until the next request."
+msgstr ""
+
+#: of tornado.web.RequestHandler.set_cookie:6
+msgid ""
+"expires may be a numeric timestamp as returned by `time.time`, a time "
+"tuple as returned by `time.gmtime`, or a `datetime.datetime` object."
+msgstr ""
+
+#: of tornado.web.RequestHandler.set_cookie:10
+msgid ""
+"Additional keyword arguments are set on the cookies.Morsel directly. See "
+"https://docs.python.org/3/library/http.cookies.html#http.cookies.Morsel "
+"for available attributes."
+msgstr ""
+
+#: of tornado.web.RequestHandler.clear_cookie:1
+msgid "Deletes the cookie with the given name."
+msgstr ""
+
+#: of tornado.web.RequestHandler.clear_cookie:3
+msgid ""
+"Due to limitations of the cookie protocol, you must pass the same path "
+"and domain to clear a cookie as were used when that cookie was set (but "
+"there is no way to find out on the server side which values were used for"
+" a given cookie)."
+msgstr ""
+
+#: of tornado.web.RequestHandler.clear_all_cookies:6
+#: tornado.web.RequestHandler.clear_cookie:8
+#: tornado.web.RequestHandler.set_secure_cookie:17
+msgid ""
+"Similar to `set_cookie`, the effect of this method will not be seen until"
+" the following request."
+msgstr ""
+
+#: of tornado.web.RequestHandler.clear_all_cookies:1
+msgid "Deletes all the cookies the user sent with this request."
+msgstr ""
+
+#: of tornado.web.RequestHandler.clear_all_cookies:3
+msgid "See `clear_cookie` for more information on the path and domain parameters."
+msgstr ""
+
+#: of tornado.web.RequestHandler.clear_all_cookies:11
+msgid "Added the ``path`` and ``domain`` parameters."
+msgstr ""
+
+#: of tornado.web.RequestHandler.get_secure_cookie:1
+msgid "Returns the given signed cookie if it validates, or None."
+msgstr ""
+
+#: of tornado.web.RequestHandler.get_secure_cookie:3
+msgid ""
+"The decoded cookie value is returned as a byte string (unlike "
+"`get_cookie`)."
+msgstr ""
+
+#: of tornado.web.RequestHandler.get_secure_cookie:6
+msgid ""
+"Similar to `get_cookie`, this method only returns cookies that were "
+"present in the request. It does not see outgoing cookies set by "
+"`set_secure_cookie` in this handler."
+msgstr ""
+
+#: of tornado.web.RequestHandler.get_secure_cookie:12
+msgid ""
+"Added the ``min_version`` argument.  Introduced cookie version 2; both "
+"versions 1 and 2 are accepted by default."
+msgstr ""
+
+#: of tornado.web.RequestHandler.get_secure_cookie_key_version:1
+msgid "Returns the signing key version of the secure cookie."
+msgstr ""
+
+#: of tornado.web.RequestHandler.get_secure_cookie_key_version:3
+msgid "The version is returned as int."
+msgstr ""
+
+#: of tornado.web.RequestHandler.set_secure_cookie:1
+msgid "Signs and timestamps a cookie so it cannot be forged."
+msgstr ""
+
+#: of tornado.web.RequestHandler.set_secure_cookie:3
+msgid ""
+"You must specify the ``cookie_secret`` setting in your Application to use"
+" this method. It should be a long, random sequence of bytes to be used as"
+" the HMAC secret for the signature."
+msgstr ""
+
+#: of tornado.web.RequestHandler.set_secure_cookie:7
+msgid "To read a cookie set with this method, use `get_secure_cookie()`."
+msgstr ""
+
+#: of tornado.web.RequestHandler.set_secure_cookie:9
+msgid ""
+"Note that the ``expires_days`` parameter sets the lifetime of the cookie "
+"in the browser, but is independent of the ``max_age_days`` parameter to "
+"`get_secure_cookie`. A value of None limits the lifetime to the current "
+"browser session."
+msgstr ""
+
+#: of tornado.web.RequestHandler.set_secure_cookie:14
+msgid ""
+"Secure cookies may contain arbitrary byte values, not just unicode "
+"strings (unlike regular cookies)"
+msgstr ""
+
+#: of tornado.web.RequestHandler.create_signed_value:9
+#: tornado.web.RequestHandler.set_secure_cookie:22
+msgid ""
+"Added the ``version`` argument.  Introduced cookie version 2 and made it "
+"the default."
+msgstr ""
+
+#: of tornado.web.RequestHandler.create_signed_value:1
+msgid "Signs and timestamps a string so it cannot be forged."
+msgstr ""
+
+#: of tornado.web.RequestHandler.create_signed_value:3
+msgid ""
+"Normally used via set_secure_cookie, but provided as a separate method "
+"for non-cookie uses.  To decode a value not stored as a cookie use the "
+"optional value argument to get_secure_cookie."
+msgstr ""
+
+#: ../../docstring of tornado.web.MIN_SUPPORTED_SIGNED_VALUE_VERSION:1
+msgid "The oldest signed value version supported by this version of Tornado."
+msgstr ""
+
+#: ../../docstring of tornado.web.MIN_SUPPORTED_SIGNED_VALUE_VERSION:3
+msgid "Signed values older than this version cannot be decoded."
+msgstr ""
+
+#: ../../docstring of tornado.web.MAX_SUPPORTED_SIGNED_VALUE_VERSION:1
+msgid "The newest signed value version supported by this version of Tornado."
+msgstr ""
+
+#: ../../docstring of tornado.web.MAX_SUPPORTED_SIGNED_VALUE_VERSION:3
+msgid "Signed values newer than this version cannot be decoded."
+msgstr ""
+
+#: ../../docstring of tornado.web.DEFAULT_SIGNED_VALUE_VERSION:1
+msgid ""
+"The signed value version produced by "
+"`.RequestHandler.create_signed_value`."
+msgstr ""
+
+#: ../../docstring of tornado.web.DEFAULT_SIGNED_VALUE_VERSION:3
+msgid "May be overridden by passing a ``version`` keyword argument."
+msgstr ""
+
+#: ../../docstring of tornado.web.DEFAULT_SIGNED_VALUE_MIN_VERSION:1
+msgid "The oldest signed value accepted by `.RequestHandler.get_secure_cookie`."
+msgstr ""
+
+#: ../../docstring of tornado.web.DEFAULT_SIGNED_VALUE_MIN_VERSION:3
+msgid "May be overridden by passing a ``min_version`` keyword argument."
+msgstr ""
+
+#: ../../web.rst:108
+msgid "Other"
+msgstr ""
+
+#: ../../web.rst:112
+msgid "The `Application` object serving this request"
+msgstr ""
+
+#: of tornado.web.RequestHandler.check_etag_header:1
+msgid "Checks the ``Etag`` header against requests's ``If-None-Match``."
+msgstr ""
+
+#: of tornado.web.RequestHandler.check_etag_header:3
+msgid ""
+"Returns ``True`` if the request's Etag matches and a 304 should be "
+"returned. For example::"
+msgstr ""
+
+#: of tornado.web.RequestHandler.check_etag_header:11
+msgid ""
+"This method is called automatically when the request is finished, but may"
+" be called earlier for applications that override `compute_etag` and want"
+" to do an early check for ``If-None-Match`` before completing the "
+"request.  The ``Etag`` header should be set (perhaps with "
+"`set_etag_header`) before calling this method."
+msgstr ""
+
+#: of tornado.web.RequestHandler.check_xsrf_cookie:1
+msgid "Verifies that the ``_xsrf`` cookie matches the ``_xsrf`` argument."
+msgstr ""
+
+#: of tornado.web.RequestHandler.check_xsrf_cookie:3
+msgid ""
+"To prevent cross-site request forgery, we set an ``_xsrf`` cookie and "
+"include the same value as a non-cookie field with all ``POST`` requests. "
+"If the two do not match, we reject the form submission as a potential "
+"forgery."
+msgstr ""
+
+#: of tornado.web.RequestHandler.check_xsrf_cookie:8
+msgid ""
+"The ``_xsrf`` value may be set as either a form field named ``_xsrf`` or "
+"in a custom HTTP header named ``X-XSRFToken`` or ``X-CSRFToken`` (the "
+"latter is accepted for compatibility with Django)."
+msgstr ""
+
+#: ../../docstring of tornado.web.RequestHandler.check_xsrf_cookie:12
+#: tornado.web.RequestHandler.xsrf_token:8
+msgid "See http://en.wikipedia.org/wiki/Cross-site_request_forgery"
+msgstr ""
+
+#: of tornado.web.RequestHandler.check_xsrf_cookie:14
+msgid "Added support for cookie version 2.  Both versions 1 and 2 are supported."
+msgstr ""
+
+#: of tornado.web.RequestHandler.compute_etag:1
+msgid "Computes the etag header to be used for this request."
+msgstr ""
+
+#: of tornado.web.RequestHandler.compute_etag:3
+msgid "By default uses a hash of the content written so far."
+msgstr ""
+
+#: of tornado.web.RequestHandler.compute_etag:5
+msgid ""
+"May be overridden to provide custom etag implementations, or may return "
+"None to disable tornado's default etag support."
+msgstr ""
+
+#: of tornado.web.RequestHandler.create_template_loader:1
+msgid "Returns a new template loader for the given path."
+msgstr ""
+
+#: of tornado.web.RequestHandler.create_template_loader:3
+msgid ""
+"May be overridden by subclasses.  By default returns a directory-based "
+"loader on the given path, using the ``autoescape`` and "
+"``template_whitespace`` application settings.  If a ``template_loader`` "
+"application setting is supplied, uses that instead."
+msgstr ""
+
+#: ../../docstring of tornado.web.RequestHandler.current_user:1
+msgid "The authenticated user for this request."
+msgstr ""
+
+#: ../../docstring of tornado.web.RequestHandler.current_user:3
+msgid "This is set in one of two ways:"
+msgstr ""
+
+#: ../../docstring of tornado.web.RequestHandler.current_user:5
+msgid ""
+"A subclass may override `get_current_user()`, which will be called "
+"automatically the first time ``self.current_user`` is accessed. "
+"`get_current_user()` will only be called once per request, and is cached "
+"for future access::"
+msgstr ""
+
+#: ../../docstring of tornado.web.RequestHandler.current_user:16
+msgid ""
+"It may be set as a normal variable, typically from an overridden "
+"`prepare()`::"
+msgstr ""
+
+#: ../../docstring of tornado.web.RequestHandler.current_user:25
+msgid ""
+"Note that `prepare()` may be a coroutine while `get_current_user()` may "
+"not, so the latter form is necessary if loading the user requires "
+"asynchronous operations."
+msgstr ""
+
+#: ../../docstring of tornado.web.RequestHandler.current_user:29
+msgid "The user object may be any type of the application's choosing."
+msgstr ""
+
+#: of tornado.web.RequestHandler.get_browser_locale:1
+msgid "Determines the user's locale from ``Accept-Language`` header."
+msgstr ""
+
+#: of tornado.web.RequestHandler.get_browser_locale:3
+msgid "See http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4"
+msgstr ""
+
+#: of tornado.web.RequestHandler.get_current_user:1
+msgid "Override to determine the current user from, e.g., a cookie."
+msgstr ""
+
+#: of tornado.web.RequestHandler.get_current_user:3
+msgid "This method may not be a coroutine."
+msgstr ""
+
+#: of tornado.web.RequestHandler.get_login_url:1
+msgid "Override to customize the login URL based on the request."
+msgstr ""
+
+#: of tornado.web.RequestHandler.get_login_url:3
+msgid "By default, we use the ``login_url`` application setting."
+msgstr ""
+
+#: of tornado.web.RequestHandler.get_status:1
+msgid "Returns the status code for our response."
+msgstr ""
+
+#: of tornado.web.RequestHandler.get_template_path:1
+msgid "Override to customize template path for each handler."
+msgstr ""
+
+#: of tornado.web.RequestHandler.get_template_path:3
+msgid ""
+"By default, we use the ``template_path`` application setting. Return None"
+" to load templates relative to the calling file."
+msgstr ""
+
+#: of tornado.web.RequestHandler.get_user_locale:1
+msgid "Override to determine the locale from the authenticated user."
+msgstr ""
+
+#: of tornado.web.RequestHandler.get_user_locale:3
+msgid "If None is returned, we fall back to `get_browser_locale()`."
+msgstr ""
+
+#: of tornado.web.RequestHandler.get_user_locale:5
+msgid ""
+"This method should return a `tornado.locale.Locale` object, most likely "
+"obtained via a call like ``tornado.locale.get(\"en\")``"
+msgstr ""
+
+#: ../../docstring of tornado.web.RequestHandler.locale:1
+msgid "The locale for the current session."
+msgstr ""
+
+#: ../../docstring of tornado.web.RequestHandler.locale:3
+msgid ""
+"Determined by either `get_user_locale`, which you can override to set the"
+" locale based on, e.g., a user preference stored in a database, or "
+"`get_browser_locale`, which uses the ``Accept-Language`` header."
+msgstr ""
+
+#: of tornado.web.RequestHandler.log_exception:1
+msgid "Override to customize logging of uncaught exceptions."
+msgstr ""
+
+#: of tornado.web.RequestHandler.log_exception:3
+msgid ""
+"By default logs instances of `HTTPError` as warnings without stack traces"
+" (on the ``tornado.general`` logger), and all other exceptions as errors "
+"with stack traces (on the ``tornado.application`` logger)."
+msgstr ""
+
+#: of tornado.web.RequestHandler.on_connection_close:1
+msgid "Called in async handlers if the client closed the connection."
+msgstr ""
+
+#: of tornado.web.RequestHandler.on_connection_close:3
+msgid ""
+"Override this to clean up resources associated with long-lived "
+"connections.  Note that this method is called only if the connection was "
+"closed during asynchronous processing; if you need to do cleanup after "
+"every request override `on_finish` instead."
+msgstr ""
+
+#: of tornado.web.RequestHandler.on_connection_close:9
+msgid ""
+"Proxies may keep a connection open for a time (perhaps indefinitely) "
+"after the client has gone away, so this method may not be called promptly"
+" after the end user closes their connection."
+msgstr ""
+
+#: of tornado.web.RequestHandler.require_setting:1
+msgid "Raises an exception if the given app setting is not defined."
+msgstr ""
+
+#: of tornado.web.RequestHandler.reverse_url:1
+msgid "Alias for `Application.reverse_url`."
+msgstr ""
+
+#: of tornado.web.RequestHandler.set_etag_header:1
+msgid "Sets the response's Etag header using ``self.compute_etag()``."
+msgstr ""
+
+#: of tornado.web.RequestHandler.set_etag_header:3
+msgid "Note: no header will be set if ``compute_etag()`` returns ``None``."
+msgstr ""
+
+#: of tornado.web.RequestHandler.set_etag_header:5
+msgid "This method is called automatically when the request is finished."
+msgstr ""
+
+#: ../../docstring of tornado.web.RequestHandler.settings:1
+msgid "An alias for `self.application.settings <Application.settings>`."
+msgstr ""
+
+#: of tornado.web.RequestHandler.static_url:1
+msgid "Returns a static URL for the given relative static file path."
+msgstr ""
+
+#: of tornado.web.RequestHandler.static_url:3
+msgid ""
+"This method requires you set the ``static_path`` setting in your "
+"application (which specifies the root directory of your static files)."
+msgstr ""
+
+#: of tornado.web.RequestHandler.static_url:7
+msgid ""
+"This method returns a versioned url (by default appending "
+"``?v=<signature>``), which allows the static files to be cached "
+"indefinitely.  This can be disabled by passing ``include_version=False`` "
+"(in the default implementation; other static file implementations are not"
+" required to support this, but they may support other options)."
+msgstr ""
+
+#: of tornado.web.RequestHandler.static_url:14
+msgid ""
+"By default this method returns URLs relative to the current host, but if "
+"``include_host`` is true the URL returned will be absolute.  If this "
+"handler has an ``include_host`` attribute, that value will be used as the"
+" default for all `static_url` calls that do not pass ``include_host`` as "
+"a keyword argument."
+msgstr ""
+
+#: of tornado.web.RequestHandler.xsrf_form_html:1
+msgid "An HTML ``<input/>`` element to be included with all POST forms."
+msgstr ""
+
+#: of tornado.web.RequestHandler.xsrf_form_html:3
+msgid ""
+"It defines the ``_xsrf`` input value, which we check on all POST requests"
+" to prevent cross-site request forgery. If you have set the "
+"``xsrf_cookies`` application setting, you must include this HTML within "
+"all of your HTML forms."
+msgstr ""
+
+#: of tornado.web.RequestHandler.xsrf_form_html:8
+msgid ""
+"In a template, this method should be called with ``{% module "
+"xsrf_form_html() %}``"
+msgstr ""
+
+#: of tornado.web.RequestHandler.xsrf_form_html:11
+msgid "See `check_xsrf_cookie()` above for more information."
+msgstr ""
+
+#: ../../docstring of tornado.web.RequestHandler.xsrf_token:1
+msgid "The XSRF-prevention token for the current user/session."
+msgstr ""
+
+#: ../../docstring of tornado.web.RequestHandler.xsrf_token:3
+msgid ""
+"To prevent cross-site request forgery, we set an '_xsrf' cookie and "
+"include the same '_xsrf' value as an argument with all POST requests. If "
+"the two do not match, we reject the form submission as a potential "
+"forgery."
+msgstr ""
+
+#: ../../docstring of tornado.web.RequestHandler.xsrf_token:10
+msgid ""
+"This property is of type `bytes`, but it contains only ASCII characters. "
+"If a character string is required, there is no need to base64-encode it; "
+"just decode the byte string as UTF-8."
+msgstr ""
+
+#: ../../docstring of tornado.web.RequestHandler.xsrf_token:15
+msgid ""
+"The xsrf token will now be have a random mask applied in every request, "
+"which makes it safe to include the token in pages that are compressed.  "
+"See http://breachattack.com for more information on the issue fixed by "
+"this change.  Old (version 1) cookies will be converted to version 2 when"
+" this method is called unless the ``xsrf_cookie_version`` `Application` "
+"setting is set to 1."
+msgstr ""
+
+#: ../../docstring of tornado.web.RequestHandler.xsrf_token:24
+msgid ""
+"The ``xsrf_cookie_kwargs`` `Application` setting may be used to supply "
+"additional cookie options (which will be passed directly to "
+"`set_cookie`). For example, ``xsrf_cookie_kwargs=dict(httponly=True, "
+"secure=True)`` will set the ``secure`` and ``httponly`` flags on the "
+"``_xsrf`` cookie."
+msgstr ""
+
+#: ../../web.rst:139
+msgid "Application configuration"
+msgstr ""
+
+#: of tornado.web.Application:1
+msgid "A collection of request handlers that make up a web application."
+msgstr ""
+
+#: of tornado.web.Application:3
+msgid ""
+"Instances of this class are callable and can be passed directly to "
+"HTTPServer to serve the application::"
+msgstr ""
+
+#: of tornado.web.Application:13
+msgid ""
+"The constructor for this class takes in a list of `~.routing.Rule` "
+"objects or tuples of values corresponding to the arguments of "
+"`~.routing.Rule` constructor: ``(matcher, target, [target_kwargs], "
+"[name])``, the values in square brackets being optional. The default "
+"matcher is `~.routing.PathMatches`, so ``(regexp, target)`` tuples can "
+"also be used instead of ``(PathMatches(regexp), target)``."
+msgstr ""
+
+#: of tornado.web.Application:20
+msgid ""
+"A common routing target is a `RequestHandler` subclass, but you can also "
+"use lists of rules as a target, which create a nested routing "
+"configuration::"
+msgstr ""
+
+#: of tornado.web.Application:30
+msgid ""
+"In addition to this you can use nested `~.routing.Router` instances, "
+"`~.httputil.HTTPMessageDelegate` subclasses and callables as routing "
+"targets (see `~.routing` module docs for more information)."
+msgstr ""
+
+#: of tornado.web.Application:34
+msgid ""
+"When we receive requests, we iterate over the list in order and "
+"instantiate an instance of the first request class whose regexp matches "
+"the request path. The request class can be specified as either a class "
+"object or a (fully-qualified) name."
+msgstr ""
+
+#: of tornado.web.Application:39
+msgid ""
+"A dictionary may be passed as the third element (``target_kwargs``) of "
+"the tuple, which will be used as keyword arguments to the handler's "
+"constructor and `~RequestHandler.initialize` method. This pattern is used"
+" for the `StaticFileHandler` in this example (note that a "
+"`StaticFileHandler` can be installed automatically with the static_path "
+"setting described below)::"
+msgstr ""
+
+#: of tornado.web.Application:50
+msgid ""
+"We support virtual hosts with the `add_handlers` method, which takes in a"
+" host regular expression as the first argument::"
+msgstr ""
+
+#: of tornado.web.Application:57
+msgid ""
+"If there's no match for the current request's host, then ``default_host``"
+" parameter value is matched against host regular expressions."
+msgstr ""
+
+#: of tornado.web.Application:63
+msgid ""
+"Applications that do not use TLS may be vulnerable to :ref:`DNS rebinding"
+" <dnsrebinding>` attacks. This attack is especially relevant to "
+"applications that only listen on ``127.0.0.1`` or other private networks."
+" Appropriate host patterns must be used (instead of the default of "
+"``r'.*'``) to prevent this risk. The ``default_host`` argument must not "
+"be used in applications that may be vulnerable to DNS rebinding."
+msgstr ""
+
+#: of tornado.web.Application:71
+msgid ""
+"You can serve static files by sending the ``static_path`` setting as a "
+"keyword argument. We will serve those files from the ``/static/`` URI "
+"(this is configurable with the ``static_url_prefix`` setting), and we "
+"will serve ``/favicon.ico`` and ``/robots.txt`` from the same directory."
+"  A custom subclass of `StaticFileHandler` can be specified with the "
+"``static_handler_class`` setting."
+msgstr ""
+
+#: of tornado.web.Application:79
+msgid "Integration with the new `tornado.routing` module."
+msgstr ""
+
+#: ../../web.rst:145
+msgid ""
+"Additional keyword arguments passed to the constructor are saved in the "
+"`settings` dictionary, and are often referred to in documentation as "
+"\"application settings\".  Settings are used to customize various aspects"
+" of Tornado (although in some cases richer customization is possible by "
+"overriding methods in a subclass of `RequestHandler`).  Some applications"
+" also like to use the `settings` dictionary as a way to make application-"
+"specific settings available to handlers without using global variables.  "
+"Settings used in Tornado are described below."
+msgstr ""
+
+#: ../../web.rst:156
+msgid "General settings:"
+msgstr ""
+
+#: ../../web.rst:158
+msgid ""
+"``autoreload``: If ``True``, the server process will restart when any "
+"source files change, as described in :ref:`debug-mode`. This option is "
+"new in Tornado 3.2; previously this functionality was controlled by the "
+"``debug`` setting."
+msgstr ""
+
+#: ../../web.rst:162
+msgid ""
+"``debug``: Shorthand for several debug mode settings, described in :ref"
+":`debug-mode`.  Setting ``debug=True`` is equivalent to "
+"``autoreload=True``, ``compiled_template_cache=False``, "
+"``static_hash_cache=False``, ``serve_traceback=True``."
+msgstr ""
+
+#: ../../web.rst:166
+msgid ""
+"``default_handler_class`` and ``default_handler_args``: This handler will"
+" be used if no other match is found; use this to implement custom 404 "
+"pages (new in Tornado 3.2)."
+msgstr ""
+
+#: ../../web.rst:169
+msgid ""
+"``compress_response``: If ``True``, responses in textual formats will be "
+"compressed automatically.  New in Tornado 4.0."
+msgstr ""
+
+#: ../../web.rst:171
+msgid "``gzip``: Deprecated alias for ``compress_response`` since Tornado 4.0."
+msgstr ""
+
+#: ../../web.rst:173
+msgid ""
+"``log_function``: This function will be called at the end of every "
+"request to log the result (with one argument, the `RequestHandler` "
+"object).  The default implementation writes to the `logging` module's "
+"root logger.  May also be customized by overriding "
+"`Application.log_request`."
+msgstr ""
+
+#: ../../web.rst:178
+msgid ""
+"``serve_traceback``: If true, the default error page will include the "
+"traceback of the error.  This option is new in Tornado 3.2; previously "
+"this functionality was controlled by the ``debug`` setting."
+msgstr ""
+
+#: ../../web.rst:182
+msgid ""
+"``ui_modules`` and ``ui_methods``: May be set to a mapping of `UIModule` "
+"or UI methods to be made available to templates. May be set to a module, "
+"dictionary, or a list of modules and/or dicts.  See :ref:`ui-modules` for"
+" more details."
+msgstr ""
+
+#: ../../web.rst:187
+msgid "Authentication and security settings:"
+msgstr ""
+
+#: ../../web.rst:189
+msgid ""
+"``cookie_secret``: Used by `RequestHandler.get_secure_cookie` and "
+"`.set_secure_cookie` to sign cookies."
+msgstr ""
+
+#: ../../web.rst:191
+msgid ""
+"``key_version``: Used by requestHandler `.set_secure_cookie` to sign "
+"cookies with a specific key when ``cookie_secret`` is a key dictionary."
+msgstr ""
+
+#: ../../web.rst:194
+msgid ""
+"``login_url``: The `authenticated` decorator will redirect to this url if"
+" the user is not logged in.  Can be further customized by overriding "
+"`RequestHandler.get_login_url`"
+msgstr ""
+
+#: ../../web.rst:197
+msgid "``xsrf_cookies``: If true, :ref:`xsrf` will be enabled."
+msgstr ""
+
+#: ../../web.rst:198
+msgid ""
+"``xsrf_cookie_version``: Controls the version of new XSRF cookies "
+"produced by this server.  Should generally be left at the default (which "
+"will always be the highest supported version), but may be set to a lower "
+"value temporarily during version transitions.  New in Tornado 3.2.2, "
+"which introduced XSRF cookie version 2."
+msgstr ""
+
+#: ../../web.rst:204
+msgid ""
+"``xsrf_cookie_kwargs``: May be set to a dictionary of additional "
+"arguments to be passed to `.RequestHandler.set_cookie` for the XSRF "
+"cookie."
+msgstr ""
+
+#: ../../web.rst:207
+msgid ""
+"``twitter_consumer_key``, ``twitter_consumer_secret``, "
+"``friendfeed_consumer_key``, ``friendfeed_consumer_secret``, "
+"``google_consumer_key``, ``google_consumer_secret``, "
+"``facebook_api_key``, ``facebook_secret``:  Used in the `tornado.auth` "
+"module to authenticate to various APIs."
+msgstr ""
+
+#: ../../web.rst:213
+msgid "Template settings:"
+msgstr ""
+
+#: ../../web.rst:215
+msgid ""
+"``autoescape``: Controls automatic escaping for templates. May be set to "
+"``None`` to disable escaping, or to the *name* of a function that all "
+"output should be passed through. Defaults to ``\"xhtml_escape\"``.  Can "
+"be changed on a per-template basis with the ``{% autoescape %}`` "
+"directive."
+msgstr ""
+
+#: ../../web.rst:220
+msgid ""
+"``compiled_template_cache``: Default is ``True``; if ``False`` templates "
+"will be recompiled on every request.  This option is new in Tornado 3.2; "
+"previously this functionality was controlled by the ``debug`` setting."
+msgstr ""
+
+#: ../../web.rst:224
+msgid ""
+"``template_path``: Directory containing template files.  Can be further "
+"customized by overriding `RequestHandler.get_template_path`"
+msgstr ""
+
+#: ../../web.rst:226
+msgid ""
+"``template_loader``: Assign to an instance of "
+"`tornado.template.BaseLoader` to customize template loading. If this "
+"setting is used the ``template_path`` and ``autoescape`` settings are "
+"ignored.  Can be further customized by overriding "
+"`RequestHandler.create_template_loader`."
+msgstr ""
+
+#: ../../web.rst:231
+msgid ""
+"``template_whitespace``: Controls handling of whitespace in templates; "
+"see `tornado.template.filter_whitespace` for allowed values. New in "
+"Tornado 4.3."
+msgstr ""
+
+#: ../../web.rst:235
+msgid "Static file settings:"
+msgstr ""
+
+#: ../../web.rst:237
+msgid ""
+"``static_hash_cache``: Default is ``True``; if ``False`` static urls will"
+" be recomputed on every request.  This option is new in Tornado 3.2; "
+"previously this functionality was controlled by the ``debug`` setting."
+msgstr ""
+
+#: ../../web.rst:241
+msgid "``static_path``: Directory from which static files will be served."
+msgstr ""
+
+#: ../../web.rst:243
+msgid ""
+"``static_url_prefix``:  Url prefix for static files, defaults to "
+"``\"/static/\"``."
+msgstr ""
+
+#: ../../web.rst:245
+msgid ""
+"``static_handler_class``, ``static_handler_args``: May be set to use a "
+"different handler for static files instead of the default "
+"`tornado.web.StaticFileHandler`.  ``static_handler_args``, if set, should"
+" be a dictionary of keyword arguments to be passed to the handler's "
+"``initialize`` method."
+msgstr ""
+
+#: of tornado.web.Application.listen:1
+msgid "Starts an HTTP server for this application on the given port."
+msgstr ""
+
+#: of tornado.web.Application.listen:3
+msgid ""
+"This is a convenience alias for creating an `.HTTPServer` object and "
+"calling its listen method.  Keyword arguments not supported by "
+"`HTTPServer.listen <.TCPServer.listen>` are passed to the `.HTTPServer` "
+"constructor.  For advanced uses (e.g. multi-process mode), do not use "
+"this method; create an `.HTTPServer` and call its "
+"`.TCPServer.bind`/`.TCPServer.start` methods directly."
+msgstr ""
+
+#: of tornado.web.Application.listen:11
+msgid ""
+"Note that after calling this method you still need to call "
+"``IOLoop.current().start()`` to start the server."
+msgstr ""
+
+#: of tornado.web.Application.listen:14
+msgid "Returns the `.HTTPServer` object."
+msgstr ""
+
+#: of tornado.web.Application.listen:16
+msgid "Now returns the `.HTTPServer` object."
+msgstr ""
+
+#: of tornado.web.Application.add_handlers:1
+msgid "Appends the given handlers to our handler list."
+msgstr ""
+
+#: of tornado.web.Application.add_handlers:3
+msgid ""
+"Host patterns are processed sequentially in the order they were added. "
+"All matching patterns will be considered."
+msgstr ""
+
+#: of tornado.web.Application.find_handler:1
+msgid ""
+"Must be implemented to return an appropriate instance of "
+"`~.httputil.HTTPMessageDelegate` that can serve the request. Routing "
+"implementations may pass additional kwargs to extend the routing logic."
+msgstr ""
+
+#: of tornado.web.Application.find_handler:5
+#: tornado.web.Application.get_handler_delegate:4
+msgid "current HTTP request."
+msgstr ""
+
+#: of tornado.web.Application.find_handler:6
+msgid "additional keyword arguments passed by routing implementation."
+msgstr ""
+
+#: of tornado.web.Application.find_handler
+msgid "返回"
+msgstr ""
+
+#: of tornado.web.Application.find_handler:7
+msgid ""
+"an instance of `~.httputil.HTTPMessageDelegate` that will be used to "
+"process the request."
+msgstr ""
+
+#: of tornado.web.Application.get_handler_delegate:1
+msgid ""
+"Returns `~.httputil.HTTPMessageDelegate` that can serve a request for "
+"application and `RequestHandler` subclass."
+msgstr ""
+
+#: of tornado.web.Application.get_handler_delegate:5
+msgid "a `RequestHandler` class."
+msgstr ""
+
+#: of tornado.web.Application.get_handler_delegate:6
+msgid "keyword arguments for ``target_class`` constructor."
+msgstr ""
+
+#: of tornado.web.Application.get_handler_delegate:7
+msgid ""
+"positional arguments for ``target_class`` HTTP method that will be "
+"executed while handling a request (``get``, ``post`` or any other)."
+msgstr ""
+
+#: of tornado.web.Application.get_handler_delegate:9
+msgid "keyword arguments for ``target_class`` HTTP method."
+msgstr ""
+
+#: of tornado.web.Application.reverse_url:1
+msgid "Returns a URL path for handler named ``name``"
+msgstr ""
+
+#: of tornado.web.Application.reverse_url:3
+msgid "The handler must be added to the application as a named `URLSpec`."
+msgstr ""
+
+#: of tornado.web.Application.reverse_url:5
+msgid ""
+"Args will be substituted for capturing groups in the `URLSpec` regex. "
+"They will be converted to strings if necessary, encoded as utf8, and url-"
+"escaped."
+msgstr ""
+
+#: of tornado.web.Application.log_request:1
+msgid "Writes a completed HTTP request to the logs."
+msgstr ""
+
+#: of tornado.web.Application.log_request:3
+msgid ""
+"By default writes to the python root logger.  To change this behavior "
+"either subclass Application and override this method, or pass a function "
+"in the application settings dictionary as ``log_function``."
+msgstr ""
+
+#: of tornado.routing.URLSpec:1
+msgid "Specifies mappings between URLs and handlers."
+msgstr ""
+
+#: of tornado.routing.URLSpec:7
+msgid "Parameters:"
+msgstr ""
+
+#: of tornado.routing.URLSpec:9
+msgid ""
+"``pattern``: Regular expression to be matched. Any capturing groups in "
+"the regex will be passed in to the handler's get/post/etc methods as "
+"arguments (by keyword if named, by position if unnamed. Named and unnamed"
+" capturing groups may not be mixed in the same rule)."
+msgstr ""
+
+#: of tornado.routing.URLSpec:15
+msgid "``handler``: `~.web.RequestHandler` subclass to be invoked."
+msgstr ""
+
+#: of tornado.routing.URLSpec:17
+msgid ""
+"``kwargs`` (optional): A dictionary of additional arguments to be passed "
+"to the handler's constructor."
+msgstr ""
+
+#: of tornado.routing.URLSpec:20
+msgid ""
+"``name`` (optional): A name for this handler.  Used by "
+"`~.web.Application.reverse_url`."
+msgstr ""
+
+#: ../../web.rst:253
+msgid ""
+"The ``URLSpec`` class is also available under the name "
+"``tornado.web.url``."
+msgstr ""
+
+#: ../../web.rst:256
+msgid "Decorators"
+msgstr ""
+
+#: of tornado.web.authenticated:1
+msgid "Decorate methods with this to require that the user be logged in."
+msgstr ""
+
+#: of tornado.web.authenticated:3
+msgid ""
+"If the user is not logged in, they will be redirected to the configured "
+"`login url <RequestHandler.get_login_url>`."
+msgstr ""
+
+#: of tornado.web.authenticated:6
+msgid ""
+"If you configure a login url with a query parameter, Tornado will assume "
+"you know what you're doing and use it as-is.  If not, it will add a "
+"`next` parameter so the login page knows where to send you once you're "
+"logged in."
+msgstr ""
+
+#: of tornado.web.addslash:1
+msgid "Use this decorator to add a missing trailing slash to the request path."
+msgstr ""
+
+#: of tornado.web.addslash:3
+msgid ""
+"For example, a request to ``/foo`` would redirect to ``/foo/`` with this "
+"decorator. Your request handler mapping should use a regular expression "
+"like ``r'/foo/?'`` in conjunction with using the decorator."
+msgstr ""
+
+#: of tornado.web.removeslash:1
+msgid "Use this decorator to remove trailing slashes from the request path."
+msgstr ""
+
+#: of tornado.web.removeslash:3
+msgid ""
+"For example, a request to ``/foo/`` would redirect to ``/foo`` with this "
+"decorator. Your request handler mapping should use a regular expression "
+"like ``r'/foo/*'`` in conjunction with using the decorator."
+msgstr ""
+
+#: of tornado.web.stream_request_body:1
+msgid "Apply to `RequestHandler` subclasses to enable streaming body support."
+msgstr ""
+
+#: of tornado.web.stream_request_body:3
+msgid "This decorator implies the following changes:"
+msgstr ""
+
+#: of tornado.web.stream_request_body:5
+msgid ""
+"`.HTTPServerRequest.body` is undefined, and body arguments will not be "
+"included in `RequestHandler.get_argument`."
+msgstr ""
+
+#: of tornado.web.stream_request_body:7
+msgid ""
+"`RequestHandler.prepare` is called when the request headers have been "
+"read instead of after the entire body has been read."
+msgstr ""
+
+#: of tornado.web.stream_request_body:9
+msgid ""
+"The subclass must define a method ``data_received(self, data):``, which "
+"will be called zero or more times as data is available.  Note that if the"
+" request has an empty body, ``data_received`` may not be called."
+msgstr ""
+
+#: of tornado.web.stream_request_body:12
+msgid ""
+"``prepare`` and ``data_received`` may return Futures (such as via "
+"``@gen.coroutine``, in which case the next method will not be called "
+"until those futures have completed."
+msgstr ""
+
+#: of tornado.web.stream_request_body:15
+msgid ""
+"The regular HTTP method (``post``, ``put``, etc) will be called after the"
+" entire body has been read."
+msgstr ""
+
+#: of tornado.web.stream_request_body:18
+msgid ""
+"See the `file receiver demo "
+"<https://github.com/tornadoweb/tornado/tree/master/demos/file_upload/>`_ "
+"for example usage."
+msgstr ""
+
+#: ../../web.rst:264
+msgid "Everything else"
+msgstr ""
+
+#: of tornado.web.HTTPError:1
+msgid "An exception that will turn into an HTTP error response."
+msgstr ""
+
+#: of tornado.web.HTTPError:3
+msgid ""
+"Raising an `HTTPError` is a convenient alternative to calling "
+"`RequestHandler.send_error` since it automatically ends the current "
+"function."
+msgstr ""
+
+#: of tornado.web.HTTPError:7
+msgid ""
+"To customize the response sent with an `HTTPError`, override "
+"`RequestHandler.write_error`."
+msgstr ""
+
+#: of tornado.web.HTTPError:10
+msgid ""
+"HTTP status code.  Must be listed in `httplib.responses "
+"<http.client.responses>` unless the ``reason`` keyword argument is given."
+msgstr ""
+
+#: of tornado.web.HTTPError:13
+#, python-format
+msgid ""
+"Message to be written to the log for this error (will not be shown to the"
+" user unless the `Application` is in debug mode).  May contain "
+"``%s``-style placeholders, which will be filled in with remaining "
+"positional parameters."
+msgstr ""
+
+#: of tornado.web.HTTPError:17
+msgid ""
+"Keyword-only argument.  The HTTP \"reason\" phrase to pass in the status "
+"line along with ``status_code``.  Normally determined automatically from "
+"``status_code``, but can be used to use a non-standard numeric code."
+msgstr ""
+
+#: of tornado.web.Finish:1
+msgid "An exception that ends the request without producing an error response."
+msgstr ""
+
+#: of tornado.web.Finish:3
+msgid ""
+"When `Finish` is raised in a `RequestHandler`, the request will end "
+"(calling `RequestHandler.finish` if it hasn't already been called), but "
+"the error-handling methods (including `RequestHandler.write_error`) will "
+"not be called."
+msgstr ""
+
+#: of tornado.web.Finish:8
+msgid ""
+"If `Finish()` was created with no arguments, the pending response will be"
+" sent as-is. If `Finish()` was given an argument, that argument will be "
+"passed to `RequestHandler.finish()`."
+msgstr ""
+
+#: of tornado.web.Finish:12
+msgid ""
+"This can be a more convenient way to implement custom error pages than "
+"overriding ``write_error`` (especially in library code)::"
+msgstr ""
+
+#: of tornado.web.Finish:20
+msgid ""
+"Arguments passed to ``Finish()`` will be passed on to "
+"`RequestHandler.finish`."
+msgstr ""
+
+#: of tornado.web.MissingArgumentError:1
+msgid "Exception raised by `RequestHandler.get_argument`."
+msgstr ""
+
+#: of tornado.web.MissingArgumentError:3
+msgid ""
+"This is a subclass of `HTTPError`, so if it is uncaught a 400 response "
+"code will be used instead of 500 (and a stack trace will not be logged)."
+msgstr ""
+
+#: of tornado.web.UIModule:1
+msgid "A re-usable, modular UI unit on a page."
+msgstr ""
+
+#: of tornado.web.UIModule:3
+msgid ""
+"UI modules often execute additional queries, and they can include "
+"additional CSS and JavaScript that will be included in the output page, "
+"which is automatically inserted on page render."
+msgstr ""
+
+#: of tornado.web.UIModule:7
+msgid "Subclasses of UIModule must override the `render` method."
+msgstr ""
+
+#: of tornado.web.UIModule.render:1
+msgid "Override in subclasses to return this module's output."
+msgstr ""
+
+#: of tornado.web.UIModule.embedded_javascript:1
+msgid "Override to return a JavaScript string to be embedded in the page."
+msgstr ""
+
+#: of tornado.web.UIModule.javascript_files:1
+msgid "Override to return a list of JavaScript files needed by this module."
+msgstr ""
+
+#: of tornado.web.UIModule.css_files:3 tornado.web.UIModule.javascript_files:3
+msgid ""
+"If the return values are relative paths, they will be passed to "
+"`RequestHandler.static_url`; otherwise they will be used as-is."
+msgstr ""
+
+#: of tornado.web.UIModule.embedded_css:1
+msgid "Override to return a CSS string that will be embedded in the page."
+msgstr ""
+
+#: of tornado.web.UIModule.css_files:1
+msgid "Override to returns a list of CSS files required by this module."
+msgstr ""
+
+#: of tornado.web.UIModule.html_head:1
+msgid "Override to return an HTML string that will be put in the <head/> element."
+msgstr ""
+
+#: of tornado.web.UIModule.html_body:1
+msgid ""
+"Override to return an HTML string that will be put at the end of the "
+"<body/> element."
+msgstr ""
+
+#: of tornado.web.UIModule.render_string:1
+msgid "Renders a template and returns it as a string."
+msgstr ""
+
+#: of tornado.web.ErrorHandler:1
+msgid "Generates an error response with ``status_code`` for all requests."
+msgstr ""
+
+#: of tornado.web.FallbackHandler:1
+msgid "A `RequestHandler` that wraps another HTTP server callback."
+msgstr ""
+
+#: of tornado.web.FallbackHandler:3
+msgid ""
+"The fallback is a callable object that accepts an "
+"`~.httputil.HTTPServerRequest`, such as an `Application` or "
+"`tornado.wsgi.WSGIContainer`.  This is most useful to use both Tornado "
+"``RequestHandlers`` and WSGI in the same server.  Typical usage::"
+msgstr ""
+
+#: of tornado.web.RedirectHandler:1
+msgid "Redirects the client to the given URL for all GET requests."
+msgstr ""
+
+#: of tornado.web.RedirectHandler:3
+msgid "You should provide the keyword argument ``url`` to the handler, e.g.::"
+msgstr ""
+
+#: of tornado.web.RedirectHandler:9
+msgid ""
+"`RedirectHandler` supports regular expression substitutions. E.g., to "
+"swap the first and second parts of a path while preserving the "
+"remainder::"
+msgstr ""
+
+#: of tornado.web.RedirectHandler:16
+msgid ""
+"The final URL is formatted with `str.format` and the substrings that "
+"match the capturing groups. In the above example, a request to \"/a/b/c\""
+" would be formatted like::"
+msgstr ""
+
+#: of tornado.web.RedirectHandler:22
+msgid ""
+"Use Python's :ref:`format string syntax <formatstrings>` to customize how"
+" values are substituted."
+msgstr ""
+
+#: of tornado.web.RedirectHandler:25
+msgid "Added support for substitutions into the destination URL."
+msgstr ""
+
+#: of tornado.web.RedirectHandler:28
+msgid ""
+"If any query arguments are present, they will be copied to the "
+"destination URL."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler:1
+msgid "A simple handler that can serve static content from a directory."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler:3
+msgid ""
+"A `StaticFileHandler` is configured automatically if you pass the "
+"``static_path`` keyword argument to `Application`.  This handler can be "
+"customized with the ``static_url_prefix``, ``static_handler_class``, and "
+"``static_handler_args`` settings."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler:8
+msgid ""
+"To map an additional path to this handler for a static data directory you"
+" would add a line to your application like::"
+msgstr ""
+
+#: of tornado.web.StaticFileHandler:15
+msgid ""
+"The handler constructor requires a ``path`` argument, which specifies the"
+" local root directory of the content to be served."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler:18
+msgid ""
+"Note that a capture group in the regex is required to parse the value for"
+" the ``path`` argument to the get() method (different than the "
+"constructor argument above); see `URLSpec` for details."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler:22
+msgid ""
+"To serve a file like ``index.html`` automatically when a directory is "
+"requested, set "
+"``static_handler_args=dict(default_filename=\"index.html\")`` in your "
+"application settings, or add ``default_filename`` as an initializer "
+"argument for your ``StaticFileHandler``."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler:27
+msgid ""
+"To maximize the effectiveness of browser caching, this class supports "
+"versioned urls (by default using the argument ``?v=``).  If a version is "
+"given, we instruct the browser to cache this file indefinitely. "
+"`make_static_url` (also available as `RequestHandler.static_url`) can be "
+"used to construct a versioned url."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler:33
+msgid ""
+"This handler is intended primarily for use in development and light-duty "
+"file serving; for heavy traffic it will be more efficient to use a "
+"dedicated static file server (such as nginx or Apache).  We support the "
+"HTTP ``Accept-Ranges`` mechanism to return partial content (because some "
+"browsers require this functionality to be present to seek in HTML5 audio "
+"or video)."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler:40
+msgid "**Subclassing notes**"
+msgstr ""
+
+#: of tornado.web.StaticFileHandler:42
+msgid ""
+"This class is designed to be extensible by subclassing, but because of "
+"the way static urls are generated with class methods rather than instance"
+" methods, the inheritance patterns are somewhat unusual. Be sure to use "
+"the ``@classmethod`` decorator when overriding a class method.  Instance "
+"methods may use the attributes ``self.path`` ``self.absolute_path``, and "
+"``self.modified``."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler:49
+msgid ""
+"Subclasses should only override methods discussed in this section; "
+"overriding other methods is error-prone.  Overriding "
+"``StaticFileHandler.get`` is particularly problematic due to the tight "
+"coupling with ``compute_etag`` and other methods."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler:54
+msgid ""
+"To change the way static urls are generated (e.g. to match the behavior "
+"of another server or CDN), override `make_static_url`, `parse_url_path`, "
+"`get_cache_time`, and/or `get_version`."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler:58
+msgid ""
+"To replace all interaction with the filesystem (e.g. to serve static "
+"content from a database), override `get_content`, `get_content_size`, "
+"`get_modified_time`, `get_absolute_path`, and `validate_absolute_path`."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler:63
+msgid "Many of the methods for subclasses were added in Tornado 3.1."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.compute_etag:1
+msgid "Sets the ``Etag`` header based on static url version."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.compute_etag:3
+msgid ""
+"This allows efficient ``If-None-Match`` checks against cached versions, "
+"and sends the correct ``Etag`` for a partial response (i.e. the same "
+"``Etag`` as the full file)."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.set_headers:1
+msgid "Sets the content and caching headers on the response."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.should_return_304:1
+msgid "Returns True if the headers indicate that we should return 304."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.get_absolute_path:1
+msgid "Returns the absolute location of ``path`` relative to ``root``."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.get_absolute_path:3
+msgid ""
+"``root`` is the path configured for this `StaticFileHandler` (in most "
+"cases the ``static_path`` `Application` setting)."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.get_absolute_path:6
+msgid ""
+"This class method may be overridden in subclasses.  By default it returns"
+" a filesystem path, but other strings may be used as long as they are "
+"unique and understood by the subclass's overridden `get_content`."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.validate_absolute_path:1
+msgid "Validate and return the absolute path."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.validate_absolute_path:3
+msgid ""
+"``root`` is the configured path for the `StaticFileHandler`, and ``path``"
+" is the result of `get_absolute_path`"
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.validate_absolute_path:6
+msgid ""
+"This is an instance method called during request processing, so it may "
+"raise `HTTPError` or use methods like `RequestHandler.redirect` (return "
+"None after redirecting to halt further processing).  This is where 404 "
+"errors for missing files are generated."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.validate_absolute_path:12
+msgid ""
+"This method may modify the path before returning it, but note that any "
+"such modifications will not be understood by `make_static_url`."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.validate_absolute_path:15
+msgid ""
+"In instance methods, this method's result is available as "
+"``self.absolute_path``."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.get_content:1
+msgid ""
+"Retrieve the content of the requested resource which is located at the "
+"given absolute path."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.get_content:4
+msgid ""
+"This class method may be overridden by subclasses.  Note that its "
+"signature is different from other overridable class methods (no "
+"``settings`` argument); this is deliberate to ensure that ``abspath`` is "
+"able to stand on its own as a cache key."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.get_content:9
+msgid ""
+"This method should either return a byte string or an iterator of byte "
+"strings.  The latter is preferred for large files as it helps reduce "
+"memory fragmentation."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.get_content_version:1
+msgid "Returns a version string for the resource at the given path."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.get_content_version:3
+msgid ""
+"This class method may be overridden by subclasses.  The default "
+"implementation is a SHA-512 hash of the file's contents."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.get_content_size:1
+msgid "Retrieve the total size of the resource at the given path."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.get_content_size:3
+msgid "This method may be overridden by subclasses."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.get_content_size:7
+msgid ""
+"This method is now always called, instead of only when partial results "
+"are requested."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.get_modified_time:1
+msgid "Returns the time that ``self.absolute_path`` was last modified."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.get_modified_time:3
+msgid ""
+"May be overridden in subclasses.  Should return a `~datetime.datetime` "
+"object or None."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.get_content_type:1
+msgid "Returns the ``Content-Type`` header to be used for this request."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.set_extra_headers:1
+msgid "For subclass to add extra headers to the response"
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.get_cache_time:1
+msgid "Override to customize cache control behavior."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.get_cache_time:3
+msgid ""
+"Return a positive number of seconds to make the result cacheable for that"
+" amount of time or 0 to mark resource as cacheable for an unspecified "
+"amount of time (subject to browser heuristics)."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.get_cache_time:8
+msgid ""
+"By default returns cache expiry of 10 years for resources requested with "
+"``v`` argument."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.make_static_url:1
+msgid "Constructs a versioned url for the given path."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.make_static_url:3
+msgid ""
+"This method may be overridden in subclasses (but note that it is a class "
+"method rather than an instance method).  Subclasses are only required to "
+"implement the signature ``make_static_url(cls, settings, path)``; other "
+"keyword arguments may be passed through `~RequestHandler.static_url` but "
+"are not standard."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.make_static_url:10
+msgid ""
+"``settings`` is the `Application.settings` dictionary.  ``path`` is the "
+"static path being requested.  The url returned should be relative to the "
+"current host."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.make_static_url:14
+msgid ""
+"``include_version`` determines whether the generated URL should include "
+"the query string containing the version hash of the file corresponding to"
+" the given ``path``."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.parse_url_path:1
+msgid "Converts a static URL path into a filesystem path."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.parse_url_path:3
+msgid ""
+"``url_path`` is the path component of the URL with ``static_url_prefix`` "
+"removed.  The return value should be filesystem path relative to "
+"``static_path``."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.parse_url_path:7
+msgid "This is the inverse of `make_static_url`."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.get_version:1
+msgid "Generate the version string to be used in static URLs."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.get_version:3
+msgid ""
+"``settings`` is the `Application.settings` dictionary and ``path`` is the"
+" relative location of the requested asset on the filesystem. The returned"
+" value should be a string, or ``None`` if no version could be determined."
+msgstr ""
+
+#: of tornado.web.StaticFileHandler.get_version:8
+msgid ""
+"This method was previously recommended for subclasses to override; "
+"`get_content_version` is now preferred as it allows the base class to "
+"handle caching of the result."
+msgstr ""
+

@@ -1,0 +1,396 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../releases/v4.3.0.rst:2
+msgid "Tornado 4.3 新特性"
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:5
+msgid "Nov 6, 2015"
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:8
+msgid "Highlights"
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:10
+msgid ""
+"The new async/await keywords in Python 3.5 are supported. In most cases, "
+"``async def`` can be used in place of the ``@gen.coroutine`` decorator. "
+"Inside a function defined with ``async def``, use ``await`` instead of "
+"``yield`` to wait on an asynchronous operation. Coroutines defined with "
+"async/await will be faster than those defined with ``@gen.coroutine`` and"
+" ``yield``, but do not support some features including "
+"`.Callback`/`.Wait` or the ability to yield a Twisted ``Deferred``. See "
+":ref:`the users' guide <native_coroutines>` for more."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:18
+msgid ""
+"The async/await keywords are also available when compiling with Cython in"
+" older versions of Python."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:22
+msgid "Deprecation notice"
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:24
+msgid ""
+"This will be the last release of Tornado to support Python 2.6 or 3.2. "
+"Note that PyPy3 will continue to be supported even though it implements a"
+" mix of Python 3.2 and 3.3 features."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:29
+msgid "Installation"
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:31
+msgid ""
+"Tornado has several new dependencies: ``ordereddict`` on Python 2.6, "
+"``singledispatch`` on all Python versions prior to 3.4 (This was an "
+"optional dependency in prior versions of Tornado, and is now mandatory), "
+"and ``backports_abc>=0.4`` on all versions prior to 3.5. These "
+"dependencies will be installed automatically when installing with ``pip``"
+" or ``setup.py install``. These dependencies will not be required when "
+"running on Google App Engine."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:38
+msgid "Binary wheels are provided for Python 3.5 on Windows (32 and 64 bit)."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:41
+msgid "`tornado.auth`"
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:43
+msgid ""
+"New method `.OAuth2Mixin.oauth2_request` can be used to make "
+"authenticated requests with an access token."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:45
+msgid "Now compatible with callbacks that have been compiled with Cython."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:48
+msgid "`tornado.autoreload`"
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:50
+msgid ""
+"Fixed an issue with the autoreload command-line wrapper in which imports "
+"would be incorrectly interpreted as relative."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:54
+msgid "`tornado.curl_httpclient`"
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:56
+msgid "Fixed parsing of multi-line headers."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:57
+msgid ""
+"``allow_nonstandard_methods=True`` now bypasses body sanity checks, in "
+"the same way as in ``simple_httpclient``."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:59
+msgid ""
+"The ``PATCH`` method now allows a body without "
+"``allow_nonstandard_methods=True``."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:63
+msgid "`tornado.gen`"
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:65
+msgid "`.WaitIterator` now supports the ``async for`` statement on Python 3.5."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:66
+msgid ""
+"``@gen.coroutine`` can be applied to functions compiled with Cython. On "
+"python versions prior to 3.5, the ``backports_abc`` package must be "
+"installed for this functionality."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:69
+msgid ""
+"``Multi`` and `.multi_future` are deprecated and replaced by a unified "
+"function `.multi`."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:73
+msgid "`tornado.httpclient`"
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:75
+msgid "`tornado.httpclient.HTTPError` is now copyable with the `copy` module."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:78
+msgid "`tornado.httpserver`"
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:80
+msgid ""
+"Requests containing both ``Content-Length`` and ``Transfer-Encoding`` "
+"will be treated as an error."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:84
+msgid "`tornado.httputil`"
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:86
+msgid "`.HTTPHeaders` can now be pickled and unpickled."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:89
+msgid "`tornado.ioloop`"
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:91
+msgid ""
+"``IOLoop(make_current=True)`` now works as intended instead of raising an"
+" exception."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:93
+msgid ""
+"The Twisted and asyncio IOLoop implementations now clear ``current()`` "
+"when they exit, like the standard IOLoops."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:95
+msgid "`.IOLoop.add_callback` is faster in the single-threaded case."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:96
+msgid ""
+"`.IOLoop.add_callback` no longer raises an error when called on a closed "
+"IOLoop, but the callback will not be invoked."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:100
+msgid "`tornado.iostream`"
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:102
+msgid ""
+"Coroutine-style usage of `.IOStream` now converts most errors into "
+"`.StreamClosedError`, which has the effect of reducing log noise from "
+"exceptions that are outside the application's control (especially SSL "
+"errors)."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:106
+msgid ""
+"`.StreamClosedError` now has a ``real_error`` attribute which indicates "
+"why the stream was closed. It is the same as the ``error`` attribute of "
+"`.IOStream` but may be more easily accessible than the `.IOStream` "
+"itself."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:109
+msgid "Improved error handling in `~.BaseIOStream.read_until_close`."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:110
+msgid "Logging is less noisy when an SSL server is port scanned."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:111
+msgid "``EINTR`` is now handled on all reads."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:114
+msgid "`tornado.locale`"
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:116
+msgid ""
+"`tornado.locale.load_translations` now accepts encodings other than "
+"UTF-8. UTF-16 and UTF-8 will be detected automatically if a BOM is "
+"present; for other encodings `.load_translations` has an ``encoding`` "
+"parameter."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:122
+msgid "`tornado.locks`"
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:124
+msgid ""
+"`.Lock` and `.Semaphore` now support the ``async with`` statement on "
+"Python 3.5."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:128
+msgid "`tornado.log`"
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:130
+msgid ""
+"A new time-based log rotation mode is available with "
+"``--log_rotate_mode=time``, ``--log-rotate-when``, and ``log-rotate-"
+"interval``."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:135
+msgid "`tornado.netutil`"
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:137
+msgid ""
+"`.bind_sockets` now supports ``SO_REUSEPORT`` with the "
+"``reuse_port=True`` argument."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:141
+msgid "`tornado.options`"
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:143
+msgid "Dashes and underscores are now fully interchangeable in option names."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:146
+msgid "`tornado.queues`"
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:148
+msgid "`.Queue` now supports the ``async for`` statement on Python 3.5."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:151
+msgid "`tornado.simple_httpclient`"
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:153
+msgid ""
+"When following redirects, ``streaming_callback`` and ``header_callback`` "
+"will no longer be run on the redirect responses (only the final non-"
+"redirect)."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:156
+msgid ""
+"Responses containing both ``Content-Length`` and ``Transfer-Encoding`` "
+"will be treated as an error."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:160
+msgid "`tornado.template`"
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:162
+msgid ""
+"`tornado.template.ParseError` now includes the filename in addition to "
+"line number."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:164
+msgid ""
+"Whitespace handling has become more configurable. The `.Loader` "
+"constructor now has a ``whitespace`` argument, there is a new "
+"``template_whitespace`` `.Application` setting, and there is a new ``{% "
+"whitespace %}`` template directive. All of these options take a mode name"
+" defined in the `tornado.template.filter_whitespace` function. The "
+"default mode is ``single``, which is the same behavior as prior versions "
+"of Tornado."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:171
+msgid "Non-ASCII filenames are now supported."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:174
+msgid "`tornado.testing`"
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:176
+msgid ""
+"`.ExpectLog` objects now have a boolean ``logged_stack`` attribute to "
+"make it easier to test whether an exception stack trace was logged."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:180
+msgid "`tornado.web`"
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:182
+msgid "The hard limit of 4000 bytes per outgoing header has been removed."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:183
+msgid ""
+"`.StaticFileHandler` returns the correct ``Content-Type`` for files with "
+"``.gz``, ``.bz2``, and ``.xz`` extensions."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:185
+msgid "Responses smaller than 1000 bytes will no longer be compressed."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:186
+msgid "The default gzip compression level is now 6 (was 9)."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:187
+msgid ""
+"Fixed a regression in Tornado 4.2.1 that broke `.StaticFileHandler` with "
+"a ``path`` of ``/``."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:189
+msgid "`tornado.web.HTTPError` is now copyable with the `copy` module."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:190
+msgid ""
+"The exception `.Finish` now accepts an argument which will be passed to "
+"the method `.RequestHandler.finish`."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:192
+msgid ""
+"New `.Application` setting ``xsrf_cookie_kwargs`` can be used to set "
+"additional attributes such as ``secure`` or ``httponly`` on the XSRF "
+"cookie."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:195
+msgid "`.Application.listen` now returns the `.HTTPServer` it created."
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:198
+msgid "`tornado.websocket`"
+msgstr ""
+
+#: ../../releases/v4.3.0.rst:200
+msgid "Fixed handling of continuation frames when compression is enabled."
+msgstr ""
+

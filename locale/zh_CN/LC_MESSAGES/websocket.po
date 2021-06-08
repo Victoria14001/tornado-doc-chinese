@@ -1,0 +1,594 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../websocket.rst:2
+msgid "``tornado.websocket`` --- Bidirectional communication to the browser"
+msgstr ""
+
+#: of tornado.websocket:1
+msgid "Implementation of the WebSocket protocol."
+msgstr ""
+
+#: of tornado.websocket:3
+msgid ""
+"`WebSockets <http://dev.w3.org/html5/websockets/>`_ allow for "
+"bidirectional communication between the browser and server."
+msgstr ""
+
+#: of tornado.websocket:6
+msgid ""
+"WebSockets are supported in the current versions of all major browsers, "
+"although older versions that do not support WebSockets are still in use "
+"(refer to http://caniuse.com/websockets for details)."
+msgstr ""
+
+#: of tornado.websocket:10
+msgid ""
+"This module implements the final version of the WebSocket protocol as "
+"defined in `RFC 6455 <http://tools.ietf.org/html/rfc6455>`_.  Certain "
+"browser versions (notably Safari 5.x) implemented an earlier draft of the"
+" protocol (known as \"draft 76\") and are not compatible with this "
+"module."
+msgstr ""
+
+#: of tornado.websocket:15
+msgid "Removed support for the draft 76 protocol version."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler:1
+msgid "Subclass this class to create a basic WebSocket handler."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler:3
+msgid ""
+"Override `on_message` to handle incoming messages, and use "
+"`write_message` to send messages to the client. You can also override "
+"`open` and `on_close` to handle opened and closed connections."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler:8
+msgid ""
+"Custom upgrade response headers can be sent by overriding "
+"`~tornado.web.RequestHandler.set_default_headers` or "
+"`~tornado.web.RequestHandler.prepare`."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler:12
+msgid ""
+"See http://dev.w3.org/html5/websockets/ for details on the JavaScript "
+"interface.  The protocol is specified at "
+"http://tools.ietf.org/html/rfc6455."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler:16
+msgid ""
+"Here is an example WebSocket handler that echos back all received "
+"messages back to the client:"
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler:34
+msgid ""
+"WebSockets are not standard HTTP connections. The \"handshake\" is HTTP, "
+"but after the handshake, the protocol is message-based. Consequently, "
+"most of the Tornado HTTP facilities are not available in handlers of this"
+" type. The only communication methods available to you are "
+"`write_message()`, `ping()`, and `close()`. Likewise, your request "
+"handler class should implement `open()` method rather than ``get()`` or "
+"``post()``."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler:42
+msgid ""
+"If you map the handler above to ``/websocket`` in your application, you "
+"can invoke it in JavaScript with::"
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler:53
+msgid "This script pops up an alert box that says \"You said: Hello, world\"."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler:55
+msgid ""
+"Web browsers allow any site to open a websocket connection to any other, "
+"instead of using the same-origin policy that governs other network access"
+" from JavaScript.  This can be surprising and is a potential security "
+"hole, so since Tornado 4.0 `WebSocketHandler` requires applications that "
+"wish to receive cross-origin websockets to opt in by overriding the "
+"`~WebSocketHandler.check_origin` method (see that method's docs for "
+"details).  Failure to do so is the most likely cause of 403 errors when "
+"making a websocket connection."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler:64
+msgid ""
+"When using a secure websocket connection (``wss://``) with a self-signed "
+"certificate, the connection from a browser may fail because it wants to "
+"show the \"accept this certificate\" dialog but has nowhere to show it. "
+"You must first visit a regular HTML page using the same certificate to "
+"accept it before the websocket connection will succeed."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler:70
+msgid ""
+"If the application setting ``websocket_ping_interval`` has a non-zero "
+"value, a ping will be sent periodically, and the connection will be "
+"closed if a response is not received before the "
+"``websocket_ping_timeout``."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler:74
+msgid ""
+"Messages larger than the ``websocket_max_message_size`` application "
+"setting (default 10MiB) will not be accepted."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler:77
+msgid ""
+"Added ``websocket_ping_interval``, ``websocket_ping_timeout``, and "
+"``websocket_max_message_size``."
+msgstr ""
+
+#: ../../websocket.rst:13
+msgid "Event handlers"
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.open:1
+msgid "Invoked when a new WebSocket is opened."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.open:3
+msgid ""
+"The arguments to `open` are extracted from the `tornado.web.URLSpec` "
+"regular expression, just like the arguments to "
+"`tornado.web.RequestHandler.get`."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.open:7
+msgid ""
+"`open` may be a coroutine. `on_message` will not be called until `open` "
+"has returned."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.open:12
+msgid "``open`` may be a coroutine."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.on_message:1
+msgid "Handle incoming messages on the WebSocket"
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.on_message:3
+msgid "This method must be overridden."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.on_message:7
+msgid "``on_message`` can be a coroutine."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.on_close:1
+msgid "Invoked when the WebSocket is closed."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.on_close:3
+msgid ""
+"If the connection was closed cleanly and a status code or reason phrase "
+"was supplied, these values will be available as the attributes "
+"``self.close_code`` and ``self.close_reason``."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.on_close:9
+msgid "Added ``close_code`` and ``close_reason`` attributes."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.select_subprotocol:1
+msgid "Override to implement subprotocol negotiation."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.select_subprotocol:3
+msgid ""
+"``subprotocols`` is a list of strings identifying the subprotocols "
+"proposed by the client.  This method may be overridden to return one of "
+"those strings to select it, or ``None`` to not select a subprotocol."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.select_subprotocol:8
+msgid ""
+"Failure to select a subprotocol does not automatically abort the "
+"connection, although clients may close the connection if none of their "
+"proposed subprotocols was selected."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.select_subprotocol:12
+msgid ""
+"The list may be empty, in which case this method must return None. This "
+"method is always called exactly once even if no subprotocols were "
+"proposed so that the handler can be advised of this fact."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.select_subprotocol:19
+msgid ""
+"Previously, this method was called with a list containing an empty string"
+" instead of an empty list if no subprotocols were proposed by the client."
+msgstr ""
+
+#: ../../websocket.rst:21
+msgid "Output"
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.write_message:1
+msgid "Sends the given message to the client of this Web Socket."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.write_message:3
+msgid ""
+"The message may be either a string or a dict (which will be encoded as "
+"json).  If the ``binary`` argument is false, the message will be sent as "
+"utf8; in binary mode any byte string is allowed."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.write_message:8
+msgid ""
+"If the connection is already closed, raises `WebSocketClosedError`. "
+"Returns a `.Future` which can be used for flow control."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.write_message:11
+msgid ""
+"`WebSocketClosedError` was added (previously a closed connection would "
+"raise an `AttributeError`)"
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.write_message:15
+msgid "Returns a `.Future` which can be used for flow control."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.write_message:18
+msgid ""
+"Consistently raises `WebSocketClosedError`. Previously could sometimes "
+"raise `.StreamClosedError`."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.close:1
+msgid "Closes this Web Socket."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.close:3
+msgid "Once the close handshake is successful the socket will be closed."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.close:5
+msgid ""
+"``code`` may be a numeric status code, taken from the values defined in "
+"`RFC 6455 section 7.4.1 "
+"<https://tools.ietf.org/html/rfc6455#section-7.4.1>`_. ``reason`` may be "
+"a textual message about why the connection is closing.  These values are "
+"made available to the client, but are not otherwise interpreted by the "
+"websocket protocol."
+msgstr ""
+
+#: of tornado.websocket.WebSocketClientConnection.close:10
+#: tornado.websocket.WebSocketHandler.close:14
+msgid "Added the ``code`` and ``reason`` arguments."
+msgstr ""
+
+#: ../../websocket.rst:27
+msgid "Configuration"
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.check_origin:1
+msgid "Override to enable support for allowing alternate origins."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.check_origin:3
+msgid ""
+"The ``origin`` argument is the value of the ``Origin`` HTTP header, the "
+"url responsible for initiating this request.  This method is not called "
+"for clients that do not send this header; such requests are always "
+"allowed (because all browsers that implement WebSockets support this "
+"header, and non-browser clients do not have the same cross-site security "
+"concerns)."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.check_origin:10
+msgid ""
+"Should return ``True`` to accept the request or ``False`` to reject it. "
+"By default, rejects all requests with an origin on a host other than this"
+" one."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.check_origin:14
+msgid ""
+"This is a security protection against cross site scripting attacks on "
+"browsers, since WebSockets are allowed to bypass the usual same-origin "
+"policies and don't use CORS headers."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.check_origin:20
+msgid ""
+"This is an important security measure; don't disable it without "
+"understanding the security implications. In particular, if your "
+"authentication is cookie-based, you must either restrict the origins "
+"allowed by ``check_origin()`` or implement your own XSRF-like protection "
+"for websocket connections. See `these <https://www.christian-"
+"schneider.net/CrossSiteWebSocketHijacking.html>`_ `articles "
+"<https://devcenter.heroku.com/articles/websocket-security>`_ for more."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.check_origin:31
+msgid ""
+"To accept all cross-origin traffic (which was the default prior to "
+"Tornado 4.0), simply override this method to always return ``True``::"
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.check_origin:37
+msgid ""
+"To allow connections from any subdomain of your site, you might do "
+"something like::"
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.get_compression_options:1
+msgid "Override to return compression options for the connection."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.get_compression_options:3
+msgid ""
+"If this method returns None (the default), compression will be disabled."
+"  If it returns a dict (even an empty one), it will be enabled.  The "
+"contents of the dict may be used to control the following compression "
+"options:"
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.get_compression_options:8
+msgid "``compression_level`` specifies the compression level."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.get_compression_options:10
+msgid ""
+"``mem_level`` specifies the amount of memory used for the internal "
+"compression state."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.get_compression_options:12
+msgid ""
+"These parameters are documented in details here: "
+"https://docs.python.org/3.6/library/zlib.html#zlib.compressobj"
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.get_compression_options:19
+msgid "Added ``compression_level`` and ``mem_level``."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.set_nodelay:1
+msgid "Set the no-delay flag for this stream."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.set_nodelay:3
+msgid ""
+"By default, small messages may be delayed and/or combined to minimize the"
+" number of packets sent.  This can sometimes cause 200-500ms delays due "
+"to the interaction between Nagle's algorithm and TCP delayed ACKs.  To "
+"reduce this delay (at the expense of possibly increasing bandwidth "
+"usage), call ``self.set_nodelay(True)`` once the websocket connection is "
+"established."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.set_nodelay:10
+msgid "See `.BaseIOStream.set_nodelay` for additional details."
+msgstr ""
+
+#: ../../websocket.rst:34
+msgid "Other"
+msgstr ""
+
+#: of tornado.websocket.WebSocketClientConnection.ping:1
+#: tornado.websocket.WebSocketHandler.ping:1
+msgid "Send ping frame to the remote end."
+msgstr ""
+
+#: of tornado.websocket.WebSocketClientConnection.ping:3
+#: tornado.websocket.WebSocketHandler.ping:3
+msgid ""
+"The data argument allows a small amount of data (up to 125 bytes) to be "
+"sent as a part of the ping message. Note that not all websocket "
+"implementations expose this data to applications."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.ping:8
+msgid ""
+"Consider using the ``websocket_ping_interval`` application setting "
+"instead of sending pings manually."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.ping:13
+msgid "The data argument is now optional."
+msgstr ""
+
+#: of tornado.websocket.WebSocketHandler.on_pong:1
+msgid "Invoked when the response to a ping frame is received."
+msgstr ""
+
+#: of tornado.websocket.WebSocketClosedError:1
+msgid "Raised by operations on a closed connection."
+msgstr ""
+
+#: ../../websocket.rst:42
+msgid "Client-side support"
+msgstr ""
+
+#: of tornado.websocket.websocket_connect:1
+msgid "Client-side websocket support."
+msgstr ""
+
+#: of tornado.websocket.websocket_connect:3
+msgid ""
+"Takes a url and returns a Future whose result is a "
+"`WebSocketClientConnection`."
+msgstr ""
+
+#: of tornado.websocket.websocket_connect:6
+msgid ""
+"``compression_options`` is interpreted in the same way as the return "
+"value of `.WebSocketHandler.get_compression_options`."
+msgstr ""
+
+#: of tornado.websocket.websocket_connect:9
+msgid ""
+"The connection supports two styles of operation. In the coroutine style, "
+"the application typically calls "
+"`~.WebSocketClientConnection.read_message` in a loop::"
+msgstr ""
+
+#: of tornado.websocket.websocket_connect:19
+msgid ""
+"In the callback style, pass an ``on_message_callback`` to "
+"``websocket_connect``. In both styles, a message of ``None`` indicates "
+"that the connection has been closed."
+msgstr ""
+
+#: of tornado.websocket.websocket_connect:23
+msgid ""
+"``subprotocols`` may be a list of strings specifying proposed "
+"subprotocols. The selected protocol may be found on the "
+"``selected_subprotocol`` attribute of the connection object when the "
+"connection is complete."
+msgstr ""
+
+#: of tornado.websocket.websocket_connect:28
+msgid "Also accepts ``HTTPRequest`` objects in place of urls."
+msgstr ""
+
+#: of tornado.websocket.websocket_connect:31
+msgid "Added ``compression_options`` and ``on_message_callback``."
+msgstr ""
+
+#: of tornado.websocket.websocket_connect:34
+msgid ""
+"Added the ``ping_interval``, ``ping_timeout``, and ``max_message_size`` "
+"arguments, which have the same meaning as in `WebSocketHandler`."
+msgstr ""
+
+#: of tornado.websocket.websocket_connect:38
+msgid "The ``io_loop`` argument (deprecated since version 4.1) has been removed."
+msgstr ""
+
+#: of tornado.websocket.websocket_connect:41
+msgid "Added the ``subprotocols`` argument."
+msgstr ""
+
+#: of tornado.websocket.WebSocketClientConnection:1
+msgid "WebSocket client connection."
+msgstr ""
+
+#: of tornado.websocket.WebSocketClientConnection:3
+msgid ""
+"This class should not be instantiated directly; use the "
+"`websocket_connect` function instead."
+msgstr ""
+
+#: of tornado.websocket.WebSocketClientConnection.close:1
+msgid "Closes the websocket connection."
+msgstr ""
+
+#: of tornado.websocket.WebSocketClientConnection.close:3
+msgid "``code`` and ``reason`` are documented under `WebSocketHandler.close`."
+msgstr ""
+
+#: of tornado.websocket.WebSocketClientConnection.on_connection_close:1
+msgid "Called if the connection is closed without finishing the request."
+msgstr ""
+
+#: of tornado.websocket.WebSocketClientConnection.on_connection_close:3
+msgid ""
+"If ``headers_received`` is called, either ``finish`` or "
+"``on_connection_close`` will be called, but not both."
+msgstr ""
+
+#: of tornado.websocket.WebSocketClientConnection.headers_received:1
+msgid "Called when the HTTP headers have been received and parsed."
+msgstr ""
+
+#: of tornado.websocket.WebSocketClientConnection.headers_received
+msgid "参数"
+msgstr ""
+
+#: of tornado.websocket.WebSocketClientConnection.headers_received:3
+msgid ""
+"a `.RequestStartLine` or `.ResponseStartLine` depending on whether this "
+"is a client or server message."
+msgstr ""
+
+#: of tornado.websocket.WebSocketClientConnection.headers_received:5
+msgid "a `.HTTPHeaders` instance."
+msgstr ""
+
+#: of tornado.websocket.WebSocketClientConnection.headers_received:7
+msgid ""
+"Some `.HTTPConnection` methods can only be called during "
+"``headers_received``."
+msgstr ""
+
+#: of tornado.websocket.WebSocketClientConnection.headers_received:10
+msgid ""
+"May return a `.Future`; if it does the body will not be read until it is "
+"done."
+msgstr ""
+
+#: of tornado.websocket.WebSocketClientConnection.write_message:1
+msgid "Sends a message to the WebSocket server."
+msgstr ""
+
+#: of tornado.websocket.WebSocketClientConnection.write_message:3
+msgid ""
+"If the stream is closed, raises `WebSocketClosedError`. Returns a "
+"`.Future` which can be used for flow control."
+msgstr ""
+
+#: of tornado.websocket.WebSocketClientConnection.write_message:6
+msgid ""
+"Exception raised on a closed stream changed from `.StreamClosedError` to "
+"`WebSocketClosedError`."
+msgstr ""
+
+#: of tornado.websocket.WebSocketClientConnection.read_message:1
+msgid "Reads a message from the WebSocket server."
+msgstr ""
+
+#: of tornado.websocket.WebSocketClientConnection.read_message:3
+msgid ""
+"If on_message_callback was specified at WebSocket initialization, this "
+"function will never return messages"
+msgstr ""
+
+#: of tornado.websocket.WebSocketClientConnection.read_message:6
+msgid ""
+"Returns a future whose result is the message, or None if the connection "
+"is closed.  If a callback argument is given it will be called with the "
+"future when it is ready."
+msgstr ""
+
+#: of tornado.websocket.WebSocketClientConnection.ping:8
+msgid ""
+"Consider using the ``ping_interval`` argument to `websocket_connect` "
+"instead of sending pings manually."
+msgstr ""
+
+#: of tornado.websocket.WebSocketClientConnection.selected_subprotocol:1
+msgid "The subprotocol selected by the server."
+msgstr ""
+

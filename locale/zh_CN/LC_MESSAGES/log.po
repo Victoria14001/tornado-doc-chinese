@@ -1,0 +1,170 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../log.rst:2
+msgid "``tornado.log`` --- Logging support"
+msgstr ""
+
+#: of tornado.log:1
+msgid "Logging support for Tornado."
+msgstr ""
+
+#: of tornado.log:3
+msgid "Tornado uses three logger streams:"
+msgstr ""
+
+#: of tornado.log:5
+msgid ""
+"``tornado.access``: Per-request logging for Tornado's HTTP servers (and "
+"potentially other servers in the future)"
+msgstr ""
+
+#: of tornado.log:7
+msgid ""
+"``tornado.application``: Logging of errors from application code (i.e. "
+"uncaught exceptions from callbacks)"
+msgstr ""
+
+#: of tornado.log:9
+msgid ""
+"``tornado.general``: General-purpose logging, including any errors or "
+"warnings from Tornado itself."
+msgstr ""
+
+#: of tornado.log:12
+msgid ""
+"These streams may be configured independently using the standard "
+"library's `logging` module.  For example, you may wish to send "
+"``tornado.access`` logs to a separate file for analysis."
+msgstr ""
+
+#: of tornado.log.LogFormatter:1
+msgid "Log formatter used in Tornado."
+msgstr ""
+
+#: of tornado.log.LogFormatter:3
+msgid "Key features of this formatter are:"
+msgstr ""
+
+#: of tornado.log.LogFormatter:5
+msgid "Color support when logging to a terminal that supports it."
+msgstr ""
+
+#: of tornado.log.LogFormatter:6
+msgid "Timestamps on every log line."
+msgstr ""
+
+#: of tornado.log.LogFormatter:7
+msgid "Robust against str/bytes encoding problems."
+msgstr ""
+
+#: of tornado.log.LogFormatter:9
+msgid ""
+"This formatter is enabled automatically by "
+"`tornado.options.parse_command_line` or "
+"`tornado.options.parse_config_file` (unless ``--logging=none`` is used)."
+msgstr ""
+
+#: of tornado.log.LogFormatter:13
+msgid ""
+"Color support on Windows versions that do not support ANSI color codes is"
+" enabled by use of the colorama__ library. Applications that wish to use "
+"this must first initialize colorama with a call to ``colorama.init``. See"
+" the colorama documentation for details."
+msgstr ""
+
+#: of tornado.log.LogFormatter:20
+msgid ""
+"Added support for ``colorama``. Changed the constructor signature to be "
+"compatible with `logging.config.dictConfig`."
+msgstr ""
+
+#: of tornado.log.LogFormatter
+msgid "参数"
+msgstr ""
+
+#: of tornado.log.LogFormatter:24
+msgid "Enables color support."
+msgstr ""
+
+#: of tornado.log.LogFormatter:25
+#, python-format
+msgid ""
+"Log message format. It will be applied to the attributes dict of log "
+"records. The text between ``%(color)s`` and ``%(end_color)s`` will be "
+"colored depending on the level if color support is on."
+msgstr ""
+
+#: of tornado.log.LogFormatter:29
+msgid "color mappings from logging level to terminal color code"
+msgstr ""
+
+#: of tornado.log.LogFormatter:31
+msgid ""
+"Datetime format. Used for formatting ``(asctime)`` placeholder in "
+"``prefix_fmt``."
+msgstr ""
+
+#: of tornado.log.LogFormatter:36
+msgid "Added ``fmt`` and ``datefmt`` arguments."
+msgstr ""
+
+#: of tornado.log.LogFormatter.format:1
+msgid "Format the specified record as text."
+msgstr ""
+
+#: of tornado.log.LogFormatter.format:3
+msgid ""
+"The record's attribute dictionary is used as the operand to a string "
+"formatting operation which yields the returned string. Before formatting "
+"the dictionary, a couple of preparatory steps are carried out. The "
+"message attribute of the record is computed using LogRecord.getMessage()."
+" If the formatting string uses the time (as determined by a call to "
+"usesTime(), formatTime() is called to format the event time. If there is "
+"exception information, it is formatted using formatException() and "
+"appended to the message."
+msgstr ""
+
+#: of tornado.log.enable_pretty_logging:1
+msgid "Turns on formatted logging output as configured."
+msgstr ""
+
+#: of tornado.log.enable_pretty_logging:3
+msgid ""
+"This is called automatically by `tornado.options.parse_command_line` and "
+"`tornado.options.parse_config_file`."
+msgstr ""
+
+#: of tornado.log.define_logging_options:1
+msgid "Add logging-related flags to ``options``."
+msgstr ""
+
+#: of tornado.log.define_logging_options:3
+msgid ""
+"These options are present automatically on the default options instance; "
+"this method is only necessary if you have created your own "
+"`.OptionParser`."
+msgstr ""
+
+#: of tornado.log.define_logging_options:6
+msgid ""
+"This function existed in prior versions but was broken and undocumented "
+"until 4.2."
+msgstr ""
+

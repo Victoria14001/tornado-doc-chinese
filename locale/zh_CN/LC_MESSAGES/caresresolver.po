@@ -1,0 +1,50 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../caresresolver.rst:2
+msgid ""
+"``tornado.platform.caresresolver`` --- Asynchronous DNS Resolver using "
+"C-Ares"
+msgstr ""
+
+#: ../../caresresolver.rst:6
+msgid ""
+"This module contains a DNS resolver using the c-ares library (and its "
+"wrapper ``pycares``)."
+msgstr ""
+
+#: ../../caresresolver.rst:11
+msgid "Name resolver based on the c-ares library."
+msgstr ""
+
+#: ../../caresresolver.rst:13
+msgid ""
+"This is a non-blocking and non-threaded resolver.  It may not produce the"
+" same results as the system resolver, but can be used for non-blocking "
+"resolution when threads cannot be used."
+msgstr ""
+
+#: ../../caresresolver.rst:17
+msgid ""
+"c-ares fails to resolve some names when ``family`` is ``AF_UNSPEC``, so "
+"it is only recommended for use in ``AF_INET`` (i.e. IPv4).  This is the "
+"default for ``tornado.simple_httpclient``, but other libraries may "
+"default to ``AF_UNSPEC``."
+msgstr ""
+

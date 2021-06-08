@@ -1,0 +1,442 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../gen.rst:2
+msgid "``tornado.gen`` --- Simplify asynchronous code"
+msgstr ""
+
+#: of tornado.gen:1
+msgid "``tornado.gen`` implements generator-based coroutines."
+msgstr ""
+
+#: of tornado.gen:5
+#, python-format
+msgid ""
+"The \"decorator and generator\" approach in this module is a precursor to"
+" native coroutines (using ``async def`` and ``await``) which were "
+"introduced in Python 3.5. Applications that do not require compatibility "
+"with older versions of Python should use native coroutines instead. Some "
+"parts of this module are still useful with native coroutines, notably "
+"`multi`, `sleep`, `WaitIterator`, and `with_timeout`. Some of these "
+"functions have counterparts in the `asyncio` module which may be used as "
+"well, although the two may not necessarily be 100% compatible."
+msgstr ""
+
+#: of tornado.gen:15
+msgid ""
+"Coroutines provide an easier way to work in an asynchronous environment "
+"than chaining callbacks. Code using coroutines is technically "
+"asynchronous, but it is written as a single generator instead of a "
+"collection of separate functions."
+msgstr ""
+
+#: of tornado.gen:20
+msgid "For example, here's a coroutine-based handler:"
+msgstr ""
+
+#: of tornado.gen:35
+msgid ""
+"Asynchronous functions in Tornado return an ``Awaitable`` or `.Future`; "
+"yielding this object returns its result."
+msgstr ""
+
+#: of tornado.gen:38
+msgid ""
+"You can also yield a list or dict of other yieldable objects, which will "
+"be started at the same time and run in parallel; a list or dict of "
+"results will be returned when they are all finished:"
+msgstr ""
+
+#: of tornado.gen:57
+msgid ""
+"If ``tornado.platform.twisted`` is imported, it is also possible to yield"
+" Twisted's ``Deferred`` objects. See the `convert_yielded` function to "
+"extend this mechanism."
+msgstr ""
+
+#: of tornado.gen:61
+msgid "Dict support added."
+msgstr ""
+
+#: of tornado.gen:64
+msgid ""
+"Support added for yielding ``asyncio`` Futures and Twisted Deferreds via "
+"``singledispatch``."
+msgstr ""
+
+#: ../../gen.rst:12
+msgid "Decorators"
+msgstr ""
+
+#: of tornado.gen.coroutine:1
+msgid "Decorator for asynchronous generators."
+msgstr ""
+
+#: of tornado.gen.coroutine:3
+msgid ""
+"For compatibility with older versions of Python, coroutines may also "
+"\"return\" by raising the special exception `Return(value) <Return>`."
+msgstr ""
+
+#: of tornado.gen.coroutine:7
+msgid "Functions with this decorator return a `.Future`."
+msgstr ""
+
+#: of tornado.gen.coroutine:11
+msgid ""
+"When exceptions occur inside a coroutine, the exception information will "
+"be stored in the `.Future` object. You must examine the result of the "
+"`.Future` object, or the exception may go unnoticed by your code. This "
+"means yielding the function if called from another coroutine, using "
+"something like `.IOLoop.run_sync` for top-level calls, or passing the "
+"`.Future` to `.IOLoop.add_future`."
+msgstr ""
+
+#: of tornado.gen.coroutine:21
+msgid ""
+"The ``callback`` argument was removed. Use the returned awaitable object "
+"instead."
+msgstr ""
+
+#: ../../gen.rst:19
+msgid "Utility functions"
+msgstr ""
+
+#: of tornado.gen.Return:1
+msgid "Special exception to return a value from a `coroutine`."
+msgstr ""
+
+#: of tornado.gen.Return:3
+msgid ""
+"If this exception is raised, its value argument is used as the result of "
+"the coroutine::"
+msgstr ""
+
+#: of tornado.gen.Return:11
+msgid ""
+"In Python 3.3, this exception is no longer necessary: the ``return`` "
+"statement can be used directly to return a value (previously ``yield`` "
+"and ``return`` with a value could not be combined in the same function)."
+msgstr ""
+
+#: of tornado.gen.Return:16
+msgid ""
+"By analogy with the return statement, the value argument is optional, but"
+" it is never necessary to ``raise gen.Return()``.  The ``return`` "
+"statement can be used with no arguments instead."
+msgstr ""
+
+#: of tornado.gen.with_timeout:1
+msgid "Wraps a `.Future` (or other yieldable object) in a timeout."
+msgstr ""
+
+#: of tornado.gen.with_timeout:3
+msgid ""
+"Raises `tornado.util.TimeoutError` if the input future does not complete "
+"before ``timeout``, which may be specified in any form allowed by "
+"`.IOLoop.add_timeout` (i.e. a `datetime.timedelta` or an absolute time "
+"relative to `.IOLoop.time`)"
+msgstr ""
+
+#: of tornado.gen.with_timeout:8
+msgid ""
+"If the wrapped `.Future` fails after it has timed out, the exception will"
+" be logged unless it is either of a type contained in "
+"``quiet_exceptions`` (which may be an exception type or a sequence of "
+"types), or an ``asyncio.CancelledError``."
+msgstr ""
+
+#: of tornado.gen.with_timeout:13
+msgid ""
+"The wrapped `.Future` is not canceled when the timeout expires, "
+"permitting it to be reused. `asyncio.wait_for` is similar to this "
+"function but it does cancel the wrapped `.Future` on timeout."
+msgstr ""
+
+#: of tornado.gen.with_timeout:19
+msgid ""
+"Added the ``quiet_exceptions`` argument and the logging of unhandled "
+"exceptions."
+msgstr ""
+
+#: of tornado.gen.with_timeout:23
+msgid "Added support for yieldable objects other than `.Future`."
+msgstr ""
+
+#: of tornado.gen.with_timeout:26
+msgid "``asyncio.CancelledError`` is now always considered \"quiet\"."
+msgstr ""
+
+#: of tornado.util.TimeoutError:1
+msgid "Exception raised by `.with_timeout` and `.IOLoop.run_sync`."
+msgstr ""
+
+#: of tornado.util.TimeoutError:3
+msgid ""
+"Unified ``tornado.gen.TimeoutError`` and ``tornado.ioloop.TimeoutError`` "
+"as ``tornado.util.TimeoutError``. Both former names remain as aliases."
+msgstr ""
+
+#: of tornado.gen.sleep:1
+msgid "Return a `.Future` that resolves after the given number of seconds."
+msgstr ""
+
+#: of tornado.gen.sleep:3
+msgid ""
+"When used with ``yield`` in a coroutine, this is a non-blocking analogue "
+"to `time.sleep` (which should not be used in coroutines because it is "
+"blocking)::"
+msgstr ""
+
+#: of tornado.gen.sleep:9
+msgid ""
+"Note that calling this function on its own does nothing; you must wait on"
+" the `.Future` it returns (usually by yielding it)."
+msgstr ""
+
+#: ../../docstring of tornado.gen.moment:1
+msgid ""
+"A special object which may be yielded to allow the IOLoop to run for one "
+"iteration."
+msgstr ""
+
+#: ../../docstring of tornado.gen.moment:4
+msgid ""
+"This is not needed in normal use but it can be helpful in long-running "
+"coroutines that are likely to yield Futures that are ready instantly."
+msgstr ""
+
+#: ../../docstring of tornado.gen.moment:7
+msgid "Usage: ``yield gen.moment``"
+msgstr ""
+
+#: ../../docstring of tornado.gen.moment:9
+msgid ""
+"In native coroutines, the equivalent of ``yield gen.moment`` is ``await "
+"asyncio.sleep(0)``."
+msgstr ""
+
+#: ../../docstring of tornado.gen.moment:14
+msgid ""
+"``yield None`` (or ``yield`` with no argument) is now equivalent to  "
+"``yield gen.moment``."
+msgstr ""
+
+#: of tornado.gen.WaitIterator:1
+msgid "Provides an iterator to yield the results of awaitables as they finish."
+msgstr ""
+
+#: of tornado.gen.WaitIterator:3
+msgid "Yielding a set of awaitables like this:"
+msgstr ""
+
+#: of tornado.gen.WaitIterator:5
+msgid "``results = yield [awaitable1, awaitable2]``"
+msgstr ""
+
+#: of tornado.gen.WaitIterator:7
+msgid ""
+"pauses the coroutine until both ``awaitable1`` and ``awaitable2`` return,"
+" and then restarts the coroutine with the results of both awaitables. If "
+"either awaitable raises an exception, the expression will raise that "
+"exception and all the results will be lost."
+msgstr ""
+
+#: of tornado.gen.WaitIterator:13
+msgid ""
+"If you need to get the result of each awaitable as soon as possible, or "
+"if you need the result of some awaitables even if others produce errors, "
+"you can use ``WaitIterator``::"
+msgstr ""
+
+#: of tornado.gen.WaitIterator:28
+msgid ""
+"Because results are returned as soon as they are available the output "
+"from the iterator *will not be in the same order as the input arguments*."
+" If you need to know which future produced the current result, you can "
+"use the attributes ``WaitIterator.current_future``, or "
+"``WaitIterator.current_index`` to get the index of the awaitable from the"
+" input list. (if keyword arguments were used in the construction of the "
+"`WaitIterator`, ``current_index`` will use the corresponding keyword)."
+msgstr ""
+
+#: of tornado.gen.WaitIterator:37
+msgid ""
+"On Python 3.5, `WaitIterator` implements the async iterator protocol, so "
+"it can be used with the ``async for`` statement (note that in this "
+"version the entire iteration is aborted if any value raises an exception,"
+" while the previous example can continue past individual errors)::"
+msgstr ""
+
+#: of tornado.gen.WaitIterator:50
+msgid "Added ``async for`` support in Python 3.5."
+msgstr ""
+
+#: of tornado.gen.WaitIterator.done:1
+msgid "Returns True if this iterator has no more results."
+msgstr ""
+
+#: of tornado.gen.WaitIterator.next:1
+msgid "Returns a `.Future` that will yield the next available result."
+msgstr ""
+
+#: of tornado.gen.WaitIterator.next:3
+msgid "Note that this `.Future` will not be the same object as any of the inputs."
+msgstr ""
+
+#: of tornado.gen.multi:1
+msgid "Runs multiple asynchronous operations in parallel."
+msgstr ""
+
+#: of tornado.gen.multi:3
+msgid ""
+"``children`` may either be a list or a dict whose values are yieldable "
+"objects. ``multi()`` returns a new yieldable object that resolves to a "
+"parallel structure containing their results. If ``children`` is a list, "
+"the result is a list of results in the same order; if it is a dict, the "
+"result is a dict with the same keys."
+msgstr ""
+
+#: of tornado.gen.multi:10
+msgid "That is, ``results = yield multi(list_of_futures)`` is equivalent to::"
+msgstr ""
+
+#: of tornado.gen.multi:17
+msgid ""
+"If any children raise exceptions, ``multi()`` will raise the first one. "
+"All others will be logged, unless they are of types contained in the "
+"``quiet_exceptions`` argument."
+msgstr ""
+
+#: of tornado.gen.multi:21
+msgid ""
+"In a ``yield``-based coroutine, it is not normally necessary to call this"
+" function directly, since the coroutine runner will do it automatically "
+"when a list or dict is yielded. However, it is necessary in "
+"``await``-based coroutines, or to pass the ``quiet_exceptions`` argument."
+msgstr ""
+
+#: of tornado.gen.multi:27
+msgid ""
+"This function is available under the names ``multi()`` and ``Multi()`` "
+"for historical reasons."
+msgstr ""
+
+#: of tornado.gen.multi:30
+msgid ""
+"Cancelling a `.Future` returned by ``multi()`` does not cancel its "
+"children. `asyncio.gather` is similar to ``multi()``, but it does cancel "
+"its children."
+msgstr ""
+
+#: of tornado.gen.multi:34
+msgid ""
+"If multiple yieldables fail, any exceptions after the first (which is "
+"raised) will be logged. Added the ``quiet_exceptions`` argument to "
+"suppress this logging for selected exception types."
+msgstr ""
+
+#: of tornado.gen.multi:39
+msgid ""
+"Replaced the class ``Multi`` and the function ``multi_future`` with a "
+"unified function ``multi``. Added support for yieldables other than "
+"``YieldPoint`` and `.Future`."
+msgstr ""
+
+#: of tornado.gen.multi_future:1
+msgid "Wait for multiple asynchronous futures in parallel."
+msgstr ""
+
+#: of tornado.gen.multi_future:3
+msgid "Since Tornado 6.0, this function is exactly the same as `multi`."
+msgstr ""
+
+#: of tornado.gen.multi_future:7
+msgid ""
+"If multiple ``Futures`` fail, any exceptions after the first (which is "
+"raised) will be logged. Added the ``quiet_exceptions`` argument to "
+"suppress this logging for selected exception types."
+msgstr ""
+
+#: of tornado.gen.multi_future:12
+msgid "Use `multi` instead."
+msgstr ""
+
+#: ../../gen.rst:42
+msgid ""
+"The result of a `Task` or `Wait` whose callback had more than one "
+"argument (or keyword arguments)."
+msgstr ""
+
+#: ../../gen.rst:45
+msgid ""
+"The `Arguments` object is a `collections.namedtuple` and can be used "
+"either as a tuple ``(args, kwargs)`` or an object with attributes "
+"``args`` and ``kwargs``."
+msgstr ""
+
+#: of tornado.gen.convert_yielded:1
+msgid "Convert a yielded object into a `.Future`."
+msgstr ""
+
+#: of tornado.gen.convert_yielded:3
+msgid ""
+"The default implementation accepts lists, dictionaries, and Futures. This"
+" has the side effect of starting any coroutines that did not start "
+"themselves, similar to `asyncio.ensure_future`."
+msgstr ""
+
+#: of tornado.gen.convert_yielded:7
+msgid ""
+"If the `~functools.singledispatch` library is available, this function "
+"may be extended to support additional types. For example::"
+msgstr ""
+
+#: of tornado.gen.maybe_future:1
+msgid "Converts ``x`` into a `.Future`."
+msgstr ""
+
+#: of tornado.gen.maybe_future:3
+msgid ""
+"If ``x`` is already a `.Future`, it is simply returned; otherwise it is "
+"wrapped in a new `.Future`.  This is suitable for use as ``result = yield"
+" gen.maybe_future(f())`` when you don't know whether ``f()`` returns a "
+"`.Future` or not."
+msgstr ""
+
+#: of tornado.gen.maybe_future:8
+msgid ""
+"This function only handles ``Futures``, not other yieldable objects. "
+"Instead of `maybe_future`, check for the non-future result types you "
+"expect (often just ``None``), and ``yield`` anything unknown."
+msgstr ""
+
+#: ../../gen.rst:54
+msgid "Legacy interface"
+msgstr ""
+
+#: ../../gen.rst:56
+msgid ""
+"Before support for `Futures <.Future>` was introduced in Tornado 3.0, "
+"coroutines used subclasses of `YieldPoint` in their ``yield`` "
+"expressions. These classes are still supported but should generally not "
+"be used except for compatibility with older interfaces. None of these "
+"classes are compatible with native (``await``-based) coroutines."
+msgstr ""
+

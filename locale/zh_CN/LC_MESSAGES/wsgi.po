@@ -1,0 +1,91 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../wsgi.rst:2
+msgid ""
+"``tornado.wsgi`` --- Interoperability with other Python frameworks and "
+"servers"
+msgstr ""
+
+#: of tornado.wsgi:1
+msgid "WSGI support for the Tornado web framework."
+msgstr ""
+
+#: of tornado.wsgi:3
+msgid ""
+"WSGI is the Python standard for web servers, and allows for "
+"interoperability between Tornado and other Python web frameworks and "
+"servers."
+msgstr ""
+
+#: of tornado.wsgi:6
+msgid ""
+"This module provides WSGI support via the `WSGIContainer` class, which "
+"makes it possible to run applications using other WSGI frameworks on the "
+"Tornado HTTP server. The reverse is not supported; the Tornado "
+"`.Application` and `.RequestHandler` classes are designed for use with "
+"the Tornado `.HTTPServer` and cannot be used in a generic WSGI container."
+msgstr ""
+
+#: ../../wsgi.rst:7
+msgid "Running Tornado apps on WSGI servers"
+msgstr ""
+
+#: ../../wsgi.rst:16
+msgid "Running WSGI apps on Tornado servers"
+msgstr ""
+
+#: of tornado.wsgi.WSGIContainer:1
+msgid "Makes a WSGI-compatible function runnable on Tornado's HTTP server."
+msgstr ""
+
+#: of tornado.wsgi.WSGIContainer:5
+msgid ""
+"WSGI is a *synchronous* interface, while Tornado's concurrency model is "
+"based on single-threaded asynchronous execution.  This means that running"
+" a WSGI app with Tornado's `WSGIContainer` is *less scalable* than "
+"running the same app in a multi-threaded WSGI server like ``gunicorn`` or"
+" ``uwsgi``.  Use `WSGIContainer` only when there are benefits to "
+"combining Tornado and WSGI in the same process that outweigh the reduced "
+"scalability."
+msgstr ""
+
+#: of tornado.wsgi.WSGIContainer:13
+msgid ""
+"Wrap a WSGI function in a `WSGIContainer` and pass it to `.HTTPServer` to"
+" run it. For example::"
+msgstr ""
+
+#: of tornado.wsgi.WSGIContainer:27
+msgid ""
+"This class is intended to let other frameworks (Django, web.py, etc) run "
+"on the Tornado HTTP server and I/O loop."
+msgstr ""
+
+#: of tornado.wsgi.WSGIContainer:30
+msgid ""
+"The `tornado.web.FallbackHandler` class is often useful for mixing "
+"Tornado and WSGI apps in the same server.  See "
+"https://github.com/bdarnell/django-tornado-demo for a complete example."
+msgstr ""
+
+#: of tornado.wsgi.WSGIContainer.environ:1
+msgid "Converts a `tornado.httputil.HTTPServerRequest` to a WSGI environment."
+msgstr ""
+

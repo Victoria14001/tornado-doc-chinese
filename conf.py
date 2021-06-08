@@ -105,3 +105,8 @@ if not on_rtd:
     import sphinx_rtd_theme
     html_theme = 'sphinx_rtd_theme'
     html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+
+# 翻译成中文的有关设置
+language = 'zh_CN'  # language supported
+locale_dirs = ['locale/']  # path is example but recommended.
+gettext_compact = False  # optional.

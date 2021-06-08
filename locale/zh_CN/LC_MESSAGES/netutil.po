@@ -1,0 +1,327 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../netutil.rst:2
+msgid "``tornado.netutil`` --- Miscellaneous network utilities"
+msgstr ""
+
+#: of tornado.netutil:1
+msgid "Miscellaneous network utility code."
+msgstr ""
+
+#: of tornado.netutil.bind_sockets:1
+msgid "Creates listening sockets bound to the given port and address."
+msgstr ""
+
+#: of tornado.netutil.bind_sockets:3
+msgid ""
+"Returns a list of socket objects (multiple sockets are returned if the "
+"given address maps to multiple IP addresses, which is most common for "
+"mixed IPv4 and IPv6 use)."
+msgstr ""
+
+#: of tornado.netutil.bind_sockets:7
+msgid ""
+"Address may be either an IP address or hostname.  If it's a hostname, the"
+" server will listen on all IP addresses associated with the name.  "
+"Address may be an empty string or None to listen on all available "
+"interfaces.  Family may be set to either `socket.AF_INET` or "
+"`socket.AF_INET6` to restrict to IPv4 or IPv6 addresses, otherwise both "
+"will be used if available."
+msgstr ""
+
+#: of tornado.netutil.bind_sockets:14
+msgid ""
+"The ``backlog`` argument has the same meaning as for `socket.listen() "
+"<socket.socket.listen>`."
+msgstr ""
+
+#: of tornado.netutil.bind_sockets:17
+msgid ""
+"``flags`` is a bitmask of AI_* flags to `~socket.getaddrinfo`, like "
+"``socket.AI_PASSIVE | socket.AI_NUMERICHOST``."
+msgstr ""
+
+#: of tornado.netutil.bind_sockets:20
+msgid ""
+"``reuse_port`` option sets ``SO_REUSEPORT`` option for every socket in "
+"the list. If your platform doesn't support this option ValueError will be"
+" raised."
+msgstr ""
+
+#: of tornado.netutil.add_accept_handler:1
+msgid "Adds an `.IOLoop` event handler to accept new connections on ``sock``."
+msgstr ""
+
+#: of tornado.netutil.add_accept_handler:3
+msgid ""
+"When a connection is accepted, ``callback(connection, address)`` will be "
+"run (``connection`` is a socket object, and ``address`` is the address of"
+" the other end of the connection).  Note that this signature is different"
+" from the ``callback(fd, events)`` signature used for `.IOLoop` handlers."
+msgstr ""
+
+#: of tornado.netutil.add_accept_handler:9
+msgid ""
+"A callable is returned which, when called, will remove the `.IOLoop` "
+"event handler and stop processing further incoming connections."
+msgstr ""
+
+#: of tornado.netutil.ExecutorResolver:10 tornado.netutil.add_accept_handler:12
+msgid "The ``io_loop`` argument (deprecated since version 4.1) has been removed."
+msgstr ""
+
+#: of tornado.netutil.add_accept_handler:15
+msgid "A callable is returned (``None`` was returned before)."
+msgstr ""
+
+#: of tornado.netutil.is_valid_ip:1
+msgid "Returns ``True`` if the given string is a well-formed IP address."
+msgstr ""
+
+#: of tornado.netutil.is_valid_ip:3
+msgid "Supports IPv4 and IPv6."
+msgstr ""
+
+#: of tornado.netutil.Resolver:1
+msgid "Configurable asynchronous DNS resolver interface."
+msgstr ""
+
+#: of tornado.netutil.Resolver:3
+msgid ""
+"By default, a blocking implementation is used (which simply calls "
+"`socket.getaddrinfo`).  An alternative implementation can be chosen with "
+"the `Resolver.configure <.Configurable.configure>` class method::"
+msgstr ""
+
+#: of tornado.netutil.Resolver:10
+msgid "The implementations of this interface included with Tornado are"
+msgstr ""
+
+#: of tornado.netutil.Resolver:12
+msgid "`tornado.netutil.DefaultExecutorResolver`"
+msgstr ""
+
+#: of tornado.netutil.Resolver:13
+msgid "`tornado.netutil.BlockingResolver` (deprecated)"
+msgstr ""
+
+#: of tornado.netutil.Resolver:14
+msgid "`tornado.netutil.ThreadedResolver` (deprecated)"
+msgstr ""
+
+#: of tornado.netutil.Resolver:15
+msgid "`tornado.netutil.OverrideResolver`"
+msgstr ""
+
+#: of tornado.netutil.Resolver:16
+msgid "`tornado.platform.twisted.TwistedResolver`"
+msgstr ""
+
+#: of tornado.netutil.Resolver:17
+msgid "`tornado.platform.caresresolver.CaresResolver`"
+msgstr ""
+
+#: of tornado.netutil.Resolver:19
+msgid ""
+"The default implementation has changed from `BlockingResolver` to "
+"`DefaultExecutorResolver`."
+msgstr ""
+
+#: of tornado.netutil.Resolver.configurable_base:1
+msgid "Returns the base class of a configurable hierarchy."
+msgstr ""
+
+#: of tornado.netutil.Resolver.configurable_base:3
+msgid ""
+"This will normally return the class in which it is defined. (which is "
+"*not* necessarily the same as the ``cls`` classmethod parameter)."
+msgstr ""
+
+#: of tornado.netutil.Resolver.configurable_default:1
+msgid "Returns the implementation class to be used if none is configured."
+msgstr ""
+
+#: of tornado.netutil.DefaultExecutorResolver.resolve:1
+#: tornado.netutil.ExecutorResolver.resolve:1
+#: tornado.netutil.OverrideResolver.resolve:1
+#: tornado.netutil.Resolver.resolve:1
+msgid "Resolves an address."
+msgstr ""
+
+#: of tornado.netutil.DefaultExecutorResolver.resolve:3
+#: tornado.netutil.ExecutorResolver.resolve:3
+#: tornado.netutil.OverrideResolver.resolve:3
+#: tornado.netutil.Resolver.resolve:3
+msgid ""
+"The ``host`` argument is a string which may be a hostname or a literal IP"
+" address."
+msgstr ""
+
+#: of tornado.netutil.DefaultExecutorResolver.resolve:6
+#: tornado.netutil.ExecutorResolver.resolve:6
+#: tornado.netutil.OverrideResolver.resolve:6
+#: tornado.netutil.Resolver.resolve:6
+msgid ""
+"Returns a `.Future` whose result is a list of (family, address) pairs, "
+"where address is a tuple suitable to pass to `socket.connect "
+"<socket.socket.connect>` (i.e. a ``(host, port)`` pair for IPv4; "
+"additional fields may be present for IPv6). If a ``callback`` is passed, "
+"it will be run with the result as an argument when it is complete."
+msgstr ""
+
+#: of tornado.netutil.DefaultExecutorResolver.resolve
+#: tornado.netutil.ExecutorResolver.resolve
+#: tornado.netutil.OverrideResolver.resolve tornado.netutil.Resolver.resolve
+msgid "引发"
+msgstr ""
+
+#: of tornado.netutil.DefaultExecutorResolver.resolve:13
+#: tornado.netutil.ExecutorResolver.resolve:13
+#: tornado.netutil.OverrideResolver.resolve:13
+#: tornado.netutil.Resolver.resolve:13
+msgid "if the address cannot be resolved."
+msgstr ""
+
+#: of tornado.netutil.DefaultExecutorResolver.resolve:15
+#: tornado.netutil.ExecutorResolver.resolve:15
+#: tornado.netutil.OverrideResolver.resolve:15
+#: tornado.netutil.Resolver.resolve:15
+msgid "Standardized all implementations to raise `IOError`."
+msgstr ""
+
+#: of tornado.netutil.DefaultExecutorResolver.resolve:18
+#: tornado.netutil.ExecutorResolver.resolve:18
+#: tornado.netutil.OverrideResolver.resolve:18
+#: tornado.netutil.Resolver.resolve:18
+msgid ""
+"The ``callback`` argument was removed. Use the returned awaitable object "
+"instead."
+msgstr ""
+
+#: of tornado.netutil.ExecutorResolver.close:1
+#: tornado.netutil.OverrideResolver.close:1 tornado.netutil.Resolver.close:1
+msgid "Closes the `Resolver`, freeing any resources used."
+msgstr ""
+
+#: of tornado.netutil.DefaultExecutorResolver:1
+msgid "Resolver implementation using `.IOLoop.run_in_executor`."
+msgstr ""
+
+#: of tornado.netutil.ExecutorResolver:1
+msgid "Resolver implementation using a `concurrent.futures.Executor`."
+msgstr ""
+
+#: of tornado.netutil.ExecutorResolver:3
+msgid ""
+"Use this instead of `ThreadedResolver` when you require additional "
+"control over the executor being used."
+msgstr ""
+
+#: of tornado.netutil.ExecutorResolver:6
+msgid ""
+"The executor will be shut down when the resolver is closed unless "
+"``close_resolver=False``; use this if you want to reuse the same executor"
+" elsewhere."
+msgstr ""
+
+#: of tornado.netutil.BlockingResolver:6 tornado.netutil.ExecutorResolver:13
+#: tornado.netutil.ThreadedResolver:16
+msgid ""
+"The default `Resolver` now uses `.IOLoop.run_in_executor`; use that "
+"instead of this class."
+msgstr ""
+
+#: of tornado.netutil.BlockingResolver:1
+msgid "Default `Resolver` implementation, using `socket.getaddrinfo`."
+msgstr ""
+
+#: of tornado.netutil.BlockingResolver:3
+msgid ""
+"The `.IOLoop` will be blocked during the resolution, although the "
+"callback will not be run until the next `.IOLoop` iteration."
+msgstr ""
+
+#: of tornado.netutil.ThreadedResolver:1
+msgid "Multithreaded non-blocking `Resolver` implementation."
+msgstr ""
+
+#: of tornado.netutil.ThreadedResolver:3
+msgid ""
+"Requires the `concurrent.futures` package to be installed (available in "
+"the standard library since Python 3.2, installable with ``pip install "
+"futures`` in older versions)."
+msgstr ""
+
+#: of tornado.netutil.ThreadedResolver:7
+msgid "The thread pool size can be configured with::"
+msgstr ""
+
+#: of tornado.netutil.ThreadedResolver:12
+msgid ""
+"All ``ThreadedResolvers`` share a single thread pool, whose size is set "
+"by the first one to be created."
+msgstr ""
+
+#: of tornado.netutil.OverrideResolver:1
+msgid "Wraps a resolver with a mapping of overrides."
+msgstr ""
+
+#: of tornado.netutil.OverrideResolver:3
+msgid ""
+"This can be used to make local DNS changes (e.g. for testing) without "
+"modifying system-wide settings."
+msgstr ""
+
+#: of tornado.netutil.OverrideResolver:6
+msgid "The mapping can be in three formats::"
+msgstr ""
+
+#: of tornado.netutil.OverrideResolver:19
+msgid "Added support for host-port-family triplets."
+msgstr ""
+
+#: of tornado.netutil.ssl_options_to_context:1
+msgid ""
+"Try to convert an ``ssl_options`` dictionary to an `~ssl.SSLContext` "
+"object."
+msgstr ""
+
+#: of tornado.netutil.ssl_options_to_context:4
+msgid ""
+"The ``ssl_options`` dictionary contains keywords to be passed to "
+"`ssl.wrap_socket`.  In Python 2.7.9+, `ssl.SSLContext` objects can be "
+"used instead.  This function converts the dict form to its "
+"`~ssl.SSLContext` equivalent, and may be used when a component which "
+"accepts both forms needs to upgrade to the `~ssl.SSLContext` version to "
+"use features like SNI or NPN."
+msgstr ""
+
+#: of tornado.netutil.ssl_wrap_socket:1
+msgid "Returns an ``ssl.SSLSocket`` wrapping the given socket."
+msgstr ""
+
+#: of tornado.netutil.ssl_wrap_socket:3
+msgid ""
+"``ssl_options`` may be either an `ssl.SSLContext` object or a dictionary "
+"(as accepted by `ssl_options_to_context`).  Additional keyword arguments "
+"are passed to ``wrap_socket`` (either the `~ssl.SSLContext` method or the"
+" `ssl` module function as appropriate)."
+msgstr ""
+

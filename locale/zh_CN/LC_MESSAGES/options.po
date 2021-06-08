@@ -1,0 +1,327 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../options.rst:2
+msgid "``tornado.options`` --- Command-line parsing"
+msgstr ""
+
+#: of tornado.options:1
+msgid "A command line parsing module that lets modules define their own options."
+msgstr ""
+
+#: of tornado.options:3
+msgid ""
+"This module is inspired by Google's `gflags <https://github.com/google"
+"/python-gflags>`_. The primary difference with libraries such as "
+"`argparse` is that a global registry is used so that options may be "
+"defined in any module (it also enables `tornado.log` by default). The "
+"rest of Tornado does not depend on this module, so feel free to use "
+"`argparse` or other configuration libraries if you prefer them."
+msgstr ""
+
+#: of tornado.options:11
+msgid ""
+"Options must be defined with `tornado.options.define` before use, "
+"generally at the top level of a module. The options are then accessible "
+"as attributes of `tornado.options.options`::"
+msgstr ""
+
+#: of tornado.options:35
+msgid ""
+"The ``main()`` method of your application does not need to be aware of "
+"all of the options used throughout your program; they are all "
+"automatically loaded when the modules are loaded.  However, all modules "
+"that define options must have been imported before the command line is "
+"parsed."
+msgstr ""
+
+#: of tornado.options:40
+msgid ""
+"Your ``main()`` method can parse the command line or parse a config file "
+"with either `parse_command_line` or `parse_config_file`::"
+msgstr ""
+
+#: of tornado.options:53
+msgid ""
+"When using multiple ``parse_*`` functions, pass ``final=False`` to all "
+"but the last one, or side effects may occur twice (in particular, this "
+"can result in log messages being doubled)."
+msgstr ""
+
+#: of tornado.options:57
+msgid ""
+"`tornado.options.options` is a singleton instance of `OptionParser`, and "
+"the top-level functions in this module (`define`, `parse_command_line`, "
+"etc) simply call methods on it.  You may create additional `OptionParser`"
+" instances to define isolated sets of options, such as for subcommands."
+msgstr ""
+
+#: of tornado.options:64
+msgid ""
+"By default, several options are defined that will configure the standard "
+"`logging` module when `parse_command_line` or `parse_config_file` are "
+"called.  If you want Tornado to leave the logging configuration alone so "
+"you can manage it yourself, either pass ``--logging=none`` on the command"
+" line or do the following to disable it in code::"
+msgstr ""
+
+#: of tornado.options:74
+msgid ""
+"Dashes and underscores are fully interchangeable in option names; options"
+" can be defined, set, and read with any mix of the two. Dashes are "
+"typical for command-line usage while config files require underscores."
+msgstr ""
+
+#: ../../options.rst:9
+msgid "Global functions"
+msgstr ""
+
+#: of tornado.options.define:1
+msgid "Defines an option in the global namespace."
+msgstr ""
+
+#: of tornado.options.define:3
+msgid "See `OptionParser.define`."
+msgstr ""
+
+#: ../../options.rst:15
+msgid ""
+"Global options object.  All defined options are available as attributes "
+"on this object."
+msgstr ""
+
+#: of tornado.options.parse_command_line:1
+msgid "Parses global options from the command line."
+msgstr ""
+
+#: of tornado.options.parse_command_line:3
+msgid "See `OptionParser.parse_command_line`."
+msgstr ""
+
+#: of tornado.options.parse_config_file:1
+msgid "Parses global options from a config file."
+msgstr ""
+
+#: of tornado.options.parse_config_file:3
+msgid "See `OptionParser.parse_config_file`."
+msgstr ""
+
+#: of tornado.options.OptionParser.print_help:1 tornado.options.print_help:1
+msgid "Prints all the command line options to stderr (or another file)."
+msgstr ""
+
+#: of tornado.options.print_help:3
+msgid "See `OptionParser.print_help`."
+msgstr ""
+
+#: of tornado.options.OptionParser.add_parse_callback:1
+#: tornado.options.add_parse_callback:1
+msgid "Adds a parse callback, to be invoked when option parsing is done."
+msgstr ""
+
+#: of tornado.options.add_parse_callback:3
+msgid "See `OptionParser.add_parse_callback`"
+msgstr ""
+
+#: of tornado.options.Error:1
+msgid "Exception raised by errors in the options module."
+msgstr ""
+
+#: ../../options.rst:25
+msgid "OptionParser class"
+msgstr ""
+
+#: of tornado.options.OptionParser:1
+msgid "A collection of options, a dictionary with object-like access."
+msgstr ""
+
+#: of tornado.options.OptionParser:3
+msgid ""
+"Normally accessed via static functions in the `tornado.options` module, "
+"which reference a global instance."
+msgstr ""
+
+#: of tornado.options.OptionParser.items:1
+msgid "An iterable of (name, value) pairs."
+msgstr ""
+
+#: of tornado.options.OptionParser.groups:1
+msgid "The set of option-groups created by ``define``."
+msgstr ""
+
+#: of tornado.options.OptionParser.group_dict:1
+msgid "The names and values of options in a group."
+msgstr ""
+
+#: of tornado.options.OptionParser.group_dict:3
+msgid "Useful for copying options into Application settings::"
+msgstr ""
+
+#: of tornado.options.OptionParser.as_dict:1
+msgid "The names and values of all options."
+msgstr ""
+
+#: of tornado.options.OptionParser.define:1
+msgid "Defines a new command line option."
+msgstr ""
+
+#: of tornado.options.OptionParser.define:3
+msgid ""
+"``type`` can be any of `str`, `int`, `float`, `bool`, "
+"`~datetime.datetime`, or `~datetime.timedelta`. If no ``type`` is given "
+"but a ``default`` is, ``type`` is the type of ``default``. Otherwise, "
+"``type`` defaults to `str`."
+msgstr ""
+
+#: of tornado.options.OptionParser.define:8
+msgid ""
+"If ``multiple`` is True, the option value is a list of ``type`` instead "
+"of an instance of ``type``."
+msgstr ""
+
+#: of tornado.options.OptionParser.define:11
+msgid ""
+"``help`` and ``metavar`` are used to construct the automatically "
+"generated command line help string. The help message is formatted like::"
+msgstr ""
+
+#: of tornado.options.OptionParser.define:17
+msgid ""
+"``group`` is used to group the defined options in logical groups. By "
+"default, command line options are grouped by the file in which they are "
+"defined."
+msgstr ""
+
+#: of tornado.options.OptionParser.define:21
+msgid "Command line option names must be unique globally."
+msgstr ""
+
+#: of tornado.options.OptionParser.define:23
+msgid ""
+"If a ``callback`` is given, it will be run with the new value whenever "
+"the option is changed.  This can be used to combine command-line and "
+"file-based options::"
+msgstr ""
+
+#: of tornado.options.OptionParser.define:30
+msgid ""
+"With this definition, options in the file specified by ``--config`` will "
+"override options set earlier on the command line, but can be overridden "
+"by later flags."
+msgstr ""
+
+#: of tornado.options.OptionParser.parse_command_line:1
+msgid "Parses all options given on the command line (defaults to `sys.argv`)."
+msgstr ""
+
+#: of tornado.options.OptionParser.parse_command_line:4
+msgid ""
+"Options look like ``--option=value`` and are parsed according to their "
+"``type``. For boolean options, ``--option`` is equivalent to "
+"``--option=true``"
+msgstr ""
+
+#: of tornado.options.OptionParser.parse_command_line:8
+msgid ""
+"If the option has ``multiple=True``, comma-separated values are accepted."
+" For multi-value integer options, the syntax ``x:y`` is also accepted and"
+" equivalent to ``range(x, y)``."
+msgstr ""
+
+#: of tornado.options.OptionParser.parse_command_line:12
+msgid ""
+"Note that ``args[0]`` is ignored since it is the program name in "
+"`sys.argv`."
+msgstr ""
+
+#: of tornado.options.OptionParser.parse_command_line:15
+msgid "We return a list of all arguments that are not parsed as options."
+msgstr ""
+
+#: of tornado.options.OptionParser.parse_command_line:17
+#: tornado.options.OptionParser.parse_config_file:23
+msgid ""
+"If ``final`` is ``False``, parse callbacks will not be run. This is "
+"useful for applications that wish to combine configurations from multiple"
+" sources."
+msgstr ""
+
+#: of tornado.options.OptionParser.parse_config_file:1
+msgid "Parses and loads the config file at the given path."
+msgstr ""
+
+#: of tornado.options.OptionParser.parse_config_file:3
+msgid ""
+"The config file contains Python code that will be executed (so it is "
+"**not safe** to use untrusted config files). Anything in the global "
+"namespace that matches a defined option will be used to set that option's"
+" value."
+msgstr ""
+
+#: of tornado.options.OptionParser.parse_config_file:8
+msgid ""
+"Options may either be the specified type for the option or strings (in "
+"which case they will be parsed the same way as in `.parse_command_line`)"
+msgstr ""
+
+#: of tornado.options.OptionParser.parse_config_file:12
+msgid "Example (using the options defined in the top-level docs of this module)::"
+msgstr ""
+
+#: of tornado.options.OptionParser.parse_config_file:29
+msgid ""
+"`tornado.options` is primarily a command-line library. Config file "
+"support is provided for applications that wish to use it, but "
+"applications that prefer config files may wish to look at other libraries"
+" instead."
+msgstr ""
+
+#: of tornado.options.OptionParser.parse_config_file:34
+msgid ""
+"Config files are now always interpreted as utf-8 instead of the system "
+"default encoding."
+msgstr ""
+
+#: of tornado.options.OptionParser.parse_config_file:38
+msgid ""
+"The special variable ``__file__`` is available inside config files, "
+"specifying the absolute path to the config file itself."
+msgstr ""
+
+#: of tornado.options.OptionParser.parse_config_file:42
+msgid "Added the ability to set options via strings in config files."
+msgstr ""
+
+#: of tornado.options.OptionParser.mockable:1
+msgid ""
+"Returns a wrapper around self that is compatible with `mock.patch "
+"<unittest.mock.patch>`."
+msgstr ""
+
+#: of tornado.options.OptionParser.mockable:4
+msgid ""
+"The `mock.patch <unittest.mock.patch>` function (included in the standard"
+" library `unittest.mock` package since Python 3.3, or in the third-party "
+"``mock`` package for older versions of Python) is incompatible with "
+"objects like ``options`` that override ``__getattr__`` and "
+"``__setattr__``.  This function returns an object that can be used with "
+"`mock.patch.object <unittest.mock.patch.object>` to modify option "
+"values::"
+msgstr ""
+

@@ -1,0 +1,404 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../releases/v2.1.0.rst:2
+msgid "Tornado 2.1 新特性"
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:5
+msgid "Sep 20, 2011"
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:8
+msgid "Backwards-incompatible changes"
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:10
+msgid ""
+"Support for secure cookies written by pre-1.0 releases of Tornado has "
+"been removed.  The `.RequestHandler.get_secure_cookie` method no longer "
+"takes an ``include_name`` parameter."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:13
+msgid ""
+"The ``debug`` application setting now causes stack traces to be displayed"
+" in the browser on uncaught exceptions.  Since this may leak sensitive "
+"information, debug mode is not recommended for public-facing servers."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:18
+msgid "Security fixes"
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:20
+msgid ""
+"Diginotar has been removed from the default CA certificates file used by "
+"``SimpleAsyncHTTPClient``."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:24
+msgid "New modules"
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:26
+msgid ""
+"`tornado.gen`:  A generator-based interface to simplify writing "
+"asynchronous functions."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:28
+msgid ""
+"`tornado.netutil`:  Parts of `tornado.httpserver` have been extracted "
+"into a new module for use with non-HTTP protocols."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:30
+msgid ""
+"`tornado.platform.twisted`:  A bridge between the Tornado IOLoop and the "
+"Twisted Reactor, allowing code written for Twisted to be run on Tornado."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:32
+msgid ""
+"`tornado.process`:  Multi-process mode has been improved, and can now "
+"restart crashed child processes.  A new entry point has been added at "
+"`tornado.process.fork_processes`, although "
+"``tornado.httpserver.HTTPServer.start`` is still supported."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:38
+msgid "``tornado.web``"
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:40
+msgid ""
+"`tornado.web.RequestHandler.write_error` replaces ``get_error_html`` as "
+"the preferred way to generate custom error pages (``get_error_html`` is "
+"still supported, but deprecated)"
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:43
+msgid ""
+"In `tornado.web.Application`, handlers may be specified by (fully-"
+"qualified) name instead of importing and passing the class object itself."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:46
+msgid ""
+"It is now possible to use a custom subclass of ``StaticFileHandler`` with"
+" the ``static_handler_class`` application setting, and this subclass can "
+"override the behavior of the ``static_url`` method."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:49
+msgid ""
+"`~tornado.web.StaticFileHandler` subclasses can now override "
+"``get_cache_time`` to customize cache control behavior."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:51
+msgid ""
+"`tornado.web.RequestHandler.get_secure_cookie` now has a ``max_age_days``"
+" parameter to allow applications to override the default one-month "
+"expiration."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:53
+msgid ""
+"`~tornado.web.RequestHandler.set_cookie` now accepts a ``max_age`` "
+"keyword argument to set the ``max-age`` cookie attribute (note underscore"
+" vs dash)"
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:55
+msgid ""
+"`tornado.web.RequestHandler.set_default_headers` may be overridden to set"
+" headers in a way that does not get reset during error handling."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:57
+msgid ""
+"`.RequestHandler.add_header` can now be used to set a header that can "
+"appear multiple times in the response."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:59
+msgid "`.RequestHandler.flush` can now take a callback for flow control."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:60
+msgid "The ``application/json`` content type can now be gzipped."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:61
+msgid ""
+"The cookie-signing functions are now accessible as static functions "
+"``tornado.web.create_signed_value`` and "
+"``tornado.web.decode_signed_value``."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:65
+msgid "``tornado.httpserver``"
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:67
+msgid ""
+"To facilitate some advanced multi-process scenarios, ``HTTPServer`` has a"
+" new method ``add_sockets``, and socket-opening code is available "
+"separately as `tornado.netutil.bind_sockets`."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:70
+msgid ""
+"The ``cookies`` property is now available on "
+"``tornado.httpserver.HTTPRequest`` (it is also available in its old "
+"location as a property of `~tornado.web.RequestHandler`)"
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:73
+msgid ""
+"``tornado.httpserver.HTTPServer.bind`` now takes a backlog argument with "
+"the same meaning as ``socket.listen``."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:75
+msgid ""
+"`~tornado.httpserver.HTTPServer` can now be run on a unix socket as well "
+"as TCP."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:77
+msgid ""
+"Fixed exception at startup when ``socket.AI_ADDRCONFIG`` is not "
+"available, as on Windows XP"
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:81
+msgid "``IOLoop`` and ``IOStream``"
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:83
+msgid ""
+"`~tornado.iostream.IOStream` performance has been improved, especially "
+"for small synchronous requests."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:85
+msgid ""
+"New methods ``tornado.iostream.IOStream.read_until_close`` and "
+"``tornado.iostream.IOStream.read_until_regex``."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:87
+msgid ""
+"``IOStream.read_bytes`` and ``IOStream.read_until_close`` now take a "
+"``streaming_callback`` argument to return data as it is received rather "
+"than all at once."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:90
+msgid ""
+"`.IOLoop.add_timeout` now accepts `datetime.timedelta` objects in "
+"addition to absolute timestamps."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:92
+msgid ""
+"`~tornado.ioloop.PeriodicCallback` now sticks to the specified period "
+"instead of creeping later due to accumulated errors."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:94
+msgid ""
+"`tornado.ioloop.IOLoop` and `tornado.httpclient.HTTPClient` now have "
+"``close()`` methods that should be used in applications that create and "
+"destroy many of these objects."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:97
+msgid ""
+"`.IOLoop.install` can now be used to use a custom subclass of IOLoop as "
+"the singleton without monkey-patching."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:99
+msgid ""
+"`~tornado.iostream.IOStream` should now always call the close callback "
+"instead of the connect callback on a connection error."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:101
+msgid ""
+"The `.IOStream` close callback will no longer be called while there are "
+"pending read callbacks that can be satisfied with buffered data."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:106
+msgid "``tornado.simple_httpclient``"
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:108
+msgid ""
+"Now supports client SSL certificates with the ``client_key`` and "
+"``client_cert`` parameters to `tornado.httpclient.HTTPRequest`"
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:110
+msgid "Now takes a maximum buffer size, to allow reading files larger than 100MB"
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:111
+msgid "Now works with HTTP 1.0 servers that don't send a Content-Length header"
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:112
+msgid ""
+"The ``allow_nonstandard_methods`` flag on HTTP client requests now "
+"permits methods other than ``POST`` and ``PUT`` to contain bodies."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:114
+msgid ""
+"Fixed file descriptor leaks and multiple callback invocations in "
+"``SimpleAsyncHTTPClient``"
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:116
+msgid "No longer consumes extra connection resources when following redirects."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:117
+msgid ""
+"Now works with buggy web servers that separate headers with ``\\n`` "
+"instead of ``\\r\\n\\r\\n``."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:119
+msgid "Now sets ``response.request_time`` correctly."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:120
+msgid "Connect timeouts now work correctly."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:124
+msgid "Other modules"
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:126
+msgid ""
+"`tornado.auth.OpenIdMixin` now uses the correct realm when the callback "
+"URI is on a different domain."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:128
+msgid ""
+"`tornado.autoreload` has a new command-line interface which can be used "
+"to wrap any script.  This replaces the ``--autoreload`` argument to "
+"`tornado.testing.main` and is more robust against syntax errors."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:131
+msgid ""
+"`tornado.autoreload.watch` can be used to watch files other than the "
+"sources of imported modules."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:133
+msgid ""
+"``tornado.database.Connection`` has new variants of ``execute`` and "
+"``executemany`` that return the number of rows affected instead of the "
+"last inserted row id."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:136
+msgid ""
+"`tornado.locale.load_translations` now accepts any properly-formatted "
+"locale name, not just those in the predefined ``LOCALE_NAMES`` list."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:138
+msgid ""
+"`tornado.options.define` now takes a ``group`` parameter to group options"
+" in ``--help`` output."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:140
+msgid ""
+"Template loaders now take a ``namespace`` constructor argument to add "
+"entries to the template namespace."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:142
+msgid ""
+"`tornado.websocket` now supports the latest (\"hybi-10\") version of the "
+"protocol (the old version, \"hixie-76\" is still supported; the correct "
+"version is detected automatically)."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:145
+msgid "`tornado.websocket` now works on Python 3"
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:149
+msgid "Bug fixes"
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:151
+msgid ""
+"Windows support has been improved.  Windows is still not an officially "
+"supported platform, but the test suite now passes and "
+"`tornado.autoreload` works."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:154
+msgid "Uploading files whose names contain special characters will now work."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:155
+msgid ""
+"Cookie values containing special characters are now properly quoted and "
+"unquoted."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:157
+msgid "Multi-line headers are now supported."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:158
+msgid ""
+"Repeated Content-Length headers (which may be added by certain proxies) "
+"are now supported in `.HTTPServer`."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:160
+msgid "Unicode string literals now work in template expressions."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:161
+msgid ""
+"The template ``{% module %}`` directive now works even if applications "
+"use a template variable named ``modules``."
+msgstr ""
+
+#: ../../releases/v2.1.0.rst:163
+msgid "Requests with \"Expect: 100-continue\" now work on python 3"
+msgstr ""
+

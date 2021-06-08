@@ -1,0 +1,62 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../guide/intro.rst:2
+msgid "介绍"
+msgstr ""
+
+#: ../../guide/intro.rst:4
+msgid ""
+"`Tornado <http://www.tornadoweb.org>`_ 是一个基于Python的Web服务框架和 异步网络库, 最早开发与 "
+"`FriendFeed <http://friendfeed.com>`_ 公司.  通过利用非阻塞网络 I/O, Tornado "
+"可以承载成千上万的活动连接, 完美的实现了 `长连接 "
+"<http://en.wikipedia.org/wiki/Push_technology#Long_polling>`_, "
+"`WebSockets <http://en.wikipedia.org/wiki/WebSocket>`_, "
+"和其他对于每一位用户来说需要长连接的程序."
+msgstr ""
+
+#: ../../guide/intro.rst:12
+msgid "Tornado 可以被分为以下四个主要部分:"
+msgstr ""
+
+#: ../../guide/intro.rst:14
+msgid "Web 框架 (包括用来创建 Web 应用程序的 `.RequestHandler` 类, 还有很多其它支持的类)."
+msgstr ""
+
+#: ../../guide/intro.rst:15
+msgid "HTTP 客户端和服务器的实现 (`.HTTPServer` 和  `.AsyncHTTPClient`)."
+msgstr ""
+
+#: ../../guide/intro.rst:16
+msgid "异步网络库 (`.IOLoop` 和 `.IOStream`), 对 HTTP 的实现提供构建模块, 还可以用来实现其他协议."
+msgstr ""
+
+#: ../../guide/intro.rst:17
+msgid "协程库 (`tornado.gen`) 让用户通过更直接的方法来实现异步编程, 而不是通过回调的方式."
+msgstr ""
+
+#: ../../guide/intro.rst:20
+msgid ""
+"Tornado web 框架和 HTTP 服务器提供了一整套 `WSGI "
+"<http://www.python.org/dev/peps/pep-3333/>`_ 的方案. "
+"可以让Tornado编写的Web框架运行在一个WSGI容器中 (`.WSGIAdapter`), 或者使用 Tornado HTTP "
+"服务器作为一个WSGI容器 (`.WSGIContainer`), 这两种解决方案都有各自的局限性, "
+"为了充分享受Tornado为您带来的特性,你需要同时使用 Tornado的web框架和HTTP服务器."
+msgstr ""
+

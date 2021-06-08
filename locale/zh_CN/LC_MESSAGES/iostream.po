@@ -1,0 +1,606 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../iostream.rst:2
+msgid "``tornado.iostream`` --- Convenient wrappers for non-blocking sockets"
+msgstr ""
+
+#: of tornado.iostream:1
+msgid "Utility classes to write to and read from non-blocking files and sockets."
+msgstr ""
+
+#: of tornado.iostream:3
+msgid "Contents:"
+msgstr ""
+
+#: of tornado.iostream:5
+msgid "`BaseIOStream`: Generic interface for reading and writing."
+msgstr ""
+
+#: of tornado.iostream:6
+msgid "`IOStream`: Implementation of BaseIOStream using non-blocking sockets."
+msgstr ""
+
+#: of tornado.iostream:7
+msgid "`SSLIOStream`: SSL-aware version of IOStream."
+msgstr ""
+
+#: of tornado.iostream:8
+msgid "`PipeIOStream`: Pipe-based IOStream implementation."
+msgstr ""
+
+#: ../../iostream.rst:7
+msgid "Base class"
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream:1
+msgid "A utility class to write to and read from a non-blocking file or socket."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream:3
+msgid ""
+"We support a non-blocking ``write()`` and a family of ``read_*()`` "
+"methods. When the operation completes, the ``Awaitable`` will resolve "
+"with the data read (or ``None`` for ``write()``). All outstanding "
+"``Awaitables`` will resolve with a `StreamClosedError` when the stream is"
+" closed; `.BaseIOStream.set_close_callback` can also be used to be "
+"notified of a closed stream."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream:10
+msgid ""
+"When a stream is closed due to an error, the IOStream's ``error`` "
+"attribute contains the exception object."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream:13
+msgid ""
+"Subclasses must implement `fileno`, `close_fd`, `write_to_fd`, "
+"`read_from_fd`, and optionally `get_fd_error`."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream:17 tornado.iostream.IOStream:47
+#: tornado.iostream.PipeIOStream:10
+msgid "`BaseIOStream` constructor."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream tornado.iostream.IOStream
+#: tornado.iostream.PipeIOStream
+msgid "参数"
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream:19 tornado.iostream.IOStream:49
+#: tornado.iostream.PipeIOStream:12
+msgid "Maximum amount of incoming data to buffer; defaults to 100MB."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream:21 tornado.iostream.IOStream:51
+#: tornado.iostream.PipeIOStream:14
+msgid ""
+"Amount of data to read at one time from the underlying transport; "
+"defaults to 64KB."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream:23 tornado.iostream.IOStream:53
+#: tornado.iostream.PipeIOStream:16
+msgid "Amount of outgoing data to buffer; defaults to unlimited."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream:26 tornado.iostream.IOStream:56
+#: tornado.iostream.PipeIOStream:19
+msgid ""
+"Add the ``max_write_buffer_size`` parameter.  Changed default "
+"``read_chunk_size`` to 64KB."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream:29 tornado.iostream.IOStream:59
+#: tornado.iostream.PipeIOStream:22
+msgid "The ``io_loop`` argument (deprecated since version 4.1) has been removed."
+msgstr ""
+
+#: ../../iostream.rst:12
+msgid "Main interface"
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.write:1
+msgid "Asynchronously write the given data to this stream."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.write:3
+msgid ""
+"This method returns a `.Future` that resolves (with a result of ``None``)"
+" when the write has been completed."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.write:6
+msgid "The ``data`` argument may be of type `bytes` or `memoryview`."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.write:8
+msgid "Now returns a `.Future` if no callback is given."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.write:11
+msgid "Added support for `memoryview` arguments."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.read_until:15
+#: tornado.iostream.BaseIOStream.read_until_regex:16
+#: tornado.iostream.BaseIOStream.write:16 tornado.iostream.IOStream.connect:41
+#: tornado.iostream.SSLIOStream.connect:41
+#: tornado.iostream.SSLIOStream.wait_for_handshake:21
+msgid "The ``callback`` argument was removed. Use the returned `.Future` instead."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.read_bytes:1
+msgid "Asynchronously read a number of bytes."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.read_bytes:3
+msgid ""
+"If ``partial`` is true, data is returned as soon as we have any bytes to "
+"return (but never more than ``num_bytes``)"
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.read_bytes:6
+msgid ""
+"Added the ``partial`` argument.  The callback argument is now optional "
+"and a `.Future` will be returned if it is omitted."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.read_bytes:12
+msgid ""
+"The ``callback`` and ``streaming_callback`` arguments have been removed. "
+"Use the returned `.Future` (and ``partial=True`` for "
+"``streaming_callback``) instead."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.read_until:1
+msgid "Asynchronously read until we have found the given delimiter."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.read_until:3
+msgid "The result includes all the data read including the delimiter."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.read_until:5
+msgid ""
+"If ``max_bytes`` is not None, the connection will be closed if more than "
+"``max_bytes`` bytes have been read and the delimiter is not found."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.read_until:9
+#: tornado.iostream.BaseIOStream.read_until_regex:10
+msgid ""
+"Added the ``max_bytes`` argument.  The ``callback`` argument is now "
+"optional and a `.Future` will be returned if it is omitted."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.read_until_regex:1
+msgid "Asynchronously read until we have matched the given regex."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.read_until_regex:3
+msgid ""
+"The result includes the data that matches the regex and anything that "
+"came before it."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.read_until_regex:6
+msgid ""
+"If ``max_bytes`` is not None, the connection will be closed if more than "
+"``max_bytes`` bytes have been read and the regex is not satisfied."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.read_until_close:1
+msgid "Asynchronously reads all data from the socket until it is closed."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.read_until_close:3
+msgid ""
+"This will buffer all available data until ``max_buffer_size`` is reached."
+" If flow control or cancellation are desired, use a loop with "
+"`read_bytes(partial=True) <.read_bytes>` instead."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.read_until_close:7
+msgid ""
+"The callback argument is now optional and a `.Future` will be returned if"
+" it is omitted."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.read_until_close:13
+msgid ""
+"The ``callback`` and ``streaming_callback`` arguments have been removed. "
+"Use the returned `.Future` (and `read_bytes` with ``partial=True`` for "
+"``streaming_callback``) instead."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.close:1
+msgid "Close this stream."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.close:3
+msgid ""
+"If ``exc_info`` is true, set the ``error`` attribute to the current "
+"exception from `sys.exc_info` (or if ``exc_info`` is a tuple, use that "
+"instead of `sys.exc_info`)."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.set_close_callback:1
+msgid "Call the given callback when the stream is closed."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.set_close_callback:3
+msgid ""
+"This mostly is not necessary for applications that use the `.Future` "
+"interface; all outstanding ``Futures`` will resolve with a "
+"`StreamClosedError` when the stream is closed. However, it is still "
+"useful as a way to signal that the stream has been closed while no other "
+"read or write is in progress."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.set_close_callback:9
+msgid ""
+"Unlike other callback-based interfaces, ``set_close_callback`` was not "
+"removed in Tornado 6.0."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.closed:1
+msgid "Returns ``True`` if the stream has been closed."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.reading:1
+#: tornado.iostream.SSLIOStream.reading:1
+msgid "Returns ``True`` if we are currently reading from the stream."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.writing:1
+#: tornado.iostream.SSLIOStream.writing:1
+msgid "Returns ``True`` if we are currently writing to the stream."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.set_nodelay:1
+#: tornado.iostream.IOStream.set_nodelay:1
+msgid "Sets the no-delay flag for this stream."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.set_nodelay:3
+#: tornado.iostream.IOStream.set_nodelay:3
+msgid ""
+"By default, data written to TCP streams may be held for a time to make "
+"the most efficient use of bandwidth (according to Nagle's algorithm).  "
+"The no-delay flag requests that data be written as soon as possible, even"
+" if doing so would consume additional bandwidth."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.set_nodelay:9
+#: tornado.iostream.IOStream.set_nodelay:9
+msgid "This flag is currently defined only for TCP-based ``IOStreams``."
+msgstr ""
+
+#: ../../iostream.rst:27
+msgid "Methods for subclasses"
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.fileno:1 tornado.iostream.IOStream.fileno:1
+#: tornado.iostream.PipeIOStream.fileno:1
+msgid "Returns the file descriptor for this stream."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.close_fd:1
+#: tornado.iostream.IOStream.close_fd:1
+#: tornado.iostream.PipeIOStream.close_fd:1
+msgid "Closes the file underlying this stream."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.close_fd:3
+#: tornado.iostream.IOStream.close_fd:3
+#: tornado.iostream.PipeIOStream.close_fd:3
+msgid ""
+"``close_fd`` is called by `BaseIOStream` and should not be called "
+"elsewhere; other users should call `close` instead."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.write_to_fd:1
+#: tornado.iostream.IOStream.write_to_fd:1
+#: tornado.iostream.PipeIOStream.write_to_fd:1
+#: tornado.iostream.SSLIOStream.write_to_fd:1
+msgid "Attempts to write ``data`` to the underlying file."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.write_to_fd:3
+#: tornado.iostream.IOStream.write_to_fd:3
+#: tornado.iostream.PipeIOStream.write_to_fd:3
+#: tornado.iostream.SSLIOStream.write_to_fd:3
+msgid "Returns the number of bytes written."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.read_from_fd:1
+#: tornado.iostream.IOStream.read_from_fd:1
+#: tornado.iostream.PipeIOStream.read_from_fd:1
+#: tornado.iostream.SSLIOStream.read_from_fd:1
+msgid "Attempts to read from the underlying file."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.read_from_fd:3
+#: tornado.iostream.IOStream.read_from_fd:3
+#: tornado.iostream.PipeIOStream.read_from_fd:3
+#: tornado.iostream.SSLIOStream.read_from_fd:3
+msgid ""
+"Reads up to ``len(buf)`` bytes, storing them in the buffer. Returns the "
+"number of bytes read. Returns None if there was nothing to read (the "
+"socket returned `~errno.EWOULDBLOCK` or equivalent), and zero on EOF."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.read_from_fd:10
+#: tornado.iostream.IOStream.read_from_fd:10
+#: tornado.iostream.PipeIOStream.read_from_fd:10
+#: tornado.iostream.SSLIOStream.read_from_fd:10
+msgid ""
+"Interface redesigned to take a buffer and return a number of bytes "
+"instead of a freshly-allocated object."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.get_fd_error:1
+#: tornado.iostream.IOStream.get_fd_error:1
+msgid "Returns information about any error on the underlying file."
+msgstr ""
+
+#: of tornado.iostream.BaseIOStream.get_fd_error:3
+#: tornado.iostream.IOStream.get_fd_error:3
+msgid ""
+"This method is called after the `.IOLoop` has signaled an error on the "
+"file descriptor, and should return an Exception (such as `socket.error` "
+"with additional information, or None if no such information is available."
+msgstr ""
+
+#: ../../iostream.rst:36
+msgid "Implementations"
+msgstr ""
+
+#: of tornado.iostream.IOStream:1
+msgid "Socket-based `IOStream` implementation."
+msgstr ""
+
+#: of tornado.iostream.IOStream:3
+msgid ""
+"This class supports the read and write methods from `BaseIOStream` plus a"
+" `connect` method."
+msgstr ""
+
+#: of tornado.iostream.IOStream:6
+msgid ""
+"The ``socket`` parameter may either be connected or unconnected. For "
+"server operations the socket is the result of calling `socket.accept "
+"<socket.socket.accept>`.  For client operations the socket is created "
+"with `socket.socket`, and may either be connected before passing it to "
+"the `IOStream` or connected with `IOStream.connect`."
+msgstr ""
+
+#: of tornado.iostream.IOStream:13
+msgid "A very simple (and broken) HTTP client using this class:"
+msgstr ""
+
+#: of tornado.iostream.IOStream.connect:1
+#: tornado.iostream.SSLIOStream.connect:1
+msgid "Connects the socket to a remote address without blocking."
+msgstr ""
+
+#: of tornado.iostream.IOStream.connect:3
+#: tornado.iostream.SSLIOStream.connect:3
+msgid ""
+"May only be called if the socket passed to the constructor was not "
+"previously connected.  The address parameter is in the same format as for"
+" `socket.connect <socket.socket.connect>` for the type of socket passed "
+"to the IOStream constructor, e.g. an ``(ip, port)`` tuple.  Hostnames are"
+" accepted here, but will be resolved synchronously and block the IOLoop. "
+"If you have a hostname instead of an IP address, the `.TCPClient` class "
+"is recommended instead of calling this method directly. `.TCPClient` will"
+" do asynchronous DNS resolution and handle both IPv4 and IPv6."
+msgstr ""
+
+#: of tornado.iostream.IOStream.connect:14
+#: tornado.iostream.SSLIOStream.connect:14
+msgid ""
+"If ``callback`` is specified, it will be called with no arguments when "
+"the connection is completed; if not this method returns a `.Future` "
+"(whose result after a successful connection will be the stream itself)."
+msgstr ""
+
+#: of tornado.iostream.IOStream.connect:19
+#: tornado.iostream.SSLIOStream.connect:19
+msgid ""
+"In SSL mode, the ``server_hostname`` parameter will be used for "
+"certificate validation (unless disabled in the ``ssl_options``) and SNI "
+"(if supported; requires Python 2.7.9+)."
+msgstr ""
+
+#: of tornado.iostream.IOStream.connect:24
+#: tornado.iostream.SSLIOStream.connect:24
+msgid ""
+"Note that it is safe to call `IOStream.write <BaseIOStream.write>` while "
+"the connection is pending, in which case the data will be written as soon"
+" as the connection is ready.  Calling `IOStream` read methods before the "
+"socket is connected works on some platforms but is non-portable."
+msgstr ""
+
+#: of tornado.iostream.IOStream.connect:30
+#: tornado.iostream.SSLIOStream.connect:30
+msgid "If no callback is given, returns a `.Future`."
+msgstr ""
+
+#: of tornado.iostream.IOStream.connect:33
+#: tornado.iostream.SSLIOStream.connect:33
+msgid ""
+"SSL certificates are validated by default; pass "
+"``ssl_options=dict(cert_reqs=ssl.CERT_NONE)`` or a suitably-configured "
+"`ssl.SSLContext` to the `SSLIOStream` constructor to disable."
+msgstr ""
+
+#: of tornado.iostream.IOStream.start_tls:1
+msgid "Convert this `IOStream` to an `SSLIOStream`."
+msgstr ""
+
+#: of tornado.iostream.IOStream.start_tls:3
+msgid ""
+"This enables protocols that begin in clear-text mode and switch to SSL "
+"after some initial negotiation (such as the ``STARTTLS`` extension to "
+"SMTP and IMAP)."
+msgstr ""
+
+#: of tornado.iostream.IOStream.start_tls:7
+msgid ""
+"This method cannot be used if there are outstanding reads or writes on "
+"the stream, or if there is any data in the IOStream's buffer (data in the"
+" operating system's socket buffer is allowed).  This means it must "
+"generally be used immediately after reading or writing the last clear-"
+"text data.  It can also be used immediately after connecting, before any "
+"reads or writes."
+msgstr ""
+
+#: of tornado.iostream.IOStream.start_tls:15
+msgid ""
+"The ``ssl_options`` argument may be either an `ssl.SSLContext` object or "
+"a dictionary of keyword arguments for the `ssl.wrap_socket` function.  "
+"The ``server_hostname`` argument will be used for certificate validation "
+"unless disabled in the ``ssl_options``."
+msgstr ""
+
+#: of tornado.iostream.IOStream.start_tls:21
+msgid ""
+"This method returns a `.Future` whose result is the new `SSLIOStream`.  "
+"After this method has been called, any other operation on the original "
+"stream is undefined."
+msgstr ""
+
+#: of tornado.iostream.IOStream.start_tls:25
+msgid ""
+"If a close callback is defined on this stream, it will be transferred to "
+"the new stream."
+msgstr ""
+
+#: of tornado.iostream.IOStream.start_tls:30
+msgid ""
+"SSL certificates are validated by default; pass "
+"``ssl_options=dict(cert_reqs=ssl.CERT_NONE)`` or a suitably-configured "
+"`ssl.SSLContext` to disable."
+msgstr ""
+
+#: of tornado.iostream.SSLIOStream:1
+msgid "A utility class to write to and read from a non-blocking SSL socket."
+msgstr ""
+
+#: of tornado.iostream.SSLIOStream:3
+msgid ""
+"If the socket passed to the constructor is already connected, it should "
+"be wrapped with::"
+msgstr ""
+
+#: of tornado.iostream.SSLIOStream:8
+msgid ""
+"before constructing the `SSLIOStream`.  Unconnected sockets will be "
+"wrapped when `IOStream.connect` is finished."
+msgstr ""
+
+#: of tornado.iostream.SSLIOStream:11
+msgid ""
+"The ``ssl_options`` keyword argument may either be an `ssl.SSLContext` "
+"object or a dictionary of keywords arguments for `ssl.wrap_socket`"
+msgstr ""
+
+#: of tornado.iostream.SSLIOStream.wait_for_handshake:1
+msgid "Wait for the initial SSL handshake to complete."
+msgstr ""
+
+#: of tornado.iostream.SSLIOStream.wait_for_handshake:3
+msgid ""
+"If a ``callback`` is given, it will be called with no arguments once the "
+"handshake is complete; otherwise this method returns a `.Future` which "
+"will resolve to the stream itself after the handshake is complete."
+msgstr ""
+
+#: of tornado.iostream.SSLIOStream.wait_for_handshake:8
+msgid ""
+"Once the handshake is complete, information such as the peer's "
+"certificate and NPN/ALPN selections may be accessed on ``self.socket``."
+msgstr ""
+
+#: of tornado.iostream.SSLIOStream.wait_for_handshake:12
+msgid ""
+"This method is intended for use on server-side streams or after using "
+"`IOStream.start_tls`; it should not be used with `IOStream.connect` "
+"(which already waits for the handshake to complete). It may only be "
+"called once per stream."
+msgstr ""
+
+#: of tornado.iostream.PipeIOStream:1
+msgid "Pipe-based `IOStream` implementation."
+msgstr ""
+
+#: of tornado.iostream.PipeIOStream:3
+msgid ""
+"The constructor takes an integer file descriptor (such as one returned by"
+" `os.pipe`) rather than an open file object.  Pipes are generally one-"
+"way, so a `PipeIOStream` can be used for reading or writing but not both."
+msgstr ""
+
+#: of tornado.iostream.PipeIOStream:8
+msgid "``PipeIOStream`` is only available on Unix-based platforms."
+msgstr ""
+
+#: ../../iostream.rst:48
+msgid "Exceptions"
+msgstr ""
+
+#: of tornado.iostream.StreamBufferFullError:1
+msgid "Exception raised by `IOStream` methods when the buffer is full."
+msgstr ""
+
+#: of tornado.iostream.StreamClosedError:1
+msgid "Exception raised by `IOStream` methods when the stream is closed."
+msgstr ""
+
+#: of tornado.iostream.StreamClosedError:3
+msgid ""
+"Note that the close callback is scheduled to run *after* other callbacks "
+"on the stream (to allow for buffered data to be processed), so you may "
+"see this error before you see the close callback."
+msgstr ""
+
+#: of tornado.iostream.StreamClosedError:7
+msgid ""
+"The ``real_error`` attribute contains the underlying error that caused "
+"the stream to close (if any)."
+msgstr ""
+
+#: of tornado.iostream.StreamClosedError:10
+msgid "Added the ``real_error`` attribute."
+msgstr ""
+
+#: of tornado.iostream.UnsatisfiableReadError:1
+msgid "Exception raised when a read cannot be satisfied."
+msgstr ""
+
+#: of tornado.iostream.UnsatisfiableReadError:3
+msgid ""
+"Raised by ``read_until`` and ``read_until_regex`` with a ``max_bytes`` "
+"argument."
+msgstr ""
+

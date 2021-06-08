@@ -1,0 +1,124 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../autoreload.rst:2
+msgid ""
+"``tornado.autoreload`` --- Automatically detect code changes in "
+"development"
+msgstr ""
+
+#: of tornado.autoreload:1
+msgid "Automatically restart the server when a source file is modified."
+msgstr ""
+
+#: of tornado.autoreload:3
+msgid ""
+"Most applications should not access this module directly.  Instead, pass "
+"the keyword argument ``autoreload=True`` to the `tornado.web.Application`"
+" constructor (or ``debug=True``, which enables this setting and several "
+"others).  This will enable autoreload mode as well as checking for "
+"changes to templates and static resources.  Note that restarting is a "
+"destructive operation and any requests in progress will be aborted when "
+"the process restarts.  (If you want to disable autoreload while using "
+"other debug-mode features, pass both ``debug=True`` and "
+"``autoreload=False``)."
+msgstr ""
+
+#: of tornado.autoreload:13
+msgid ""
+"This module can also be used as a command-line wrapper around scripts "
+"such as unit test runners.  See the `main` method for details."
+msgstr ""
+
+#: of tornado.autoreload:16
+msgid ""
+"The command-line wrapper and Application debug modes can be used "
+"together. This combination is encouraged as the wrapper catches syntax "
+"errors and other import-time failures, while debug mode catches changes "
+"once the server has started."
+msgstr ""
+
+#: of tornado.autoreload:21
+msgid ""
+"This module will not work correctly when `.HTTPServer`'s multi-process "
+"mode is used."
+msgstr ""
+
+#: of tornado.autoreload:24
+msgid ""
+"Reloading loses any Python interpreter command-line arguments (e.g. "
+"``-u``) because it re-executes Python using ``sys.executable`` and "
+"``sys.argv``. Additionally, modifying these variables will cause "
+"reloading to behave incorrectly."
+msgstr ""
+
+#: of tornado.autoreload.start:1
+msgid "Begins watching source files for changes."
+msgstr ""
+
+#: of tornado.autoreload.start:3
+msgid "The ``io_loop`` argument (deprecated since version 4.1) has been removed."
+msgstr ""
+
+#: of tornado.autoreload.wait:1
+msgid "Wait for a watched file to change, then restart the process."
+msgstr ""
+
+#: of tornado.autoreload.wait:3
+msgid ""
+"Intended to be used at the end of scripts like unit test runners, to run "
+"the tests again after any source file changes (but see also the command-"
+"line interface in `main`)"
+msgstr ""
+
+#: of tornado.autoreload.watch:1
+msgid "Add a file to the watch list."
+msgstr ""
+
+#: of tornado.autoreload.watch:3
+msgid "All imported modules are watched by default."
+msgstr ""
+
+#: of tornado.autoreload.add_reload_hook:1
+msgid "Add a function to be called before reloading the process."
+msgstr ""
+
+#: of tornado.autoreload.add_reload_hook:3
+msgid ""
+"Note that for open file and socket handles it is generally preferable to "
+"set the ``FD_CLOEXEC`` flag (using `fcntl` or `os.set_inheritable`) "
+"instead of using a reload hook to close them."
+msgstr ""
+
+#: of tornado.autoreload.main:1
+msgid "Command-line wrapper to re-run a script whenever its source changes."
+msgstr ""
+
+#: of tornado.autoreload.main:3
+msgid "Scripts may be specified by filename or module name::"
+msgstr ""
+
+#: of tornado.autoreload.main:8
+msgid ""
+"Running a script with this wrapper is similar to calling "
+"`tornado.autoreload.wait` at the end of the script, but this wrapper can "
+"catch import-time problems like syntax errors that would otherwise "
+"prevent the script from reaching its call to `wait`."
+msgstr ""
+

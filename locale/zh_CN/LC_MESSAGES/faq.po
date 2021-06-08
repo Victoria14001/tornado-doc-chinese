@@ -1,0 +1,116 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../faq.rst:2
+msgid "问题与解答"
+msgstr ""
+
+#: ../../faq.rst:8
+msgid "为什么在例子中调用 ``time.sleep()`` 不会并发执行?"
+msgstr ""
+
+#: ../../faq.rst:10
+msgid ""
+"Many people's first foray into Tornado's concurrency looks something like"
+" this::"
+msgstr ""
+
+#: ../../faq.rst:19
+msgid ""
+"Fetch this handler twice at the same time and you'll see that the second "
+"five-second countdown doesn't start until the first one has completely "
+"finished. The reason for this is that `time.sleep` is a **blocking** "
+"function: it doesn't allow control to return to the `.IOLoop` so that "
+"other handlers can be run."
+msgstr ""
+
+#: ../../faq.rst:25
+msgid ""
+"Of course, `time.sleep` is really just a placeholder in these examples, "
+"the point is to show what happens when something in a handler gets slow. "
+"No matter what the real code is doing, to achieve concurrency blocking "
+"code must be replaced with non-blocking equivalents. This means one of "
+"three things:"
+msgstr ""
+
+#: ../../faq.rst:30
+msgid ""
+"*Find a coroutine-friendly equivalent.* For `time.sleep`, use "
+"`tornado.gen.sleep` instead::"
+msgstr ""
+
+#: ../../faq.rst:40
+msgid ""
+"When this option is available, it is usually the best approach. See the "
+"`Tornado wiki <https://github.com/tornadoweb/tornado/wiki/Links>`_ for "
+"links to asynchronous libraries that may be useful."
+msgstr ""
+
+#: ../../faq.rst:44
+msgid ""
+"*Find a callback-based equivalent.* Similar to the first option, "
+"callback-based libraries are available for many tasks, although they are "
+"slightly more complicated to use than a library designed for coroutines. "
+"These are typically used with `tornado.gen.Task` as an adapter::"
+msgstr ""
+
+#: ../../faq.rst:58
+msgid ""
+"Again, the `Tornado wiki "
+"<https://github.com/tornadoweb/tornado/wiki/Links>`_ can be useful to "
+"find suitable libraries."
+msgstr ""
+
+#: ../../faq.rst:62
+msgid ""
+"*Run the blocking code on another thread.* When asynchronous libraries "
+"are not available, `concurrent.futures.ThreadPoolExecutor` can be used to"
+" run any blocking code on another thread. This is a universal solution "
+"that can be used for any blocking function whether an asynchronous "
+"counterpart exists or not::"
+msgstr ""
+
+#: ../../faq.rst:77
+msgid ""
+"See the :doc:`Asynchronous I/O <guide/async>` chapter of the Tornado "
+"user's guide for more on blocking and asynchronous functions."
+msgstr ""
+
+#: ../../faq.rst:82
+msgid "我的代码是异步的, 但它不能在两个浏览器标签页上并行运行."
+msgstr ""
+
+#: ../../faq.rst:84
+msgid ""
+"即使你是用了异步和非阻塞的控制器, 你会发现在测试过程中可能也会出现问题. "
+"流量器将会发现你试图在两个不同的标签页加载同一个页面,这时浏览器会延迟加载 第二个页面一直等到第一个页面加载完成. 如果你想要看到异步的效果, "
+"请尝试以下两种方法中的任意一个:"
+msgstr ""
+
+#: ../../faq.rst:89
+msgid ""
+"在url上添加一些参数让请求变得不同. 之前是将 ``http://localhost:8888`` 在两个标签页中打开, "
+"现在可以尝试在一个标签页中打开 ``http://localhost:8888/?x=1`` 而后在另一个标签页打开 "
+"``http://localhost:8888/?x=2`` ."
+msgstr ""
+
+#: ../../faq.rst:93
+msgid "使用两个不同的浏览器. 例如, Firefox 和 Chrome 将会同时加载同样的url而不会等待对方."
+msgstr ""
+

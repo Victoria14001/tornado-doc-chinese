@@ -1,0 +1,195 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../queues.rst:2
+msgid "``tornado.queues`` -- Queues for coroutines"
+msgstr ""
+
+#: of tornado.queues:1
+msgid ""
+"Asynchronous queues for coroutines. These classes are very similar to "
+"those provided in the standard library's `asyncio package "
+"<https://docs.python.org/3/library/asyncio-queue.html>`_."
+msgstr ""
+
+#: of tornado.queues:7
+msgid ""
+"Unlike the standard library's `queue` module, the classes defined here "
+"are *not* thread-safe. To use these queues from another thread, use "
+"`.IOLoop.add_callback` to transfer control to the `.IOLoop` thread before"
+" calling any queue methods."
+msgstr ""
+
+#: ../../queues.rst:9
+msgid "Classes"
+msgstr ""
+
+#: ../../queues.rst:12
+msgid "Queue"
+msgstr ""
+
+#: of tornado.queues.Queue:1
+msgid "Coordinate producer and consumer coroutines."
+msgstr ""
+
+#: of tornado.queues.Queue:3
+msgid "If maxsize is 0 (the default) the queue size is unbounded."
+msgstr ""
+
+#: of tornado.queues.Queue:50
+msgid ""
+"In versions of Python without native coroutines (before 3.5), "
+"``consumer()`` could be written as::"
+msgstr ""
+
+#: of tornado.queues.Queue:63
+msgid "Added ``async for`` support in Python 3.5."
+msgstr ""
+
+#: of tornado.queues.Queue.maxsize:1
+msgid "Number of items allowed in the queue."
+msgstr ""
+
+#: of tornado.queues.Queue.qsize:1
+msgid "Number of items in the queue."
+msgstr ""
+
+#: of tornado.queues.Queue.put:1
+msgid "Put an item into the queue, perhaps waiting until there is room."
+msgstr ""
+
+#: of tornado.queues.Queue.put:3
+msgid ""
+"Returns a Future, which raises `tornado.util.TimeoutError` after a "
+"timeout."
+msgstr ""
+
+#: of tornado.queues.Queue.get:6 tornado.queues.Queue.put:6
+msgid ""
+"``timeout`` may be a number denoting a time (on the same scale as "
+"`tornado.ioloop.IOLoop.time`, normally `time.time`), or a "
+"`datetime.timedelta` object for a deadline relative to the current time."
+msgstr ""
+
+#: of tornado.queues.Queue.put_nowait:1
+msgid "Put an item into the queue without blocking."
+msgstr ""
+
+#: of tornado.queues.Queue.put_nowait:3
+msgid "If no free slot is immediately available, raise `QueueFull`."
+msgstr ""
+
+#: of tornado.queues.Queue.get:1
+msgid "Remove and return an item from the queue."
+msgstr ""
+
+#: of tornado.queues.Queue.get:3
+msgid ""
+"Returns an awaitable which resolves once an item is available, or raises "
+"`tornado.util.TimeoutError` after a timeout."
+msgstr ""
+
+#: of tornado.queues.Queue.get:13
+msgid ""
+"The ``timeout`` argument of this method differs from that of the standard"
+" library's `queue.Queue.get`. That method interprets numeric values as "
+"relative timeouts; this one interprets them as absolute deadlines and "
+"requires ``timedelta`` objects for relative timeouts (consistent with "
+"other timeouts in Tornado)."
+msgstr ""
+
+#: of tornado.queues.Queue.get_nowait:1
+msgid "Remove and return an item from the queue without blocking."
+msgstr ""
+
+#: of tornado.queues.Queue.get_nowait:3
+msgid "Return an item if one is immediately available, else raise `QueueEmpty`."
+msgstr ""
+
+#: of tornado.queues.Queue.task_done:1
+msgid "Indicate that a formerly enqueued task is complete."
+msgstr ""
+
+#: of tornado.queues.Queue.task_done:3
+msgid ""
+"Used by queue consumers. For each `.get` used to fetch a task, a "
+"subsequent call to `.task_done` tells the queue that the processing on "
+"the task is complete."
+msgstr ""
+
+#: of tornado.queues.Queue.task_done:7
+msgid ""
+"If a `.join` is blocking, it resumes when all items have been processed; "
+"that is, when every `.put` is matched by a `.task_done`."
+msgstr ""
+
+#: of tornado.queues.Queue.task_done:10
+msgid "Raises `ValueError` if called more times than `.put`."
+msgstr ""
+
+#: of tornado.queues.Queue.join:1
+msgid "Block until all items in the queue are processed."
+msgstr ""
+
+#: of tornado.queues.Queue.join:3
+msgid ""
+"Returns an awaitable, which raises `tornado.util.TimeoutError` after a "
+"timeout."
+msgstr ""
+
+#: ../../queues.rst:17
+msgid "PriorityQueue"
+msgstr ""
+
+#: of tornado.queues.PriorityQueue:1
+msgid "A `.Queue` that retrieves entries in priority order, lowest first."
+msgstr ""
+
+#: of tornado.queues.PriorityQueue:3
+msgid "Entries are typically tuples like ``(priority number, data)``."
+msgstr ""
+
+#: ../../queues.rst:22
+msgid "LifoQueue"
+msgstr ""
+
+#: of tornado.queues.LifoQueue:1
+msgid "A `.Queue` that retrieves the most recently put items first."
+msgstr ""
+
+#: ../../queues.rst:27
+msgid "Exceptions"
+msgstr ""
+
+#: ../../queues.rst:30
+msgid "QueueEmpty"
+msgstr ""
+
+#: of tornado.queues.QueueEmpty:1
+msgid "Raised by `.Queue.get_nowait` when the queue has no items."
+msgstr ""
+
+#: ../../queues.rst:34
+msgid "QueueFull"
+msgstr ""
+
+#: of tornado.queues.QueueFull:1
+msgid "Raised by `.Queue.put_nowait` when a queue is at its maximum size."
+msgstr ""
+

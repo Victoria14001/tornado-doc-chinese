@@ -1,0 +1,264 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../locks.rst:2
+msgid "``tornado.locks`` -- Synchronization primitives"
+msgstr ""
+
+#: ../../locks.rst:6
+msgid ""
+"Coordinate coroutines with synchronization primitives analogous to those "
+"the standard library provides to threads."
+msgstr ""
+
+#: ../../locks.rst:9
+msgid ""
+"*(Note that these primitives are not actually thread-safe and cannot be "
+"used in place of those from the standard library--they are meant to "
+"coordinate Tornado coroutines in a single-threaded app, not to protect "
+"shared objects in a multithreaded app.)*"
+msgstr ""
+
+#: ../../locks.rst:17
+msgid "Condition"
+msgstr ""
+
+#: of tornado.locks.Condition:1
+msgid "A condition allows one or more coroutines to wait until notified."
+msgstr ""
+
+#: of tornado.locks.Condition:3
+msgid ""
+"Like a standard `threading.Condition`, but does not need an underlying "
+"lock that is acquired and released."
+msgstr ""
+
+#: of tornado.locks.Condition:6
+msgid ""
+"With a `Condition`, coroutines can wait to be notified by other "
+"coroutines:"
+msgstr ""
+
+#: of tornado.locks.Condition:39
+msgid ""
+"`wait` takes an optional ``timeout`` argument, which is either an "
+"absolute timestamp::"
+msgstr ""
+
+#: of tornado.locks.Condition:47
+msgid "...or a `datetime.timedelta` for a timeout relative to the current time::"
+msgstr ""
+
+#: of tornado.locks.Condition:52
+msgid "The method returns False if there's no notification before the deadline."
+msgstr ""
+
+#: of tornado.locks.Condition:54
+msgid ""
+"Previously, waiters could be notified synchronously from within `notify`."
+" Now, the notification will always be received on the next iteration of "
+"the `.IOLoop`."
+msgstr ""
+
+#: of tornado.locks.Condition.wait:1
+msgid "Wait for `.notify`."
+msgstr ""
+
+#: of tornado.locks.Condition.wait:3
+msgid ""
+"Returns a `.Future` that resolves ``True`` if the condition is notified, "
+"or ``False`` after a timeout."
+msgstr ""
+
+#: of tornado.locks.Condition.notify:1
+msgid "Wake ``n`` waiters."
+msgstr ""
+
+#: of tornado.locks.Condition.notify_all:1
+msgid "Wake all waiters."
+msgstr ""
+
+#: ../../locks.rst:22
+msgid "Event"
+msgstr ""
+
+#: of tornado.locks.Event:1
+msgid "An event blocks coroutines until its internal flag is set to True."
+msgstr ""
+
+#: of tornado.locks.Event:3
+msgid "Similar to `threading.Event`."
+msgstr ""
+
+#: of tornado.locks.Event:5
+msgid ""
+"A coroutine can wait for an event to be set. Once it is set, calls to "
+"``yield event.wait()`` will not block unless the event has been cleared:"
+msgstr ""
+
+#: of tornado.locks.Event.is_set:1
+msgid "Return ``True`` if the internal flag is true."
+msgstr ""
+
+#: of tornado.locks.Event.set:1
+msgid "Set the internal flag to ``True``. All waiters are awakened."
+msgstr ""
+
+#: of tornado.locks.Event.set:3
+msgid "Calling `.wait` once the flag is set will not block."
+msgstr ""
+
+#: of tornado.locks.Event.clear:1
+msgid "Reset the internal flag to ``False``."
+msgstr ""
+
+#: of tornado.locks.Event.clear:3
+msgid "Calls to `.wait` will block until `.set` is called."
+msgstr ""
+
+#: of tornado.locks.Event.wait:1
+msgid "Block until the internal flag is true."
+msgstr ""
+
+#: of tornado.locks.Event.wait:3 tornado.locks.Lock.acquire:3
+msgid ""
+"Returns an awaitable, which raises `tornado.util.TimeoutError` after a "
+"timeout."
+msgstr ""
+
+#: ../../locks.rst:27
+msgid "Semaphore"
+msgstr ""
+
+#: of tornado.locks.Semaphore:1
+msgid "A lock that can be acquired a fixed number of times before blocking."
+msgstr ""
+
+#: of tornado.locks.Semaphore:3
+msgid ""
+"A Semaphore manages a counter representing the number of `.release` calls"
+" minus the number of `.acquire` calls, plus an initial value. The "
+"`.acquire` method blocks if necessary until it can return without making "
+"the counter negative."
+msgstr ""
+
+#: of tornado.locks.Semaphore:8
+msgid ""
+"Semaphores limit access to a shared resource. To allow access for two "
+"workers at a time:"
+msgstr ""
+
+#: of tornado.locks.Semaphore:66
+msgid ""
+"Workers 0 and 1 are allowed to run concurrently, but worker 2 waits until"
+" the semaphore has been released once, by worker 0."
+msgstr ""
+
+#: of tornado.locks.Semaphore:69
+msgid "The semaphore can be used as an async context manager::"
+msgstr ""
+
+#: of tornado.locks.Semaphore:79
+msgid ""
+"For compatibility with older versions of Python, `.acquire` is a context "
+"manager, so ``worker`` could also be written as::"
+msgstr ""
+
+#: of tornado.locks.Lock:32 tornado.locks.Semaphore:91
+msgid "Added ``async with`` support in Python 3.5."
+msgstr ""
+
+#: of tornado.locks.BoundedSemaphore.release:1
+#: tornado.locks.Semaphore.release:1
+msgid "Increment the counter and wake one waiter."
+msgstr ""
+
+#: of tornado.locks.Semaphore.acquire:1
+msgid "Decrement the counter. Returns an awaitable."
+msgstr ""
+
+#: of tornado.locks.Semaphore.acquire:3
+msgid ""
+"Block if the counter is zero and wait for a `.release`. The awaitable "
+"raises `.TimeoutError` after the deadline."
+msgstr ""
+
+#: ../../locks.rst:32
+msgid "BoundedSemaphore"
+msgstr ""
+
+#: of tornado.locks.BoundedSemaphore:1
+msgid "A semaphore that prevents release() being called too many times."
+msgstr ""
+
+#: of tornado.locks.BoundedSemaphore:3
+msgid ""
+"If `.release` would increment the semaphore's value past the initial "
+"value, it raises `ValueError`. Semaphores are mostly used to guard "
+"resources with limited capacity, so a semaphore released too many times "
+"is a sign of a bug."
+msgstr ""
+
+#: ../../locks.rst:38
+msgid "Lock"
+msgstr ""
+
+#: of tornado.locks.Lock:1
+msgid "A lock for coroutines."
+msgstr ""
+
+#: of tornado.locks.Lock:3
+msgid ""
+"A Lock begins unlocked, and `acquire` locks it immediately. While it is "
+"locked, a coroutine that yields `acquire` waits until another coroutine "
+"calls `release`."
+msgstr ""
+
+#: of tornado.locks.Lock:7
+msgid "Releasing an unlocked lock raises `RuntimeError`."
+msgstr ""
+
+#: of tornado.locks.Lock:9
+msgid ""
+"A Lock can be used as an async context manager with the ``async with`` "
+"statement:"
+msgstr ""
+
+#: of tornado.locks.Lock:22
+msgid ""
+"For compatibility with older versions of Python, the `.acquire` method "
+"asynchronously returns a regular context manager:"
+msgstr ""
+
+#: of tornado.locks.Lock.acquire:1
+msgid "Attempt to lock. Returns an awaitable."
+msgstr ""
+
+#: of tornado.locks.Lock.release:1
+msgid "Unlock."
+msgstr ""
+
+#: of tornado.locks.Lock.release:3
+msgid "The first coroutine in line waiting for `acquire` gets the lock."
+msgstr ""
+
+#: of tornado.locks.Lock.release:5
+msgid "If not locked, raise a `RuntimeError`."
+msgstr ""
+

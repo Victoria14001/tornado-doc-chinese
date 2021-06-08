@@ -1,0 +1,727 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../releases/v4.0.0.rst:2
+msgid "Tornado 4.0 新特性"
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:5
+msgid "July 15, 2014"
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:8
+msgid "Highlights"
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:10
+msgid ""
+"The `tornado.web.stream_request_body` decorator allows large files to be "
+"uploaded with limited memory usage."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:12
+msgid ""
+"Coroutines are now faster and are used extensively throughout Tornado "
+"itself. More methods now return `Futures <.Future>`, including most "
+"`.IOStream` methods and `.RequestHandler.flush`."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:15
+msgid ""
+"Many user-overridden methods are now allowed to return a `.Future` for "
+"flow control."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:17
+msgid ""
+"HTTP-related code is now shared between the `tornado.httpserver`, "
+"``tornado.simple_httpclient`` and `tornado.wsgi` modules, making support "
+"for features such as chunked and gzip encoding more consistent. "
+"`.HTTPServer` now uses new delegate interfaces defined in "
+"`tornado.httputil` in addition to its old single-callback interface."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:22
+msgid ""
+"New module `tornado.tcpclient` creates TCP connections with non-blocking "
+"DNS, SSL handshaking, and support for IPv6."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:27
+msgid "Backwards-compatibility notes"
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:29
+msgid ""
+"`tornado.concurrent.Future` is no longer thread-safe; use "
+"`concurrent.futures.Future` when thread-safety is needed."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:31
+msgid ""
+"Tornado now depends on the `certifi "
+"<https://pypi.python.org/pypi/certifi>`_ package instead of bundling its "
+"own copy of the Mozilla CA list. This will be installed automatically "
+"when using ``pip`` or ``easy_install``."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:34
+msgid ""
+"This version includes the changes to the secure cookie format first "
+"introduced in version :doc:`3.2.1 <v3.2.1>`, and the xsrf token change in"
+" version :doc:`3.2.2 <v3.2.2>`.  If you are upgrading from an earlier "
+"version, see those versions' release notes."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:38
+msgid ""
+"WebSocket connections from other origin sites are now rejected by "
+"default. To accept cross-origin websocket connections, override the new "
+"method `.WebSocketHandler.check_origin`."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:41
+msgid ""
+"`.WebSocketHandler` no longer supports the old ``draft 76`` protocol "
+"(this mainly affects Safari 5.x browsers).  Applications should use non-"
+"websocket workarounds for these browsers."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:44
+msgid ""
+"Authors of alternative `.IOLoop` implementations should see the changes "
+"to `.IOLoop.add_handler` in this release."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:46
+msgid ""
+"The ``RequestHandler.async_callback`` and "
+"``WebSocketHandler.async_callback`` wrapper functions have been removed; "
+"they have been obsolete for a long time due to stack contexts (and more "
+"recently coroutines)."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:49
+msgid ""
+"``curl_httpclient`` now requires a minimum of libcurl version 7.21.1 and "
+"pycurl 7.18.2."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:51
+msgid ""
+"Support for ``RequestHandler.get_error_html`` has been removed; override "
+"`.RequestHandler.write_error` instead."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:56
+msgid "Other notes"
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:58
+msgid ""
+"The git repository has moved to https://github.com/tornadoweb/tornado. "
+"All old links should be redirected to the new location."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:60
+msgid ""
+"An `announcement mailing list <http://groups.google.com/group/python-"
+"tornado-announce>`_ is now available."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:62
+msgid ""
+"All Tornado modules are now importable on Google App Engine (although the"
+" App Engine environment does not allow the system calls used by `.IOLoop`"
+" so many modules are still unusable)."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:67
+msgid "`tornado.auth`"
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:69
+msgid "Fixed a bug in ``.FacebookMixin`` on Python 3."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:70
+msgid ""
+"When using the `.Future` interface, exceptions are more reliably "
+"delivered to the caller."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:74
+msgid "`tornado.concurrent`"
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:76
+msgid ""
+"`tornado.concurrent.Future` is now always thread-unsafe (previously it "
+"would be thread-safe if the `concurrent.futures` package was available). "
+"This improves performance and provides more consistent semantics. The "
+"parts of Tornado that accept Futures will accept both Tornado's thread-"
+"unsafe Futures and the thread-safe `concurrent.futures.Future`."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:81
+msgid ""
+"`tornado.concurrent.Future` now includes all the functionality of the old"
+" ``TracebackFuture`` class.  ``TracebackFuture`` is now simply an alias "
+"for ``Future``."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:86
+msgid "``tornado.curl_httpclient``"
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:88
+msgid ""
+"``curl_httpclient`` now passes along the HTTP \"reason\" string in "
+"``response.reason``."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:92
+msgid "`tornado.gen`"
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:94
+msgid "Performance of coroutines has been improved."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:95
+msgid ""
+"Coroutines no longer generate ``StackContexts`` by default, but they will"
+" be created on demand when needed."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:97
+msgid ""
+"The internals of the `tornado.gen` module have been rewritten to improve "
+"performance when using ``Futures``, at the expense of some performance "
+"degradation for the older `.YieldPoint` interfaces."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:100
+msgid ""
+"New function `.with_timeout` wraps a `.Future` and raises an exception if"
+" it doesn't complete in a given amount of time."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:102
+msgid ""
+"New object `.moment` can be yielded to allow the IOLoop to run for one "
+"iteration before resuming."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:104
+msgid ""
+"`.Task` is now a function returning a `.Future` instead of a "
+"`.YieldPoint` subclass.  This change should be transparent to application"
+" code, but allows `.Task` to take advantage of the newly-optimized "
+"`.Future` handling."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:110
+msgid "`tornado.http1connection`"
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:112
+msgid ""
+"New module contains the HTTP implementation shared by "
+"`tornado.httpserver` and ``tornado.simple_httpclient``."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:116
+msgid "`tornado.httpclient`"
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:118
+msgid ""
+"The command-line HTTP client (``python -m tornado.httpclient $URL``) now "
+"works on Python 3."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:120
+msgid ""
+"Fixed a memory leak in `.AsyncHTTPClient` shutdown that affected "
+"applications that created many HTTP clients and IOLoops."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:122
+msgid ""
+"New client request parameter ``decompress_response`` replaces the "
+"existing ``use_gzip`` parameter; both names are accepted."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:126
+msgid "`tornado.httpserver`"
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:128
+msgid ""
+"``tornado.httpserver.HTTPRequest`` has moved to "
+"`tornado.httputil.HTTPServerRequest`."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:130
+msgid ""
+"HTTP implementation has been unified with ``tornado.simple_httpclient`` "
+"in `tornado.http1connection`."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:132
+msgid "Now supports ``Transfer-Encoding: chunked`` for request bodies."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:133
+msgid ""
+"Now supports ``Content-Encoding: gzip`` for request bodies if "
+"``decompress_request=True`` is passed to the `.HTTPServer` constructor."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:135
+msgid ""
+"The ``connection`` attribute of `.HTTPServerRequest` is now documented "
+"for public use; applications are expected to write their responses via "
+"the `.HTTPConnection` interface."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:138
+msgid ""
+"The `.HTTPServerRequest.write` and `.HTTPServerRequest.finish` methods "
+"are now deprecated.  (`.RequestHandler.write` and "
+"`.RequestHandler.finish` are *not* deprecated; this only applies to the "
+"methods on `.HTTPServerRequest`)"
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:142
+msgid ""
+"`.HTTPServer` now supports `.HTTPServerConnectionDelegate` in addition to"
+" the old ``request_callback`` interface.  The delegate interface supports"
+" streaming of request bodies."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:145
+msgid ""
+"`.HTTPServer` now detects the error of an application sending a "
+"``Content-Length`` error that is inconsistent with the actual content."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:147
+msgid ""
+"New constructor arguments ``max_header_size`` and ``max_body_size`` allow"
+" separate limits to be set for different parts of the request. "
+"``max_body_size`` is applied even in streaming mode."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:150
+msgid ""
+"New constructor argument ``chunk_size`` can be used to limit the amount "
+"of data read into memory at one time per request."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:152
+msgid ""
+"New constructor arguments ``idle_connection_timeout`` and "
+"``body_timeout`` allow time limits to be placed on the reading of "
+"requests."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:154
+msgid ""
+"Form-encoded message bodies are now parsed for all HTTP methods, not just"
+" ``POST``, ``PUT``, and ``PATCH``."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:158
+msgid "`tornado.httputil`"
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:160
+msgid "`.HTTPServerRequest` was moved to this module from `tornado.httpserver`."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:161
+msgid ""
+"New base classes `.HTTPConnection`, `.HTTPServerConnectionDelegate`, and "
+"`.HTTPMessageDelegate` define the interaction between applications and "
+"the HTTP implementation."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:167
+msgid "`tornado.ioloop`"
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:169
+msgid ""
+"`.IOLoop.add_handler` and related methods now accept file-like objects in"
+" addition to raw file descriptors.  Passing the objects is recommended "
+"(when possible) to avoid a garbage-collection-related problem in unit "
+"tests."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:172
+msgid ""
+"New method `.IOLoop.clear_instance` makes it possible to uninstall the "
+"singleton instance."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:174
+msgid "Timeout scheduling is now more robust against slow callbacks."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:175
+msgid "`.IOLoop.add_timeout` is now a bit more efficient."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:176
+msgid ""
+"When a function run by the `.IOLoop` returns a `.Future` and that "
+"`.Future` has an exception, the `.IOLoop` will log the exception."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:178
+msgid ""
+"New method `.IOLoop.spawn_callback` simplifies the process of launching a"
+" fire-and-forget callback that is separated from the caller's stack "
+"context."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:180
+msgid ""
+"New methods `.IOLoop.call_later` and `.IOLoop.call_at` simplify the "
+"specification of relative or absolute timeouts (as opposed to "
+"`~.IOLoop.add_timeout`, which used the type of its argument)."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:185
+msgid "`tornado.iostream`"
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:187
+msgid ""
+"The ``callback`` argument to most `.IOStream` methods is now optional. "
+"When called without a callback the method will return a `.Future` for use"
+" with coroutines."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:190
+msgid ""
+"New method `.IOStream.start_tls` converts an `.IOStream` to an "
+"`.SSLIOStream`."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:192
+msgid ""
+"No longer gets confused when an ``IOError`` or ``OSError`` without an "
+"``errno`` attribute is raised."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:194
+msgid ""
+"`.BaseIOStream.read_bytes` now accepts a ``partial`` keyword argument, "
+"which can be used to return before the full amount has been read. This is"
+" a more coroutine-friendly alternative to ``streaming_callback``."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:197
+msgid ""
+"`.BaseIOStream.read_until` and ``read_until_regex`` now acept a "
+"``max_bytes`` keyword argument which will cause the request to fail if it"
+" cannot be satisfied from the given number of bytes."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:200
+msgid ""
+"`.IOStream` no longer reads from the socket into memory if it does not "
+"need data to satisfy a pending read.  As a side effect, the close "
+"callback will not be run immediately if the other side closes the "
+"connection while there is unconsumed data in the buffer."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:204
+msgid "The default ``chunk_size`` has been increased to 64KB (from 4KB)"
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:205
+msgid ""
+"The `.IOStream` constructor takes a new keyword argument "
+"``max_write_buffer_size`` (defaults to unlimited).  Calls to "
+"`.BaseIOStream.write` will raise `.StreamBufferFullError` if the amount "
+"of unsent buffered data exceeds this limit."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:209
+msgid ""
+"``ETIMEDOUT`` errors are no longer logged.  If you need to distinguish "
+"timeouts from other forms of closed connections, examine ``stream.error``"
+" from a close callback."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:214
+msgid "`tornado.netutil`"
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:216
+msgid ""
+"When `.bind_sockets` chooses a port automatically, it will now use the "
+"same port for IPv4 and IPv6."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:218
+msgid ""
+"TLS compression is now disabled by default on Python 3.3 and higher (it "
+"is not possible to change this option in older versions)."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:222
+msgid "`tornado.options`"
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:224
+msgid ""
+"It is now possible to disable the default logging configuration by "
+"setting ``options.logging`` to ``None`` instead of the string "
+"``\"none\"``."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:228
+msgid "`tornado.platform.asyncio`"
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:230
+msgid "Now works on Python 2.6."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:231
+msgid "Now works with Trollius version 0.3."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:234
+msgid "`tornado.platform.twisted`"
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:236
+msgid "`.TwistedIOLoop` now works on Python 3.3+ (with Twisted 14.0.0+)."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:239
+msgid "``tornado.simple_httpclient``"
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:241
+msgid ""
+"``simple_httpclient`` has better support for IPv6, which is now enabled "
+"by default."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:243
+msgid "Improved default cipher suite selection (Python 2.7+)."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:244
+msgid ""
+"HTTP implementation has been unified with ``tornado.httpserver`` in "
+"`tornado.http1connection`"
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:246
+msgid ""
+"Streaming request bodies are now supported via the ``body_producer`` "
+"keyword argument to `tornado.httpclient.HTTPRequest`."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:248
+msgid ""
+"The ``expect_100_continue`` keyword argument to "
+"`tornado.httpclient.HTTPRequest` allows the use of the HTTP ``Expect: "
+"100-continue`` feature."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:251
+msgid ""
+"``simple_httpclient`` now raises the original exception (e.g. an "
+"`IOError`) in more cases, instead of converting everything to "
+"``HTTPError``."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:255
+msgid "`tornado.stack_context`"
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:257
+msgid ""
+"The stack context system now has less performance overhead when no stack "
+"contexts are active."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:261
+msgid "`tornado.tcpclient`"
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:263
+msgid ""
+"New module which creates TCP connections and IOStreams, including name "
+"resolution, connecting, and SSL handshakes."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:267
+msgid "`tornado.testing`"
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:269
+msgid ""
+"`.AsyncTestCase` now attempts to detect test methods that are generators "
+"but were not run with ``@gen_test`` or any similar decorator (this would "
+"previously result in the test silently being skipped)."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:272
+msgid "Better stack traces are now displayed when a test times out."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:273
+msgid ""
+"The ``@gen_test`` decorator now passes along ``*args, **kwargs`` so it "
+"can be used on functions with arguments."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:275
+msgid "Fixed the test suite when ``unittest2`` is installed on Python 3."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:278
+msgid "`tornado.web`"
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:280
+msgid ""
+"It is now possible to support streaming request bodies with the "
+"`.stream_request_body` decorator and the new "
+"`.RequestHandler.data_received` method."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:283
+msgid "`.RequestHandler.flush` now returns a `.Future` if no callback is given."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:284
+msgid ""
+"New exception `.Finish` may be raised to finish a request without "
+"triggering error handling."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:286
+msgid ""
+"When gzip support is enabled, all ``text/*`` mime types will be "
+"compressed, not just those on a whitelist."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:288
+msgid "`.Application` now implements the `.HTTPMessageDelegate` interface."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:289
+msgid "``HEAD`` requests in `.StaticFileHandler` no longer read the entire file."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:290
+msgid "`.StaticFileHandler` now streams response bodies to the client."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:291
+msgid ""
+"New setting ``compress_response`` replaces the existing ``gzip`` setting;"
+" both names are accepted."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:293
+msgid ""
+"XSRF cookies that were not generated by this module (i.e. strings without"
+" any particular formatting) are once again accepted (as long as the "
+"cookie and body/header match).  This pattern was common for testing and "
+"non-browser clients but was broken by the changes in Tornado 3.2.2."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:300
+msgid "`tornado.websocket`"
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:302
+msgid ""
+"WebSocket connections from other origin sites are now rejected by "
+"default. Browsers do not use the same-origin policy for WebSocket "
+"connections as they do for most other browser-initiated communications.  "
+"This can be surprising and a security risk, so we disallow these "
+"connections on the server side by default.  To accept cross-origin "
+"websocket connections, override the new method "
+"`.WebSocketHandler.check_origin`."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:308
+msgid ""
+"`.WebSocketHandler.close` and `.WebSocketClientConnection.close` now "
+"support ``code`` and ``reason`` arguments to send a status code and "
+"message to the other side of the connection when closing.  Both classes "
+"also have ``close_code`` and ``close_reason`` attributes to receive these"
+" values when the other side closes."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:313
+msgid ""
+"The C speedup module now builds correctly with MSVC, and can support "
+"messages larger than 2GB on 64-bit systems."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:315
+msgid ""
+"The fallback mechanism for detecting a missing C compiler now works "
+"correctly on Mac OS X."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:317
+msgid ""
+"Arguments to `.WebSocketHandler.open` are now decoded in the same way as "
+"arguments to `.RequestHandler.get` and similar methods."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:319
+msgid ""
+"It is now allowed to override ``prepare`` in a `.WebSocketHandler`, and "
+"this method may generate HTTP responses (error pages) in the usual way.  "
+"The HTTP response methods are still not allowed once the WebSocket "
+"handshake has completed."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:325
+msgid "`tornado.wsgi`"
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:327
+msgid ""
+"New class `.WSGIAdapter` supports running a Tornado `.Application` on a "
+"WSGI server in a way that is more compatible with Tornado's non-WSGI "
+"`.HTTPServer`.  `.WSGIApplication` is deprecated in favor of using "
+"`.WSGIAdapter` with a regular `.Application`."
+msgstr ""
+
+#: ../../releases/v4.0.0.rst:331
+msgid "`.WSGIAdapter` now supports gzipped output."
+msgstr ""
+

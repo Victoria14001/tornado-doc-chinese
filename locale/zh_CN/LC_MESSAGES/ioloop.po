@@ -1,0 +1,522 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../ioloop.rst:2
+msgid "``tornado.ioloop`` --- Main event loop"
+msgstr ""
+
+#: of tornado.ioloop:1
+msgid "An I/O event loop for non-blocking sockets."
+msgstr ""
+
+#: of tornado.ioloop:3
+msgid ""
+"In Tornado 6.0, `.IOLoop` is a wrapper around the `asyncio` event loop, "
+"with a slightly different interface for historical reasons. Applications "
+"can use either the `.IOLoop` interface or the underlying `asyncio` event "
+"loop directly (unless compatibility with older versions of Tornado is "
+"desired, in which case `.IOLoop` must be used)."
+msgstr ""
+
+#: of tornado.ioloop:9
+msgid ""
+"Typical applications will use a single `IOLoop` object, accessed via "
+"`IOLoop.current` class method. The `IOLoop.start` method (or "
+"equivalently, `asyncio.AbstractEventLoop.run_forever`) should usually be "
+"called at the end of the ``main()`` function. Atypical applications may "
+"use more than one `IOLoop`, such as one `IOLoop` per thread, or per "
+"`unittest` case."
+msgstr ""
+
+#: ../../ioloop.rst:7
+msgid "IOLoop objects"
+msgstr ""
+
+#: of tornado.ioloop.IOLoop:1
+msgid "An I/O event loop."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop:3
+msgid "As of Tornado 6.0, `IOLoop` is a wrapper around the `asyncio` event loop."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop:6
+msgid "Example usage for a simple TCP server:"
+msgstr ""
+
+#: of tornado.ioloop.IOLoop:47
+msgid ""
+"By default, a newly-constructed `IOLoop` becomes the thread's current "
+"`IOLoop`, unless there already is a current `IOLoop`. This behavior can "
+"be controlled with the ``make_current`` argument to the `IOLoop` "
+"constructor: if ``make_current=True``, the new `IOLoop` will always try "
+"to become current and it raises an error if there is already a current "
+"instance. If ``make_current=False``, the new `IOLoop` will not try to "
+"become current."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop:55
+msgid ""
+"In general, an `IOLoop` cannot survive a fork or be shared across "
+"processes in any way. When multiple processes are being used, each "
+"process should create its own `IOLoop`, which also implies that any "
+"objects which depend on the `IOLoop` (such as `.AsyncHTTPClient`) must "
+"also be created in the child processes. As a guideline, anything that "
+"starts processes (including the `tornado.process` and `multiprocessing` "
+"modules) should do so as early as possible, ideally the first thing the "
+"application does after loading its configuration in ``main()``."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop:65
+msgid "Added the ``make_current`` keyword argument to the `IOLoop` constructor."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop:71
+msgid ""
+"Uses the `asyncio` event loop by default. The ``IOLoop.configure`` method"
+" cannot be used on Python 3 except to redundantly specify the `asyncio` "
+"event loop."
+msgstr ""
+
+#: ../../ioloop.rst:12
+msgid "Running an IOLoop"
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.current:1
+msgid "Returns the current thread's `IOLoop`."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.current:3
+msgid ""
+"If an `IOLoop` is currently running or has been marked as current by "
+"`make_current`, returns that instance.  If there is no current `IOLoop` "
+"and ``instance`` is true, creates one."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.current:7
+msgid ""
+"Added ``instance`` argument to control the fallback to "
+"`IOLoop.instance()`."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.current:10
+msgid ""
+"On Python 3, control of the current `IOLoop` is delegated to `asyncio`, "
+"with this and other methods as pass-through accessors. The ``instance`` "
+"argument now controls whether an `IOLoop` is created automatically when "
+"there is none, instead of whether we fall back to `IOLoop.instance()` "
+"(which is now an alias for this method). ``instance=False`` is "
+"deprecated, since even if we do not create an `IOLoop`, this method may "
+"initialize the asyncio loop."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.make_current:1
+msgid "Makes this the `IOLoop` for the current thread."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.make_current:3
+msgid ""
+"An `IOLoop` automatically becomes current for its thread when it is "
+"started, but it is sometimes useful to call `make_current` explicitly "
+"before starting the `IOLoop`, so that code run at startup time can find "
+"the right instance."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.make_current:9
+msgid ""
+"An `IOLoop` created while there is no current `IOLoop` will automatically"
+" become current."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.make_current:13
+msgid "This method also sets the current `asyncio` event loop."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.instance:1
+msgid "Deprecated alias for `IOLoop.current()`."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.instance:5
+msgid ""
+"Previously, this method returned a global singleton `IOLoop`, in contrast"
+" with the per-thread `IOLoop` returned by `current()`. In nearly all "
+"cases the two were the same (when they differed, it was generally used "
+"from non-Tornado threads to communicate back to the main thread's "
+"`IOLoop`). This distinction is not present in `asyncio`, so in order to "
+"facilitate integration with that package `instance()` was changed to be "
+"an alias to `current()`. Applications using the cross-thread "
+"communications aspect of `instance()` should instead set their own global"
+" variable to point to the `IOLoop` they want to use."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.install:1
+msgid "Deprecated alias for `make_current()`."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.install:5
+msgid ""
+"Previously, this method would set this `IOLoop` as the global singleton "
+"used by `IOLoop.instance()`. Now that `instance()` is an alias for "
+"`current()`, `install()` is an alias for `make_current()`."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.clear_instance:1
+msgid "Deprecated alias for `clear_current()`."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.clear_instance:5
+msgid ""
+"Previously, this method would clear the `IOLoop` used as the global "
+"singleton by `IOLoop.instance()`. Now that `instance()` is an alias for "
+"`current()`, `clear_instance()` is an alias for `clear_current()`."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.start:1
+msgid "Starts the I/O loop."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.start:3
+msgid ""
+"The loop will run until one of the callbacks calls `stop()`, which will "
+"make the loop stop after the current event iteration completes."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.stop:1
+msgid "Stop the I/O loop."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.stop:3
+msgid ""
+"If the event loop is not currently running, the next call to `start()` "
+"will return immediately."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.stop:6
+msgid ""
+"Note that even after `stop` has been called, the `IOLoop` is not "
+"completely stopped until `IOLoop.start` has also returned. Some work that"
+" was scheduled before the call to `stop` may still be run before the "
+"`IOLoop` shuts down."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.run_sync:1
+msgid "Starts the `IOLoop`, runs the given function, and stops the loop."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.run_sync:3
+msgid ""
+"The function must return either an awaitable object or ``None``. If the "
+"function returns an awaitable object, the `IOLoop` will run until the "
+"awaitable is resolved (and `run_sync()` will return the awaitable's "
+"result). If it raises an exception, the `IOLoop` will stop and the "
+"exception will be re-raised to the caller."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.run_sync:10
+msgid ""
+"The keyword-only argument ``timeout`` may be used to set a maximum "
+"duration for the function.  If the timeout expires, a "
+"`tornado.util.TimeoutError` is raised."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.run_sync:14
+msgid ""
+"This method is useful to allow asynchronous calls in a ``main()`` "
+"function::"
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.run_sync:23
+msgid "Returning a non-``None``, non-awaitable value is now an error."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.run_sync:26
+msgid "If a timeout occurs, the ``func`` coroutine will be cancelled."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.close:1
+msgid "Closes the `IOLoop`, freeing any resources used."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.close:3
+msgid ""
+"If ``all_fds`` is true, all file descriptors registered on the IOLoop "
+"will be closed (not just the ones created by the `IOLoop` itself)."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.close:7
+msgid ""
+"Many applications will only use a single `IOLoop` that runs for the "
+"entire lifetime of the process.  In that case closing the `IOLoop` is not"
+" necessary since everything will be cleaned up when the process exits.  "
+"`IOLoop.close` is provided mainly for scenarios such as unit tests, which"
+" create and destroy a large number of ``IOLoops``."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.close:14
+msgid ""
+"An `IOLoop` must be completely stopped before it can be closed.  This "
+"means that `IOLoop.stop()` must be called *and* `IOLoop.start()` must be "
+"allowed to return before attempting to call `IOLoop.close()`. Therefore "
+"the call to `close` will usually appear just after the call to `start` "
+"rather than near the call to `stop`."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.close:20
+msgid ""
+"If the `IOLoop` implementation supports non-integer objects for \"file "
+"descriptors\", those objects will have their ``close`` method when "
+"``all_fds`` is true."
+msgstr ""
+
+#: ../../ioloop.rst:26
+msgid "I/O events"
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.add_handler:1
+msgid "Registers the given handler to receive the given events for ``fd``."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.add_handler:3
+msgid ""
+"The ``fd`` argument may either be an integer file descriptor or a file-"
+"like object with a ``fileno()`` and ``close()`` method."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.add_handler:6
+msgid ""
+"The ``events`` argument is a bitwise or of the constants ``IOLoop.READ``,"
+" ``IOLoop.WRITE``, and ``IOLoop.ERROR``."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.add_handler:9
+msgid "When an event occurs, ``handler(fd, events)`` will be run."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.add_handler:11
+#: tornado.ioloop.IOLoop.remove_handler:3
+#: tornado.ioloop.IOLoop.update_handler:3
+msgid ""
+"Added the ability to pass file-like objects in addition to raw file "
+"descriptors."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.update_handler:1
+msgid "Changes the events we listen for ``fd``."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.remove_handler:1
+msgid "Stop listening for events on ``fd``."
+msgstr ""
+
+#: ../../ioloop.rst:33
+msgid "Callbacks and timeouts"
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.add_callback:1
+#: tornado.ioloop.IOLoop.add_callback_from_signal:1
+msgid "Calls the given callback on the next I/O loop iteration."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.add_callback:3
+msgid ""
+"It is safe to call this method from any thread at any time, except from a"
+" signal handler.  Note that this is the **only** method in `IOLoop` that "
+"makes this thread-safety guarantee; all other interaction with the "
+"`IOLoop` must be done from that `IOLoop`'s thread.  `add_callback()` may "
+"be used to transfer control from other threads to the `IOLoop`'s thread."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.add_callback:10
+msgid "To add a callback from a signal handler, see `add_callback_from_signal`."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.add_callback_from_signal:3
+msgid "Safe for use from a Python signal handler; should not be used otherwise."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.add_future:1
+msgid ""
+"Schedules a callback on the ``IOLoop`` when the given `.Future` is "
+"finished."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.add_future:4
+msgid "The callback is invoked with one argument, the `.Future`."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.add_future:7
+msgid ""
+"This method only accepts `.Future` objects and not other awaitables "
+"(unlike most of Tornado where the two are interchangeable)."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.add_timeout:1
+msgid "Runs the ``callback`` at the time ``deadline`` from the I/O loop."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.add_timeout:3
+msgid "Returns an opaque handle that may be passed to `remove_timeout` to cancel."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.add_timeout:6
+msgid ""
+"``deadline`` may be a number denoting a time (on the same scale as "
+"`IOLoop.time`, normally `time.time`), or a `datetime.timedelta` object "
+"for a deadline relative to the current time.  Since Tornado 4.0, "
+"`call_later` is a more convenient alternative for the relative case since"
+" it does not require a timedelta object."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.add_timeout:13
+msgid ""
+"Note that it is not safe to call `add_timeout` from other threads. "
+"Instead, you must use `add_callback` to transfer control to the "
+"`IOLoop`'s thread, and then call `add_timeout` from there."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.add_timeout:17
+msgid ""
+"Subclasses of IOLoop must implement either `add_timeout` or `call_at`; "
+"the default implementations of each will call the other.  `call_at` is "
+"usually easier to implement, but subclasses that wish to maintain "
+"compatibility with Tornado versions prior to 4.0 must use `add_timeout` "
+"instead."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.add_timeout:23
+msgid "Now passes through ``*args`` and ``**kwargs`` to the callback."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.call_at:1
+msgid "Runs the ``callback`` at the absolute time designated by ``when``."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.call_at:3
+msgid "``when`` must be a number using the same reference point as `IOLoop.time`."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.call_at:6 tornado.ioloop.IOLoop.call_later:3
+msgid ""
+"Returns an opaque handle that may be passed to `remove_timeout` to "
+"cancel.  Note that unlike the `asyncio` method of the same name, the "
+"returned object does not have a ``cancel()`` method."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.call_at:10 tornado.ioloop.IOLoop.call_later:7
+msgid "See `add_timeout` for comments on thread-safety and subclassing."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.call_later:1
+msgid "Runs the ``callback`` after ``delay`` seconds have passed."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.remove_timeout:1
+msgid "Cancels a pending timeout."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.remove_timeout:3
+msgid ""
+"The argument is a handle as returned by `add_timeout`.  It is safe to "
+"call `remove_timeout` even if the callback has already been run."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.spawn_callback:1
+msgid "Calls the given callback on the next IOLoop iteration."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.spawn_callback:3
+msgid "As of Tornado 6.0, this method is equivalent to `add_callback`."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.time:1
+msgid "Returns the current time according to the `IOLoop`'s clock."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.time:3
+msgid ""
+"The return value is a floating-point number relative to an unspecified "
+"time in the past."
+msgstr ""
+
+#: of tornado.ioloop.IOLoop.time:6
+msgid ""
+"Historically, the IOLoop could be customized to use e.g. `time.monotonic`"
+" instead of `time.time`, but this is not currently supported and so this "
+"method is equivalent to `time.time`."
+msgstr ""
+
+#: of tornado.ioloop.PeriodicCallback:1
+msgid "Schedules the given callback to be called periodically."
+msgstr ""
+
+#: of tornado.ioloop.PeriodicCallback:3
+msgid ""
+"The callback is called every ``callback_time`` milliseconds. Note that "
+"the timeout is given in milliseconds, while most other time-related "
+"functions in Tornado use seconds."
+msgstr ""
+
+#: of tornado.ioloop.PeriodicCallback:7
+msgid ""
+"If ``jitter`` is specified, each callback time will be randomly selected "
+"within a window of ``jitter * callback_time`` milliseconds. Jitter can be"
+" used to reduce alignment of events with similar periods. A jitter of 0.1"
+" means allowing a 10% variation in callback time. The window is centered "
+"on ``callback_time`` so the total number of calls within a given interval"
+" should not be significantly affected by adding jitter."
+msgstr ""
+
+#: of tornado.ioloop.PeriodicCallback:15
+msgid ""
+"If the callback runs for longer than ``callback_time`` milliseconds, "
+"subsequent invocations will be skipped to get back on schedule."
+msgstr ""
+
+#: of tornado.ioloop.PeriodicCallback:18
+msgid "`start` must be called after the `PeriodicCallback` is created."
+msgstr ""
+
+#: of tornado.ioloop.PeriodicCallback:20
+msgid "The ``io_loop`` argument (deprecated since version 4.1) has been removed."
+msgstr ""
+
+#: of tornado.ioloop.PeriodicCallback:23
+msgid "The ``jitter`` argument is added."
+msgstr ""
+
+#: of tornado.ioloop.PeriodicCallback.start:1
+msgid "Starts the timer."
+msgstr ""
+
+#: of tornado.ioloop.PeriodicCallback.stop:1
+msgid "Stops the timer."
+msgstr ""
+
+#: of tornado.ioloop.PeriodicCallback.is_running:1
+msgid "Returns ``True`` if this `.PeriodicCallback` has been started."
+msgstr ""
+
+#: ../../ioloop.rst:48
+msgid "Debugging and error handling"
+msgstr ""
+
+#: ../../ioloop.rst:56
+msgid "Methods for subclasses"
+msgstr ""
+

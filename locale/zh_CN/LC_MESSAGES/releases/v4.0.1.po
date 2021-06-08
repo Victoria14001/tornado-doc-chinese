@@ -1,0 +1,65 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../releases/v4.0.1.rst:2
+msgid "Tornado 4.0.1 新特性"
+msgstr ""
+
+#: ../../releases/v4.0.1.rst:5
+msgid "Aug 12, 2014"
+msgstr ""
+
+#: ../../releases/v4.0.1.rst:7
+msgid ""
+"The build will now fall back to pure-python mode if the C extension fails"
+" to build for any reason (previously it would fall back for some errors "
+"but not others)."
+msgstr ""
+
+#: ../../releases/v4.0.1.rst:10
+msgid ""
+"`.IOLoop.call_at` and `.IOLoop.call_later` now always return a timeout "
+"handle for use with `.IOLoop.remove_timeout`."
+msgstr ""
+
+#: ../../releases/v4.0.1.rst:12
+msgid ""
+"If any callback of a `.PeriodicCallback` or `.IOStream` returns a "
+"`.Future`, any error raised in that future will now be logged (similar to"
+" the behavior of `.IOLoop.add_callback`)."
+msgstr ""
+
+#: ../../releases/v4.0.1.rst:15
+msgid ""
+"Fixed an exception in client-side websocket connections when the "
+"connection is closed."
+msgstr ""
+
+#: ../../releases/v4.0.1.rst:17
+msgid ""
+"``simple_httpclient`` once again correctly handles 204 status codes with "
+"no content-length header."
+msgstr ""
+
+#: ../../releases/v4.0.1.rst:19
+msgid ""
+"Fixed a regression in ``simple_httpclient`` that would result in timeouts"
+" for certain kinds of errors."
+msgstr ""
+

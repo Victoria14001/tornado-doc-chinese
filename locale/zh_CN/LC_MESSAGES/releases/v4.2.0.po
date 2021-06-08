@@ -1,0 +1,426 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../releases/v4.2.0.rst:2
+msgid "Tornado 4.2 新特性"
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:5
+msgid "May 26, 2015"
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:8
+msgid "Backwards-compatibility notes"
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:10 ../../releases/v4.2.0.rst:173
+msgid ""
+"``SSLIOStream.connect`` and `.IOStream.start_tls` now validate "
+"certificates by default."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:12
+msgid ""
+"Certificate validation will now use the system CA root certificates "
+"instead of ``certifi`` when possible (i.e. Python 2.7.9+ or 3.4+). This "
+"includes `.IOStream` and ``simple_httpclient``, but not "
+"``curl_httpclient``."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:15
+msgid ""
+"The default SSL configuration has become stricter, using "
+"`ssl.create_default_context` where available on the client side. (On the "
+"server side, applications are encouraged to migrate from the "
+"``ssl_options`` dict-based API to pass an `ssl.SSLContext` instead)."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:19
+msgid ""
+"The deprecated classes in the `tornado.auth` module, ``GoogleMixin``, "
+"``FacebookMixin``, and ``FriendFeedMixin`` have been removed."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:23
+msgid "New modules: `tornado.locks` and `tornado.queues`"
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:25
+msgid ""
+"These modules provide classes for coordinating coroutines, merged from "
+"`Toro <http://toro.readthedocs.org>`_."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:28
+msgid ""
+"To port your code from Toro's queues to Tornado 4.2, import `.Queue`, "
+"`.PriorityQueue`, or `.LifoQueue` from `tornado.queues` instead of from "
+"``toro``."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:32
+msgid ""
+"Use `.Queue` instead of Toro's ``JoinableQueue``. In Tornado the methods "
+"`~.Queue.join` and `~.Queue.task_done` are available on all queues, not "
+"on a special ``JoinableQueue``."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:36
+msgid ""
+"Tornado queues raise exceptions specific to Tornado instead of reusing "
+"exceptions from the Python standard library. Therefore instead of "
+"catching the standard `queue.Empty` exception from `.Queue.get_nowait`, "
+"catch the special `tornado.queues.QueueEmpty` exception, and instead of "
+"catching the standard `queue.Full` from `.Queue.get_nowait`, catch "
+"`tornado.queues.QueueFull`."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:43
+msgid ""
+"To port from Toro's locks to Tornado 4.2, import `.Condition`, `.Event`, "
+"`.Semaphore`, `.BoundedSemaphore`, or `.Lock` from `tornado.locks` "
+"instead of from ``toro``."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:47
+msgid ""
+"Toro's ``Semaphore.wait`` allowed a coroutine to wait for the semaphore "
+"to be unlocked *without* acquiring it. This encouraged unorthodox "
+"patterns; in Tornado, just use `~.Semaphore.acquire`."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:51
+msgid ""
+"Toro's ``Event.wait`` raised a ``Timeout`` exception after a timeout. In "
+"Tornado, `.Event.wait` raises `tornado.gen.TimeoutError`."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:54
+msgid ""
+"Toro's ``Condition.wait`` also raised ``Timeout``, but in Tornado, the "
+"`.Future` returned by `.Condition.wait` resolves to False after a "
+"timeout::"
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:64
+msgid ""
+"In lock and queue methods, wherever Toro accepted ``deadline`` as a "
+"keyword argument, Tornado names the argument ``timeout`` instead."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:67
+msgid ""
+"Toro's ``AsyncResult`` is not merged into Tornado, nor its exceptions "
+"``NotReady`` and ``AlreadySet``. Use a `.Future` instead. If you wrote "
+"code like this::"
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:85
+msgid "Then the Tornado equivalent is::"
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:102
+msgid "`tornado.autoreload`"
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:104
+msgid "Improved compatibility with Windows."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:105
+msgid "Fixed a bug in Python 3 if a module was imported during a reload check."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:108
+msgid "`tornado.concurrent`"
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:110
+msgid ""
+"`.run_on_executor` now accepts arguments to control which attributes it "
+"uses to find the `.IOLoop` and executor."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:114
+msgid "`tornado.curl_httpclient`"
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:116
+msgid ""
+"Fixed a bug that would cause the client to stop processing requests if an"
+" exception occurred in certain places while there is a queue."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:120
+msgid "`tornado.escape`"
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:122
+msgid ""
+"`.xhtml_escape` now supports numeric character references in hex format "
+"(``&#x20;``)"
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:126
+msgid "`tornado.gen`"
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:128
+msgid ""
+"`.WaitIterator` no longer uses weak references, which fixes several "
+"garbage-collection-related bugs."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:130
+msgid ""
+"``tornado.gen.Multi`` and `tornado.gen.multi_future` (which are used when"
+" yielding a list or dict in a coroutine) now log any exceptions after the"
+" first if more than one `.Future` fails (previously they would be logged "
+"when the `.Future` was garbage-collected, but this is more reliable). "
+"Both have a new keyword argument ``quiet_exceptions`` to suppress logging"
+" of certain exception types; to use this argument you must call ``Multi``"
+" or ``multi_future`` directly instead of simply yielding a list."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:138
+msgid ""
+"`.multi_future` now works when given multiple copies of the same "
+"`.Future`."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:139
+msgid ""
+"On Python 3, catching an exception in a coroutine no longer leads to "
+"leaks via ``Exception.__context__``."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:143
+msgid "`tornado.httpclient`"
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:145
+msgid ""
+"The ``raise_error`` argument now works correctly with the synchronous "
+"`.HTTPClient`."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:147
+msgid ""
+"The synchronous `.HTTPClient` no longer interferes with "
+"`.IOLoop.current()`."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:150
+msgid "`tornado.httpserver`"
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:152
+msgid "`.HTTPServer` is now a subclass of `tornado.util.Configurable`."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:155
+msgid "`tornado.httputil`"
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:157
+msgid "`.HTTPHeaders` can now be copied with `copy.copy` and `copy.deepcopy`."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:160
+msgid "`tornado.ioloop`"
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:162
+msgid ""
+"The `.IOLoop` constructor now has a ``make_current`` keyword argument to "
+"control whether the new `.IOLoop` becomes `.IOLoop.current()`."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:164
+msgid ""
+"Third-party implementations of `.IOLoop` should accept ``**kwargs`` in "
+"their `~.IOLoop.initialize` methods and pass them to the superclass "
+"implementation."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:167
+msgid ""
+"`.PeriodicCallback` is now more efficient when the clock jumps forward by"
+" a large amount."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:171
+msgid "`tornado.iostream`"
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:175
+msgid ""
+"New method `.SSLIOStream.wait_for_handshake` allows server-side "
+"applications to wait for the handshake to complete in order to verify "
+"client certificates or use NPN/ALPN."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:178
+msgid ""
+"The `.Future` returned by ``SSLIOStream.connect`` now resolves after the "
+"handshake is complete instead of as soon as the TCP connection is "
+"established."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:181
+msgid "Reduced logging of SSL errors."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:182
+msgid ""
+"`.BaseIOStream.read_until_close` now works correctly when a "
+"``streaming_callback`` is given but ``callback`` is None (i.e. when it "
+"returns a `.Future`)"
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:187
+msgid "`tornado.locale`"
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:189
+msgid ""
+"New method `.GettextLocale.pgettext` allows additional context to be "
+"supplied for gettext translations."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:193
+msgid "`tornado.log`"
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:195
+msgid ""
+"`.define_logging_options` now works correctly when given a non-default "
+"``options`` object."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:199
+msgid "`tornado.process`"
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:201
+msgid ""
+"New method `.Subprocess.wait_for_exit` is a coroutine-friendly version of"
+" `.Subprocess.set_exit_callback`."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:205
+msgid "`tornado.simple_httpclient`"
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:207
+msgid "Improved performance on Python 3 by reusing a single `ssl.SSLContext`."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:208
+msgid ""
+"New constructor argument ``max_body_size`` controls the maximum response "
+"size the client is willing to accept. It may be bigger than "
+"``max_buffer_size`` if ``streaming_callback`` is used."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:213
+msgid "`tornado.tcpserver`"
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:215
+msgid ""
+"`.TCPServer.handle_stream` may be a coroutine (so that any exceptions it "
+"raises will be logged)."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:219
+msgid "`tornado.util`"
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:221
+msgid "`.import_object` now supports unicode strings on Python 2."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:222
+msgid "`.Configurable.initialize` now supports positional arguments."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:225
+msgid "`tornado.web`"
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:227
+msgid ""
+"Key versioning support for cookie signing. ``cookie_secret`` application "
+"setting can now contain a dict of valid keys with version as key. The "
+"current signing key then must be specified via ``key_version`` setting."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:230
+msgid ""
+"Parsing of the ``If-None-Match`` header now follows the RFC and supports "
+"weak validators."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:232
+msgid ""
+"Passing ``secure=False`` or ``httponly=False`` to "
+"`.RequestHandler.set_cookie` now works as expected (previously only the "
+"presence of the argument was considered and its value was ignored)."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:235
+msgid ""
+"`.RequestHandler.get_arguments` now requires that its ``strip`` argument "
+"be of type bool. This helps prevent errors caused by the slightly "
+"dissimilar interfaces between the singular and plural methods."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:238
+msgid ""
+"Errors raised in ``_handle_request_exception`` are now logged more "
+"reliably."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:239
+msgid ""
+"`.RequestHandler.redirect` now works correctly when called from a handler"
+" whose path begins with two slashes."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:241
+msgid ""
+"Passing messages containing ``%`` characters to `tornado.web.HTTPError` "
+"no longer causes broken error messages."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:245
+msgid "`tornado.websocket`"
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:247
+msgid "The ``on_close`` method will no longer be called more than once."
+msgstr ""
+
+#: ../../releases/v4.2.0.rst:248
+msgid ""
+"When the other side closes a connection, we now echo the received close "
+"code back instead of sending an empty close frame."
+msgstr ""
+

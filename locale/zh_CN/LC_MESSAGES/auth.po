@@ -1,0 +1,532 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../auth.rst:2
+msgid "``tornado.auth`` --- Third-party login with OpenID and OAuth"
+msgstr ""
+
+#: of tornado.auth:1
+msgid ""
+"This module contains implementations of various third-party "
+"authentication schemes."
+msgstr ""
+
+#: of tornado.auth:4
+msgid ""
+"All the classes in this file are class mixins designed to be used with "
+"the `tornado.web.RequestHandler` class.  They are used in two ways:"
+msgstr ""
+
+#: of tornado.auth:7
+msgid ""
+"On a login handler, use methods such as ``authenticate_redirect()``, "
+"``authorize_redirect()``, and ``get_authenticated_user()`` to establish "
+"the user's identity and store authentication tokens to your database "
+"and/or cookies."
+msgstr ""
+
+#: of tornado.auth:11
+msgid ""
+"In non-login handlers, use methods such as ``facebook_request()`` or "
+"``twitter_request()`` to use the authentication tokens to make requests "
+"to the respective services."
+msgstr ""
+
+#: of tornado.auth:15
+msgid ""
+"They all take slightly different arguments due to the fact all these "
+"services implement authentication and authorization slightly differently."
+" See the individual service classes below for complete documentation."
+msgstr ""
+
+#: of tornado.auth:19
+msgid "Example usage for Google OAuth:"
+msgstr ""
+
+#: ../../auth.rst:11
+msgid "Common protocols"
+msgstr ""
+
+#: ../../auth.rst:13
+msgid ""
+"These classes implement the OpenID and OAuth standards.  They will "
+"generally need to be subclassed to use them with any particular site. The"
+" degree of customization required will vary, but in most cases "
+"overridding the class attributes (which are named beginning with "
+"underscores for historical reasons) should be sufficient."
+msgstr ""
+
+#: of tornado.auth.OpenIdMixin:1
+msgid "Abstract implementation of OpenID and Attribute Exchange."
+msgstr ""
+
+#: of tornado.auth.OAuth2Mixin:6 tornado.auth.OAuthMixin:5
+#: tornado.auth.OpenIdMixin:3
+msgid "Class attributes:"
+msgstr ""
+
+#: of tornado.auth.OpenIdMixin:5
+msgid "``_OPENID_ENDPOINT``: the identity provider's URI."
+msgstr ""
+
+#: of tornado.auth.OpenIdMixin.authenticate_redirect:1
+msgid "Redirects to the authentication URL for this service."
+msgstr ""
+
+#: of tornado.auth.OpenIdMixin.authenticate_redirect:3
+msgid ""
+"After authentication, the service will redirect back to the given "
+"callback URI with additional parameters including ``openid.mode``."
+msgstr ""
+
+#: of tornado.auth.OpenIdMixin.authenticate_redirect:6
+msgid ""
+"We request the given attributes for the authenticated user by default "
+"(name, email, language, and username). If you don't need all those "
+"attributes for your app, you can request fewer with the ax_attrs keyword "
+"argument."
+msgstr ""
+
+#: of tornado.auth.OpenIdMixin.authenticate_redirect:13
+msgid ""
+"The ``callback`` argument was removed and this method no longer returns "
+"an awaitable object. It is now an ordinary synchronous function."
+msgstr ""
+
+#: of tornado.auth.OpenIdMixin.get_authenticated_user:1
+msgid "Fetches the authenticated user data upon redirect."
+msgstr ""
+
+#: of tornado.auth.OpenIdMixin.get_authenticated_user:3
+msgid ""
+"This method should be called by the handler that receives the redirect "
+"from the `authenticate_redirect()` method (which is often the same as the"
+" one that calls it; in that case you would call `get_authenticated_user` "
+"if the ``openid.mode`` parameter is present and `authenticate_redirect` "
+"if it is not)."
+msgstr ""
+
+#: of tornado.auth.OpenIdMixin.get_authenticated_user:9
+msgid "The result of this method will generally be used to set a cookie."
+msgstr ""
+
+#: of tornado.auth.FacebookGraphMixin.facebook_request:49
+#: tornado.auth.FacebookGraphMixin.get_authenticated_user:44
+#: tornado.auth.GoogleOAuth2Mixin.get_authenticated_user:40
+#: tornado.auth.OAuthMixin.authorize_redirect:24
+#: tornado.auth.OAuthMixin.get_authenticated_user:13
+#: tornado.auth.OpenIdMixin.get_authenticated_user:13
+#: tornado.auth.TwitterMixin.authenticate_redirect:13
+#: tornado.auth.TwitterMixin.twitter_request:39
+msgid ""
+"The ``callback`` argument was removed. Use the returned awaitable object "
+"instead."
+msgstr ""
+
+#: of tornado.auth.OAuth2Mixin.get_auth_http_client:1
+#: tornado.auth.OAuthMixin.get_auth_http_client:1
+#: tornado.auth.OpenIdMixin.get_auth_http_client:1
+msgid "Returns the `.AsyncHTTPClient` instance to be used for auth requests."
+msgstr ""
+
+#: of tornado.auth.OAuth2Mixin.get_auth_http_client:3
+#: tornado.auth.OAuthMixin.get_auth_http_client:3
+#: tornado.auth.OpenIdMixin.get_auth_http_client:3
+msgid ""
+"May be overridden by subclasses to use an HTTP client other than the "
+"default."
+msgstr ""
+
+#: of tornado.auth.OAuthMixin:1
+msgid "Abstract implementation of OAuth 1.0 and 1.0a."
+msgstr ""
+
+#: of tornado.auth.OAuthMixin:3
+msgid "See `TwitterMixin` below for an example implementation."
+msgstr ""
+
+#: of tornado.auth.OAuthMixin:7
+msgid "``_OAUTH_AUTHORIZE_URL``: The service's OAuth authorization url."
+msgstr ""
+
+#: of tornado.auth.OAuthMixin:8
+msgid "``_OAUTH_ACCESS_TOKEN_URL``: The service's OAuth access token url."
+msgstr ""
+
+#: of tornado.auth.OAuthMixin:9
+msgid "``_OAUTH_VERSION``: May be either \"1.0\" or \"1.0a\"."
+msgstr ""
+
+#: of tornado.auth.OAuthMixin:10
+msgid ""
+"``_OAUTH_NO_CALLBACKS``: Set this to True if the service requires advance"
+" registration of callbacks."
+msgstr ""
+
+#: of tornado.auth.OAuthMixin:13
+msgid ""
+"Subclasses must also override the `_oauth_get_user_future` and "
+"`_oauth_consumer_token` methods."
+msgstr ""
+
+#: of tornado.auth.OAuth2Mixin.authorize_redirect:1
+#: tornado.auth.OAuthMixin.authorize_redirect:1
+msgid "Redirects the user to obtain OAuth authorization for this service."
+msgstr ""
+
+#: of tornado.auth.OAuthMixin.authorize_redirect:3
+msgid ""
+"The ``callback_uri`` may be omitted if you have previously registered a "
+"callback URI with the third-party service. For some services, you must "
+"use a previously-registered callback URI and cannot specify a callback "
+"via this method."
+msgstr ""
+
+#: of tornado.auth.OAuthMixin.authorize_redirect:8
+msgid ""
+"This method sets a cookie called ``_oauth_request_token`` which is "
+"subsequently used (and cleared) in `get_authenticated_user` for security "
+"purposes."
+msgstr ""
+
+#: of tornado.auth.OAuthMixin.authorize_redirect:12
+msgid ""
+"This method is asynchronous and must be called with ``await`` or "
+"``yield`` (This is different from other ``auth*_redirect`` methods "
+"defined in this module). It calls `.RequestHandler.finish` for you so you"
+" should not write any other response after it returns."
+msgstr ""
+
+#: of tornado.auth.OAuthMixin.authorize_redirect:18
+#: tornado.auth.TwitterMixin.authenticate_redirect:7
+msgid ""
+"Now returns a `.Future` and takes an optional callback, for compatibility"
+" with `.gen.coroutine`."
+msgstr ""
+
+#: of tornado.auth.OAuthMixin.get_authenticated_user:1
+msgid "Gets the OAuth authorized user and access token."
+msgstr ""
+
+#: of tornado.auth.OAuthMixin.get_authenticated_user:3
+msgid ""
+"This method should be called from the handler for your OAuth callback URL"
+" to complete the registration process. We run the callback with the "
+"authenticated user dictionary.  This dictionary will contain an "
+"``access_key`` which can be used to make authorized requests to this "
+"service on behalf of the user.  The dictionary will also contain other "
+"fields such as ``name``, depending on the service used."
+msgstr ""
+
+#: of tornado.auth.OAuthMixin._oauth_consumer_token:1
+msgid "Subclasses must override this to return their OAuth consumer keys."
+msgstr ""
+
+#: of tornado.auth.OAuthMixin._oauth_consumer_token:3
+msgid "The return value should be a `dict` with keys ``key`` and ``secret``."
+msgstr ""
+
+#: of tornado.auth.OAuthMixin._oauth_get_user_future:1
+msgid "Subclasses must override this to get basic information about the user."
+msgstr ""
+
+#: of tornado.auth.OAuthMixin._oauth_get_user_future:4
+msgid ""
+"Should be a coroutine whose result is a dictionary containing information"
+" about the user, which may have been retrieved by using ``access_token`` "
+"to make a request to the service."
+msgstr ""
+
+#: of tornado.auth.OAuthMixin._oauth_get_user_future:9
+msgid ""
+"The access token will be added to the returned dictionary to make the "
+"result of `get_authenticated_user`."
+msgstr ""
+
+#: of tornado.auth.OAuthMixin._oauth_get_user_future:14
+msgid "Subclasses may also define this method with ``async def``."
+msgstr ""
+
+#: of tornado.auth.OAuthMixin._oauth_get_user_future:18
+msgid "A synchronous fallback to ``_oauth_get_user`` was removed."
+msgstr ""
+
+#: of tornado.auth.OAuth2Mixin:1
+msgid "Abstract implementation of OAuth 2.0."
+msgstr ""
+
+#: of tornado.auth.OAuth2Mixin:3
+msgid ""
+"See `FacebookGraphMixin` or `GoogleOAuth2Mixin` below for example "
+"implementations."
+msgstr ""
+
+#: of tornado.auth.OAuth2Mixin:8
+msgid "``_OAUTH_AUTHORIZE_URL``: The service's authorization url."
+msgstr ""
+
+#: of tornado.auth.OAuth2Mixin:9
+msgid "``_OAUTH_ACCESS_TOKEN_URL``:  The service's access token url."
+msgstr ""
+
+#: of tornado.auth.OAuth2Mixin.authorize_redirect:3
+msgid ""
+"Some providers require that you register a redirect URL with your "
+"application instead of passing one via this method. You should call this "
+"method to log the user in, and then call ``get_authenticated_user`` in "
+"the handler for your redirect URL to complete the authorization process."
+msgstr ""
+
+#: of tornado.auth.OAuth2Mixin.authorize_redirect:11
+msgid ""
+"The ``callback`` argument and returned awaitable were removed; this is "
+"now an ordinary synchronous function."
+msgstr ""
+
+#: of tornado.auth.OAuth2Mixin.oauth2_request:1
+msgid "Fetches the given URL auth an OAuth2 access token."
+msgstr ""
+
+#: of tornado.auth.FacebookGraphMixin.facebook_request:3
+#: tornado.auth.OAuth2Mixin.oauth2_request:3
+#: tornado.auth.TwitterMixin.twitter_request:6
+msgid ""
+"If the request is a POST, ``post_args`` should be provided. Query string "
+"arguments should be given as keyword arguments."
+msgstr ""
+
+#: of tornado.auth.FacebookGraphMixin.facebook_request:15
+#: tornado.auth.FacebookGraphMixin.get_authenticated_user:3
+#: tornado.auth.GoogleOAuth2Mixin.get_authenticated_user:11
+#: tornado.auth.OAuth2Mixin.oauth2_request:6
+msgid "Example usage:"
+msgstr ""
+
+#: of tornado.auth.OAuth2Mixin.oauth2_request:8
+msgid "..testcode::"
+msgstr ""
+
+#: ../../auth.rst:34
+msgid "Google"
+msgstr ""
+
+#: of tornado.auth.GoogleOAuth2Mixin:1
+msgid "Google authentication using OAuth2."
+msgstr ""
+
+#: of tornado.auth.GoogleOAuth2Mixin:3
+msgid ""
+"In order to use, register your application with Google and copy the "
+"relevant parameters to your application settings."
+msgstr ""
+
+#: of tornado.auth.GoogleOAuth2Mixin:6
+msgid "Go to the Google Dev Console at http://console.developers.google.com"
+msgstr ""
+
+#: of tornado.auth.GoogleOAuth2Mixin:7
+msgid "Select a project, or create a new one."
+msgstr ""
+
+#: of tornado.auth.GoogleOAuth2Mixin:8
+msgid "In the sidebar on the left, select APIs & Auth."
+msgstr ""
+
+#: of tornado.auth.GoogleOAuth2Mixin:9
+msgid "In the list of APIs, find the Google+ API service and set it to ON."
+msgstr ""
+
+#: of tornado.auth.GoogleOAuth2Mixin:10
+msgid "In the sidebar on the left, select Credentials."
+msgstr ""
+
+#: of tornado.auth.GoogleOAuth2Mixin:11
+msgid "In the OAuth section of the page, select Create New Client ID."
+msgstr ""
+
+#: of tornado.auth.GoogleOAuth2Mixin:12
+msgid "Set the Redirect URI to point to your auth handler"
+msgstr ""
+
+#: of tornado.auth.GoogleOAuth2Mixin:13
+msgid ""
+"Copy the \"Client secret\" and \"Client ID\" to the application settings "
+"as ``{\"google_oauth\": {\"key\": CLIENT_ID, \"secret\": "
+"CLIENT_SECRET}}``"
+msgstr ""
+
+#: of tornado.auth.GoogleOAuth2Mixin.get_authenticated_user:1
+msgid "Handles the login for the Google user, returning an access token."
+msgstr ""
+
+#: of tornado.auth.GoogleOAuth2Mixin.get_authenticated_user:3
+msgid ""
+"The result is a dictionary containing an ``access_token`` field ([among "
+"others](https://developers.google.com/identity/protocols/OAuth2WebServer#handlingtheresponse))."
+" Unlike other ``get_authenticated_user`` methods in this package, this "
+"method does not return any additional information about the user. The "
+"returned access token can be used with `OAuth2Mixin.oauth2_request` to "
+"request additional information (perhaps from "
+"``https://www.googleapis.com/oauth2/v2/userinfo``)"
+msgstr ""
+
+#: ../../auth.rst:40
+msgid "Facebook"
+msgstr ""
+
+#: of tornado.auth.FacebookGraphMixin:1
+msgid "Facebook authentication using the new Graph API and OAuth2."
+msgstr ""
+
+#: of tornado.auth.FacebookGraphMixin.get_authenticated_user:1
+msgid "Handles the login for the Facebook user, returning a user object."
+msgstr ""
+
+#: of tornado.auth.FacebookGraphMixin.get_authenticated_user:26
+msgid "This method returns a dictionary which may contain the following fields:"
+msgstr ""
+
+#: of tornado.auth.FacebookGraphMixin.get_authenticated_user:28
+msgid "``access_token``, a string which may be passed to `facebook_request`"
+msgstr ""
+
+#: of tornado.auth.FacebookGraphMixin.get_authenticated_user:29
+msgid ""
+"``session_expires``, an integer encoded as a string representing the time"
+" until the access token expires in seconds. This field should be used "
+"like ``int(user['session_expires'])``; in a future version of Tornado it "
+"will change from a string to an integer."
+msgstr ""
+
+#: of tornado.auth.FacebookGraphMixin.get_authenticated_user:33
+msgid ""
+"``id``, ``name``, ``first_name``, ``last_name``, ``locale``, ``picture``,"
+" ``link``, plus any fields named in the ``extra_fields`` argument. These "
+"fields are copied from the Facebook graph API `user object "
+"<https://developers.facebook.com/docs/graph-api/reference/user>`_"
+msgstr ""
+
+#: of tornado.auth.FacebookGraphMixin.get_authenticated_user:38
+msgid ""
+"The ``session_expires`` field was updated to support changes made to the "
+"Facebook API in March 2017."
+msgstr ""
+
+#: of tornado.auth.FacebookGraphMixin.facebook_request:1
+msgid "Fetches the given relative API path, e.g., \"/btaylor/picture\""
+msgstr ""
+
+#: of tornado.auth.FacebookGraphMixin.facebook_request:6
+msgid ""
+"An introduction to the Facebook Graph API can be found at "
+"http://developers.facebook.com/docs/api"
+msgstr ""
+
+#: of tornado.auth.FacebookGraphMixin.facebook_request:9
+msgid ""
+"Many methods require an OAuth access token which you can obtain through "
+"`~OAuth2Mixin.authorize_redirect` and `get_authenticated_user`. The user "
+"returned through that process includes an ``access_token`` attribute that"
+" can be used to make authenticated requests via this method."
+msgstr ""
+
+#: of tornado.auth.FacebookGraphMixin.facebook_request:37
+msgid ""
+"The given path is relative to ``self._FACEBOOK_BASE_URL``, by default "
+"\"https://graph.facebook.com\"."
+msgstr ""
+
+#: of tornado.auth.FacebookGraphMixin.facebook_request:40
+msgid ""
+"This method is a wrapper around `OAuth2Mixin.oauth2_request`; the only "
+"difference is that this method takes a relative path, while "
+"``oauth2_request`` takes a complete url."
+msgstr ""
+
+#: of tornado.auth.FacebookGraphMixin.facebook_request:44
+msgid "Added the ability to override ``self._FACEBOOK_BASE_URL``."
+msgstr ""
+
+#: ../../auth.rst:46
+msgid "Twitter"
+msgstr ""
+
+#: of tornado.auth.TwitterMixin:1
+msgid "Twitter OAuth authentication."
+msgstr ""
+
+#: of tornado.auth.TwitterMixin:3
+msgid ""
+"To authenticate with Twitter, register your application with Twitter at "
+"http://twitter.com/apps. Then copy your Consumer Key and Consumer Secret "
+"to the application `~tornado.web.Application.settings` "
+"``twitter_consumer_key`` and ``twitter_consumer_secret``. Use this mixin "
+"on the handler for the URL you registered as your application's callback "
+"URL."
+msgstr ""
+
+#: of tornado.auth.TwitterMixin:10
+msgid ""
+"When your application is set up, you can use this mixin like this to "
+"authenticate the user with Twitter and get access to their stream:"
+msgstr ""
+
+#: of tornado.auth.TwitterMixin:27
+msgid ""
+"The user object returned by `~OAuthMixin.get_authenticated_user` includes"
+" the attributes ``username``, ``name``, ``access_token``, and all of the "
+"custom Twitter user attributes described at "
+"https://dev.twitter.com/docs/api/1.1/get/users/show"
+msgstr ""
+
+#: of tornado.auth.TwitterMixin.authenticate_redirect:1
+msgid ""
+"Just like `~OAuthMixin.authorize_redirect`, but auto-redirects if "
+"authorized."
+msgstr ""
+
+#: of tornado.auth.TwitterMixin.authenticate_redirect:4
+msgid ""
+"This is generally the right interface to use if you are using Twitter for"
+" single-sign on."
+msgstr ""
+
+#: of tornado.auth.TwitterMixin.twitter_request:1
+msgid "Fetches the given API path, e.g., ``statuses/user_timeline/btaylor``"
+msgstr ""
+
+#: of tornado.auth.TwitterMixin.twitter_request:3
+msgid ""
+"The path should not include the format or API version number. (we "
+"automatically use JSON format and API version 1)."
+msgstr ""
+
+#: of tornado.auth.TwitterMixin.twitter_request:9
+msgid "All the Twitter methods are documented at http://dev.twitter.com/"
+msgstr ""
+
+#: of tornado.auth.TwitterMixin.twitter_request:11
+msgid ""
+"Many methods require an OAuth access token which you can obtain through "
+"`~OAuthMixin.authorize_redirect` and "
+"`~OAuthMixin.get_authenticated_user`. The user returned through that "
+"process includes an 'access_token' attribute that can be used to make "
+"authenticated requests via this method. Example usage:"
+msgstr ""
+

@@ -1,0 +1,413 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../releases/v3.2.0.rst:2
+msgid "Tornado 3.2 新特性"
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:5
+msgid "Jan 14, 2014"
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:8
+msgid "Installation"
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:9
+msgid ""
+"Tornado now depends on the `backports.ssl_match_hostname "
+"<https://pypi.python.org/pypi/backports.ssl_match_hostname>`_ when "
+"running on Python 2.  This will be installed automatically when using "
+"``pip`` or ``easy_install``"
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:13
+msgid ""
+"Tornado now includes an optional C extension module, which greatly "
+"improves performance of websockets.  This extension will be built "
+"automatically if a C compiler is found at install time."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:18
+msgid "New modules"
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:20
+msgid ""
+"The `tornado.platform.asyncio` module provides integration with the "
+"``asyncio`` module introduced in Python 3.4 (also available for Python "
+"3.3 with ``pip install asyncio``)."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:25
+msgid "`tornado.auth`"
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:27
+msgid ""
+"Added `.GoogleOAuth2Mixin` support authentication to Google services with"
+" OAuth 2 instead of OpenID and OAuth 1."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:29
+msgid ""
+"`.FacebookGraphMixin` has been updated to use the current Facebook login "
+"URL, which saves a redirect."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:33
+msgid "`tornado.concurrent`"
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:35
+msgid ""
+"``TracebackFuture`` now accepts a ``timeout`` keyword argument (although "
+"it is still incorrect to use a non-zero timeout in non-blocking code)."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:39
+msgid "``tornado.curl_httpclient``"
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:41
+msgid ""
+"``tornado.curl_httpclient`` now works on Python 3 with the soon-to-be-"
+"released pycurl 7.19.3, which will officially support Python 3 for the "
+"first time.  Note that there are some unofficial Python 3 ports of pycurl"
+" (Ubuntu has included one for its past several releases); these are not "
+"supported for use with Tornado."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:48
+msgid "`tornado.escape`"
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:50
+msgid "`.xhtml_escape` now escapes apostrophes as well."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:51
+msgid ""
+"`tornado.escape.utf8`, `.to_unicode`, and `.native_str` now raise "
+"`TypeError` instead of `AssertionError` when given an invalid value."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:55
+msgid "`tornado.gen`"
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:57
+msgid ""
+"Coroutines may now yield dicts in addition to lists to wait for multiple "
+"tasks in parallel."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:59
+msgid ""
+"Improved performance of `tornado.gen` when yielding a `.Future` that is "
+"already done."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:63
+msgid "`tornado.httpclient`"
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:65
+msgid ""
+"`tornado.httpclient.HTTPRequest` now uses property setters so that "
+"setting attributes after construction applies the same conversions as "
+"``__init__`` (e.g. converting the body attribute to bytes)."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:70
+msgid "`tornado.httpserver`"
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:72
+msgid ""
+"Malformed ``x-www-form-urlencoded`` request bodies will now log a warning"
+" and continue instead of causing the request to fail (similar to the "
+"existing handling of malformed ``multipart/form-data`` bodies.  This is "
+"done mainly because some libraries send this content type by default even"
+" when the data is not form-encoded."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:77
+msgid "Fix some error messages for unix sockets (and other non-IP sockets)"
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:80
+msgid "`tornado.ioloop`"
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:82
+msgid ""
+"`.IOLoop` now uses `~.IOLoop.handle_callback_exception` consistently for "
+"error logging."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:84
+msgid ""
+"`.IOLoop` now frees callback objects earlier, reducing memory usage while"
+" idle."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:86
+msgid ""
+"`.IOLoop` will no longer call `logging.basicConfig` if there is a handler"
+" defined for the root logger or for the ``tornado`` or "
+"``tornado.application`` loggers (previously it only looked at the root "
+"logger)."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:91
+msgid "`tornado.iostream`"
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:93
+msgid ""
+"`.IOStream` now recognizes ``ECONNABORTED`` error codes in more places "
+"(which was mainly an issue on Windows)."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:95
+msgid ""
+"`.IOStream` now frees memory earlier if a connection is closed while "
+"there is data in the write buffer."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:97
+msgid "`.PipeIOStream` now handles ``EAGAIN`` error codes correctly."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:98
+msgid ""
+"`.SSLIOStream` now initiates the SSL handshake automatically without "
+"waiting for the application to try and read or write to the connection."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:100
+msgid ""
+"Swallow a spurious exception from ``set_nodelay`` when a connection has "
+"been reset."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:104
+msgid "`tornado.locale`"
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:106
+msgid ""
+"`.Locale.format_date` no longer forces the use of absolute dates in "
+"Russian."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:110
+msgid "`tornado.log`"
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:112
+msgid ""
+"Fix an error from `tornado.log.enable_pretty_logging` when `sys.stderr` "
+"does not have an ``isatty`` method."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:114
+msgid ""
+"`tornado.log.LogFormatter` now accepts keyword arguments ``fmt`` and "
+"``datefmt``."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:118
+msgid "`tornado.netutil`"
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:120
+msgid ""
+"`.is_valid_ip` (and therefore ``HTTPRequest.remote_ip``) now rejects "
+"empty strings."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:122
+msgid ""
+"Synchronously using `.ThreadedResolver` at import time to resolve a "
+"unicode hostname no longer deadlocks."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:126
+msgid "`tornado.platform.twisted`"
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:128
+msgid "`.TwistedResolver` now has better error handling."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:131
+msgid "`tornado.process`"
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:133
+msgid ""
+"`.Subprocess` no longer leaks file descriptors if `subprocess.Popen` "
+"fails."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:136
+msgid "``tornado.simple_httpclient``"
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:138
+msgid ""
+"``simple_httpclient`` now applies the ``connect_timeout`` to requests "
+"that are queued and have not yet started."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:140
+msgid "On Python 2.6, ``simple_httpclient`` now uses TLSv1 instead of SSLv3."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:141
+msgid ""
+"``simple_httpclient`` now enforces the connect timeout during DNS "
+"resolution."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:142
+msgid ""
+"The embedded ``ca-certificates.crt`` file has been updated with the "
+"current Mozilla CA list."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:146
+msgid "`tornado.web`"
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:148
+msgid ""
+"`.StaticFileHandler` no longer fails if the client requests a ``Range`` "
+"that is larger than the entire file (Facebook has a crawler that does "
+"this)."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:150
+msgid ""
+"`.RequestHandler.on_connection_close` now works correctly on subsequent "
+"requests of a keep-alive connection."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:152
+msgid ""
+"New application setting ``default_handler_class`` can be used to easily "
+"set up custom 404 pages."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:154
+msgid ""
+"New application settings ``autoreload``, ``compiled_template_cache``, "
+"``static_hash_cache``, and ``serve_traceback`` can be used to control "
+"individual aspects of debug mode."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:157
+msgid ""
+"New methods `.RequestHandler.get_query_argument` and "
+"`.RequestHandler.get_body_argument` and new attributes "
+"``HTTPRequest.query_arguments`` and ``HTTPRequest.body_arguments`` allow "
+"access to arguments without intermingling those from the query string "
+"with those from the request body."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:162
+msgid ""
+"`.RequestHandler.decode_argument` and related methods now raise an "
+"``HTTPError(400)`` instead of `UnicodeDecodeError` when the argument "
+"could not be decoded."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:165
+msgid ""
+"`.RequestHandler.clear_all_cookies` now accepts ``domain`` and ``path`` "
+"arguments, just like `~.RequestHandler.clear_cookie`."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:167
+msgid ""
+"It is now possible to specify handlers by name when using the `.URLSpec` "
+"class."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:169
+msgid ""
+"`.Application` now accepts 4-tuples to specify the ``name`` parameter "
+"(which previously required constructing a `.URLSpec` object instead of a "
+"tuple)."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:172
+msgid ""
+"Fixed an incorrect error message when handler methods return a value "
+"other than None or a Future."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:174
+msgid ""
+"Exceptions will no longer be logged twice when using both "
+"``@asynchronous`` and ``@gen.coroutine``"
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:179
+msgid "`tornado.websocket`"
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:181
+msgid ""
+"`.WebSocketHandler.write_message` now raises `.WebSocketClosedError` "
+"instead of `AttributeError` when the connection has been closed."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:183
+msgid "`.websocket_connect` now accepts preconstructed ``HTTPRequest`` objects."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:184
+msgid ""
+"Fix a bug with `.WebSocketHandler` when used with some proxies that "
+"unconditionally modify the ``Connection`` header."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:186
+msgid ""
+"`.websocket_connect` now returns an error immediately for refused "
+"connections instead of waiting for the timeout."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:188
+msgid "`.WebSocketClientConnection` now has a ``close`` method."
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:191
+msgid "`tornado.wsgi`"
+msgstr ""
+
+#: ../../releases/v3.2.0.rst:193
+msgid ""
+"`.WSGIContainer` now calls the iterable's ``close()`` method even if an "
+"error is raised, in compliance with the spec."
+msgstr ""
+

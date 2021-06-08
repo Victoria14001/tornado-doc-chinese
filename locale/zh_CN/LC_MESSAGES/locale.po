@@ -1,0 +1,266 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../locale.rst:2
+msgid "``tornado.locale`` --- Internationalization support"
+msgstr ""
+
+#: of tornado.locale:1
+msgid "Translation methods for generating localized strings."
+msgstr ""
+
+#: of tornado.locale:3
+msgid "To load a locale and generate a translated string::"
+msgstr ""
+
+#: of tornado.locale:8
+msgid ""
+"`tornado.locale.get()` returns the closest matching locale, not "
+"necessarily the specific locale you requested. You can support "
+"pluralization with additional arguments to `~Locale.translate()`, e.g.::"
+msgstr ""
+
+#: of tornado.locale:17
+msgid ""
+"The first string is chosen if ``len(people) == 1``, otherwise the second "
+"string is chosen."
+msgstr ""
+
+#: of tornado.locale:20
+msgid ""
+"Applications should call one of `load_translations` (which uses a simple "
+"CSV format) or `load_gettext_translations` (which uses the ``.mo`` format"
+" supported by `gettext` and related tools).  If neither method is called,"
+" the `Locale.translate` method will simply return the original string."
+msgstr ""
+
+#: of tornado.locale.get:1
+msgid "Returns the closest match for the given locale codes."
+msgstr ""
+
+#: of tornado.locale.get:3
+msgid ""
+"We iterate over all given locale codes in order. If we have a tight or a "
+"loose match for the code (e.g., \"en\" for \"en_US\"), we return the "
+"locale. Otherwise we move to the next code in the list."
+msgstr ""
+
+#: of tornado.locale.get:7
+msgid ""
+"By default we return ``en_US`` if no translations are found for any of "
+"the specified locales. You can change the default locale with "
+"`set_default_locale()`."
+msgstr ""
+
+#: of tornado.locale.set_default_locale:1
+msgid "Sets the default locale."
+msgstr ""
+
+#: of tornado.locale.set_default_locale:3
+msgid ""
+"The default locale is assumed to be the language used for all strings in "
+"the system. The translations loaded from disk are mappings from the "
+"default locale to the destination locale. Consequently, you don't need to"
+" create a translation file for the default locale."
+msgstr ""
+
+#: of tornado.locale.load_translations:1
+msgid "Loads translations from CSV files in a directory."
+msgstr ""
+
+#: of tornado.locale.load_translations:3
+#, python-format
+msgid ""
+"Translations are strings with optional Python-style named placeholders "
+"(e.g., ``My name is %(name)s``) and their associated translations."
+msgstr ""
+
+#: of tornado.locale.load_translations:6
+#, python-format
+msgid ""
+"The directory should have translation files of the form ``LOCALE.csv``, "
+"e.g. ``es_GT.csv``. The CSV files should have two or three columns: "
+"string, translation, and an optional plural indicator. Plural indicators "
+"should be one of \"plural\" or \"singular\". A given string can have both"
+" singular and plural forms. For example ``%(name)s liked this`` may have "
+"a different verb conjugation depending on whether %(name)s is one name or"
+" a list of names. There should be two rows in the CSV file for that "
+"string, one with plural indicator \"singular\", and one \"plural\". For "
+"strings with no verbs that would change on translation, simply use "
+"\"unknown\" or the empty string (or don't include the column at all)."
+msgstr ""
+
+#: of tornado.locale.load_translations:17
+msgid ""
+"The file is read using the `csv` module in the default \"excel\" dialect."
+" In this format there should not be spaces after the commas."
+msgstr ""
+
+#: of tornado.locale.load_translations:20
+msgid ""
+"If no ``encoding`` parameter is given, the encoding will be detected "
+"automatically (among UTF-8 and UTF-16) if the file contains a byte-order "
+"marker (BOM), defaulting to UTF-8 if no BOM is present."
+msgstr ""
+
+#: of tornado.locale.load_translations:25
+msgid "Example translation ``es_LA.csv``::"
+msgstr ""
+
+#: of tornado.locale.load_translations:31
+msgid ""
+"Added ``encoding`` parameter. Added support for BOM-based encoding "
+"detection, UTF-16, and UTF-8-with-BOM."
+msgstr ""
+
+#: of tornado.locale.load_gettext_translations:1
+msgid "Loads translations from `gettext`'s locale tree"
+msgstr ""
+
+#: of tornado.locale.load_gettext_translations:3
+msgid "Locale tree is similar to system's ``/usr/share/locale``, like::"
+msgstr ""
+
+#: of tornado.locale.load_gettext_translations:7
+msgid "Three steps are required to have your app translated:"
+msgstr ""
+
+#: of tornado.locale.load_gettext_translations:9
+msgid "Generate POT translation file::"
+msgstr ""
+
+#: of tornado.locale.load_gettext_translations:13
+msgid "Merge against existing POT file::"
+msgstr ""
+
+#: of tornado.locale.load_gettext_translations:17
+msgid "Compile::"
+msgstr ""
+
+#: of tornado.locale.get_supported_locales:1
+msgid "Returns a list of all the supported locale codes."
+msgstr ""
+
+#: of tornado.locale.Locale:1
+msgid "Object representing a locale."
+msgstr ""
+
+#: of tornado.locale.Locale:3
+msgid ""
+"After calling one of `load_translations` or `load_gettext_translations`, "
+"call `get` or `get_closest` to get a Locale object."
+msgstr ""
+
+#: of tornado.locale.Locale.get_closest:1
+msgid "Returns the closest match for the given locale code."
+msgstr ""
+
+#: of tornado.locale.Locale.get:1
+msgid "Returns the Locale for the given locale code."
+msgstr ""
+
+#: of tornado.locale.Locale.get:3
+msgid "If it is not supported, we raise an exception."
+msgstr ""
+
+#: of tornado.locale.CSVLocale.translate:1
+#: tornado.locale.GettextLocale.translate:1 tornado.locale.Locale.translate:1
+msgid "Returns the translation for the given message for this locale."
+msgstr ""
+
+#: of tornado.locale.CSVLocale.translate:3
+#: tornado.locale.GettextLocale.translate:3 tornado.locale.Locale.translate:3
+msgid ""
+"If ``plural_message`` is given, you must also provide ``count``. We "
+"return ``plural_message`` when ``count != 1``, and we return the singular"
+" form for the given message when ``count == 1``."
+msgstr ""
+
+#: of tornado.locale.Locale.format_date:1
+msgid "Formats the given date (which should be GMT)."
+msgstr ""
+
+#: of tornado.locale.Locale.format_date:3
+msgid ""
+"By default, we return a relative time (e.g., \"2 minutes ago\"). You can "
+"return an absolute date string with ``relative=False``."
+msgstr ""
+
+#: of tornado.locale.Locale.format_date:6
+msgid ""
+"You can force a full format date (\"July 10, 1980\") with "
+"``full_format=True``."
+msgstr ""
+
+#: of tornado.locale.Locale.format_date:9
+msgid ""
+"This method is primarily intended for dates in the past. For dates in the"
+" future, we fall back to full format."
+msgstr ""
+
+#: of tornado.locale.Locale.format_day:1
+msgid "Formats the given date as a day of week."
+msgstr ""
+
+#: of tornado.locale.Locale.format_day:3
+msgid ""
+"Example: \"Monday, January 22\". You can remove the day of week with "
+"``dow=False``."
+msgstr ""
+
+#: of tornado.locale.Locale.list:1
+msgid "Returns a comma-separated list for the given list of parts."
+msgstr ""
+
+#: of tornado.locale.Locale.list:3
+msgid ""
+"The format is, e.g., \"A, B and C\", \"A and B\" or just \"A\" for lists "
+"of size 1."
+msgstr ""
+
+#: of tornado.locale.Locale.friendly_number:1
+msgid "Returns a comma-separated number for the given integer."
+msgstr ""
+
+#: of tornado.locale.CSVLocale:1
+msgid "Locale implementation using tornado's CSV translation format."
+msgstr ""
+
+#: of tornado.locale.GettextLocale:1
+msgid "Locale implementation using the `gettext` module."
+msgstr ""
+
+#: of tornado.locale.GettextLocale.pgettext:1
+msgid "Allows to set context for translation, accepts plural forms."
+msgstr ""
+
+#: of tornado.locale.GettextLocale.pgettext:3
+msgid "Usage example::"
+msgstr ""
+
+#: of tornado.locale.GettextLocale.pgettext:8
+msgid "Plural message example::"
+msgstr ""
+
+#: of tornado.locale.GettextLocale.pgettext:13
+msgid ""
+"To generate POT file with context, add following options to step 1 of "
+"`load_gettext_translations` sequence::"
+msgstr ""
+

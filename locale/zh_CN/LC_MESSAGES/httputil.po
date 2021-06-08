@@ -1,0 +1,501 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../httputil.rst:2
+msgid "``tornado.httputil`` --- Manipulate HTTP headers and URLs"
+msgstr ""
+
+#: of tornado.httputil:1
+msgid "HTTP utility code shared by clients and servers."
+msgstr ""
+
+#: of tornado.httputil:3
+msgid ""
+"This module also defines the `HTTPServerRequest` class which is exposed "
+"via `tornado.web.RequestHandler.request`."
+msgstr ""
+
+#: of tornado.httputil.HTTPHeaders:1
+msgid "A dictionary that maintains ``Http-Header-Case`` for all keys."
+msgstr ""
+
+#: of tornado.httputil.HTTPHeaders:3
+msgid ""
+"Supports multiple values per key via a pair of new methods, `add()` and "
+"`get_list()`.  The regular dictionary interface returns a single value "
+"per key, with multiple values joined by a comma."
+msgstr ""
+
+#: of tornado.httputil.HTTPHeaders.add:1
+msgid "Adds a new value for the given key."
+msgstr ""
+
+#: of tornado.httputil.HTTPHeaders.get_list:1
+msgid "Returns all values for the given header as a list."
+msgstr ""
+
+#: of tornado.httputil.HTTPHeaders.get_all:1
+msgid "Returns an iterable of all (name, value) pairs."
+msgstr ""
+
+#: of tornado.httputil.HTTPHeaders.get_all:3
+msgid ""
+"If a header has multiple values, multiple pairs will be returned with the"
+" same name."
+msgstr ""
+
+#: of tornado.httputil.HTTPHeaders.parse_line:1
+msgid "Updates the dictionary with a single header line."
+msgstr ""
+
+#: of tornado.httputil.HTTPHeaders.parse:1
+msgid "Returns a dictionary from HTTP header text."
+msgstr ""
+
+#: of tornado.httputil.HTTPHeaders.parse:9
+msgid ""
+"Raises `HTTPInputError` on malformed headers instead of a mix of "
+"`KeyError`, and `ValueError`."
+msgstr ""
+
+#: of tornado.httputil.HTTPServerRequest:1
+msgid "A single HTTP request."
+msgstr ""
+
+#: of tornado.httputil.HTTPServerRequest:3
+msgid "All attributes are type `str` unless otherwise noted."
+msgstr ""
+
+#: of tornado.httputil.HTTPServerRequest:7
+msgid "HTTP request method, e.g. \"GET\" or \"POST\""
+msgstr ""
+
+#: of tornado.httputil.HTTPServerRequest:11
+msgid "The requested uri."
+msgstr ""
+
+#: of tornado.httputil.HTTPServerRequest:15
+msgid "The path portion of `uri`"
+msgstr ""
+
+#: of tornado.httputil.HTTPServerRequest:19
+msgid "The query portion of `uri`"
+msgstr ""
+
+#: of tornado.httputil.HTTPServerRequest:23
+msgid "HTTP version specified in request, e.g. \"HTTP/1.1\""
+msgstr ""
+
+#: of tornado.httputil.HTTPServerRequest:27
+msgid ""
+"`.HTTPHeaders` dictionary-like object for request headers.  Acts like a "
+"case-insensitive dictionary with additional methods for repeated headers."
+msgstr ""
+
+#: of tornado.httputil.HTTPServerRequest:33
+msgid "Request body, if present, as a byte string."
+msgstr ""
+
+#: of tornado.httputil.HTTPServerRequest:37
+msgid ""
+"Client's IP address as a string.  If ``HTTPServer.xheaders`` is set, will"
+" pass along the real IP address provided by a load balancer in the ``X"
+"-Real-Ip`` or ``X-Forwarded-For`` header."
+msgstr ""
+
+#: of tornado.httputil.HTTPServerRequest:41
+msgid "The list format of ``X-Forwarded-For`` is now supported."
+msgstr ""
+
+#: of tornado.httputil.HTTPServerRequest:46
+msgid ""
+"The protocol used, either \"http\" or \"https\".  If "
+"``HTTPServer.xheaders`` is set, will pass along the protocol used by a "
+"load balancer if reported via an ``X-Scheme`` header."
+msgstr ""
+
+#: of tornado.httputil.HTTPServerRequest:52
+msgid "The requested hostname, usually taken from the ``Host`` header."
+msgstr ""
+
+#: of tornado.httputil.HTTPServerRequest:56
+msgid ""
+"GET/POST arguments are available in the arguments property, which maps "
+"arguments names to lists of values (to support multiple values for "
+"individual names). Names are of type `str`, while arguments are byte "
+"strings.  Note that this is different from "
+"`.RequestHandler.get_argument`, which returns argument values as unicode "
+"strings."
+msgstr ""
+
+#: of tornado.httputil.HTTPServerRequest:65
+msgid ""
+"Same format as ``arguments``, but contains only arguments extracted from "
+"the query string."
+msgstr ""
+
+#: of tornado.httputil.HTTPServerRequest:72
+msgid ""
+"Same format as ``arguments``, but contains only arguments extracted from "
+"the request body."
+msgstr ""
+
+#: of tornado.httputil.HTTPServerRequest:79
+msgid ""
+"File uploads are available in the files property, which maps file names "
+"to lists of `.HTTPFile`."
+msgstr ""
+
+#: of tornado.httputil.HTTPServerRequest:84
+msgid ""
+"An HTTP request is attached to a single HTTP connection, which can be "
+"accessed through the \"connection\" attribute. Since connections are "
+"typically kept open in HTTP/1.1, multiple requests can be handled "
+"sequentially on a single connection."
+msgstr ""
+
+#: of tornado.httputil.HTTPServerRequest:89
+msgid "Moved from ``tornado.httpserver.HTTPRequest``."
+msgstr ""
+
+#: of tornado.httputil.HTTPServerRequest.cookies:1
+msgid "A dictionary of ``http.cookies.Morsel`` objects."
+msgstr ""
+
+#: of tornado.httputil.HTTPServerRequest.full_url:1
+msgid "Reconstructs the full URL for this request."
+msgstr ""
+
+#: of tornado.httputil.HTTPServerRequest.request_time:1
+msgid "Returns the amount of time it took for this request to execute."
+msgstr ""
+
+#: of tornado.httputil.HTTPServerRequest.get_ssl_certificate:1
+msgid "Returns the client's SSL certificate, if any."
+msgstr ""
+
+#: of tornado.httputil.HTTPServerRequest.get_ssl_certificate:3
+msgid ""
+"To use client certificates, the HTTPServer's `ssl.SSLContext.verify_mode`"
+" field must be set, e.g.::"
+msgstr ""
+
+#: of tornado.httputil.HTTPServerRequest.get_ssl_certificate:12
+msgid ""
+"By default, the return value is a dictionary (or None, if no client "
+"certificate is present).  If ``binary_form`` is true, a DER-encoded form "
+"of the certificate is returned instead.  See SSLSocket.getpeercert() in "
+"the standard library for more details. "
+"http://docs.python.org/library/ssl.html#sslsocket-objects"
+msgstr ""
+
+#: of tornado.httputil.HTTPInputError:1
+msgid ""
+"Exception class for malformed HTTP requests or responses from remote "
+"sources."
+msgstr ""
+
+#: of tornado.httputil.HTTPOutputError:1
+msgid "Exception class for errors in HTTP output."
+msgstr ""
+
+#: of tornado.httputil.HTTPServerConnectionDelegate:1
+msgid "Implement this interface to handle requests from `.HTTPServer`."
+msgstr ""
+
+#: of tornado.httputil.HTTPServerConnectionDelegate.start_request:1
+msgid "This method is called by the server when a new request has started."
+msgstr ""
+
+#: of tornado.httputil.HTTPConnection.write_headers
+#: tornado.httputil.HTTPMessageDelegate.headers_received
+#: tornado.httputil.HTTPServerConnectionDelegate.on_close
+#: tornado.httputil.HTTPServerConnectionDelegate.start_request
+msgid "参数"
+msgstr ""
+
+#: of tornado.httputil.HTTPServerConnectionDelegate.start_request:3
+msgid ""
+"is an opaque object representing the long-lived (e.g. tcp-level) "
+"connection."
+msgstr ""
+
+#: of tornado.httputil.HTTPServerConnectionDelegate.start_request:5
+msgid "is a `.HTTPConnection` object for a single request/response exchange."
+msgstr ""
+
+#: of tornado.httputil.HTTPServerConnectionDelegate.start_request:8
+msgid "This method should return a `.HTTPMessageDelegate`."
+msgstr ""
+
+#: of tornado.httputil.HTTPServerConnectionDelegate.on_close:1
+msgid "This method is called when a connection has been closed."
+msgstr ""
+
+#: of tornado.httputil.HTTPServerConnectionDelegate.on_close:3
+msgid ""
+"is a server connection that has previously been passed to "
+"``start_request``."
+msgstr ""
+
+#: of tornado.httputil.HTTPMessageDelegate:1
+msgid "Implement this interface to handle an HTTP request or response."
+msgstr ""
+
+#: of tornado.httputil.HTTPMessageDelegate.headers_received:1
+msgid "Called when the HTTP headers have been received and parsed."
+msgstr ""
+
+#: of tornado.httputil.HTTPMessageDelegate.headers_received:3
+msgid ""
+"a `.RequestStartLine` or `.ResponseStartLine` depending on whether this "
+"is a client or server message."
+msgstr ""
+
+#: of tornado.httputil.HTTPConnection.write_headers:4
+#: tornado.httputil.HTTPMessageDelegate.headers_received:5
+msgid "a `.HTTPHeaders` instance."
+msgstr ""
+
+#: of tornado.httputil.HTTPMessageDelegate.headers_received:7
+msgid ""
+"Some `.HTTPConnection` methods can only be called during "
+"``headers_received``."
+msgstr ""
+
+#: of tornado.httputil.HTTPMessageDelegate.headers_received:10
+msgid ""
+"May return a `.Future`; if it does the body will not be read until it is "
+"done."
+msgstr ""
+
+#: of tornado.httputil.HTTPMessageDelegate.data_received:1
+msgid "Called when a chunk of data has been received."
+msgstr ""
+
+#: of tornado.httputil.HTTPMessageDelegate.data_received:3
+msgid "May return a `.Future` for flow control."
+msgstr ""
+
+#: of tornado.httputil.HTTPMessageDelegate.finish:1
+msgid "Called after the last chunk of data has been received."
+msgstr ""
+
+#: of tornado.httputil.HTTPMessageDelegate.on_connection_close:1
+msgid "Called if the connection is closed without finishing the request."
+msgstr ""
+
+#: of tornado.httputil.HTTPMessageDelegate.on_connection_close:3
+msgid ""
+"If ``headers_received`` is called, either ``finish`` or "
+"``on_connection_close`` will be called, but not both."
+msgstr ""
+
+#: of tornado.httputil.HTTPConnection:1
+msgid "Applications use this interface to write their responses."
+msgstr ""
+
+#: of tornado.httputil.HTTPConnection.write_headers:1
+msgid "Write an HTTP header block."
+msgstr ""
+
+#: of tornado.httputil.HTTPConnection.write_headers:3
+msgid "a `.RequestStartLine` or `.ResponseStartLine`."
+msgstr ""
+
+#: of tornado.httputil.HTTPConnection.write_headers:5
+msgid ""
+"the first (optional) chunk of data.  This is an optimization so that "
+"small responses can be written in the same call as their headers."
+msgstr ""
+
+#: of tornado.httputil.HTTPConnection.write_headers:9
+msgid "The ``version`` field of ``start_line`` is ignored."
+msgstr ""
+
+#: of tornado.httputil.HTTPConnection.write:3
+#: tornado.httputil.HTTPConnection.write_headers:11
+msgid "Returns a future for flow control."
+msgstr ""
+
+#: of tornado.httputil.HTTPConnection.write:7
+#: tornado.httputil.HTTPConnection.write_headers:15
+msgid "The ``callback`` argument was removed."
+msgstr ""
+
+#: of tornado.httputil.HTTPConnection.write:1
+msgid "Writes a chunk of body data."
+msgstr ""
+
+#: of tornado.httputil.HTTPConnection.finish:1
+msgid "Indicates that the last body data has been written."
+msgstr ""
+
+#: of tornado.httputil.url_concat:1
+msgid ""
+"Concatenate url and arguments regardless of whether url has existing "
+"query parameters."
+msgstr ""
+
+#: of tornado.httputil.url_concat:4
+msgid ""
+"``args`` may be either a dictionary or a list of key-value pairs (the "
+"latter allows for multiple values with the same key."
+msgstr ""
+
+#: of tornado.httputil.HTTPFile:1
+msgid "Represents a file uploaded via a form."
+msgstr ""
+
+#: of tornado.httputil.HTTPFile:3
+msgid ""
+"For backwards compatibility, its instance attributes are also accessible "
+"as dictionary keys."
+msgstr ""
+
+#: of tornado.httputil.HTTPFile:6
+msgid "``filename``"
+msgstr ""
+
+#: of tornado.httputil.HTTPFile:7
+msgid "``body``"
+msgstr ""
+
+#: of tornado.httputil.HTTPFile:8
+msgid "``content_type``"
+msgstr ""
+
+#: of tornado.httputil.parse_body_arguments:1
+msgid "Parses a form request body."
+msgstr ""
+
+#: of tornado.httputil.parse_body_arguments:3
+msgid ""
+"Supports ``application/x-www-form-urlencoded`` and ``multipart/form-"
+"data``.  The ``content_type`` parameter should be a string and ``body`` "
+"should be a byte string.  The ``arguments`` and ``files`` parameters are "
+"dictionaries that will be updated with the parsed contents."
+msgstr ""
+
+#: of tornado.httputil.parse_multipart_form_data:1
+msgid "Parses a ``multipart/form-data`` body."
+msgstr ""
+
+#: of tornado.httputil.parse_multipart_form_data:3
+msgid ""
+"The ``boundary`` and ``data`` parameters are both byte strings. The "
+"dictionaries given in the arguments and files parameters will be updated "
+"with the contents of the body."
+msgstr ""
+
+#: of tornado.httputil.parse_multipart_form_data:9
+msgid ""
+"Now recognizes non-ASCII filenames in RFC 2231/5987 (``filename*=``) "
+"format."
+msgstr ""
+
+#: of tornado.httputil.format_timestamp:1
+msgid "Formats a timestamp in the format used by HTTP."
+msgstr ""
+
+#: of tornado.httputil.format_timestamp:3
+msgid ""
+"The argument may be a numeric timestamp as returned by `time.time`, a "
+"time tuple as returned by `time.gmtime`, or a `datetime.datetime` object."
+msgstr ""
+
+#: of tornado.httputil.RequestStartLine:1
+msgid "RequestStartLine(method, path, version)"
+msgstr ""
+
+#: of tornado.httputil.RequestStartLine:3
+msgid "Create new instance of RequestStartLine(method, path, version)"
+msgstr ""
+
+#: ../../docstring of tornado.httputil.RequestStartLine.method:1
+#: tornado.httputil.ResponseStartLine.version:1
+msgid "Alias for field number 0"
+msgstr ""
+
+#: ../../docstring of tornado.httputil.RequestStartLine.path:1
+#: tornado.httputil.ResponseStartLine.code:1
+msgid "Alias for field number 1"
+msgstr ""
+
+#: ../../docstring of tornado.httputil.RequestStartLine.version:1
+#: tornado.httputil.ResponseStartLine.reason:1
+msgid "Alias for field number 2"
+msgstr ""
+
+#: of tornado.httputil.parse_request_start_line:1
+msgid "Returns a (method, path, version) tuple for an HTTP 1.x request line."
+msgstr ""
+
+#: of tornado.httputil.parse_request_start_line:3
+#: tornado.httputil.parse_response_start_line:3
+msgid "The response is a `collections.namedtuple`."
+msgstr ""
+
+#: of tornado.httputil.ResponseStartLine:1
+msgid "ResponseStartLine(version, code, reason)"
+msgstr ""
+
+#: of tornado.httputil.ResponseStartLine:3
+msgid "Create new instance of ResponseStartLine(version, code, reason)"
+msgstr ""
+
+#: of tornado.httputil.parse_response_start_line:1
+msgid "Returns a (version, code, reason) tuple for an HTTP 1.x response line."
+msgstr ""
+
+#: of tornado.httputil.encode_username_password:1
+msgid "Encodes a username/password pair in the format used by HTTP auth."
+msgstr ""
+
+#: of tornado.httputil.encode_username_password:3
+msgid "The return value is a byte string in the form ``username:password``."
+msgstr ""
+
+#: of tornado.httputil.split_host_and_port:1
+msgid "Returns ``(host, port)`` tuple from ``netloc``."
+msgstr ""
+
+#: of tornado.httputil.split_host_and_port:3
+msgid "Returned ``port`` will be ``None`` if not present."
+msgstr ""
+
+#: of tornado.httputil.qs_to_qsl:1
+msgid "Generator converting a result of ``parse_qs`` back to name-value pairs."
+msgstr ""
+
+#: of tornado.httputil.parse_cookie:1
+msgid "Parse a ``Cookie`` HTTP header into a dict of name/value pairs."
+msgstr ""
+
+#: of tornado.httputil.parse_cookie:3
+msgid ""
+"This function attempts to mimic browser cookie parsing behavior; it "
+"specifically does not follow any of the cookie-related RFCs (because "
+"browsers don't either)."
+msgstr ""
+
+#: of tornado.httputil.parse_cookie:7
+msgid "The algorithm used is identical to that used by Django version 1.9.10."
+msgstr ""
+

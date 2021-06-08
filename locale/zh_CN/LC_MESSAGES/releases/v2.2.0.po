@@ -1,0 +1,303 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../releases/v2.2.0.rst:2
+msgid "Tornado 2.2 新特性"
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:5
+msgid "Jan 30, 2012"
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:8
+msgid "Highlights"
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:10
+msgid "Updated and expanded WebSocket support."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:11
+msgid "Improved compatibility in the Twisted/Tornado bridge."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:12
+msgid "Template errors now generate better stack traces."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:13
+msgid "Better exception handling in `tornado.gen`."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:16
+msgid "Security fixes"
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:18
+msgid ""
+"``tornado.simple_httpclient`` now disables SSLv2 in all cases.  "
+"Previously SSLv2 would be allowed if the Python interpreter was linked "
+"against a pre-1.0 version of OpenSSL."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:23
+msgid "Backwards-incompatible changes"
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:25
+msgid ""
+"`tornado.process.fork_processes` now raises `SystemExit` if all child "
+"processes exit cleanly rather than returning ``None``.  The old behavior "
+"was surprising and inconsistent with most of the documented examples of "
+"this function (which did not check the return value)."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:29
+msgid ""
+"On Python 2.6, ``tornado.simple_httpclient`` only supports SSLv3.  This "
+"is because Python 2.6 does not expose a way to support both SSLv3 and "
+"TLSv1 without also supporting the insecure SSLv2."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:32 ../../releases/v2.2.0.rst:99
+msgid ""
+"`tornado.websocket` no longer supports the older \"draft 76\" version of "
+"the websocket protocol by default, although this version can be enabled "
+"by overriding ``tornado.websocket.WebSocketHandler.allow_draft76``."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:37
+msgid "``tornado.httpclient``"
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:39
+msgid ""
+"``SimpleAsyncHTTPClient`` no longer hangs on ``HEAD`` requests, responses"
+" with no content, or empty ``POST``/``PUT`` response bodies."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:41
+msgid "``SimpleAsyncHTTPClient`` now supports 303 and 307 redirect codes."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:42
+msgid "``tornado.curl_httpclient`` now accepts non-integer timeouts."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:43
+msgid ""
+"``tornado.curl_httpclient`` now supports basic authentication with an "
+"empty password."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:47
+msgid "``tornado.httpserver``"
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:49
+msgid ""
+"`.HTTPServer` with ``xheaders=True`` will no longer accept ``X-Real-IP`` "
+"headers that don't look like valid IP addresses."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:51
+msgid ""
+"`.HTTPServer` now treats the ``Connection`` request header as case-"
+"insensitive."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:55
+msgid "``tornado.ioloop`` and ``tornado.iostream``"
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:57
+msgid "``IOStream.write`` now works correctly when given an empty string."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:58
+msgid ""
+"``IOStream.read_until`` (and ``read_until_regex``) now perform better "
+"when there is a lot of buffered data, which improves peformance of "
+"``SimpleAsyncHTTPClient`` when downloading files with lots of chunks."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:62
+msgid ""
+"`.SSLIOStream` now works correctly when ``ssl_version`` is set to a value"
+" other than ``SSLv23``."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:64
+msgid "Idle ``IOLoops`` no longer wake up several times a second."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:65
+msgid ""
+"`tornado.ioloop.PeriodicCallback` no longer triggers duplicate callbacks "
+"when stopped and started repeatedly."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:69
+msgid "``tornado.template``"
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:71
+msgid ""
+"Exceptions in template code will now show better stack traces that "
+"reference lines from the original template file."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:73
+#, python-format
+msgid ""
+"``{#`` and ``#}`` can now be used for comments (and unlike the old ``{% "
+"comment %}`` directive, these can wrap other template directives)."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:75
+msgid "Template directives may now span multiple lines."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:78
+msgid "``tornado.web``"
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:80
+msgid "Now behaves better when given malformed ``Cookie`` headers"
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:81
+msgid ""
+"`.RequestHandler.redirect` now has a ``status`` argument to send status "
+"codes other than 301 and 302."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:83
+msgid ""
+"New method `.RequestHandler.on_finish` may be overridden for post-request"
+" processing (as a counterpart to `.RequestHandler.prepare`)"
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:85
+msgid ""
+"`.StaticFileHandler` now outputs ``Content-Length`` and ``Etag`` headers "
+"on ``HEAD`` requests."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:87
+msgid ""
+"`.StaticFileHandler` now has overridable ``get_version`` and "
+"``parse_url_path`` methods for use in subclasses."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:89
+msgid ""
+"`.RequestHandler.static_url` now takes an ``include_host`` parameter (in "
+"addition to the old support for the ``RequestHandler.include_host`` "
+"attribute)."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:94
+msgid "``tornado.websocket``"
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:96
+msgid ""
+"Updated to support the latest version of the protocol, as finalized in "
+"RFC 6455."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:98
+msgid "Many bugs were fixed in all supported protocol versions."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:102
+msgid ""
+"`.WebSocketHandler.write_message` now accepts a ``binary`` argument to "
+"send binary messages."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:104
+msgid ""
+"Subprotocols (i.e. the ``Sec-WebSocket-Protocol`` header) are now "
+"supported; see the `.WebSocketHandler.select_subprotocol` method for "
+"details."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:106
+msgid ""
+"``.WebSocketHandler.get_websocket_scheme`` can be used to select the "
+"appropriate url scheme (``ws://`` or ``wss://``) in cases where "
+"``HTTPRequest.protocol`` is not set correctly."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:111
+msgid "Other modules"
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:113
+msgid ""
+"`tornado.auth.TwitterMixin.authenticate_redirect` now takes a "
+"``callback_uri`` parameter."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:115
+msgid ""
+"`tornado.auth.TwitterMixin.twitter_request` now accepts both URLs and "
+"partial paths (complete URLs are useful for the search API which follows "
+"different patterns)."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:118
+msgid ""
+"Exception handling in `tornado.gen` has been improved.  It is now "
+"possible to catch exceptions thrown by a ``Task``."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:120
+msgid ""
+"`tornado.netutil.bind_sockets` now works when ``getaddrinfo`` returns "
+"duplicate addresses."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:122
+msgid ""
+"`tornado.platform.twisted` compatibility has been significantly improved."
+" Twisted version 11.1.0 is now supported in addition to 11.0.0."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:124
+msgid ""
+"`tornado.process.fork_processes` correctly reseeds the `random` module "
+"even when `os.urandom` is not implemented."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:126
+msgid ""
+"`tornado.testing.main` supports a new flag ``--exception_on_interrupt``, "
+"which can be set to false to make ``Ctrl-C`` kill the process more "
+"reliably (at the expense of stack traces when it does so)."
+msgstr ""
+
+#: ../../releases/v2.2.0.rst:129
+msgid ""
+"``tornado.version_info`` is now a four-tuple so official releases can be "
+"distinguished from development branches."
+msgstr ""
+

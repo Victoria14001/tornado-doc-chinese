@@ -1,0 +1,673 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../httpclient.rst:2
+msgid "``tornado.httpclient`` --- Asynchronous HTTP client"
+msgstr ""
+
+#: of tornado.httpclient:1
+msgid "Blocking and non-blocking HTTP client interfaces."
+msgstr ""
+
+#: of tornado.httpclient:3
+msgid ""
+"This module defines a common interface shared by two implementations, "
+"``simple_httpclient`` and ``curl_httpclient``.  Applications may either "
+"instantiate their chosen implementation class directly or use the "
+"`AsyncHTTPClient` class from this module, which selects an implementation"
+" that can be overridden with the `AsyncHTTPClient.configure` method."
+msgstr ""
+
+#: of tornado.httpclient:9
+msgid ""
+"The default implementation is ``simple_httpclient``, and this is expected"
+" to be suitable for most users' needs.  However, some applications may "
+"wish to switch to ``curl_httpclient`` for reasons such as the following:"
+msgstr ""
+
+#: of tornado.httpclient:13
+msgid ""
+"``curl_httpclient`` has some features not found in ``simple_httpclient``,"
+" including support for HTTP proxies and the ability to use a specified "
+"network interface."
+msgstr ""
+
+#: of tornado.httpclient:17
+msgid ""
+"``curl_httpclient`` is more likely to be compatible with sites that are "
+"not-quite-compliant with the HTTP spec, or sites that use little-"
+"exercised features of HTTP."
+msgstr ""
+
+#: of tornado.httpclient:21
+msgid "``curl_httpclient`` is faster."
+msgstr ""
+
+#: of tornado.httpclient:23
+msgid ""
+"Note that if you are using ``curl_httpclient``, it is highly recommended "
+"that you use a recent version of ``libcurl`` and ``pycurl``.  Currently "
+"the minimum supported version of libcurl is 7.22.0, and the minimum "
+"version of pycurl is 7.18.2.  It is highly recommended that your "
+"``libcurl`` installation is built with asynchronous DNS resolver "
+"(threaded or c-ares), otherwise you may encounter various problems with "
+"request timeouts (for more information, see "
+"http://curl.haxx.se/libcurl/c/curl_easy_setopt.html#CURLOPTCONNECTTIMEOUTMS"
+" and comments in curl_httpclient.py)."
+msgstr ""
+
+#: of tornado.httpclient:34
+msgid ""
+"To select ``curl_httpclient``, call `AsyncHTTPClient.configure` at "
+"startup::"
+msgstr ""
+
+#: ../../httpclient.rst:7
+msgid "HTTP client interfaces"
+msgstr ""
+
+#: of tornado.httpclient.HTTPClient:1
+msgid "A blocking HTTP client."
+msgstr ""
+
+#: of tornado.httpclient.HTTPClient:3
+msgid ""
+"This interface is provided to make it easier to share code between "
+"synchronous and asynchronous applications. Applications that are running "
+"an `.IOLoop` must use `AsyncHTTPClient` instead."
+msgstr ""
+
+#: of tornado.httpclient.HTTPClient:7
+msgid "Typical usage looks like this::"
+msgstr ""
+
+#: of tornado.httpclient.HTTPClient:24
+msgid ""
+"Due to limitations in `asyncio`, it is no longer possible to use the "
+"synchronous ``HTTPClient`` while an `.IOLoop` is running. Use "
+"`AsyncHTTPClient` instead."
+msgstr ""
+
+#: of tornado.httpclient.HTTPClient.close:1
+msgid "Closes the HTTPClient, freeing any resources used."
+msgstr ""
+
+#: of tornado.httpclient.HTTPClient.fetch:1
+msgid "Executes a request, returning an `HTTPResponse`."
+msgstr ""
+
+#: of tornado.httpclient.AsyncHTTPClient.fetch:3
+#: tornado.httpclient.HTTPClient.fetch:3
+msgid ""
+"The request may be either a string URL or an `HTTPRequest` object. If it "
+"is a string, we construct an `HTTPRequest` using any additional kwargs: "
+"``HTTPRequest(request, **kwargs)``"
+msgstr ""
+
+#: of tornado.httpclient.HTTPClient.fetch:7
+msgid ""
+"If an error occurs during the fetch, we raise an `HTTPError` unless the "
+"``raise_error`` keyword argument is set to False."
+msgstr ""
+
+#: of tornado.httpclient.AsyncHTTPClient:1
+msgid "An non-blocking HTTP client."
+msgstr ""
+
+#: of tornado.httpclient.AsyncHTTPClient:3
+msgid "Example usage::"
+msgstr ""
+
+#: of tornado.httpclient.AsyncHTTPClient:14
+msgid ""
+"The constructor for this class is magic in several respects: It actually "
+"creates an instance of an implementation-specific subclass, and instances"
+" are reused as a kind of pseudo-singleton (one per `.IOLoop`). The "
+"keyword argument ``force_instance=True`` can be used to suppress this "
+"singleton behavior. Unless ``force_instance=True`` is used, no arguments "
+"should be passed to the `AsyncHTTPClient` constructor. The implementation"
+" subclass as well as arguments to its constructor can be set with the "
+"static method `configure()`"
+msgstr ""
+
+#: of tornado.httpclient.AsyncHTTPClient:24
+msgid ""
+"All `AsyncHTTPClient` implementations support a ``defaults`` keyword "
+"argument, which can be used to set default values for `HTTPRequest` "
+"attributes.  For example::"
+msgstr ""
+
+#: of tornado.httpclient.AsyncHTTPClient:34
+msgid "The ``io_loop`` argument (deprecated since version 4.1) has been removed."
+msgstr ""
+
+#: of tornado.httpclient.AsyncHTTPClient.configurable_base:1
+msgid "Returns the base class of a configurable hierarchy."
+msgstr ""
+
+#: of tornado.httpclient.AsyncHTTPClient.configurable_base:3
+msgid ""
+"This will normally return the class in which it is defined. (which is "
+"*not* necessarily the same as the ``cls`` classmethod parameter)."
+msgstr ""
+
+#: of tornado.httpclient.AsyncHTTPClient.configurable_default:1
+msgid "Returns the implementation class to be used if none is configured."
+msgstr ""
+
+#: of tornado.httpclient.AsyncHTTPClient.close:1
+#: tornado.simple_httpclient.SimpleAsyncHTTPClient.close:1
+msgid "Destroys this HTTP client, freeing any file descriptors used."
+msgstr ""
+
+#: of tornado.httpclient.AsyncHTTPClient.close:3
+#: tornado.simple_httpclient.SimpleAsyncHTTPClient.close:3
+msgid ""
+"This method is **not needed in normal use** due to the way that "
+"`AsyncHTTPClient` objects are transparently reused. ``close()`` is "
+"generally only necessary when either the `.IOLoop` is also being closed, "
+"or the ``force_instance=True`` argument was used when creating the "
+"`AsyncHTTPClient`."
+msgstr ""
+
+#: of tornado.httpclient.AsyncHTTPClient.close:9
+#: tornado.simple_httpclient.SimpleAsyncHTTPClient.close:9
+msgid "No other methods may be called on the `AsyncHTTPClient` after ``close()``."
+msgstr ""
+
+#: of tornado.httpclient.AsyncHTTPClient.fetch:1
+msgid "Executes a request, asynchronously returning an `HTTPResponse`."
+msgstr ""
+
+#: of tornado.httpclient.AsyncHTTPClient.fetch:7
+msgid ""
+"This method returns a `.Future` whose result is an `HTTPResponse`. By "
+"default, the ``Future`` will raise an `HTTPError` if the request returned"
+" a non-200 response code (other errors may also be raised if the server "
+"could not be contacted). Instead, if ``raise_error`` is set to False, the"
+" response will always be returned regardless of the response code."
+msgstr ""
+
+#: of tornado.httpclient.AsyncHTTPClient.fetch:15
+msgid ""
+"If a ``callback`` is given, it will be invoked with the `HTTPResponse`. "
+"In the callback interface, `HTTPError` is not automatically raised. "
+"Instead, you must check the response's ``error`` attribute or call its "
+"`~HTTPResponse.rethrow` method."
+msgstr ""
+
+#: of tornado.httpclient.AsyncHTTPClient.fetch:22
+msgid "The ``callback`` argument was removed. Use the returned `.Future` instead."
+msgstr ""
+
+#: of tornado.httpclient.AsyncHTTPClient.fetch:25
+msgid ""
+"The ``raise_error=False`` argument only affects the `HTTPError` raised "
+"when a non-200 response code is used, instead of suppressing all errors."
+msgstr ""
+
+#: of tornado.httpclient.AsyncHTTPClient.configure:1
+msgid "Configures the `AsyncHTTPClient` subclass to use."
+msgstr ""
+
+#: of tornado.httpclient.AsyncHTTPClient.configure:3
+msgid ""
+"``AsyncHTTPClient()`` actually creates an instance of a subclass. This "
+"method may be called with either a class object or the fully-qualified "
+"name of such a class (or ``None`` to use the default, "
+"``SimpleAsyncHTTPClient``)"
+msgstr ""
+
+#: of tornado.httpclient.AsyncHTTPClient.configure:8
+msgid ""
+"If additional keyword arguments are given, they will be passed to the "
+"constructor of each subclass instance created.  The keyword argument "
+"``max_clients`` determines the maximum number of simultaneous "
+"`~AsyncHTTPClient.fetch()` operations that can execute in parallel on "
+"each `.IOLoop`.  Additional arguments may be supported depending on the "
+"implementation class in use."
+msgstr ""
+
+#: of tornado.httpclient.AsyncHTTPClient.configure:15
+msgid "Example::"
+msgstr ""
+
+#: ../../httpclient.rst:16
+msgid "Request objects"
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:1
+msgid "HTTP client request object."
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:3
+msgid "All parameters except ``url`` are optional."
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest
+msgid "参数"
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:5
+msgid "URL to fetch"
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:6
+msgid "HTTP method, e.g. \"GET\" or \"POST\""
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:7
+msgid "Additional HTTP headers to pass on the request"
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:9
+msgid ""
+"HTTP request body as a string (byte or unicode; if unicode the utf-8 "
+"encoding will be used)"
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:12
+msgid ""
+"Callable used for lazy/asynchronous request bodies. It is called with one"
+" argument, a ``write`` function, and should return a `.Future`.  It "
+"should call the write function with new data as it becomes available.  "
+"The write function returns a `.Future` which can be used for flow "
+"control. Only one of ``body`` and ``body_producer`` may be specified.  "
+"``body_producer`` is not supported on ``curl_httpclient``.  When using "
+"``body_producer`` it is recommended to pass a ``Content-Length`` in the "
+"headers as otherwise chunked encoding will be used, and many servers do "
+"not support chunked encoding on requests.  New in Tornado 4.0"
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:24
+msgid "Username for HTTP authentication"
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:25
+msgid "Password for HTTP authentication"
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:26
+msgid ""
+"Authentication mode; default is \"basic\". Allowed values are "
+"implementation-defined; ``curl_httpclient`` supports \"basic\" and "
+"\"digest\"; ``simple_httpclient`` only supports \"basic\""
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:30
+msgid ""
+"Timeout for initial connection in seconds, default 20 seconds (0 means no"
+" timeout)"
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:32
+msgid ""
+"Timeout for entire request in seconds, default 20 seconds (0 means no "
+"timeout)"
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:34
+msgid "Timestamp for ``If-Modified-Since`` header"
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:36
+msgid ""
+"Should redirects be followed automatically or return the 3xx response? "
+"Default True."
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:38
+msgid "Limit for ``follow_redirects``, default 5."
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:39
+msgid "String to send as ``User-Agent`` header"
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:40
+msgid ""
+"Request a compressed response from the server and decompress it after "
+"downloading.  Default is True. New in Tornado 4.0."
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:43
+msgid "Deprecated alias for ``decompress_response`` since Tornado 4.0."
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:45
+msgid ""
+"Network interface or source IP to use for request. See "
+"``curl_httpclient`` note below."
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:47
+msgid ""
+"If set, ``streaming_callback`` will be run with each chunk of data as it "
+"is received, and ``HTTPResponse.body`` and ``HTTPResponse.buffer`` will "
+"be empty in the final response."
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:51
+msgid ""
+"If set, ``header_callback`` will be run with each header line as it is "
+"received (including the first line, e.g. ``HTTP/1.0 200 OK\\r\\n``, and a"
+" final line containing only ``\\r\\n``.  All lines include the trailing "
+"newline characters).  ``HTTPResponse.headers`` will be empty in the final"
+" response.  This is most useful in conjunction with "
+"``streaming_callback``, because it's the only way to get access to header"
+" data while the request is in progress."
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:59
+msgid ""
+"If set, will be called with a ``pycurl.Curl`` object to allow the "
+"application to make additional ``setopt`` calls."
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:62
+msgid ""
+"HTTP proxy hostname.  To use proxies, ``proxy_host`` and ``proxy_port`` "
+"must be set; ``proxy_username``, ``proxy_pass`` and ``proxy_auth_mode`` "
+"are optional.  Proxies are currently only supported with "
+"``curl_httpclient``."
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:66
+msgid "HTTP proxy port"
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:67
+msgid "HTTP proxy username"
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:68
+msgid "HTTP proxy password"
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:69
+msgid ""
+"HTTP proxy Authentication mode; default is \"basic\". supports \"basic\" "
+"and \"digest\""
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:71
+msgid "Allow unknown values for ``method`` argument? Default is False."
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:73
+msgid "For HTTPS requests, validate the server's certificate? Default is True."
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:75
+msgid ""
+"filename of CA certificates in PEM format, or None to use defaults.  See "
+"note below when used with ``curl_httpclient``."
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:78
+msgid ""
+"Filename for client SSL key, if any.  See note below when used with "
+"``curl_httpclient``."
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:80
+msgid ""
+"Filename for client SSL certificate, if any. See note below when used "
+"with ``curl_httpclient``."
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:82
+msgid ""
+"`ssl.SSLContext` object for use in ``simple_httpclient`` (unsupported by "
+"``curl_httpclient``). Overrides ``validate_cert``, ``ca_certs``, "
+"``client_key``, and ``client_cert``."
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:86
+msgid "Use IPv6 when available?  Default is True."
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:87
+msgid ""
+"If true, send the ``Expect: 100-continue`` header and wait for a continue"
+" response before sending the request body.  Only supported with "
+"``simple_httpclient``."
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:94
+msgid ""
+"When using ``curl_httpclient`` certain options may be inherited by "
+"subsequent fetches because ``pycurl`` does not allow them to be cleanly "
+"reset.  This applies to the ``ca_certs``, ``client_key``, "
+"``client_cert``, and ``network_interface`` arguments.  If you use these "
+"options, you should pass them on every request (you don't have to always "
+"use the same values, but it's not possible to mix requests that specify "
+"these options with ones that use the defaults)."
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:104
+msgid "The ``auth_mode`` argument."
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:107
+msgid "The ``body_producer`` and ``expect_100_continue`` arguments."
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:110
+msgid "The ``ssl_options`` argument."
+msgstr ""
+
+#: of tornado.httpclient.HTTPRequest:113
+msgid "The ``proxy_auth_mode`` argument."
+msgstr ""
+
+#: ../../httpclient.rst:21
+msgid "Response objects"
+msgstr ""
+
+#: of tornado.httpclient.HTTPResponse:1
+msgid "HTTP Response object."
+msgstr ""
+
+#: of tornado.httpclient.HTTPResponse:3
+msgid "Attributes:"
+msgstr ""
+
+#: of tornado.httpclient.HTTPResponse:5
+msgid "``request``: HTTPRequest object"
+msgstr ""
+
+#: of tornado.httpclient.HTTPResponse:7
+msgid "``code``: numeric HTTP status code, e.g. 200 or 404"
+msgstr ""
+
+#: of tornado.httpclient.HTTPResponse:9
+msgid "``reason``: human-readable reason phrase describing the status code"
+msgstr ""
+
+#: of tornado.httpclient.HTTPResponse:11
+msgid "``headers``: `tornado.httputil.HTTPHeaders` object"
+msgstr ""
+
+#: of tornado.httpclient.HTTPResponse:13
+msgid ""
+"``effective_url``: final location of the resource after following any "
+"redirects"
+msgstr ""
+
+#: of tornado.httpclient.HTTPResponse:16
+msgid "``buffer``: ``cStringIO`` object for response body"
+msgstr ""
+
+#: of tornado.httpclient.HTTPResponse:18
+msgid "``body``: response body as bytes (created on demand from ``self.buffer``)"
+msgstr ""
+
+#: of tornado.httpclient.HTTPResponse:20
+msgid "``error``: Exception object, if any"
+msgstr ""
+
+#: of tornado.httpclient.HTTPResponse:22
+msgid ""
+"``request_time``: seconds from request start to finish. Includes all "
+"network operations from DNS resolution to receiving the last byte of "
+"data. Does not include time spent in the queue (due to the "
+"``max_clients`` option). If redirects were followed, only includes the "
+"final request."
+msgstr ""
+
+#: of tornado.httpclient.HTTPResponse:28
+msgid ""
+"``start_time``: Time at which the HTTP operation started, based on "
+"`time.time` (not the monotonic clock used by `.IOLoop.time`). May be "
+"``None`` if the request timed out while in the queue."
+msgstr ""
+
+#: of tornado.httpclient.HTTPResponse:32
+msgid ""
+"``time_info``: dictionary of diagnostic timing information from the "
+"request. Available data are subject to change, but currently uses timings"
+" available from http://curl.haxx.se/libcurl/c/curl_easy_getinfo.html, "
+"plus ``queue``, which is the delay (if any) introduced by waiting for a "
+"slot under `AsyncHTTPClient`'s ``max_clients`` setting."
+msgstr ""
+
+#: of tornado.httpclient.HTTPResponse:40
+msgid "Added the ``start_time`` attribute."
+msgstr ""
+
+#: of tornado.httpclient.HTTPResponse:44
+msgid ""
+"The ``request_time`` attribute previously included time spent in the "
+"queue for ``simple_httpclient``, but not in ``curl_httpclient``. Now "
+"queueing time is excluded in both implementations. ``request_time`` is "
+"now more accurate for ``curl_httpclient`` because it uses a monotonic "
+"clock when available."
+msgstr ""
+
+#: of tornado.httpclient.HTTPResponse.rethrow:1
+msgid "If there was an error on the request, raise an `HTTPError`."
+msgstr ""
+
+#: ../../httpclient.rst:26
+msgid "Exceptions"
+msgstr ""
+
+#: ../../httpclient.rst:31
+msgid "Command-line interface"
+msgstr ""
+
+#: ../../httpclient.rst:33
+msgid ""
+"This module provides a simple command-line interface to fetch a url using"
+" Tornado's HTTP client.  Example usage::"
+msgstr ""
+
+#: ../../httpclient.rst:43
+msgid "Implementations"
+msgstr ""
+
+#: of tornado.simple_httpclient.HTTPTimeoutError:1
+msgid "Error raised by SimpleAsyncHTTPClient on timeout."
+msgstr ""
+
+#: of tornado.simple_httpclient.HTTPStreamClosedError:6
+#: tornado.simple_httpclient.HTTPTimeoutError:3
+msgid ""
+"For historical reasons, this is a subclass of `.HTTPClientError` which "
+"simulates a response code of 599."
+msgstr ""
+
+#: of tornado.simple_httpclient.HTTPStreamClosedError:1
+msgid ""
+"Error raised by SimpleAsyncHTTPClient when the underlying stream is "
+"closed."
+msgstr ""
+
+#: of tornado.simple_httpclient.HTTPStreamClosedError:3
+msgid ""
+"When a more specific exception is available (such as "
+"`ConnectionResetError`), it may be raised instead of this one."
+msgstr ""
+
+#: of tornado.simple_httpclient.SimpleAsyncHTTPClient:1
+msgid "Non-blocking HTTP client with no external dependencies."
+msgstr ""
+
+#: of tornado.simple_httpclient.SimpleAsyncHTTPClient:3
+msgid ""
+"This class implements an HTTP 1.1 client on top of Tornado's IOStreams. "
+"Some features found in the curl-based AsyncHTTPClient are not yet "
+"supported.  In particular, proxies are not supported, connections are not"
+" reused, and callers cannot select the network interface to be used."
+msgstr ""
+
+#: of tornado.simple_httpclient.SimpleAsyncHTTPClient.initialize:1
+msgid "Creates a AsyncHTTPClient."
+msgstr ""
+
+#: of tornado.simple_httpclient.SimpleAsyncHTTPClient.initialize:3
+msgid ""
+"Only a single AsyncHTTPClient instance exists per IOLoop in order to "
+"provide limitations on the number of pending connections. "
+"``force_instance=True`` may be used to suppress this behavior."
+msgstr ""
+
+#: of tornado.simple_httpclient.SimpleAsyncHTTPClient.initialize:7
+msgid ""
+"Note that because of this implicit reuse, unless ``force_instance`` is "
+"used, only the first call to the constructor actually uses its arguments."
+" It is recommended to use the ``configure`` method instead of the "
+"constructor to ensure that arguments take effect."
+msgstr ""
+
+#: of tornado.simple_httpclient.SimpleAsyncHTTPClient.initialize:12
+msgid ""
+"``max_clients`` is the number of concurrent requests that can be in "
+"progress; when this limit is reached additional requests will be queued. "
+"Note that time spent waiting in this queue still counts against the "
+"``request_timeout``."
+msgstr ""
+
+#: of tornado.simple_httpclient.SimpleAsyncHTTPClient.initialize:17
+msgid ""
+"``hostname_mapping`` is a dictionary mapping hostnames to IP addresses. "
+"It can be used to make local DNS changes when modifying system-wide "
+"settings like ``/etc/hosts`` is not possible or desirable (e.g. in "
+"unittests)."
+msgstr ""
+
+#: of tornado.simple_httpclient.SimpleAsyncHTTPClient.initialize:22
+msgid ""
+"``max_buffer_size`` (default 100MB) is the number of bytes that can be "
+"read into memory at once. ``max_body_size`` (defaults to "
+"``max_buffer_size``) is the largest response body that the client will "
+"accept.  Without a ``streaming_callback``, the smaller of these two "
+"limits applies; with a ``streaming_callback`` only ``max_body_size`` "
+"does."
+msgstr ""
+
+#: of tornado.simple_httpclient.SimpleAsyncHTTPClient.initialize:30
+msgid "Added the ``max_body_size`` argument."
+msgstr ""
+
+#: ../../httpclient.rst:52
+msgid "``libcurl``-based HTTP client."
+msgstr ""
+

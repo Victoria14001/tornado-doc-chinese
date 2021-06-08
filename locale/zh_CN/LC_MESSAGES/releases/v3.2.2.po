@@ -1,0 +1,63 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../releases/v3.2.2.rst:2
+msgid "Tornado 3.2.2 新特性"
+msgstr ""
+
+#: ../../releases/v3.2.2.rst:5
+msgid "June 3, 2014"
+msgstr ""
+
+#: ../../releases/v3.2.2.rst:8
+msgid "Security fixes"
+msgstr ""
+
+#: ../../releases/v3.2.2.rst:10
+msgid ""
+"The XSRF token is now encoded with a random mask on each request. This "
+"makes it safe to include in compressed pages without being vulnerable to "
+"the `BREACH attack <http://breachattack.com>`_. This applies to most "
+"applications that use both the ``xsrf_cookies`` and ``gzip`` options (or "
+"have gzip applied by a proxy)."
+msgstr ""
+
+#: ../../releases/v3.2.2.rst:17
+msgid "Backwards-compatibility notes"
+msgstr ""
+
+#: ../../releases/v3.2.2.rst:19
+msgid ""
+"If Tornado 3.2.2 is run at the same time as older versions on the same "
+"domain, there is some potential for issues with the differing cookie "
+"versions.  The `.Application` setting ``xsrf_cookie_version=1`` can be "
+"used for a transitional period to generate the older cookie format on "
+"newer servers."
+msgstr ""
+
+#: ../../releases/v3.2.2.rst:26
+msgid "Other changes"
+msgstr ""
+
+#: ../../releases/v3.2.2.rst:28
+msgid ""
+"``tornado.platform.asyncio`` is now compatible with ``trollius`` version "
+"0.3."
+msgstr ""
+

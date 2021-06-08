@@ -1,0 +1,205 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../http1connection.rst:2
+msgid "``tornado.http1connection`` -- HTTP/1.x client/server implementation"
+msgstr ""
+
+#: of tornado.http1connection:1
+msgid "Client and server implementations of HTTP/1.x."
+msgstr ""
+
+#: of tornado.http1connection.HTTP1ConnectionParameters:1
+msgid "Parameters for `.HTTP1Connection` and `.HTTP1ServerConnection`."
+msgstr ""
+
+#: of tornado.http1connection.HTTP1Connection
+#: tornado.http1connection.HTTP1Connection.read_response
+#: tornado.http1connection.HTTP1ConnectionParameters
+#: tornado.http1connection.HTTP1ServerConnection
+#: tornado.http1connection.HTTP1ServerConnection.start_serving
+msgid "参数"
+msgstr ""
+
+#: of tornado.http1connection.HTTP1ConnectionParameters:4
+msgid "If true, always close the connection after one request."
+msgstr ""
+
+#: of tornado.http1connection.HTTP1ConnectionParameters:6
+msgid "how much data to read into memory at once"
+msgstr ""
+
+#: of tornado.http1connection.HTTP1ConnectionParameters:7
+msgid "maximum amount of data for HTTP headers"
+msgstr ""
+
+#: of tornado.http1connection.HTTP1ConnectionParameters:8
+msgid "how long to wait for all headers (seconds)"
+msgstr ""
+
+#: of tornado.http1connection.HTTP1ConnectionParameters:9
+msgid "maximum amount of data for body"
+msgstr ""
+
+#: of tornado.http1connection.HTTP1ConnectionParameters:10
+msgid "how long to wait while reading body (seconds)"
+msgstr ""
+
+#: of tornado.http1connection.HTTP1ConnectionParameters:11
+msgid "if true, decode incoming ``Content-Encoding: gzip``"
+msgstr ""
+
+#: of tornado.http1connection.HTTP1Connection:1
+msgid "Implements the HTTP/1.x protocol."
+msgstr ""
+
+#: of tornado.http1connection.HTTP1Connection:3
+msgid ""
+"This class can be on its own for clients, or via `HTTP1ServerConnection` "
+"for servers."
+msgstr ""
+
+#: of tornado.http1connection.HTTP1Connection:6
+#: tornado.http1connection.HTTP1ServerConnection:3
+msgid "an `.IOStream`"
+msgstr ""
+
+#: of tornado.http1connection.HTTP1Connection:7
+msgid "client or server"
+msgstr ""
+
+#: of tornado.http1connection.HTTP1Connection:8
+msgid "a `.HTTP1ConnectionParameters` instance or ``None``"
+msgstr ""
+
+#: of tornado.http1connection.HTTP1Connection:9
+msgid ""
+"an opaque application-defined object that can be accessed as "
+"``connection.context``."
+msgstr ""
+
+#: of tornado.http1connection.HTTP1Connection.read_response:1
+msgid "Read a single HTTP response."
+msgstr ""
+
+#: of tornado.http1connection.HTTP1Connection.read_response:3
+msgid ""
+"Typical client-mode usage is to write a request using `write_headers`, "
+"`write`, and `finish`, and then call ``read_response``."
+msgstr ""
+
+#: of tornado.http1connection.HTTP1Connection.read_response:6
+msgid "a `.HTTPMessageDelegate`"
+msgstr ""
+
+#: of tornado.http1connection.HTTP1Connection.read_response:8
+msgid ""
+"Returns a `.Future` that resolves to a bool after the full response has "
+"been read. The result is true if the stream is still open."
+msgstr ""
+
+#: of tornado.http1connection.HTTP1Connection.set_close_callback:1
+msgid "Sets a callback that will be run when the connection is closed."
+msgstr ""
+
+#: of tornado.http1connection.HTTP1Connection.set_close_callback:3
+msgid ""
+"Note that this callback is slightly different from "
+"`.HTTPMessageDelegate.on_connection_close`: The `.HTTPMessageDelegate` "
+"method is called when the connection is closed while receiving a message."
+" This callback is used when there is not an active delegate (for example,"
+" on the server side this callback is used if the client closes the "
+"connection after sending its request but before receiving all the "
+"response."
+msgstr ""
+
+#: of tornado.http1connection.HTTP1Connection.detach:1
+msgid "Take control of the underlying stream."
+msgstr ""
+
+#: of tornado.http1connection.HTTP1Connection.detach:3
+msgid ""
+"Returns the underlying `.IOStream` object and stops all further HTTP "
+"processing.  May only be called during "
+"`.HTTPMessageDelegate.headers_received`.  Intended for implementing "
+"protocols like websockets that tunnel over an HTTP handshake."
+msgstr ""
+
+#: of tornado.http1connection.HTTP1Connection.set_body_timeout:1
+msgid "Sets the body timeout for a single request."
+msgstr ""
+
+#: of tornado.http1connection.HTTP1Connection.set_body_timeout:3
+#: tornado.http1connection.HTTP1Connection.set_max_body_size:3
+msgid "Overrides the value from `.HTTP1ConnectionParameters`."
+msgstr ""
+
+#: of tornado.http1connection.HTTP1Connection.set_max_body_size:1
+msgid "Sets the body size limit for a single request."
+msgstr ""
+
+#: of tornado.http1connection.HTTP1Connection.write_headers:1
+msgid "Implements `.HTTPConnection.write_headers`."
+msgstr ""
+
+#: of tornado.http1connection.HTTP1Connection.write:1
+msgid "Implements `.HTTPConnection.write`."
+msgstr ""
+
+#: of tornado.http1connection.HTTP1Connection.write:3
+msgid ""
+"For backwards compatibility it is allowed but deprecated to skip "
+"`write_headers` and instead call `write()` with a pre-encoded header "
+"block."
+msgstr ""
+
+#: of tornado.http1connection.HTTP1Connection.finish:1
+msgid "Implements `.HTTPConnection.finish`."
+msgstr ""
+
+#: of tornado.http1connection.HTTP1ServerConnection:1
+msgid "An HTTP/1.x server."
+msgstr ""
+
+#: of tornado.http1connection.HTTP1ServerConnection:4
+msgid "a `.HTTP1ConnectionParameters` or None"
+msgstr ""
+
+#: of tornado.http1connection.HTTP1ServerConnection:5
+msgid ""
+"an opaque application-defined object that is accessible as "
+"``connection.context``"
+msgstr ""
+
+#: of tornado.http1connection.HTTP1ServerConnection.close:1
+msgid "Closes the connection."
+msgstr ""
+
+#: of tornado.http1connection.HTTP1ServerConnection.close:3
+msgid "Returns a `.Future` that resolves after the serving loop has exited."
+msgstr ""
+
+#: of tornado.http1connection.HTTP1ServerConnection.start_serving:1
+msgid "Starts serving requests on this connection."
+msgstr ""
+
+#: of tornado.http1connection.HTTP1ServerConnection.start_serving:3
+msgid "a `.HTTPServerConnectionDelegate`"
+msgstr ""
+

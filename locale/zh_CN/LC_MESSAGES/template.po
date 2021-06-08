@@ -1,0 +1,462 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2009-2021, The Tornado Authors
+# This file is distributed under the same license as the Tornado package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Tornado release\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-08 09:51+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../template.rst:2
+msgid "``tornado.template`` --- Flexible output generation"
+msgstr ""
+
+#: of tornado.template:1
+msgid "A simple template system that compiles templates to Python code."
+msgstr ""
+
+#: of tornado.template:3
+msgid "Basic usage looks like::"
+msgstr ""
+
+#: of tornado.template:8
+msgid ""
+"`Loader` is a class that loads templates from a root directory and caches"
+" the compiled templates::"
+msgstr ""
+
+#: of tornado.template:14
+msgid ""
+"We compile all templates to raw Python. Error-reporting is currently... "
+"uh, interesting. Syntax for the templates::"
+msgstr ""
+
+#: of tornado.template:42
+msgid ""
+"Unlike most other template systems, we do not put any restrictions on the"
+" expressions you can include in your statements. ``if`` and ``for`` "
+"blocks get translated exactly into Python, so you can do complex "
+"expressions like::"
+msgstr ""
+
+#: of tornado.template:50
+msgid ""
+"Translating directly to Python means you can apply functions to "
+"expressions easily, like the ``escape()`` function in the examples above."
+" You can pass functions in to your template just like any other variable "
+"(In a `.RequestHandler`, override "
+"`.RequestHandler.get_template_namespace`)::"
+msgstr ""
+
+#: of tornado.template:63
+msgid ""
+"We provide the functions `escape() <.xhtml_escape>`, `.url_escape()`, "
+"`.json_encode()`, and `.squeeze()` to all templates by default."
+msgstr ""
+
+#: of tornado.template:66
+msgid ""
+"Typical applications do not create `Template` or `Loader` instances by "
+"hand, but instead use the `~.RequestHandler.render` and "
+"`~.RequestHandler.render_string` methods of `tornado.web.RequestHandler`,"
+" which load templates automatically based on the ``template_path`` "
+"`.Application` setting."
+msgstr ""
+
+#: of tornado.template:72
+msgid ""
+"Variable names beginning with ``_tt_`` are reserved by the template "
+"system and should not be used by application code."
+msgstr ""
+
+#: of tornado.template:76
+msgid "Syntax Reference"
+msgstr ""
+
+#: of tornado.template:78
+#, python-format
+msgid ""
+"Template expressions are surrounded by double curly braces: ``{{ ... "
+"}}``. The contents may be any python expression, which will be escaped "
+"according to the current autoescape setting and inserted into the output."
+"  Other template directives use ``{% %}``."
+msgstr ""
+
+#: of tornado.template:83
+msgid ""
+"To comment out a section so that it is omitted from the output, surround "
+"it with ``{# ... #}``."
+msgstr ""
+
+#: of tornado.template:87
+msgid ""
+"To include a literal ``{{``, ``{%``, or ``{#`` in the output, escape them"
+" as ``{{!``, ``{%!``, and ``{#!``, respectively."
+msgstr ""
+
+#: of tornado.template:100
+#, python-format
+msgid "``{% apply *function* %}...{% end %}``"
+msgstr ""
+
+#: of tornado.template:92
+msgid ""
+"Applies a function to the output of all template code between ``apply`` "
+"and ``end``::"
+msgstr ""
+
+#: of tornado.template:97
+#, python-format
+msgid ""
+"Note that as an implementation detail apply blocks are implemented as "
+"nested functions and thus may interact strangely with variables set via "
+"``{% set %}``, or the use of ``{% break %}`` or ``{% continue %}`` within"
+" loops."
+msgstr ""
+
+#: of tornado.template:109
+msgid "``{% autoescape *function* %}``"
+msgstr ""
+
+#: of tornado.template:103
+#, python-format
+msgid ""
+"Sets the autoescape mode for the current file.  This does not affect "
+"other files, even those referenced by ``{% include %}``.  Note that "
+"autoescaping can also be configured globally, at the `.Application` or "
+"`Loader`.::"
+msgstr ""
+
+#: of tornado.template:121
+#, python-format
+msgid "``{% block *name* %}...{% end %}``"
+msgstr ""
+
+#: of tornado.template:112
+#, python-format
+msgid ""
+"Indicates a named, replaceable block for use with ``{% extends %}``. "
+"Blocks in the parent template will be replaced with the contents of the "
+"same-named block in a child template.::"
+msgstr ""
+
+#: of tornado.template:126
+#, python-format
+msgid "``{% comment ... %}``"
+msgstr ""
+
+#: of tornado.template:124
+#, python-format
+msgid ""
+"A comment which will be removed from the template output.  Note that "
+"there is no ``{% end %}`` tag; the comment goes from the word ``comment``"
+" to the closing ``%}`` tag."
+msgstr ""
+
+#: of tornado.template:132
+#, python-format
+msgid "``{% extends *filename* %}``"
+msgstr ""
+
+#: of tornado.template:129
+msgid ""
+"Inherit from another template.  Templates that use ``extends`` should "
+"contain one or more ``block`` tags to replace content from the parent "
+"template.  Anything in the child template not contained in a ``block`` "
+"tag will be ignored.  For an example, see the ``{% block %}`` tag."
+msgstr ""
+
+#: of tornado.template:136
+#, python-format
+msgid "``{% for *var* in *expr* %}...{% end %}``"
+msgstr ""
+
+#: of tornado.template:135
+#, python-format
+msgid ""
+"Same as the python ``for`` statement.  ``{% break %}`` and ``{% continue "
+"%}`` may be used inside the loop."
+msgstr ""
+
+#: of tornado.template:139
+#, python-format
+msgid "``{% from *x* import *y* %}``"
+msgstr ""
+
+#: of tornado.template:139 tornado.template:146
+msgid "Same as the python ``import`` statement."
+msgstr ""
+
+#: of tornado.template:143
+#, python-format
+msgid "``{% if *condition* %}...{% elif *condition* %}...{% else %}...{% end %}``"
+msgstr ""
+
+#: of tornado.template:142
+msgid ""
+"Conditional statement - outputs the first section whose condition is "
+"true.  (The ``elif`` and ``else`` sections are optional)"
+msgstr ""
+
+#: of tornado.template:146
+#, python-format
+msgid "``{% import *module* %}``"
+msgstr ""
+
+#: of tornado.template:153
+#, python-format
+msgid "``{% include *filename* %}``"
+msgstr ""
+
+#: of tornado.template:149
+msgid ""
+"Includes another template file.  The included file can see all the local "
+"variables as if it were copied directly to the point of the ``include`` "
+"directive (the ``{% autoescape %}`` directive is an exception). "
+"Alternately, ``{% module Template(filename, **kwargs) %}`` may be used to"
+" include another template with an isolated namespace."
+msgstr ""
+
+#: of tornado.template:163
+msgid "``{% module *expr* %}``"
+msgstr ""
+
+#: of tornado.template:156
+msgid ""
+"Renders a `~tornado.web.UIModule`.  The output of the ``UIModule`` is not"
+" escaped::"
+msgstr ""
+
+#: of tornado.template:161
+msgid ""
+"``UIModules`` are a feature of the `tornado.web.RequestHandler` class "
+"(and specifically its ``render`` method) and will not work when the "
+"template system is used on its own in other contexts."
+msgstr ""
+
+#: of tornado.template:166
+#, python-format
+msgid "``{% raw *expr* %}``"
+msgstr ""
+
+#: of tornado.template:166
+msgid "Outputs the result of the given expression without autoescaping."
+msgstr ""
+
+#: of tornado.template:169
+#, python-format
+msgid "``{% set *x* = *y* %}``"
+msgstr ""
+
+#: of tornado.template:169
+msgid "Sets a local variable."
+msgstr ""
+
+#: of tornado.template:172
+#, python-format
+msgid "``{% try %}...{% except %}...{% else %}...{% finally %}...{% end %}``"
+msgstr ""
+
+#: of tornado.template:172
+msgid "Same as the python ``try`` statement."
+msgstr ""
+
+#: of tornado.template:176
+#, python-format
+msgid "``{% while *condition* %}... {% end %}``"
+msgstr ""
+
+#: of tornado.template:175
+#, python-format
+msgid ""
+"Same as the python ``while`` statement.  ``{% break %}`` and ``{% "
+"continue %}`` may be used inside the loop."
+msgstr ""
+
+#: of tornado.template:181
+msgid "``{% whitespace *mode* %}``"
+msgstr ""
+
+#: of tornado.template:179
+msgid ""
+"Sets the whitespace mode for the remainder of the current file (or until "
+"the next ``{% whitespace %}`` directive). See `filter_whitespace` for "
+"available options. New in Tornado 4.3."
+msgstr ""
+
+#: ../../template.rst:7
+msgid "Class reference"
+msgstr ""
+
+#: of tornado.template.Template:1
+msgid "A compiled template."
+msgstr ""
+
+#: of tornado.template.Template:3
+msgid ""
+"We compile into Python from the given template_string. You can generate "
+"the template from variables with generate()."
+msgstr ""
+
+#: of tornado.template.Template:6
+msgid "Construct a Template."
+msgstr ""
+
+#: of tornado.template.BaseLoader tornado.template.DictLoader
+#: tornado.template.Loader tornado.template.Template
+msgid "参数"
+msgstr ""
+
+#: of tornado.template.Template:8
+msgid "the contents of the template file."
+msgstr ""
+
+#: of tornado.template.Template:9
+msgid "the filename from which the template was loaded (used for error message)."
+msgstr ""
+
+#: of tornado.template.Template:11
+#, python-format
+msgid ""
+"the `~tornado.template.BaseLoader` responsible for this template, used to"
+" resolve ``{% include %}`` and ``{% extend %}`` directives."
+msgstr ""
+
+#: of tornado.template.Template:13
+msgid ""
+"Deprecated since Tornado 4.3. Equivalent to ``whitespace=\"single\"`` if "
+"true and ``whitespace=\"all\"`` if false."
+msgstr ""
+
+#: of tornado.template.Template:16
+msgid ""
+"The name of a function in the template namespace, or ``None`` to disable "
+"escaping by default."
+msgstr ""
+
+#: of tornado.template.Template:18
+msgid ""
+"A string specifying treatment of whitespace; see `filter_whitespace` for "
+"options."
+msgstr ""
+
+#: of tornado.template.Template:21
+msgid "Added ``whitespace`` parameter; deprecated ``compress_whitespace``."
+msgstr ""
+
+#: of tornado.template.Template.generate:1
+msgid "Generate this template with the given arguments."
+msgstr ""
+
+#: of tornado.template.BaseLoader:1
+msgid "Base class for template loaders."
+msgstr ""
+
+#: of tornado.template.BaseLoader:3
+#, python-format
+msgid ""
+"You must use a template loader to use template constructs like ``{% "
+"extends %}`` and ``{% include %}``. The loader caches all templates after"
+" they are loaded the first time."
+msgstr ""
+
+#: of tornado.template.BaseLoader:7 tornado.template.DictLoader:3
+#: tornado.template.Loader:4
+msgid "Construct a template loader."
+msgstr ""
+
+#: of tornado.template.BaseLoader:9 tornado.template.DictLoader:5
+#: tornado.template.Loader:6
+msgid ""
+"The name of a function in the template namespace, such as "
+"\"xhtml_escape\", or ``None`` to disable autoescaping by default."
+msgstr ""
+
+#: of tornado.template.BaseLoader:12 tornado.template.DictLoader:8
+#: tornado.template.Loader:9
+msgid "A dictionary to be added to the default template namespace, or ``None``."
+msgstr ""
+
+#: of tornado.template.BaseLoader:14 tornado.template.DictLoader:10
+#: tornado.template.Loader:11
+msgid ""
+"A string specifying default behavior for whitespace in templates; see "
+"`filter_whitespace` for options. Default is \"single\" for files ending "
+"in \".html\" and \".js\" and \"all\" for other files."
+msgstr ""
+
+#: of tornado.template.BaseLoader:19 tornado.template.DictLoader:15
+#: tornado.template.Loader:16
+msgid "Added ``whitespace`` parameter."
+msgstr ""
+
+#: of tornado.template.BaseLoader.reset:1
+msgid "Resets the cache of compiled templates."
+msgstr ""
+
+#: of tornado.template.BaseLoader.resolve_path:1
+#: tornado.template.DictLoader.resolve_path:1
+#: tornado.template.Loader.resolve_path:1
+msgid "Converts a possibly-relative path to absolute (used internally)."
+msgstr ""
+
+#: of tornado.template.BaseLoader.load:1
+msgid "Loads a template."
+msgstr ""
+
+#: of tornado.template.Loader:1
+msgid "A template loader that loads from a single root directory."
+msgstr ""
+
+#: of tornado.template.DictLoader:1
+msgid "A template loader that loads from a dictionary."
+msgstr ""
+
+#: of tornado.template.ParseError:1
+msgid "Raised for template syntax errors."
+msgstr ""
+
+#: of tornado.template.ParseError:3
+msgid ""
+"``ParseError`` instances have ``filename`` and ``lineno`` attributes "
+"indicating the position of the error."
+msgstr ""
+
+#: of tornado.template.ParseError:6
+msgid "Added ``filename`` and ``lineno`` attributes."
+msgstr ""
+
+#: of tornado.template.filter_whitespace:1
+msgid "Transform whitespace in ``text`` according to ``mode``."
+msgstr ""
+
+#: of tornado.template.filter_whitespace:3
+msgid "Available modes are:"
+msgstr ""
+
+#: of tornado.template.filter_whitespace:5
+msgid "``all``: Return all whitespace unmodified."
+msgstr ""
+
+#: of tornado.template.filter_whitespace:6
+msgid ""
+"``single``: Collapse consecutive whitespace with a single whitespace "
+"character, preserving newlines."
+msgstr ""
+
+#: of tornado.template.filter_whitespace:8
+msgid ""
+"``oneline``: Collapse all runs of whitespace into a single space "
+"character, removing all newlines in the process."
+msgstr ""
+

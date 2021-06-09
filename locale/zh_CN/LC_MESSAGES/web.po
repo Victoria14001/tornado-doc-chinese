@@ -63,20 +63,21 @@ msgstr ""
 
 #: of tornado.web.RequestHandler:1
 msgid "Base class for HTTP request handlers."
-msgstr ""
+msgstr "HTTP请求处理的基类"
 
 #: of tornado.web.RequestHandler:3
 msgid ""
 "Subclasses must define at least one of the methods defined in the \"Entry"
 " points\" section below."
-msgstr ""
+msgstr "子类必须从下面 \"Entry points\" 部分选择至少一个方法定义。"
 
 #: of tornado.web.RequestHandler:6
 msgid ""
 "Applications should not construct `RequestHandler` objects directly and "
 "subclasses should not override ``__init__`` (override "
 "`~RequestHandler.initialize` instead)."
-msgstr ""
+msgstr "应用程序不应该直接构建 `RequestHandler` 对象，子类不应该覆盖 ``__init__``"
+"函数（可以覆盖 `~RequestHandler.initialize` ）"
 
 #: ../../web.rst:15
 msgid "Entry points"
@@ -84,49 +85,51 @@ msgstr ""
 
 #: of tornado.web.RequestHandler._initialize:1
 msgid "Hook for subclass initialization. Called for each request."
-msgstr ""
+msgstr "子类初始化的钩子。每个请求都会调用。"
 
 #: of tornado.web.RequestHandler._initialize:3
 msgid ""
 "A dictionary passed as the third argument of a ``URLSpec`` will be "
 "supplied as keyword arguments to ``initialize()``."
-msgstr ""
+msgstr "一个字典作为 ``URLSpec`` 的第三个参数传递给 ``initialize()`` 做关键参数。"
 
 #: of tornado.web.RequestHandler._initialize:6
 msgid "Example::"
-msgstr ""
+msgstr "例子："
 
 #: of tornado.web.RequestHandler.prepare:1
 msgid "Called at the beginning of a request before  `get`/`post`/etc."
-msgstr ""
+msgstr "在开始一个类似  `get`/`post` 请求之前调用。"
 
 #: of tornado.web.RequestHandler.prepare:3
 msgid ""
 "Override this method to perform common initialization regardless of the "
 "request method."
-msgstr ""
+msgstr "覆写这个函数去执行常规的初始化操作而不考虑请求方式。"
 
 #: of tornado.web.RequestHandler.prepare:6
 msgid ""
 "Asynchronous support: Use ``async def`` or decorate this method with "
 "`.gen.coroutine` to make it asynchronous. If this method returns an  "
 "``Awaitable`` execution will not proceed until the ``Awaitable`` is done."
-msgstr ""
+msgstr "异步支持：使用 ``async def`` 或者带 `.gen.coroutine` 的装饰器实现异步。这个"
+"函数返回一个 ``Awaitable`` 执行函数且不会继续执行直到 ``Awaitable`` 完成。"
 
 #: of tornado.web.RequestHandler.prepare:11
 msgid "Asynchronous support."
-msgstr ""
+msgstr "异步支持。"
 
 #: of tornado.web.RequestHandler.on_finish:1
 msgid "Called after the end of a request."
-msgstr ""
+msgstr "一个请求结束时会被调用。"
 
 #: of tornado.web.RequestHandler.on_finish:3
 msgid ""
 "Override this method to perform cleanup, logging, etc. This method is a "
 "counterpart to `prepare`.  ``on_finish`` may not produce any output, as "
 "it is called after the response has been sent to the client."
-msgstr ""
+msgstr "覆写这个函数去执行清除、日志等操作。这个函数跟 `prepare`对应。  ``on_finish`` "
+"也许不会产生任何输出，因为它会在请求结果被发送到客户端后调用。"
 
 #: ../../web.rst:23
 msgid ""
@@ -134,13 +137,13 @@ msgid ""
 "verb methods) to handle the corresponding HTTP method. These methods can "
 "be made asynchronous with one of the following decorators: "
 "`.gen.coroutine`, `.return_future`, or `asynchronous`."
-msgstr ""
+msgstr "实现以下任何方法去处理相应的HTTP函数（统称为HTTP动词函数）。这些函数可以使用如下的装饰器实现异步： `.gen.coroutine`, `.return_future`, or `asynchronous`。"
 
 #: ../../web.rst:28
 msgid ""
 "To support a method not on this list, override the class variable "
 "``SUPPORTED_METHODS``::"
-msgstr ""
+msgstr "若要支持不在此列表中的函数，需要覆写类变量 ``SUPPORTED_METHODS``::"
 
 #: ../../web.rst:46
 msgid "Input"
@@ -148,7 +151,7 @@ msgstr ""
 
 #: of tornado.web.RequestHandler.get_argument:1
 msgid "Returns the value of the argument with the given name."
-msgstr ""
+msgstr "返回给定名称的参数值。"
 
 #: of tornado.web.RequestHandler.get_argument:3
 #: tornado.web.RequestHandler.get_body_argument:4
@@ -156,78 +159,79 @@ msgstr ""
 msgid ""
 "If default is not provided, the argument is considered to be required, "
 "and we raise a `MissingArgumentError` if it is missing."
-msgstr ""
+msgstr "如果没有提供缺省值，且该参数是必须的。如果缺失将会抛出 `MissingArgumentError` 。"
 
 #: of tornado.web.RequestHandler.get_argument:6
 msgid ""
 "If the argument appears in the request more than once, we return the last"
 " value."
-msgstr ""
+msgstr "如果某个参数在请求中出现不止一次，返回最后一次出现的值。"
 
 #: of tornado.web.RequestHandler.get_argument:9
 #: tornado.web.RequestHandler.get_arguments:5
 msgid "This method searches both the query and body arguments."
-msgstr ""
+msgstr "这个方法会搜索查询和结构体中的参数。"
 
 #: of tornado.web.RequestHandler.get_arguments:1
 msgid "Returns a list of the arguments with the given name."
-msgstr ""
+msgstr "返回给定名称的参数列表。"
 
 #: of tornado.web.RequestHandler.get_arguments:3
 #: tornado.web.RequestHandler.get_body_arguments:3
 #: tornado.web.RequestHandler.get_query_arguments:3
 msgid "If the argument is not present, returns an empty list."
-msgstr ""
+msgstr "如果参数不存在，返回空列表。"
 
 #: of tornado.web.RequestHandler.get_query_argument:1
 msgid ""
 "Returns the value of the argument with the given name from the request "
 "query string."
-msgstr ""
+msgstr "返回请求中查询字符串中给定名称的参数值。"
 
 #: of tornado.web.RequestHandler.get_body_argument:7
 #: tornado.web.RequestHandler.get_query_argument:7
 msgid ""
 "If the argument appears in the url more than once, we return the last "
 "value."
-msgstr ""
+msgstr "如果参数在url中出现不止一次，返回最后一次的值。"
 
 #: of tornado.web.RequestHandler.get_query_arguments:1
 msgid "Returns a list of the query arguments with the given name."
-msgstr ""
+msgstr "返回给定名称的查询参数列表。"
 
 #: of tornado.web.RequestHandler.get_body_argument:1
 msgid ""
 "Returns the value of the argument with the given name from the request "
 "body."
-msgstr ""
+msgstr "返回来自请求体中给定名称的参数值。"
 
 #: of tornado.web.RequestHandler.get_body_arguments:1
 msgid "Returns a list of the body arguments with the given name."
-msgstr ""
+msgstr "返回给定名称的正文参数列表。"
 
 #: of tornado.web.RequestHandler.decode_argument:1
 msgid "Decodes an argument from the request."
-msgstr ""
+msgstr "从请求中解码一个参数。"
 
 #: of tornado.web.RequestHandler.decode_argument:3
 msgid ""
 "The argument has been percent-decoded and is now a byte string. By "
 "default, this method decodes the argument as utf-8 and returns a unicode "
 "string, but this may be overridden in subclasses."
-msgstr ""
+msgstr "这个参数已经被部分解码，现在是一个字节字符串。默认情况下，这个方法使用 utf-8 解码"
+"并且返回 unicode 字符串，但是这个也可以在子类中被复写。"
 
 #: of tornado.web.RequestHandler.decode_argument:7
 msgid ""
 "This method is used as a filter for both `get_argument()` and for values "
 "extracted from the url and passed to `get()`/`post()`/etc."
-msgstr ""
+msgstr "这个函数被 `get_argument()` 用来做筛选，从url中抽取变量值，然后传递给 `get()`/`post()`/等。"
 
 #: of tornado.web.RequestHandler.decode_argument:10
 msgid ""
 "The name of the argument is provided if known, but may be None (e.g. for "
 "unnamed groups in the url regex)."
-msgstr ""
+msgstr "这个参数名称如果是已知的会被提供，但可能为空（举例：url的正则未命名的组）。"
 
 #: ../../web.rst:57
 msgid ""

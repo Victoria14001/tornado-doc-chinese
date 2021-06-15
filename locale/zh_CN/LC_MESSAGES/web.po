@@ -237,7 +237,7 @@ msgstr "这个参数名称如果是已知的会被提供，但可能为空（举
 msgid ""
 "The `tornado.httputil.HTTPServerRequest` object containing additional "
 "request parameters including e.g. headers and body data."
-msgstr ""
+msgstr " `tornado.httputil.HTTPServerRequest` 对象包含额外的请求参数，比如包括请求头headers和请求体body data。"
 
 #: ../../web.rst:63
 msgid ""
@@ -245,7 +245,7 @@ msgid ""
 "and keyword arguments that are passed to the :ref:`HTTP verb methods "
 "<verbs>`.  These attributes are set before those methods are called, so "
 "the values are available during `prepare`."
-msgstr ""
+msgstr " ``path_args`` 和 ``path_kwargs`` 属性包括位置和关键参数，且会被传递给 :ref:`HTTP verb methods <verbs>`。这些属性会在这些方法被调用之前被设置，因此这个值在 `prepare`是可以获得的。"
 
 #: ../../web.rst:70
 msgid "Output"
@@ -253,7 +253,7 @@ msgstr ""
 
 #: of tornado.web.RequestHandler.set_status:1
 msgid "Sets the status code for our response."
-msgstr ""
+msgstr "为响应设置状态码。"
 
 #: of tornado.web.Application.find_handler
 #: tornado.web.Application.get_handler_delegate tornado.web.HTTPError
@@ -269,31 +269,31 @@ msgstr ""
 msgid ""
 "Human-readable reason phrase describing the status code. If ``None``, it "
 "will be filled in from `http.client.responses` or \"Unknown\"."
-msgstr ""
+msgstr "用人类可读的借口短语描述状态码。比如 ``None``会被 `http.client.responses` 填充或者显示 \"Unknown\"。"
 
 #: of tornado.web.RequestHandler.set_status:10
 msgid "No longer validates that the response code is in `http.client.responses`."
-msgstr ""
+msgstr "不在验证状态码是否在 `http.client.responses`。"
 
 #: of tornado.web.RequestHandler.set_header:1
 msgid "Sets the given response header name and value."
-msgstr ""
+msgstr "设置给定相应的响应头和相应结果。"
 
 #: of tornado.web.RequestHandler.set_header:3
 msgid ""
 "All header values are converted to strings (`datetime` objects are "
 "formatted according to the HTTP specification for the ``Date`` header)."
-msgstr ""
+msgstr "所有的请求头的值转换成字符串（`datetime` 对象即为根据HTTP特定的 ``Date`` 请求头参数进行的格式化）。"
 
 #: of tornado.web.RequestHandler.add_header:1
 msgid "Adds the given response header and value."
-msgstr ""
+msgstr "给给定响应添加响应头和响应值。"
 
 #: of tornado.web.RequestHandler.add_header:3
 msgid ""
 "Unlike `set_header`, `add_header` may be called multiple times to return "
 "multiple values for the same header."
-msgstr ""
+msgstr "不像 `set_header`， `add_header` 会被相同的请求头调用多次并返回多个值。"
 
 #: of tornado.web.RequestHandler.clear_header:1
 msgid "Clears an outgoing header, undoing a previous `set_header` call."

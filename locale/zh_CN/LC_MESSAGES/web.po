@@ -297,32 +297,32 @@ msgstr "不像 `set_header`， `add_header` 会被相同的请求头调用多次
 
 #: of tornado.web.RequestHandler.clear_header:1
 msgid "Clears an outgoing header, undoing a previous `set_header` call."
-msgstr ""
+msgstr "清楚请求头，撤销先前的 `set_header` 函数调用。"
 
 #: of tornado.web.RequestHandler.clear_header:3
 msgid ""
 "Note that this method does not apply to multi-valued headers set by "
 "`add_header`."
-msgstr ""
+msgstr "需要注意的是该方法不适用于由 `add_header` 设置的多值请求头。"
 
 #: of tornado.web.RequestHandler.set_default_headers:1
 msgid "Override this to set HTTP headers at the beginning of the request."
-msgstr ""
+msgstr "在请求一开始设置HTTP头信息覆写默认值。"
 
 #: of tornado.web.RequestHandler.set_default_headers:3
 msgid ""
 "For example, this is the place to set a custom ``Server`` header. Note "
 "that setting such headers in the normal flow of request processing may "
 "not do what you want, since headers may be reset during error handling."
-msgstr ""
+msgstr "举个例子，这里可以设置一个常规的  ``Server`` 头信息。注意到这样的头信息设置在常规请求流处理过程中也许不会做你想做的那些，因为头信息可能会在错误处理过程中被重置。"
 
 #: of tornado.web.RequestHandler.write:1
 msgid "Writes the given chunk to the output buffer."
-msgstr ""
+msgstr "将给定块写到输出缓冲区。"
 
 #: of tornado.web.RequestHandler.write:3
 msgid "To write the output to the network, use the `flush()` method below."
-msgstr ""
+msgstr "将输出写到网络，使用下边的 `flush()` 方法。"
 
 #: of tornado.web.RequestHandler.write:5
 msgid ""

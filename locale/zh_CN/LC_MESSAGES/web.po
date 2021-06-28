@@ -633,59 +633,59 @@ msgid ""
 "Normally used via set_secure_cookie, but provided as a separate method "
 "for non-cookie uses.  To decode a value not stored as a cookie use the "
 "optional value argument to get_secure_cookie."
-msgstr ""
+msgstr "通常使用set_secure_cookie设置签名，但这里提供了一个没有使用cookie的独立的方法。解码而不是存储cookie时使用可选值参数get_secure_cookie方法。"
 
 #: ../../docstring of tornado.web.MIN_SUPPORTED_SIGNED_VALUE_VERSION:1
 msgid "The oldest signed value version supported by this version of Tornado."
-msgstr ""
+msgstr "Tornado版本支持的签名的最老版本。"
 
 #: ../../docstring of tornado.web.MIN_SUPPORTED_SIGNED_VALUE_VERSION:3
 msgid "Signed values older than this version cannot be decoded."
-msgstr ""
+msgstr "签名的值老于该版本将不能被解码。"
 
 #: ../../docstring of tornado.web.MAX_SUPPORTED_SIGNED_VALUE_VERSION:1
 msgid "The newest signed value version supported by this version of Tornado."
-msgstr ""
+msgstr "Tornado版本支持的最新的签名值版本。"
 
 #: ../../docstring of tornado.web.MAX_SUPPORTED_SIGNED_VALUE_VERSION:3
 msgid "Signed values newer than this version cannot be decoded."
-msgstr ""
+msgstr "签名值的版本新于该版本京不能被解析。"
 
 #: ../../docstring of tornado.web.DEFAULT_SIGNED_VALUE_VERSION:1
 msgid ""
 "The signed value version produced by "
 "`.RequestHandler.create_signed_value`."
-msgstr ""
+msgstr "签名值版本由 `.RequestHandler.create_signed_value`产生。"
 
 #: ../../docstring of tornado.web.DEFAULT_SIGNED_VALUE_VERSION:3
 msgid "May be overridden by passing a ``version`` keyword argument."
-msgstr ""
+msgstr "可能通过传递一个 ``version`` 关键字参数覆写。"
 
 #: ../../docstring of tornado.web.DEFAULT_SIGNED_VALUE_MIN_VERSION:1
 msgid "The oldest signed value accepted by `.RequestHandler.get_secure_cookie`."
-msgstr ""
+msgstr "被 `.RequestHandler.get_secure_cookie`接收的最老版本的签名值。"
 
 #: ../../docstring of tornado.web.DEFAULT_SIGNED_VALUE_MIN_VERSION:3
 msgid "May be overridden by passing a ``min_version`` keyword argument."
-msgstr ""
+msgstr "也许通过传递 ``min_version`` 关键字参数覆写。"
 
 #: ../../web.rst:108
 msgid "Other"
-msgstr ""
+msgstr "其他"
 
 #: ../../web.rst:112
 msgid "The `Application` object serving this request"
-msgstr ""
+msgstr " `Application` 应用程序对象服务这个请求"
 
 #: of tornado.web.RequestHandler.check_etag_header:1
 msgid "Checks the ``Etag`` header against requests's ``If-None-Match``."
-msgstr ""
+msgstr "检查 ``Etag`` 头信息以防请求的 ``If-None-Match``。"
 
 #: of tornado.web.RequestHandler.check_etag_header:3
 msgid ""
 "Returns ``True`` if the request's Etag matches and a 304 should be "
 "returned. For example::"
-msgstr ""
+msgstr "如果请求的Etag满足并且返回一个304时返回 ``True`` ，举个例子::"
 
 #: of tornado.web.RequestHandler.check_etag_header:11
 msgid ""
@@ -694,11 +694,11 @@ msgid ""
 " to do an early check for ``If-None-Match`` before completing the "
 "request.  The ``Etag`` header should be set (perhaps with "
 "`set_etag_header`) before calling this method."
-msgstr ""
+msgstr "这个方法在请求完成时自动调用，但也许会被应用更早的调用，因为在完成请求之前覆写 `compute_etag` 且希望更早的检查 ``If-None-Match`` 。 ``Etag`` 头应该在该方法调用之前被设置（或许还有 `set_etag_header`）。"
 
 #: of tornado.web.RequestHandler.check_xsrf_cookie:1
 msgid "Verifies that the ``_xsrf`` cookie matches the ``_xsrf`` argument."
-msgstr ""
+msgstr "校验 ``_xsrf`` cookie满足 ``_xsrf`` 的参数。"
 
 #: of tornado.web.RequestHandler.check_xsrf_cookie:3
 msgid ""
@@ -706,41 +706,41 @@ msgid ""
 "include the same value as a non-cookie field with all ``POST`` requests. "
 "If the two do not match, we reject the form submission as a potential "
 "forgery."
-msgstr ""
+msgstr "为阻止跨网站的请求伪造，我们设置 ``_xsrf`` cookie并且将该值作为一个 non-cookie 字段添加到所有的 ``POST`` 请求中。如果这两个不匹配，我们会拒绝表单的提交因为是一个潜在的伪装。"
 
 #: of tornado.web.RequestHandler.check_xsrf_cookie:8
 msgid ""
 "The ``_xsrf`` value may be set as either a form field named ``_xsrf`` or "
 "in a custom HTTP header named ``X-XSRFToken`` or ``X-CSRFToken`` (the "
 "latter is accepted for compatibility with Django)."
-msgstr ""
+msgstr " ``_xsrf`` 值或者作为一个表单中名为 ``_xsrf`` 的字段设置，或者在一个常规的HTTP请求头中作为 ``X-XSRFToken`` 或 ``X-CSRFToken``设置（后者可以在Django中并存）"
 
 #: ../../docstring of tornado.web.RequestHandler.check_xsrf_cookie:12
 #: tornado.web.RequestHandler.xsrf_token:8
 msgid "See http://en.wikipedia.org/wiki/Cross-site_request_forgery"
-msgstr ""
+msgstr "参见http://en.wikipedia.org/wiki/Cross-site_request_forgery"
 
 #: of tornado.web.RequestHandler.check_xsrf_cookie:14
 msgid "Added support for cookie version 2.  Both versions 1 and 2 are supported."
-msgstr ""
+msgstr "在cookie版本2中增加支持。同时支持版本1和版本2."
 
 #: of tornado.web.RequestHandler.compute_etag:1
 msgid "Computes the etag header to be used for this request."
-msgstr ""
+msgstr "计算这个请求中使用的etag 头信息。"
 
 #: of tornado.web.RequestHandler.compute_etag:3
 msgid "By default uses a hash of the content written so far."
-msgstr ""
+msgstr "目前为止默认使用所写内容的hash值。"
 
 #: of tornado.web.RequestHandler.compute_etag:5
 msgid ""
 "May be overridden to provide custom etag implementations, or may return "
 "None to disable tornado's default etag support."
-msgstr ""
+msgstr "也许会复写提供常规etag的实现，或者也许返回None来阻止Tornado的默认etag支持。"
 
 #: of tornado.web.RequestHandler.create_template_loader:1
 msgid "Returns a new template loader for the given path."
-msgstr ""
+msgstr "返回给定路径一个全新的模板加载器。"
 
 #: of tornado.web.RequestHandler.create_template_loader:3
 msgid ""
@@ -748,15 +748,15 @@ msgid ""
 "loader on the given path, using the ``autoescape`` and "
 "``template_whitespace`` application settings.  If a ``template_loader`` "
 "application setting is supplied, uses that instead."
-msgstr ""
+msgstr "也许会被子类复写，默认返回给定路径的基于目录的加载器，使用 ``autoescape`` 和 ``template_whitespace``应用设置。如果一个 ``template_loader`` 应用设置已经提供，那使用这个代替。"
 
 #: ../../docstring of tornado.web.RequestHandler.current_user:1
 msgid "The authenticated user for this request."
-msgstr ""
+msgstr "当前请求的授权用户。"
 
 #: ../../docstring of tornado.web.RequestHandler.current_user:3
 msgid "This is set in one of two ways:"
-msgstr ""
+msgstr "使用以下两种方法之一设置："
 
 #: ../../docstring of tornado.web.RequestHandler.current_user:5
 msgid ""
@@ -764,20 +764,20 @@ msgid ""
 "automatically the first time ``self.current_user`` is accessed. "
 "`get_current_user()` will only be called once per request, and is cached "
 "for future access::"
-msgstr ""
+msgstr "一个子类也许会复写 `get_current_user()`函数，它将会在第一次访问到 ``self.current_user`` 时自动调用。 `get_current_user()` 函数在每个请求中只会被调用一次，而且缓存起来已备后续放问可用::"
 
 #: ../../docstring of tornado.web.RequestHandler.current_user:16
 msgid ""
 "It may be set as a normal variable, typically from an overridden "
 "`prepare()`::"
-msgstr ""
+msgstr "它可以被设置为一个普通的变量，典型的来自 `prepare()` 复写::"
 
 #: ../../docstring of tornado.web.RequestHandler.current_user:25
 msgid ""
 "Note that `prepare()` may be a coroutine while `get_current_user()` may "
 "not, so the latter form is necessary if loading the user requires "
 "asynchronous operations."
-msgstr ""
+msgstr "注意到 `prepare()` 函数也许是一个协程而 `get_current_user()` 却不是，因此如果加载这个用户需要异步操作后者的表单是非常重要的。"
 
 #: ../../docstring of tornado.web.RequestHandler.current_user:29
 msgid "The user object may be any type of the application's choosing."

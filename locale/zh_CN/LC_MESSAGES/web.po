@@ -783,6 +783,7 @@ msgstr "注意到 `prepare()` 函数也许是一个协程而 `get_current_user()
 msgid "The user object may be any type of the application's choosing."
 msgstr ""
 
+。。。。。。。         QW     。。
 #: of tornado.web.RequestHandler.get_browser_locale:1
 msgid "Determines the user's locale from ``Accept-Language`` header."
 msgstr ""

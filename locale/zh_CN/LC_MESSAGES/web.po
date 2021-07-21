@@ -781,86 +781,86 @@ msgstr "注意到 `prepare()` 函数也许是一个协程而 `get_current_user()
 
 #: ../../docstring of tornado.web.RequestHandler.current_user:29
 msgid "The user object may be any type of the application's choosing."
-msgstr ""
+msgstr "这个用户对象可以是应用选择的任何类型。"
 
 。。。。。。。         QW     。。
 #: of tornado.web.RequestHandler.get_browser_locale:1
 msgid "Determines the user's locale from ``Accept-Language`` header."
-msgstr ""
+msgstr "头信息中的 ``Accept-Language`` 决定了用户的地区。"
 
 #: of tornado.web.RequestHandler.get_browser_locale:3
 msgid "See http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4"
-msgstr ""
+msgstr "参见 http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4"
 
 #: of tornado.web.RequestHandler.get_current_user:1
 msgid "Override to determine the current user from, e.g., a cookie."
-msgstr ""
+msgstr "比如通过一个cookie覆盖来决定当前的用户。"
 
 #: of tornado.web.RequestHandler.get_current_user:3
 msgid "This method may not be a coroutine."
-msgstr ""
+msgstr "这个方法也许不是协程。"
 
 #: of tornado.web.RequestHandler.get_login_url:1
 msgid "Override to customize the login URL based on the request."
-msgstr ""
+msgstr "复写来制定基于当前请求的登录URL"
 
 #: of tornado.web.RequestHandler.get_login_url:3
 msgid "By default, we use the ``login_url`` application setting."
-msgstr ""
+msgstr "通常情况下，我们使用应用设置中的 ``login_url`` 参数。"
 
 #: of tornado.web.RequestHandler.get_status:1
 msgid "Returns the status code for our response."
-msgstr ""
+msgstr "返回我们响应的状态码。"
 
 #: of tornado.web.RequestHandler.get_template_path:1
 msgid "Override to customize template path for each handler."
-msgstr ""
+msgstr "覆写来为每个处理器定制模板路径。"
 
 #: of tornado.web.RequestHandler.get_template_path:3
 msgid ""
 "By default, we use the ``template_path`` application setting. Return None"
 " to load templates relative to the calling file."
-msgstr ""
+msgstr "默认情况下，我们使用应用设置 ``template_path`` 。返回None值来加载调用文件的相关模板。"
 
 #: of tornado.web.RequestHandler.get_user_locale:1
 msgid "Override to determine the locale from the authenticated user."
-msgstr ""
+msgstr "通过授权认证的用户覆写来决定当前地区。"
 
 #: of tornado.web.RequestHandler.get_user_locale:3
 msgid "If None is returned, we fall back to `get_browser_locale()`."
-msgstr ""
+msgstr "如果返回None，我们后退到 `get_browser_locale()`。"
 
 #: of tornado.web.RequestHandler.get_user_locale:5
 msgid ""
-"This method should return a `tornado.locale.Locale` object, most likely "
+"This method should return a `get_browser_locale()`object, most likely "
 "obtained via a call like ``tornado.locale.get(\"en\")``"
-msgstr ""
+msgstr "这个方法应该返回一个 `get_browser_locale()` 对象，很有可能通过调用一个类似 ``tornado.locale.get(\"en\")`` 的函数获取。"
 
 #: ../../docstring of tornado.web.RequestHandler.locale:1
 msgid "The locale for the current session."
-msgstr ""
+msgstr "当前会话的地区。"
 
 #: ../../docstring of tornado.web.RequestHandler.locale:3
 msgid ""
 "Determined by either `get_user_locale`, which you can override to set the"
 " locale based on, e.g., a user preference stored in a database, or "
 "`get_browser_locale`, which uses the ``Accept-Language`` header."
-msgstr ""
+msgstr "可以依据 `get_user_locale`确定，该函数覆写地区设置，例如一个优先存储在数据库中的用户。或者使用 `get_browser_locale` 函数，该函数可以使用 ``Accept-Language`` 头信息参数确定。"
 
 #: of tornado.web.RequestHandler.log_exception:1
 msgid "Override to customize logging of uncaught exceptions."
-msgstr ""
+msgstr "覆写定制未捕获的异常日志。"
 
 #: of tornado.web.RequestHandler.log_exception:3
 msgid ""
 "By default logs instances of `HTTPError` as warnings without stack traces"
 " (on the ``tornado.general`` logger), and all other exceptions as errors "
 "with stack traces (on the ``tornado.application`` logger)."
-msgstr ""
+msgstr "默认情况下不带跟踪栈的使用 `HTTPError` 作为警告（体现在 ``tornado.general`` 日志中），而其他带跟踪栈的异常作为错误（体现在 ``tornado.application`` 日志中）。"
 
 #: of tornado.web.RequestHandler.on_connection_close:1
 msgid "Called in async handlers if the client closed the connection."
-msgstr ""
+msgstr "如果客户端关闭连接会被异步处理器调用。"
 
 #: of tornado.web.RequestHandler.on_connection_close:3
 msgid ""
@@ -868,48 +868,48 @@ msgid ""
 "connections.  Note that this method is called only if the connection was "
 "closed during asynchronous processing; if you need to do cleanup after "
 "every request override `on_finish` instead."
-msgstr ""
+msgstr "覆写这个函数可以清除长连接相关的资源。值得注意的是这个方法会在同步进程中链接关闭的时调用；如果你想在每次请求后清除资源需要覆写 `on_finish` 函数。"
 
 #: of tornado.web.RequestHandler.on_connection_close:9
 msgid ""
 "Proxies may keep a connection open for a time (perhaps indefinitely) "
 "after the client has gone away, so this method may not be called promptly"
 " after the end user closes their connection."
-msgstr ""
+msgstr "代理可以保持一个链接在客户端消失后继续开放一段时间（也许是无限期的），因此这个方法在终端用户关闭他们链接之后也许不会被调用。"
 
 #: of tornado.web.RequestHandler.require_setting:1
 msgid "Raises an exception if the given app setting is not defined."
-msgstr ""
+msgstr "如果给定的应用设置没有定义抛出一个异常。"
 
 #: of tornado.web.RequestHandler.reverse_url:1
 msgid "Alias for `Application.reverse_url`."
-msgstr ""
+msgstr " `Application.reverse_url`的别名。"
 
 #: of tornado.web.RequestHandler.set_etag_header:1
 msgid "Sets the response's Etag header using ``self.compute_etag()``."
-msgstr ""
+msgstr "使用 ``self.compute_etag()``设置响应头的Etag值。"
 
 #: of tornado.web.RequestHandler.set_etag_header:3
 msgid "Note: no header will be set if ``compute_etag()`` returns ``None``."
-msgstr ""
+msgstr "注意：如果 ``compute_etag()`` 返回None值将不会设置头信息。"
 
 #: of tornado.web.RequestHandler.set_etag_header:5
 msgid "This method is called automatically when the request is finished."
-msgstr ""
+msgstr "这个函数回在请求结束后自动调用。"
 
 #: ../../docstring of tornado.web.RequestHandler.settings:1
 msgid "An alias for `self.application.settings <Application.settings>`."
-msgstr ""
+msgstr " `self.application.settings <Application.settings>`的别名。"
 
 #: of tornado.web.RequestHandler.static_url:1
 msgid "Returns a static URL for the given relative static file path."
-msgstr ""
+msgstr "返回给定的相对静态文件路径的静态URL"
 
 #: of tornado.web.RequestHandler.static_url:3
 msgid ""
 "This method requires you set the ``static_path`` setting in your "
 "application (which specifies the root directory of your static files)."
-msgstr ""
+msgstr "这个函数要求在你的应用中设置 ``static_path`` （这个定义了你的静态文件的根目录）。"
 
 #: of tornado.web.RequestHandler.static_url:7
 msgid ""
@@ -918,7 +918,7 @@ msgid ""
 "indefinitely.  This can be disabled by passing ``include_version=False`` "
 "(in the default implementation; other static file implementations are not"
 " required to support this, but they may support other options)."
-msgstr ""
+msgstr "这个函数返回了版本对应的URL（通过默认增加参数 ``?v=<signature>`` 确定），该方法允许静态文件无限期缓存。这个可以通过传递参数 ``include_version=False`` 来关闭（默认实现的，其他的静态文件的实现不要求支持该功能，但他们有其他可以支持的选项）。"
 
 #: of tornado.web.RequestHandler.static_url:14
 msgid ""
@@ -927,11 +927,11 @@ msgid ""
 "handler has an ``include_host`` attribute, that value will be used as the"
 " default for all `static_url` calls that do not pass ``include_host`` as "
 "a keyword argument."
-msgstr ""
+msgstr "默认情况下该函数返回当前host的相对URLs，但是如果设置了 ``include_host`` 参数为True将会返回绝URL。如果处理器存在  ``include_host`` 属性，这个值将会被默认提供给所有的 `static_url` 调用且不需要传递 ``include_host`` 作为关键参数。"
 
 #: of tornado.web.RequestHandler.xsrf_form_html:1
 msgid "An HTML ``<input/>`` element to be included with all POST forms."
-msgstr ""
+msgstr "一个会被所有的POST表单包含的html元素 ``<input/>``。"
 
 #: of tornado.web.RequestHandler.xsrf_form_html:3
 msgid ""
@@ -939,21 +939,21 @@ msgid ""
 " to prevent cross-site request forgery. If you have set the "
 "``xsrf_cookies`` application setting, you must include this HTML within "
 "all of your HTML forms."
-msgstr ""
+msgstr "该函数定义了 ``_xsrf`` 的输入值，我们会检查所有的POST请求来阻止跨网站的请求伪造。如果你已经设置了应用中的 ``xsrf_cookies`` 设置，那么你必须在所有的HTML表单中嵌入该HTML。"
 
 #: of tornado.web.RequestHandler.xsrf_form_html:8
 msgid ""
 "In a template, this method should be called with ``{% module "
 "xsrf_form_html() %}``"
-msgstr ""
+msgstr "在一个模板中，该函数会被``{% module xsrf_form_html() %}`` 调用。"
 
 #: of tornado.web.RequestHandler.xsrf_form_html:11
 msgid "See `check_xsrf_cookie()` above for more information."
-msgstr ""
+msgstr "参见上面的 `check_xsrf_cookie()` 函数寻找更多的信息。"
 
 #: ../../docstring of tornado.web.RequestHandler.xsrf_token:1
 msgid "The XSRF-prevention token for the current user/session."
-msgstr ""
+msgstr "当前用户或会话的XSRF-prevention token。"
 
 #: ../../docstring of tornado.web.RequestHandler.xsrf_token:3
 msgid ""
@@ -961,14 +961,14 @@ msgid ""
 "include the same '_xsrf' value as an argument with all POST requests. If "
 "the two do not match, we reject the form submission as a potential "
 "forgery."
-msgstr ""
+msgstr "为了组织跨网站的请求伪造，我们设置了 '_xsrf' cookie并且在所有的POST请求中包含相同的  '_xsrf' 值作为参数。如果这两个值不匹配，我们会认为是潜在的伪造而拒绝表单的提交。"
 
 #: ../../docstring of tornado.web.RequestHandler.xsrf_token:10
 msgid ""
 "This property is of type `bytes`, but it contains only ASCII characters. "
 "If a character string is required, there is no need to base64-encode it; "
 "just decode the byte string as UTF-8."
-msgstr ""
+msgstr "这个是 `bytes`类型的属性，但是他只包括了 ASCII 字符。如果要求一个字符串，那么不必用base64-encode 进行编码而只需要简单的依据UTF-8解码该字节。"
 
 #: ../../docstring of tornado.web.RequestHandler.xsrf_token:15
 msgid ""
@@ -978,7 +978,7 @@ msgid ""
 "this change.  Old (version 1) cookies will be converted to version 2 when"
 " this method is called unless the ``xsrf_cookie_version`` `Application` "
 "setting is set to 1."
-msgstr ""
+msgstr "xsrf token会在每个请求中有一个随机的掩码，在页面中包含一个被压缩的token使得请求变得安全。参见http://breachattack.com查看更多被该变化修复的问题的信息。当这个函数被调用时旧的cookie（版本1）将会转化为版本2，除非 ``xsrf_cookie_version`` `Application`  被设置为1."
 
 #: ../../docstring of tornado.web.RequestHandler.xsrf_token:24
 msgid ""
@@ -987,21 +987,21 @@ msgid ""
 "`set_cookie`). For example, ``xsrf_cookie_kwargs=dict(httponly=True, "
 "secure=True)`` will set the ``secure`` and ``httponly`` flags on the "
 "``_xsrf`` cookie."
-msgstr ""
+msgstr " ``xsrf_cookie_kwargs`` `Application` 设置也许会被用来提供额外的cookie选项（这个值将会被直接传递给 `set_cookie`）。举个例子， ``xsrf_cookie_kwargs=dict(httponly=True, secure=True)`` 将会在 ``_xsrf`` cookie中设置 ``secure`` 和 ``httponly`` 标志。"
 
 #: ../../web.rst:139
 msgid "Application configuration"
-msgstr ""
+msgstr "应用配置"
 
 #: of tornado.web.Application:1
 msgid "A collection of request handlers that make up a web application."
-msgstr ""
+msgstr "一个请求处理器的集合组成了一个web应用。"
 
 #: of tornado.web.Application:3
 msgid ""
 "Instances of this class are callable and can be passed directly to "
 "HTTPServer to serve the application::"
-msgstr ""
+msgstr "初始化该类使其可被调用并且直接传递HTTPServer服务该应用::"
 
 #: of tornado.web.Application:13
 msgid ""
@@ -1011,21 +1011,21 @@ msgid ""
 "[name])``, the values in square brackets being optional. The default "
 "matcher is `~.routing.PathMatches`, so ``(regexp, target)`` tuples can "
 "also be used instead of ``(PathMatches(regexp), target)``."
-msgstr ""
+msgstr "这个类的构造函数包括一个 `~.routing.Rule` 对象列表或者多个值跟 `~.routing.Rule` 构造器参数的元组： ``(matcher, target, [target_kwargs], [name])``，方括号中的值属于可选项。默认的匹配器是 `~.routing.PathMatches`，因此 ``(regexp, target)`` 也可以被用来替代 ``(PathMatches(regexp), target)``。"
 
 #: of tornado.web.Application:20
 msgid ""
 "A common routing target is a `RequestHandler` subclass, but you can also "
 "use lists of rules as a target, which create a nested routing "
 "configuration::"
-msgstr ""
+msgstr "一个常见的路由目标是一个 `RequestHandler` 的子类，但是也可以使用规则列表作为一个目标，该目标可以创建一个路由网络配置::"
 
 #: of tornado.web.Application:30
 msgid ""
 "In addition to this you can use nested `~.routing.Router` instances, "
 "`~.httputil.HTTPMessageDelegate` subclasses and callables as routing "
 "targets (see `~.routing` module docs for more information)."
-msgstr ""
+msgstr "除此之外可以使用 `~.routing.Router` 网进行初始化， `~.httputil.HTTPMessageDelegate` 子类和可调用实例作为路由目标（参见 `~.routing` 模块文档查询更多信息）。"
 
 #: of tornado.web.Application:34
 msgid ""
@@ -1033,7 +1033,7 @@ msgid ""
 "instantiate an instance of the first request class whose regexp matches "
 "the request path. The request class can be specified as either a class "
 "object or a (fully-qualified) name."
-msgstr ""
+msgstr "当接收到请求时，我们按顺序遍历列表并且实例化第一个正则表达式匹配的请求路径对应的请求类。该请求类既可以被定义为一个类对象也可以是一个（全限定的）名字。"
 
 #: of tornado.web.Application:39
 msgid ""
@@ -1043,19 +1043,19 @@ msgid ""
 " for the `StaticFileHandler` in this example (note that a "
 "`StaticFileHandler` can be installed automatically with the static_path "
 "setting described below)::"
-msgstr ""
+msgstr "一个目录可以作为元组中的第三个元素传递(``target_kwargs``)，该元组可以被用作处理器的构造函数和 `~RequestHandler.initialize` 中的关键字参数。在这个例子中这个模式被 `StaticFileHandler` 使用（注意到 `StaticFileHandler` 可以被自动安装且带有下述static_path设置）::"
 
 #: of tornado.web.Application:50
 msgid ""
 "We support virtual hosts with the `add_handlers` method, which takes in a"
 " host regular expression as the first argument::"
-msgstr ""
+msgstr "我们支持带有  `add_handlers` 方法的虚拟宿主，这将使用一个宿主正则表达式作为第一个参数。"
 
 #: of tornado.web.Application:57
 msgid ""
 "If there's no match for the current request's host, then ``default_host``"
 " parameter value is matched against host regular expressions."
-msgstr ""
+msgstr "如果没有满足当前请求的宿主， ``default_host``参数值用来阻止宿主正则表达式。"
 
 #: of tornado.web.Application:63
 msgid ""
@@ -1065,7 +1065,7 @@ msgid ""
 " Appropriate host patterns must be used (instead of the default of "
 "``r'.*'``) to prevent this risk. The ``default_host`` argument must not "
 "be used in applications that may be vulnerable to DNS rebinding."
-msgstr ""
+msgstr "没有使用TLS的应用程序或许会导致 :ref:`DNS重新绑定 <dnsrebinding>` 袭击。这种袭击尤其跟那些只监听在 ``127.0.0.1`` 或其他私有网络的应用程序相关。恰当的宿主模式必须被用来阻止这种风险（取代默认的 ``r'.*'``）。 ``default_host`` 参数一定不能用在应用程序中否则也许会导致DNS重新绑定。"
 
 #: of tornado.web.Application:71
 msgid ""
@@ -1075,11 +1075,11 @@ msgid ""
 "will serve ``/favicon.ico`` and ``/robots.txt`` from the same directory."
 "  A custom subclass of `StaticFileHandler` can be specified with the "
 "``static_handler_class`` setting."
-msgstr ""
+msgstr "你可以通过发送 ``static_path`` 设置作为一个关键参数来服务静态文件。我们通常通过 ``/static/`` URI （这个使用 ``static_url_prefix`` 设置来进行配置）来服务这种文件，并且我们通过相同的目录服务 ``/favicon.ico`` 和 ``/robots.txt`` 。一个常见的 `StaticFileHandler` 子类可以使用 ``static_handler_class`` 设置来定义。"
 
 #: of tornado.web.Application:79
 msgid "Integration with the new `tornado.routing` module."
-msgstr ""
+msgstr "使用 `tornado.routing` 模块来进行整合。"
 
 #: ../../web.rst:145
 msgid ""
@@ -1091,11 +1091,11 @@ msgid ""
 " also like to use the `settings` dictionary as a way to make application-"
 "specific settings available to handlers without using global variables.  "
 "Settings used in Tornado are described below."
-msgstr ""
+msgstr "额外的传递给构造函数的关键字参数保存在 `settings` 目录中，并且经常涉及到文档内作为 \"application settings\"。设置通常用来规范Tornado的多个方面（即便在一些实例中很可能通过覆写 `RequestHandler`子类中的方法会定制更多的规则）。一些应用也更喜欢使用 `settings` 目录作为一种不使用全局变量的特定应用程序处理器的设置方式。在Tornado中的设置描述如下。"
 
 #: ../../web.rst:156
 msgid "General settings:"
-msgstr ""
+msgstr "常规设置："
 
 #: ../../web.rst:158
 msgid ""
@@ -1103,7 +1103,7 @@ msgid ""
 "source files change, as described in :ref:`debug-mode`. This option is "
 "new in Tornado 3.2; previously this functionality was controlled by the "
 "``debug`` setting."
-msgstr ""
+msgstr "``autoreload``: 如果为 ``True``，当任何源文件发生变化时服务进程就会重启，正如 :ref:`debug-mode` 描述的一样。这个选项在 Tornado 3.2中时新增加的；之前该功能在 ``debug`` 设置中被控制。"
 
 #: ../../web.rst:162
 msgid ""
@@ -1111,24 +1111,24 @@ msgid ""
 ":`debug-mode`.  Setting ``debug=True`` is equivalent to "
 "``autoreload=True``, ``compiled_template_cache=False``, "
 "``static_hash_cache=False``, ``serve_traceback=True``."
-msgstr ""
+msgstr "``debug``: 几种debug模式的简写，正如 :ref:`debug-mode` 中的描述一样。 ``debug=True`` 的设置等同于 ``autoreload=True``， ``compiled_template_cache=False``, ``static_hash_cache=False``, ``serve_traceback=True``。"
 
 #: ../../web.rst:166
 msgid ""
 "``default_handler_class`` and ``default_handler_args``: This handler will"
 " be used if no other match is found; use this to implement custom 404 "
 "pages (new in Tornado 3.2)."
-msgstr ""
+msgstr "``default_handler_class`` 和 ``default_handler_args``: 如果没有其他匹配的被发现将会使用该处理器，使用该处理器实现常见的404页面（ Tornado 3.2中新增）。"
 
 #: ../../web.rst:169
 msgid ""
 "``compress_response``: If ``True``, responses in textual formats will be "
 "compressed automatically.  New in Tornado 4.0."
-msgstr ""
+msgstr "``compress_response``: 如果为 ``True``，文本格式的响应会被自动压缩。 Tornado 4.0中新增。"
 
 #: ../../web.rst:171
 msgid "``gzip``: Deprecated alias for ``compress_response`` since Tornado 4.0."
-msgstr ""
+msgstr "``gzip``: 自从 Tornado 4.0开始已经废弃的 ``compress_response`` 的别名。"
 
 #: ../../web.rst:173
 msgid ""
@@ -1137,14 +1137,14 @@ msgid ""
 "object).  The default implementation writes to the `logging` module's "
 "root logger.  May also be customized by overriding "
 "`Application.log_request`."
-msgstr ""
+msgstr "``log_function``: 这个函数会在每个请求结束记录结果时被调用（ `RequestHandler` 对象带一个参数）。默认的实现方式是写到 `logging` 模块的根日志中。当然也可以被 `Application.log_request` 覆写定制。"
 
 #: ../../web.rst:178
 msgid ""
 "``serve_traceback``: If true, the default error page will include the "
 "traceback of the error.  This option is new in Tornado 3.2; previously "
 "this functionality was controlled by the ``debug`` setting."
-msgstr ""
+msgstr "``serve_traceback``: 如果为Ture，默认的错误页面将会包括错误的路径。这个选项在Tornado 3.2中是新增的，瘴气氨该功能在 ``debug`` 设置中被控制。"
 
 #: ../../web.rst:182
 msgid ""
@@ -1152,7 +1152,7 @@ msgid ""
 "or UI methods to be made available to templates. May be set to a module, "
 "dictionary, or a list of modules and/or dicts.  See :ref:`ui-modules` for"
 " more details."
-msgstr ""
+msgstr "``ui_modules`` and ``ui_methods``: "
 
 #: ../../web.rst:187
 msgid "Authentication and security settings:"
